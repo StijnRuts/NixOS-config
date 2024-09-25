@@ -4,9 +4,10 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@args:
+  outputs = { self, nixpkgs, home-manager, impermanence, ... }@args:
   {
     nixosConfigurations =
     {
@@ -22,6 +23,8 @@
             home-manager.useUserPackages = true;
             home-manager.users.stijn = import ./configuration-home.nix;
           }
+          impermanence.nixosModules.impermanence
+          ./impermanence.nix
         ];
       };
     };
