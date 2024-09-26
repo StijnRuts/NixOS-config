@@ -1,8 +1,26 @@
 { config, pkgs, ... }:
-{
+let
+  sddmYellow = import ./theme/sddm-yellow.nix { inherit pkgs; };
+in {
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "yellow";
+  };
+
+  environment.plasma6.excludePackages = [
+    # pkgs.kdePackages.konsole # replaced with wezterm, but kept for Dolphin integration
+    pkgs.kdePackages.elisa # replaced with vlc
+    # pkgs.kdePackages.kate # replaced with neovim
+  ];
+
+  environment.systemPackages = with pkgs; [
+    sddmYellow
+    wezterm
+    vlc
+    neovim
+  ];
 
   services.printing.enable = true;
 
@@ -25,9 +43,4 @@
   # services.xserver.libinput.enable = true;
 
   programs.firefox.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    # vim
-    # wget
-  ];
 }

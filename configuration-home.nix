@@ -6,6 +6,7 @@
   home.stateVersion = "24.05";
 
   imports = [
+    ./home/theme.nix
     ./home/shell.nix
   ];
 }

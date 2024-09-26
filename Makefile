@@ -1,7 +1,7 @@
 default: run
 
 build:
-	nixos-rebuild build --flake .
+	nixos-rebuild build --show-trace --flake .
 test:
 	sudo nixos-rebuild test --flake .
 run:

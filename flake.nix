@@ -5,9 +5,12 @@
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.url = "github:nix-community/impermanence";
+    plasma-manager.url = "github:nix-community/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, ... }@args:
+  outputs = { self, nixpkgs, home-manager, impermanence, plasma-manager, ... }@args:
   {
     nixosConfigurations =
     {
@@ -17,14 +20,18 @@
         modules = [
           ./hardware/T420.nix
           ./configuration-system.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.stijn = import ./configuration-home.nix;
-          }
           impermanence.nixosModules.impermanence
           ./impermanence.nix
+
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+              users.stijn = import ./configuration-home.nix;
+            };
+          }
         ];
       };
     };
