@@ -23,6 +23,7 @@
         "NixOS"
         { directory = ".ssh"; mode = "0700"; }
         { directory = ".local/share/kwalletd"; mode = "0700"; }
+        ".local/share/zoxide"
       ];
     };
   };
