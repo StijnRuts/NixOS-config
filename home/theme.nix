@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   oomoxGruvboxGtk = import ./theme/oomox-gruvbox-gtk.nix { inherit pkgs; };
   oomoxGruvboxIcons = import ./theme/oomox-gruvbox-icons.nix { inherit pkgs; };
@@ -12,6 +12,10 @@ in {
     ".local/share/color-schemes/oomox-gruvbox.colors".source = ./theme/oomox-gruvbox.colors;
     ".local/share/user-places.xbel".source = ./user-places.xbel;
   };
+
+  home.activation.xmonadSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] (''
+    ln -sf $HOME/NixOS/home/xmonad $HOME/.config
+  '');
 
   programs.wezterm = {
     enable = true;
@@ -60,9 +64,15 @@ in {
   programs.plasma = {
     enable = true;
 
+    panels = []; # No panels
+
     kwin.virtualDesktops = {
       number = 4;
       rows = 1;
+    };
+
+    startup.startupScript = {
+      "xmonad".text = "xmonad --replace";
     };
 
     workspace = {

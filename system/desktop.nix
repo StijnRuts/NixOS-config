@@ -20,7 +20,16 @@ in {
     wezterm
     vlc
     neovim
+    taffybar
   ];
+
+  services.xserver.windowManager.xmonad = {
+    enable = true;
+    enableContribAndExtras = true;
+    enableConfiguredRecompile = true;
+    # extraPackages = haskellPackages: [
+    # ];
+  };
 
   services.printing.enable = true;
   services.printing.drivers = [
