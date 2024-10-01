@@ -12,7 +12,7 @@ in {
   environment.plasma6.excludePackages = [
     # pkgs.kdePackages.konsole # replaced with wezterm, but kept for Dolphin integration
     pkgs.kdePackages.elisa # replaced with vlc
-    # pkgs.kdePackages.kate # replaced with neovim
+    pkgs.kdePackages.kate # replaced with neovim
   ];
 
   environment.systemPackages = with pkgs; [

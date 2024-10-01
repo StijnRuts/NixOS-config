@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 rec {
   home.packages = with pkgs; [
     gnumake
@@ -38,6 +38,7 @@ rec {
       return {
         hide_tab_bar_if_only_one_tab = true,
         use_fancy_tab_bar = false,
+        warn_about_missing_glyphs = false,
         color_scheme = "gruvbox",
         font = wezterm.font 'UbuntuMono Nerd Font',
         font_size = 11,
@@ -99,4 +100,33 @@ rec {
   };
   programs.git.delta.enable = true;
   programs.lazygit.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    defaultEditor = true;
+    withPython3 = true;
+    withNodeJs = true;
+    extraPackages = with pkgs; [
+      nvimpager
+      vifm
+      vieb
+      lua51Packages.lua
+      lua51Packages.luarocks
+      lua51Packages.jsregexp
+      gcc
+      git
+      lazygit
+      ripgrep
+      fd
+      unzip
+      wget
+    ];
+  };
+
+  home.activation.nvimSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] (''
+    ln -sf $HOME/NixOS/home/nvim $HOME/.config
+  '');
 }
