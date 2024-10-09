@@ -13,13 +13,6 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/d6360936-de84-4c17-ae9a-f7f2a889543f";
-      fsType = "ext4";
-    };
-
-  swapDevices = [ ];
-
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
@@ -30,4 +23,8 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/disk/by-id/ata-ST9320423AS_5VH4K9GD";
+  networking.hostName = "X201";
 }
