@@ -24,6 +24,8 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  fileSystems."/persist".neededForBoot = true;
+
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/disk/by-id/ata-ST9320423AS_5VH4K9GD";
   networking.hostName = "X201";
