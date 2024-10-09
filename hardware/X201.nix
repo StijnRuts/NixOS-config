@@ -13,12 +13,41 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  boot.initrd.luks.devices."encrypted_maindisk".device = "/dev/disk/by-id/ata-ST9320423AS_5VH4K9GD";
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/d6360936-de84-4c17-ae9a-f7f2a889543f";
-      fsType = "ext4";
+    { device = "/dev/disk/by-partlabel/disk-maindisk-root";
+      fsType = "btrfs";
+      options = [ "subvol=rootfs" ];
     };
 
-  swapDevices = [ ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-partlabel/disk-maindisk-ESP";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-partlabel/disk-maindisk-root";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "/dev/disk/by-partlabel/disk-maindisk-root";
+      fsType = "btrfs";
+      options = [ "subvol=persist" ];
+    };
+
+  fileSystems."/.swapvol" =
+    { device = "/dev/disk/by-partlabel/disk-maindisk-root";
+      fsType = "btrfs";
+      options = [ "subvol=swap" ];
+    };
+
+  swapDevices =
+    [ { device = "/.swapvol/swapfile"; }
+    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -30,4 +59,8 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/disk/by-id/ata-ST9320423AS_5VH4K9GD";
+  networking.hostName = "X201";
 }
