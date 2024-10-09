@@ -37,6 +37,7 @@
     { device = "/dev/disk/by-partlabel/disk-maindisk-root";
       fsType = "btrfs";
       options = [ "subvol=persist" ];
+      neededForBoot = true;
     };
 
   fileSystems."/.swapvol" =
