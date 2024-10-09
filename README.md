@@ -12,10 +12,10 @@ nix --experimental-features "nix-command flakes" \
 nixos-generate-config --force --root /mnt
 vim /mnt/etc/nixos/hardware-configuration.nix
 
-git clone https://github.com/StijnRuts/NixOS-config.git /mnt/etc/nixos
-cd /mnt/etc/nixos
+mkdir -p /mnt/home/stijn/NixOS
+git clone https://github.com/StijnRuts/NixOS-config.git /mnt/home/stijn/NixOS
+cd /mnt/home/stijn/NixOS
 git remote set-url origin git@github.com:StijnRuts/NixOS-config.git
 
-nixos-install --no-root-passwd
+nixos-install --no-root-passwd --flake .#???
 ```
-
