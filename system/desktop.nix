@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./desktop/shell.nix
     ./desktop/audio.nix
     ./desktop/printing.nix
   ];
