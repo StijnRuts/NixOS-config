@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     gnumake
-    git
     nixfmt-rfc-style
   ];
 }
