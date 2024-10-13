@@ -20,7 +20,7 @@
             disko.nixosModules.disko
             ./disko/X201.nix
             ./hardware/X201.nix
-            ./configuration.nix
+            ./system-configuration.nix
           ];
         };
         T420 = nixpkgs.lib.nixosSystem {
@@ -30,7 +30,7 @@
             disko.nixosModules.disko
             ./disko/T420.nix
             ./hardware/T420.nix
-            ./configuration.nix
+            ./system-configuration.nix
           ];
         };
       };
