@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -85,11 +85,11 @@
   users.users.stijn = {
     isNormalUser = true;
     description = "Stijn Ruts";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
+    hashedPassword = "$y$j9T$bpwA64h33y5qzHF9DWHMA1$5EzaKxODfsxX1HjWRtPOA5Hap5.Zb2JS4pA5UCDCPjA";
   };
 
   # Install firefox.
@@ -101,8 +101,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    gnumake
+    nixfmt-rfc-style
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
