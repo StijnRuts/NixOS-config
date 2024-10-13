@@ -33,6 +33,11 @@
           directory = ".local/share/kwalletd";
           mode = "0700";
         }
+        ".local/share/zoxide"
+        ".cache/nvim"
+        ".local/share/nvim"
+        ".local/state/nvim"
+        ".local/state/lazygit"
       ];
     };
   };
