@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    impermanence.url = "github:nix-community/impermanence";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -11,6 +12,7 @@
       self,
       nixpkgs,
       disko,
+      impermanence,
       home-manager,
       ...
     }@args:
@@ -19,6 +21,8 @@
         let
           commonModules = [
             disko.nixosModules.disko
+            impermanence.nixosModules.impermanence
+            ./impermanence.nix
             ./configuration-system.nix
             home-manager.nixosModules.home-manager
             {
