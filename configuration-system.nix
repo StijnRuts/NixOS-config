@@ -7,6 +7,7 @@
     ./system/desktop.nix
     ./system/networking.nix
     ./system/audio.nix
+    ./system/bluetooth.nix
     ./system/printing.nix
   ];
 }
