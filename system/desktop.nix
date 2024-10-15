@@ -52,7 +52,14 @@
     dmenu
     xarchiver
     vlc
+    touchegg
   ];
 
   programs.firefox.enable = true;
+
+  services.touchegg.enable = true;
+  system.userActivationScripts.touchegg.text = ''
+    mkdir -p $HOME/.config/touchegg
+    cp $HOME/NixOS/system/touchegg.conf $HOME/.config/touchegg
+  '';
 }
