@@ -10,5 +10,6 @@
     ./home/shell.nix
     ./home/git.nix
     ./home/vim.nix
+    ./home/theme.nix
   ];
 }

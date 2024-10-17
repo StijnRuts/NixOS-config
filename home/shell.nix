@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     gnumake
     nixfmt-rfc-style
+    nerdfonts
   ];
 
   programs.wezterm = {
@@ -13,6 +14,9 @@
       return {
         hide_tab_bar_if_only_one_tab = true,
         use_fancy_tab_bar = false,
+        color_scheme = "Catppuccin Mocha",
+        font = wezterm.font 'UbuntuMono Nerd Font',
+        font_size = 11,
       }
     '';
   };
