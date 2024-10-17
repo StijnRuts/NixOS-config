@@ -6,6 +6,9 @@
     impermanence.url = "github:nix-community/impermanence";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.url = "github:nix-community/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
   };
   outputs =
     {
@@ -14,6 +17,7 @@
       disko,
       impermanence,
       home-manager,
+      plasma-manager,
       ...
     }@args:
     {
@@ -29,6 +33,8 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                backupFileExtension = "backup";
+                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
                 users.stijn = import ./configuration-home.nix;
               };
             }
