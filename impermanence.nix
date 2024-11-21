@@ -13,6 +13,7 @@
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
+      "/var/lib/bluetooth"
       "/etc/cups"
     ];
     users.stijn = {
