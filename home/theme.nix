@@ -49,7 +49,7 @@
     enable = true;
 
     kwin.virtualDesktops = {
-      number = 4;
+      number = 6;
       rows = 1;
     };
 
@@ -62,26 +62,20 @@
 
     startup.startupScript = {
       "xmonad".text = "xmonad --replace";
-      "theme".text = ''
-        plasma-apply-lookandfeel -a Catppuccin-Mocha-Yellow
-        plasma-apply-colorscheme CatppuccinMochaYellow
-        plasma-apply-cursortheme Simp1e-Catppuccin-Latte
-        ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-changeicons Papirus-Dark
-        plasma-apply-wallpaperimage ~/NixOS/home/theme/background.png
-        ~/.local/share/plasma-manager/scripts/2_desktop_script_panels.sh
-      '';
     };
 
     workspace = {
-      theme = "default"; # plasma-apply-desktoptheme --list-themes
-      lookAndFeel = "Catppuccin-Mocha-Yellow"; # plasma-apply-lookandfeel --list
-      colorScheme = "CatppuccinMochaYellow"; # plasma-apply-colorscheme --list-schemes
-      cursor.theme = "Simp1e-Catppuccin-Latte"; # plasma-apply-cursortheme --list-themes
+      colorScheme = "CatppuccinMochaYellow";
+      windowDecorations = {
+        library = "org.kde.breeze";
+        theme = "Breeze";
+      };
+      cursor.theme = "Simp1e-Catppuccin-Latte";
       iconTheme = "Papirus-Dark";
-      wallpaper = ./theme/background.png;
+      wallpaperPlainColor = "30,30,40";
     };
 
-    kscreenlocker.appearance.wallpaper = ./theme/background.png;
+    kscreenlocker.appearance.wallpaperPlainColor = "30,30,40";
 
     fonts = {
       general = {
@@ -112,14 +106,14 @@
 
     kwin.nightLight = {
       enable = true;
-      mode = "location";
-      location = {
-        latitude = "50.5";
-        longitude = "4.5";
+      mode = "times";
+      time = {
+        evening = "20:00";
+        morning = "07:00";
       };
       temperature = {
         day = 6500;
-        night = 2500;
+        night = 3000;
       };
     };
   };
