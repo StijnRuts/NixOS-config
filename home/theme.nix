@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     ubuntu_font_family
-    nerdfonts
+    nerd-fonts.ubuntu-mono
     (catppuccin-kde.override {
       flavour = [ "mocha" ];
       accents = [ "yellow" ];

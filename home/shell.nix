@@ -3,7 +3,6 @@
   home.packages = with pkgs; [
     gnumake
     nixfmt-rfc-style
-    nerdfonts
   ];
 
   programs.bash = {
@@ -50,13 +49,13 @@
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    icons = true;
+    icons = "auto";
     git = true;
   };
 
   programs.ranger.enable = true;
   programs.zsh.shellAliases."r" = "ranger_cd";
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     ranger_cd() {
       temp_file=$(mktemp -t "ranger_cd.XXXXXXXXXX")
       ranger --choosedir=$temp_file
