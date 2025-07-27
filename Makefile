@@ -9,6 +9,6 @@ run:
 update:
 	sudo nix flake update
 format:
-	nixfmt .
+	treefmt .
 clean:
 	sudo nix-collect-garbage --delete-older-than 30d
