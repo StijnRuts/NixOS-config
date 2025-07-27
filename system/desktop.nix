@@ -4,25 +4,6 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  services.displayManager.defaultSession = "plasmax11";
-
-  services.xserver = {
-    windowManager = {
-      xmonad = {
-        enable = true;
-        enableContribAndExtras = true;
-        enableConfiguredRecompile = true;
-        # extraPackages = haskellPackages : [
-        #   haskellPackages.xyz
-        # ];
-      };
-    };
-  };
-
-  system.userActivationScripts.xmonadSymlink.text = ''
-    ln -sf $HOME/NixOS/system/xmonad $HOME/.config
-  '';
-
   programs.firefox.enable = true;
 
   services.touchegg.enable = true;

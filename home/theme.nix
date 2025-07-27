@@ -60,10 +60,6 @@
       }
     ];
 
-    startup.startupScript = {
-      "xmonad".text = "xmonad --replace";
-    };
-
     workspace = {
       colorScheme = "CatppuccinMochaYellow";
       windowDecorations = {
