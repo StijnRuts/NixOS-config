@@ -31,6 +31,7 @@
     "gpsh" = "git push";
     "gpshf" = "git push --force-with-lease";
     "gpshu" = "git push --set-upstream origin main";
+    "gl" = "git log --oneline -n 5";
     "gst" = "git stash push";
     "gstp" = "git stash pop";
   };
