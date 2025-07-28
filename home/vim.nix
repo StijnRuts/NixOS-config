@@ -18,6 +18,7 @@
       lua51Packages.luarocks
       lua51Packages.jsregexp
       fd
+      fzf
       gcc
       git
       lazygit
@@ -33,7 +34,6 @@
     neovim-qt
     nvimpager
     vifm
-    vieb
   ];
 
   home.activation.nvimSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] (''
