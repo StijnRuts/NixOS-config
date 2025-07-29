@@ -11,5 +11,6 @@
     ./home/git.nix
     ./home/vim.nix
     ./home/theme.nix
+    ./home/firefox.nix
   ];
 }

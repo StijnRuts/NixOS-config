@@ -1,0 +1,123 @@
+{ config, pkgs, ... }:
+{
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = [ "firefox.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/about" = [ "firefox.desktop" ];
+      "x-scheme-handler/unknown" = [ "firefox.desktop" ];
+    };
+  };
+  home.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+
+  programs.firefox = {
+    enable = true;
+    nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
+    profiles.default = {
+      settings = {
+        # about:config
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "devtools.selfxss.count" = 99; # allow pasting in console
+      };
+      search = {
+        force = true;
+        default = "ddg";
+        engines = {
+          "DuckDuckGo" = {
+            urls = [ { template = "https://duckduckgo.com/?q={searchTerms}"; } ];
+            icon = "https://duckduckgo.com/favicon.ico";
+            definedAliases = [ "@ddg" ];
+          };
+          "Google" = {
+            urls = [ { template = "https://www.google.com/search?q={searchTerms}"; } ];
+            icon = "https://www.google.com/favicon.ico";
+            definedAliases = [ "@g" ];
+          };
+          "Wikipedia" = {
+            urls = [ { template = "https://wikipedia.org/wiki/Special:Search?search={searchTerms}"; } ];
+            icon = "https://wikipedia.org/static/favicon/wikipedia.ico";
+            definedAliases = [ "@w" ];
+          };
+          "Nix Packages" = {
+            urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}"; } ];
+            icon = "https://search.nixos.org/favicon.png";
+            definedAliases = [ "@np" ];
+          };
+          "NixOS Options" = {
+            urls = [ { template = "https://search.nixos.org/options?&query={searchTerms}"; } ];
+            icon = "https://search.nixos.org/favicon.png";
+            definedAliases = [ "@no" ];
+          };
+          "Home Manager Options" = {
+            urls = [ { template = "https://home-manager-options.extranix.com/?query={searchTerms}"; } ];
+            icon = "https://home-manager-options.extranix.com/images/favicon.png";
+            definedAliases = [ "@hm" ];
+          };
+          "NixOS Wiki" = {
+            urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
+            icon = "https://wiki.nixos.org/favicon.ico";
+            definedAliases = [ "@nw" ];
+          };
+          "Pursuit" = {
+            urls = [ { template = "https://pursuit.purescript.org/search?q={searchTerms}"; } ];
+            icon = "https://pursuit.purescript.org/static/res/favicon/favicon.ico";
+            definedAliases = [ "@p" ];
+          };
+        };
+      };
+    };
+    policies = {
+      # https://mozilla.github.io/policy-templates/#extensionsettings
+      # Get ID from about:support
+      ExtensionSettings = {
+        # uBlock Origin
+        "uBlock0@raymondhill.net" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/uBlock0@raymondhill.net/latest.xpi";
+          default_area = "menupanel";
+        };
+        # Privacy Badger
+        "jid1-MnnxcxisBPnSXQ@jetpack" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/jid1-MnnxcxisBPnSXQ@jetpack/latest.xpi";
+          default_area = "menupanel";
+        };
+        # LastPass
+        "support@lastpass.com" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/support@lastpass.com/latest.xpi";
+          default_area = "navbar";
+        };
+        # Dark Reader
+        "addon@darkreader.org" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/addon@darkreader.org/latest.xpi";
+          default_area = "menupanel";
+        };
+        # LanguageTool
+        "languagetool-webextension@languagetool.org" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/languagetool-webextension@languagetool.org/latest.xpi";
+          default_area = "menupanel";
+        };
+        # Plasma Integration
+        "plasma-browser-integration@kde.org" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/plasma-browser-integration@kde.org/latest.xpi";
+          default_area = "menupanel";
+        };
+      };
+      PasswordManagerEnabled = false;
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
+      FirefoxHome.SponsoredTopSites = false;
+      FirefoxSuggest.SponsoredSuggestions = false;
+      NoDefaultBookmarks = true;
+    };
+  };
+
+  programs.chromium.enable = true;
+}

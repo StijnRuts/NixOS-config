@@ -41,6 +41,10 @@
         ".local/share/nvim"
         ".local/state/nvim"
         ".local/state/lazygit"
+        ".mozilla"
+        ".cache/mozilla"
+        ".config/chromium"
+        ".cache/chromium"
       ];
     };
   };
