@@ -18,9 +18,12 @@
     profiles.default = {
       settings = {
         # about:config
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
-        "browser.toolbars.bookmarks.visibility" = "never";
+        "widget.use-xdg-desktop-portal.file-picker" = 1; # native file picker
+        "browser.toolbars.bookmarks.visibility" = "never"; # no bookmark bar
+        "browser.startup.page" = 3; # open previous windows and tabs on startup
         "devtools.selfxss.count" = 99; # allow pasting in console
+        "browser.gesture.swipe.left" = "cmd_scrollLeft"; # disable scrolling trough history
+        "browser.gesture.swipe.right" = "cmd_scrollRight"; # disable scrolling trough history
       };
       search = {
         force = true;
