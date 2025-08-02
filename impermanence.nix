@@ -37,6 +37,7 @@
           mode = "0700";
         }
         ".config/session"
+        ".config/kdeconnect"
         ".local/share/zoxide"
         ".cache/nvim"
         ".local/share/nvim"

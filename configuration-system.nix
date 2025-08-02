@@ -9,5 +9,6 @@
     ./system/audio.nix
     ./system/bluetooth.nix
     ./system/printing.nix
+    ./system/apps.nix
   ];
 }

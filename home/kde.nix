@@ -114,6 +114,12 @@
         (maximize "dolphin")
         (maximize "neovide")
         (maximize "firefox")
+        (maximize "kwrite")
+        (maximize "kate")
+        (maximize "libreoffice")
+        (maximize "gimp")
+        (maximize "krita")
+        (maximize "inkscape")
       ];
 
     input.touchpads = [
