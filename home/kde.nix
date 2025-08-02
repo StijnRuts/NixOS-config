@@ -92,64 +92,29 @@
       # TODO set dolphin view to Details
     };
 
-    window-rules = [
-      {
-        description = "Konsole";
-        match = {
-          window-class = {
-            value = "konsole";
-            type = "substring";
+    window-rules =
+      let
+        maximize = app: {
+          description = app;
+          match = {
+            window-types = [ "normal" ];
+            window-class = {
+              type = "substring";
+              value = app;
+            };
           };
-          window-types = [ "normal" ];
-        };
-        apply = {
-          maximizehoriz = true;
-          maximizevert = true;
-        };
-      }
-      {
-        description = "Dolphin";
-        match = {
-          window-class = {
-            value = "dolphin";
-            type = "substring";
+          apply = {
+            maximizehoriz = true;
+            maximizevert = true;
           };
-          window-types = [ "normal" ];
         };
-        apply = {
-          maximizehoriz = true;
-          maximizevert = true;
-        };
-      }
-      {
-        description = "Neovide";
-        match = {
-          window-class = {
-            value = "neovide";
-            type = "substring";
-          };
-          window-types = [ "normal" ];
-        };
-        apply = {
-          maximizehoriz = true;
-          maximizevert = true;
-        };
-      }
-      {
-        description = "Firefox";
-        match = {
-          window-class = {
-            value = "firefox";
-            type = "substring";
-          };
-          window-types = [ "normal" ];
-        };
-        apply = {
-          maximizehoriz = true;
-          maximizevert = true;
-        };
-      }
-    ];
+      in
+      [
+        (maximize "konsole")
+        (maximize "dolphin")
+        (maximize "neovide")
+        (maximize "firefox")
+      ];
 
     input.touchpads = [
       {
