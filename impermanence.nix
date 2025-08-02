@@ -47,6 +47,10 @@
         ".config/chromium"
         ".cache/chromium"
       ];
+      files = [
+        ".bash_history"
+        ".zsh_history"
+      ];
     };
   };
 
