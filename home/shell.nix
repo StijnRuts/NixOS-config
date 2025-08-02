@@ -43,7 +43,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
-  home.file.".config/starship.toml".source = ./theme/starship.toml;
+  home.file.".config/starship.toml".source = ./starship.toml;
 
   programs.eza = {
     enable = true;

@@ -30,11 +30,24 @@
     ];
   };
 
+  programs.neovide = {
+    enable = true;
+    settings = {
+      font = {
+        normal = "UbuntuMono Nerd Font";
+        size = 11;
+      };
+    };
+  };
+
   home.packages = with pkgs; [
-    neovim-qt
     nvimpager
     vifm
   ];
+
+  home.sessionVariables = {
+    PAGER = "nvimpager";
+  };
 
   home.activation.nvimSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] (''
     ln -sf $HOME/NixOS/home/nvim $HOME/.config

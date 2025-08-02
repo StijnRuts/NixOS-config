@@ -9,13 +9,6 @@
     })
   ];
 
-  home.file = {
-    ".local/share/user-places.xbel".source = ./theme/user-places.xbel;
-    ".local/share/konsole/catppuccin-mocha.colorscheme".source = ./theme/catppuccin-mocha.colorscheme;
-    ".local/share/konsole/catppuccin.profile".source = ./theme/catppuccin.profile;
-    ".config/konsolerc".source = ./theme/konsolerc;
-  };
-
   gtk = {
     enable = true;
     theme = {
@@ -47,18 +40,6 @@
 
   programs.plasma = {
     enable = true;
-
-    kwin.virtualDesktops = {
-      number = 6;
-      rows = 1;
-    };
-
-    panels = [
-      {
-        floating = false;
-        height = 36;
-      }
-    ];
 
     workspace = {
       colorScheme = "CatppuccinMochaYellow";
@@ -99,17 +80,20 @@
         pointSize = 11;
       };
     };
+  };
 
-    kwin.nightLight = {
-      enable = true;
-      mode = "times";
-      time = {
-        evening = "20:00";
-        morning = "07:00";
-      };
-      temperature = {
-        day = 6500;
-        night = 3000;
+  programs.konsole = {
+    enable = true;
+    customColorSchemes = {
+      CatppuccinMocha = ./catppuccin-mocha.colorscheme;
+    };
+    defaultProfile = "Default";
+    profiles.default = {
+      name = "Default";
+      colorScheme = "CatppuccinMocha";
+      font = {
+        name = "UbuntuMono Nerd Font";
+        size = 11;
       };
     };
   };
