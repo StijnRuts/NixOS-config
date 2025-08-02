@@ -36,6 +36,7 @@
           directory = ".local/share/kwalletd";
           mode = "0700";
         }
+        ".config/session"
         ".local/share/zoxide"
         ".cache/nvim"
         ".local/share/nvim"

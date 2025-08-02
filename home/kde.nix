@@ -3,6 +3,7 @@
 
   home.file = {
     ".local/share/user-places.xbel".source = ./user-places.xbel;
+    ".local/state/konsolestaterc".source = ./konsolestaterc; # hide toolbars
   };
 
   programs.plasma = {
@@ -53,7 +54,7 @@
             name = "org.kde.plasma.systemtray";
             config = {
               items = {
-                # TODO check
+                # TODO fix
                 shown = [
                   "org.kde.plasma.volume"
                   "org.kde.plasma.brightness"
@@ -89,15 +90,11 @@
     # };
 
     configFile = {
-      # https://github.com/dominikstraessle/plasma-manager/blob/b5e04d3d6cd81efc121ada365a506408fa31bac6/modules/dolphin.nix
       dolphinrc.General.RememberOpenedTabs = false;
-      # TODO default view mode Details
       dolphinrc.PreviewSettings.Plugins = "appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs"; # No directories
+      kwinrc.ElectricBorders.TopLeft = ""; # TODO fix
+      # TODO set dolphin view to Details
     };
-
-    # TODO Konsole no toolbars
-
-    # TODO screen edges disabled
 
     window-rules = [
       {
