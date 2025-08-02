@@ -51,21 +51,17 @@
             name = "org.kde.plasma.marginsseparator";
           }
           {
-            name = "org.kde.plasma.systemtray";
-            config = {
-              items = {
-                # TODO fix
-                shown = [
-                  "org.kde.plasma.volume"
-                  "org.kde.plasma.brightness"
-                  "org.kde.plasma.networkmanagement"
-                  "org.kde.plasma.battery"
-                ];
-                hidden = [
-                  "org.kde.plasma.bluetooth"
-                  "org.kde.plasma.clipboard"
-                ];
-              };
+            systemTray.items = {
+              shown = [
+                "org.kde.plasma.volume"
+                "org.kde.plasma.brightness"
+                "org.kde.plasma.networkmanagement"
+                "org.kde.plasma.battery"
+              ];
+              hidden = [
+                "org.kde.plasma.bluetooth"
+                "org.kde.plasma.clipboard"
+              ];
             };
           }
           {
