@@ -8,6 +8,9 @@
       init = {
         defaultBranch = "main";
       };
+      pull = {
+        rebase = true;
+      };
     };
   };
   programs.git.delta.enable = true;
