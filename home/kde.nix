@@ -4,6 +4,7 @@
   home.file = {
     ".local/share/user-places.xbel".source = ./user-places.xbel;
     ".local/state/konsolestaterc".source = ./konsolestaterc; # hide toolbars
+    ".local/share/dolphin/view_properties/global/.directory".text = "[Dolphin]\nViewMode=1"; # set view mode to Details
   };
 
   programs.plasma = {
@@ -90,7 +91,6 @@
       dolphinrc.PreviewSettings.Plugins = "appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs"; # No directories
       kwinrc.ElectricBorders.TopLeft = ""; # Disable hot corner
       kwinrc.Effect-overview.BorderActivate = 9; # Disable hot corner
-      # TODO set dolphin view to Details
     };
 
     window-rules =
