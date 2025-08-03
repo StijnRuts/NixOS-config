@@ -88,7 +88,8 @@
     configFile = {
       dolphinrc.General.RememberOpenedTabs = false;
       dolphinrc.PreviewSettings.Plugins = "appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs"; # No directories
-      kwinrc.ElectricBorders.TopLeft = ""; # TODO fix
+      kwinrc.ElectricBorders.TopLeft = ""; # Disable hot corner
+      kwinrc.Effect-overview.BorderActivate = 9; # Disable hot corner
       # TODO set dolphin view to Details
     };
 
