@@ -36,6 +36,7 @@
       font = {
         normal = "UbuntuMono Nerd Font";
         size = 11;
+        width = 1;
       };
     };
   };
