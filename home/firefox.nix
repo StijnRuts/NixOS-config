@@ -44,6 +44,11 @@
             icon = "https://wikipedia.org/static/favicon/wikipedia.ico";
             definedAliases = [ "@w" ];
           };
+          "NixOS Wiki" = {
+            urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
+            icon = "https://wiki.nixos.org/favicon.ico";
+            definedAliases = [ "@nw" ];
+          };
           "Nix Packages" = {
             urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}"; } ];
             icon = "https://search.nixos.org/favicon.png";
@@ -59,10 +64,12 @@
             icon = "https://home-manager-options.extranix.com/images/favicon.png";
             definedAliases = [ "@hm" ];
           };
-          "NixOS Wiki" = {
-            urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
-            icon = "https://wiki.nixos.org/favicon.ico";
-            definedAliases = [ "@nw" ];
+          "Plasma Manager Options" = {
+            urls = [
+              { template = "https://nix-community.github.io/plasma-manager/options.xhtml?query={searchTerms}"; }
+            ];
+            icon = "https://home-manager-options.extranix.com/images/favicon.png";
+            definedAliases = [ "@pm" ];
           };
           "Pursuit" = {
             urls = [ { template = "https://pursuit.purescript.org/search?q={searchTerms}"; } ];
