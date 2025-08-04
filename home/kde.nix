@@ -1,11 +1,20 @@
-{ config, pkgs, ... }:
 {
-
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   home.file = {
     ".local/share/user-places.xbel".source = ./user-places.xbel;
     ".local/state/konsolestaterc".source = ./konsolestaterc; # hide toolbars
-    ".local/share/dolphin/view_properties/global/.directory".text = "[Dolphin]\nViewMode=1"; # set view mode to Details
   };
+
+  # Set Dolphin view mode to Details
+  home.activation.setDolphinXattrs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p ~/.local/share/dolphin/view_properties/global
+    ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
+  '';
 
   programs.plasma = {
     enable = true;
