@@ -5,12 +5,9 @@
     userEmail = "git@stijnruts.be";
     userName = "Stijn Ruts";
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      pull = {
-        rebase = true;
-      };
+      core.editor = "nvim --clean";
+      init.defaultBranch = "main";
+      pull.rebase = true;
     };
   };
   programs.git.delta.enable = true;
