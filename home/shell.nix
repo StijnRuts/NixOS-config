@@ -32,7 +32,16 @@
       }
     ];
     envExtra = ''
+      # No beeping
       unsetopt BEEP
+
+      # Run tmux by default
+      # Do not run in an existing tmux session, in Dolphin or Kate sessions, or in nix-shell
+      if [ -z "$TMUX" ] && [ "$WINDOWID" -ne 0 ] && [ -z "$IN_NIX_SHELL" ]; then
+        tmux attach-session -t default || tmux new-session -s default
+      fi
+
+      # Show OS info
       source /etc/os-release;
       echo "$PRETTY_NAME, EOL $SUPPORT_END"
     '';
@@ -67,5 +76,34 @@
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+    baseIndex = 1;
+    disableConfirmationPrompt = true;
+    historyLimit = 5000;
+    sensibleOnTop = true;
+    plugins = with pkgs.tmuxPlugins; [
+      tmux-which-key
+      pain-control
+      {
+        plugin = resurrect;
+        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      }
+      {
+        plugin = continuum;
+        extraConfig = "set -g @continuum-restore 'on'";
+      }
+    ];
+    extraConfig = ''
+      # Turn off hostname and clock
+      set -g status-right ""
+
+      # Make colors work in nvim
+      set -g default-terminal "xterm-256color"
+      set-option -ga terminal-overrides ",xterm-256color:Tc"
+    '';
   };
 }

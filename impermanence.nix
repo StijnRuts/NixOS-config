@@ -43,6 +43,7 @@
         ".local/share/nvim"
         ".local/state/nvim"
         ".local/state/lazygit"
+        ".tmux/resurrect"
         ".mozilla"
         ".cache/mozilla"
         ".config/chromium"
