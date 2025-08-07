@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     gnumake
     nixfmt-tree
+    killall
   ];
 
   programs.bash = {

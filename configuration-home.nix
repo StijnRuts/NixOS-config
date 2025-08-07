@@ -13,5 +13,6 @@
     ./home/theme.nix
     ./home/kde.nix
     ./home/firefox.nix
+    ./home/conky.nix
   ];
 }
