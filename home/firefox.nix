@@ -29,49 +29,58 @@
         force = true;
         default = "ddg";
         engines = {
-          "DuckDuckGo" = {
+          "ddg" = {
+            name = "DuckDuckGo";
             urls = [ { template = "https://duckduckgo.com/?q={searchTerms}"; } ];
             icon = "https://duckduckgo.com/favicon.ico";
             definedAliases = [ "@ddg" ];
           };
-          "Google" = {
+          "g" = {
+            name = "Google";
             urls = [ { template = "https://www.google.com/search?q={searchTerms}"; } ];
             icon = "https://www.google.com/favicon.ico";
             definedAliases = [ "@g" ];
           };
-          "Wikipedia" = {
+          "w" = {
+            name = "Wikipedia";
             urls = [ { template = "https://wikipedia.org/wiki/Special:Search?search={searchTerms}"; } ];
             icon = "https://wikipedia.org/static/favicon/wikipedia.ico";
             definedAliases = [ "@w" ];
           };
-          "NixOS Wiki" = {
+          "nw" = {
+            name = "NixOS Wiki";
             urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
             icon = "https://wiki.nixos.org/favicon.ico";
             definedAliases = [ "@nw" ];
           };
-          "Nix Packages" = {
+          "np" = {
+            name = "Nix Packages";
             urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}"; } ];
             icon = "https://search.nixos.org/favicon.png";
             definedAliases = [ "@np" ];
           };
-          "NixOS Options" = {
+          "no" = {
+            name = "NixOS Options";
             urls = [ { template = "https://search.nixos.org/options?&query={searchTerms}"; } ];
             icon = "https://search.nixos.org/favicon.png";
             definedAliases = [ "@no" ];
           };
-          "Home Manager Options" = {
+          "hm" = {
+            name = "Home Manager Options";
             urls = [ { template = "https://home-manager-options.extranix.com/?query={searchTerms}"; } ];
             icon = "https://home-manager-options.extranix.com/images/favicon.png";
             definedAliases = [ "@hm" ];
           };
-          "Plasma Manager Options" = {
+          "pm" = {
+            name = "Plasma Manager Options";
             urls = [
               { template = "https://nix-community.github.io/plasma-manager/options.xhtml?query={searchTerms}"; }
             ];
             icon = "https://home-manager-options.extranix.com/images/favicon.png";
             definedAliases = [ "@pm" ];
           };
-          "Pursuit" = {
+          "p" = {
+            name = "Pursuit";
             urls = [ { template = "https://pursuit.purescript.org/search?q={searchTerms}"; } ];
             icon = "https://pursuit.purescript.org/static/res/favicon/favicon.ico";
             definedAliases = [ "@p" ];
