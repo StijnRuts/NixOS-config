@@ -69,6 +69,7 @@
                 "org.kde.plasma.battery"
               ];
               hidden = [
+                "org.kde.plasma.notifications"
                 "org.kde.plasma.bluetooth"
                 "org.kde.plasma.clipboard"
               ];
