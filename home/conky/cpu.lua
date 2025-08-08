@@ -2,35 +2,28 @@ conky.config = {
   alignment = 'top_left',
   default_color = 'white',
   font = 'UbuntuMono Nerd Font:size=12',
+  font2 = 'UbuntuMono Nerd Font:size=16',
+  font3 = 'UbuntuMono Nerd Font:bold:size=12',
   max_text_width = 0,
   minimum_width = 300,
   maximum_width = 300,
   out_to_wayland = true,
-  -- own_window_transparent = true,
+  own_window_transparent = true,
   update_interval = 1.0,
 }
 
 conky.text = [[
-${font UbuntuMono Nerd Font:pixelsize=20}  CPU${font}
+${font2}  CPU${font}
 $hr
-Info: $sysname $nodename $kernel $machine
-$hr
-Uptime: $uptime
-Frequency (in MHz): $freq
-Frequency (in GHz): $freq_g
-RAM Usage: $mem/$memmax - $memperc% ${membar 4}
-Swap Usage: $swap/$swapmax - $swapperc% ${swapbar 4}
-CPU Usage: $cpu% ${cpubar 4}
-Processes: $processes  Running: $running_processes
-$hr
-File systems:
-/ ${fs_used /}/${fs_size /} ${fs_bar 6 /}
-Networking:
-Up: ${upspeed}  - Down: ${downspeed}
-$hr
-Name              PID     CPU%   MEM%
-${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
-${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
-${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
-${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+CPU: ${alignr}${cpu cpu0}%
+Frequency: ${alignr}${freq}MHz
+${cpugraph}
+${execpi 60 /home/stijn/NixOS/home/conky/cpu_bars.sh}
+
+${font3}Name ${alignr}CPU${font}
+${top name 1} ${alignr}${top cpu 1}%
+${top name 2} ${alignr}${top cpu 2}%
+${top name 3} ${alignr}${top cpu 3}%
+${top name 4} ${alignr}${top cpu 4}%
+${top name 5} ${alignr}${top cpu 5}%
 ]]

@@ -41,10 +41,6 @@
       if [ -z "$TMUX" ] && [ "$WINDOWID" -ne 0 ] && [ -z "$IN_NIX_SHELL" ]; then
         tmux attach-session -t default || tmux new-session -s default
       fi
-
-      # Show OS info
-      source /etc/os-release;
-      echo "$PRETTY_NAME, EOL $SUPPORT_END"
     '';
   };
 
