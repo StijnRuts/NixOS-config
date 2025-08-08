@@ -48,6 +48,7 @@
         ".cache/mozilla"
         ".config/chromium"
         ".cache/chromium"
+        ".config/beekeeper-studio"
       ];
       files = [
         ".bash_history"
