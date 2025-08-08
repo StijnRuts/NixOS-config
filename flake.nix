@@ -47,6 +47,7 @@
             modules = commonModules ++ [
               ./disko/X201.nix
               ./hardware/X201.nix
+              ./system/energy.nix
             ];
           };
           T420 = nixpkgs.lib.nixosSystem {
@@ -55,6 +56,7 @@
             modules = commonModules ++ [
               ./disko/T420.nix
               ./hardware/T420.nix
+              ./system/energy.nix
             ];
           };
         };
