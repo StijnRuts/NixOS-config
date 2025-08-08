@@ -24,6 +24,7 @@
         "devtools.selfxss.count" = 99; # allow pasting in console
         "browser.gesture.swipe.left" = "cmd_scrollLeft"; # disable scrolling trough history
         "browser.gesture.swipe.right" = "cmd_scrollRight"; # disable scrolling trough history
+        "browser.translations.neverTranslateLanguages" = "nl";
       };
       search = {
         force = true;

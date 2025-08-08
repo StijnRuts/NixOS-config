@@ -5,17 +5,6 @@
   ...
 }:
 {
-  home.file = {
-    ".local/share/user-places.xbel".source = ./user-places.xbel;
-    ".local/state/konsolestaterc".source = ./konsolestaterc; # hide toolbars
-  };
-
-  # Set Dolphin view mode to Details
-  home.activation.setDolphinXattrs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p ~/.local/share/dolphin/view_properties/global
-    ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
-  '';
-
   programs.plasma = {
     enable = true;
 
@@ -89,19 +78,12 @@
 
     # shortcuts = {
     #   kwin = {
-    #     "Switch Window Left" = "Meta+H";
-    #     "Switch Window Down" = "Meta+J";
-    #     "Switch Window Up" = "Meta+K";
-    #     "Switch Window Right" = "Meta+L";
+    #     "Switch Window Left" = [ "Meta+Left" "Meta+H" ];
+    #     "Switch Window Down" = [ "Meta+Down" "Meta+J" ];
+    #     "Switch Window Up" = [ "Meta+Up" "Meta+K" ];
+    #     "Switch Window Right" = [ "Meta+Right" "Meta+L" ];
     #   };
     # };
-
-    configFile = {
-      dolphinrc.General.RememberOpenedTabs = false;
-      dolphinrc.PreviewSettings.Plugins = "appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs"; # No directories
-      kwinrc.ElectricBorders.TopLeft = ""; # Disable hot corner
-      kwinrc.Effect-overview.BorderActivate = 9; # Disable hot corner
-    };
 
     window-rules =
       let
@@ -155,5 +137,23 @@
         night = 3000;
       };
     };
+
+    configFile = {
+      dolphinrc.General.RememberOpenedTabs = false;
+      dolphinrc.PreviewSettings.Plugins = "appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs"; # No directories
+      kwinrc.ElectricBorders.TopLeft = ""; # Disable hot corner
+      kwinrc.Effect-overview.BorderActivate = 9; # Disable hot corner
+    };
   };
+
+  home.file = {
+    ".local/share/user-places.xbel".source = ./user-places.xbel;
+    ".local/state/konsolestaterc".source = ./konsolestaterc; # hide toolbars
+  };
+
+  # Set Dolphin view mode to Details
+  home.activation.setDolphinXattrs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p ~/.local/share/dolphin/view_properties/global
+    ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
+  '';
 }
