@@ -5,6 +5,7 @@
     nerd-fonts.ubuntu-mono
   ];
 
+  # systemctl --user restart conky.service
   systemd.user.services.conky = {
     Unit = {
       Description = "Conky - Lightweight system monitor";
