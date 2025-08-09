@@ -16,6 +16,7 @@ ${font2}  System${font}
 $hr
 ${execi 3600 nixos-version}
 Kernel: ${alignr}${kernel}
+KDE: ${alignr}${execpi 3600 plasmashell --version}
 EOL: ${alignr}${execpi 3600 bash -c 'source /etc/os-release; echo $SUPPORT_END'}
 Uptime: ${alignr}${uptime_short}
 ]]
