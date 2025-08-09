@@ -18,14 +18,14 @@ $hr
 ${font3}Maindisk${font}
 Used: ${alignc}${fs_used /} / ${fs_size /} ${alignr}${fs_used_perc /}%
 ${fs_bar /}
-Read / Write: ${alignr}${diskio_read /dev/sdb2} / ${diskio_write /dev/sdb2}
-${diskiograph_read /dev/sdb2 25,145} ${diskiograph_write /dev/sdb2 25,145}
+Read: ${diskio_read /dev/sdb2}${alignr}Write: ${diskio_write /dev/sdb2}
+${diskiograph_read /dev/sdb2 25,145}${offset 10}${diskiograph_write /dev/sdb2 25,145}
 
 ${font3}Datadisk${font}
 Used: ${alignc}${fs_used /persist} / ${fs_size /persist} ${alignr}${fs_used_perc /persist}%
 ${fs_bar /persist}
-Read / Write: ${alignr}${diskio_read /dev/sda1} / ${diskio_write /dev/sda1}
-${diskiograph_read /dev/sda1 25,145} ${diskiograph_write /dev/sda1 25,145}
+Read: ${diskio_read /dev/sda1}${alignr}Write: ${diskio_write /dev/sda1}
+${diskiograph_read /dev/sda1 25,145}${offset 10}${diskiograph_write /dev/sda1 25,145}
 
 ${font3}Name ${alignr}IO${font}
 ${top_io name 1} ${alignr}${top_io io_perc 1}%

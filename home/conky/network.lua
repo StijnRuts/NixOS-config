@@ -16,10 +16,10 @@ ${font2}  Network${font}
 $hr
 Hostname: ${alignr}${nodename}
 Interface: ${alignr}${gw_iface}
-Quality: ${alignr}${wireless_link_qual_perc ${gw_iface}}%
+Signal: ${alignr}${wireless_link_qual_perc ${gw_iface}}%
 Address: ${alignr}${addr ${gw_iface}}
 Gateway: ${alignr}${gw_ip}
 Nameserver: ${alignr}${nameserver}
-Up / Down: ${alignr}${upspeed ${gw_iface}} / ${downspeed ${gw_iface}}
-${upspeedgraph ${gw_iface} 25,145} ${downspeedgraph ${gw_iface} 25,145}
+Up: ${upspeed ${gw_iface}}${alignr}Down: ${downspeed ${gw_iface}}
+${upspeedgraph ${gw_iface} 25,145}${offset 10}${downspeedgraph ${gw_iface} 25,145}
 ]]
