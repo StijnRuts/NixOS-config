@@ -48,6 +48,8 @@
         ".cache/mozilla"
         ".config/chromium"
         ".cache/chromium"
+        ".cache/distrobox"
+        ".local/share/containers" # podman
         ".config/beekeeper-studio"
       ];
       files = [
