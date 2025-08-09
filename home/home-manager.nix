@@ -1,8 +1,13 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  me,
+  ...
+}:
 {
   programs.home-manager.enable = true;
-  home.username = "stijn";
-  home.homeDirectory = "/home/stijn";
+  home.username = "${me.username}";
+  home.homeDirectory = "/home/${me.username}";
 
   # It is occasionally necessary for Home Manager to change configuration defaults
   # in a way that is incompatible with stateful data. This could, for example,

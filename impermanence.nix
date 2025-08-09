@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  me,
   ...
 }:
 {
@@ -16,7 +17,7 @@
       "/var/lib/bluetooth"
       "/etc/cups"
     ];
-    users.stijn = {
+    users.${me.username} = {
       directories = [
         "Desktop"
         "Documents"

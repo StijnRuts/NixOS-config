@@ -18,7 +18,7 @@ $hr
 CPU: ${alignr}${cpu cpu0}%
 Frequency: ${alignr}${freq}MHz
 ${cpugraph}
-${execpi 60 /home/stijn/NixOS/home/conky/cpu_bars.sh}
+${execpi 60 ~/NixOS/home/conky/cpu_bars.sh}
 
 ${font3}Name ${alignr}CPU${font}
 ${top name 1} ${alignr}${top cpu 1}%

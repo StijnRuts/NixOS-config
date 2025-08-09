@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  me,
+  ...
+}:
 {
   home.packages = with pkgs; [
     conky
@@ -15,7 +20,7 @@
     Service = {
       Restart = "always";
       RestartSec = "3";
-      ExecStart = "/home/stijn/NixOS/home/conky/start.sh";
+      ExecStart = "/home/${me.username}/NixOS/home/conky/start.sh";
     };
 
     Install.WantedBy = [ "graphical-session.target" ];
