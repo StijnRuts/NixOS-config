@@ -23,6 +23,14 @@
     {
       nixosConfigurations =
         let
+          me = {
+            name = "Stijn Ruts";
+            username = "stijn";
+            gitEmail = "git@stijnruts.be";
+          };
+          specialArgs = args // {
+            inherit me;
+          };
           commonModules = [
             disko.nixosModules.disko
             impermanence.nixosModules.impermanence
@@ -35,7 +43,8 @@
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-                users.stijn = import ./configuration-home.nix;
+                extraSpecialArgs = specialArgs;
+                users.${me.username} = import ./configuration-home.nix;
               };
             }
           ];
@@ -43,7 +52,7 @@
         {
           X201 = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = args;
+            specialArgs = specialArgs;
             modules = commonModules ++ [
               ./disko/X201.nix
               ./hardware/X201.nix
@@ -52,7 +61,7 @@
           };
           T420 = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = args;
+            specialArgs = specialArgs;
             modules = commonModules ++ [
               ./disko/T420.nix
               ./hardware/T420.nix

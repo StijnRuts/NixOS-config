@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  me,
+  ...
+}:
 {
   programs.git = {
     enable = true;
-    userEmail = "git@stijnruts.be";
-    userName = "Stijn Ruts";
+    userEmail = "${me.gitEmail}";
+    userName = "${me.name}";
     extraConfig = {
       core.editor = "nvim --clean";
       init.defaultBranch = "main";

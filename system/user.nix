@@ -1,8 +1,13 @@
-{ config, pkgs, ... }:
 {
-  users.users.stijn = {
+  config,
+  pkgs,
+  me,
+  ...
+}:
+{
+  users.users.${me.username} = {
     isNormalUser = true;
-    description = "Stijn Ruts";
+    description = "${me.name}";
     extraGroups = [
       "networkmanager"
       "wheel"
