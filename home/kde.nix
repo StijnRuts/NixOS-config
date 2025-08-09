@@ -103,6 +103,7 @@
         };
       in
       [
+        # Find via KWin Debug Console (via KRunner)
         (maximize "konsole")
         (maximize "dolphin")
         (maximize "neovide")
@@ -113,8 +114,10 @@
         (maximize "gimp")
         (maximize "krita")
         (maximize "inkscape")
+        (maximize "beekeeper-studio")
       ];
 
+    # Find device info in /proc/bus/input/devices
     input.touchpads = [
       {
         enable = true;
