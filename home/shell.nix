@@ -17,7 +17,7 @@
     autosuggestion.enable = true;
     defaultKeymap = "emacs";
     enableCompletion = true;
-    completionInit = "autoload -Uz compinit && compinit && zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'";
+    completionInit = "autoload -Uz compinit && compinit && zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'"; # Case insensitive autocomplete
     history.ignoreDups = true;
     syntaxHighlighting.enable = true;
     plugins = [
