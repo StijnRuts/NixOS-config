@@ -96,6 +96,7 @@
               type = "substring";
               value = app;
             };
+            # TODO: modal = false;
           };
           apply = {
             maximizehoriz = true;
@@ -104,7 +105,8 @@
         };
       in
       [
-        # Find via KWin Debug Console (via KRunner)
+        # Find class name via:
+        # System Settings > Window Management > Window rules > Edit > Detect Window Properties
         (maximize "konsole")
         (maximize "dolphin")
         (maximize "neovide")
