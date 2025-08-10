@@ -109,6 +109,12 @@
     '';
   };
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
+
   home.persistence."/persist/home/${me.username}" = {
     allowOther = false;
     files = [
@@ -119,6 +125,7 @@
       ".ssh"
       ".local/share/zoxide"
       ".tmux/resurrect"
+      ".local/share/direnv"
     ];
   };
 }
