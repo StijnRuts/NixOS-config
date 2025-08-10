@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  me,
   ...
 }:
 {
@@ -53,4 +54,13 @@
   home.activation.nvimSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] (''
     ln -sf $HOME/NixOS/home/nvim $HOME/.config
   '');
+
+  home.persistence."/persist/home/${me.username}" = {
+    allowOther = false;
+    directories = [
+      ".cache/nvim"
+      ".local/share/nvim"
+      ".local/state/nvim"
+    ];
+  };
 }

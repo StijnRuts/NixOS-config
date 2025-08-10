@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  me,
+  ...
+}:
 {
   xdg.mimeApps = {
     enable = true;
@@ -141,7 +146,7 @@
 
   programs.chromium.enable = true;
 
-  home.persistence."/persist" = {
+  home.persistence."/persist/home/${me.username}" = {
     allowOther = false;
     directories = [
       ".mozilla"

@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  me,
   ...
 }:
 {
@@ -161,7 +162,7 @@
     ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
   '';
 
-  home.persistence."/persist" = {
+  home.persistence."/persist/home/${me.username}" = {
     allowOther = false;
     directories = [
       ".config/session" # For restoreOpenApplicationsOnLogin

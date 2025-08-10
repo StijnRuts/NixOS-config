@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  me,
+  ...
+}:
 {
   home.packages = with pkgs; [
     gnumake
@@ -104,7 +109,7 @@
     '';
   };
 
-  home.persistence."/persist" = {
+  home.persistence."/persist/home/${me.username}" = {
     allowOther = false;
     files = [
       ".bash_history"
@@ -113,10 +118,6 @@
     directories = [
       ".ssh"
       ".local/share/zoxide"
-      ".cache/nvim"
-      ".local/share/nvim"
-      ".local/state/nvim"
-      ".local/state/lazygit"
       ".tmux/resurrect"
     ];
   };

@@ -40,4 +40,11 @@
     "gst" = "git stash push";
     "gstp" = "git stash pop";
   };
+
+  home.persistence."/persist/home/${me.username}" = {
+    allowOther = false;
+    directories = [
+      ".local/state/lazygit"
+    ];
+  };
 }
