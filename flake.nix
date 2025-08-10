@@ -34,42 +34,64 @@
           commonModules = [
             disko.nixosModules.disko
             impermanence.nixosModules.impermanence
-            ./system/impermanence.nix
-            ./configuration-system.nix
             home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-                extraSpecialArgs = specialArgs;
-                users.${me.username}.imports = [
-                  impermanence.homeManagerModules.impermanence
-                  ./configuration-home.nix
-                ];
-              };
-            }
+            homeManagerConfig
+            ./system/impermanence.nix
+            ./system/nix.nix
+            ./system/user.nix
+            ./system/locale.nix
+            ./system/desktop.nix
+            ./system/networking.nix
+            ./system/audio.nix
+            ./system/bluetooth.nix
+            ./system/printing.nix
+            ./system/apps.nix
+          ];
+          laptopModules = [
+            ./system/energy.nix
+          ];
+          homeManagerConfig = {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+              extraSpecialArgs = specialArgs;
+              users.${me.username}.imports = homeModules;
+            };
+          };
+          homeModules = [
+            impermanence.homeManagerModules.impermanence
+            ./home/home-manager.nix
+            ./home/shell.nix
+            ./home/git.nix
+            ./home/vim.nix
+            ./home/theme.nix
+            ./home/kde.nix
+            ./home/firefox.nix
+            ./home/conky.nix
           ];
         in
         {
           X201 = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = specialArgs;
-            modules = commonModules ++ [
+            modules = [
               ./disko/X201.nix
               ./hardware/X201.nix
-              ./system/energy.nix
-            ];
+            ]
+            ++ commonModules
+            ++ laptopModules;
           };
           T420 = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = specialArgs;
-            modules = commonModules ++ [
+            modules = [
               ./disko/T420.nix
               ./hardware/T420.nix
-              ./system/energy.nix
-            ];
+            ]
+            ++ commonModules
+            ++ laptopModules;
           };
         };
     };
