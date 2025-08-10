@@ -85,6 +85,12 @@
             icon = "https://home-manager-options.extranix.com/images/favicon.png";
             definedAliases = [ "@pm" ];
           };
+          "mdn" = {
+            name = "MDN";
+            urls = [ { template = "https://developer.mozilla.org/en-US/search?q={searchTerms}"; } ];
+            icon = "https://developer.mozilla.org/favicon.ico";
+            definedAliases = [ "@mdn" ];
+          };
           "p" = {
             name = "Pursuit";
             urls = [ { template = "https://pursuit.purescript.org/search?q={searchTerms}"; } ];
