@@ -6,4 +6,10 @@
     pkgs.gutenprintBin
     pkgs.brlaser
   ];
+
+  environment.persistence."/persist" = {
+    directories = [
+      "/etc/cups"
+    ];
+  };
 }

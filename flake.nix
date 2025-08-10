@@ -34,7 +34,7 @@
           commonModules = [
             disko.nixosModules.disko
             impermanence.nixosModules.impermanence
-            ./impermanence.nix
+            ./system/impermanence.nix
             ./configuration-system.nix
             home-manager.nixosModules.home-manager
             {
@@ -44,7 +44,10 @@
                 backupFileExtension = "backup";
                 sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
                 extraSpecialArgs = specialArgs;
-                users.${me.username} = import ./configuration-home.nix;
+                users.${me.username}.imports = [
+                  impermanence.homeManagerModules.impermanence
+                  ./configuration-home.nix
+                ];
               };
             }
           ];

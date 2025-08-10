@@ -140,4 +140,14 @@
   };
 
   programs.chromium.enable = true;
+
+  home.persistence."/persist" = {
+    allowOther = false;
+    directories = [
+      ".mozilla"
+      ".cache/mozilla"
+      ".config/chromium"
+      ".cache/chromium"
+    ];
+  };
 }

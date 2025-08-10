@@ -8,4 +8,10 @@
     # Only the full build has Bluetooth support, so it must be selected here.
     package = pkgs.pulseaudioFull;
   };
+
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/bluetooth"
+    ];
+  };
 }

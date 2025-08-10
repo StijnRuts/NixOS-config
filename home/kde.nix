@@ -160,4 +160,11 @@
     mkdir -p ~/.local/share/dolphin/view_properties/global
     ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
   '';
+
+  home.persistence."/persist" = {
+    allowOther = false;
+    directories = [
+      ".config/session" # For restoreOpenApplicationsOnLogin
+    ];
+  };
 }

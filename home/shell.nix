@@ -103,4 +103,21 @@
       set-option -ga terminal-overrides ",xterm-256color:Tc"
     '';
   };
+
+  home.persistence."/persist" = {
+    allowOther = false;
+    files = [
+      ".bash_history"
+      ".zsh_history"
+    ];
+    directories = [
+      ".ssh"
+      ".local/share/zoxide"
+      ".cache/nvim"
+      ".local/share/nvim"
+      ".local/state/nvim"
+      ".local/state/lazygit"
+      ".tmux/resurrect"
+    ];
+  };
 }
