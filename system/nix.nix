@@ -1,10 +1,21 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  me,
+  ...
+}:
 {
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
+  ];
+
+  # For devenv
+  nix.settings.trusted-users = [
+    "root"
+    "${me.username}"
   ];
 
   environment.persistence."/persist" = {
