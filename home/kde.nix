@@ -86,40 +86,6 @@
     #   };
     # };
 
-    window-rules =
-      let
-        maximize = app: {
-          description = app;
-          match = {
-            window-types = [ "normal" ];
-            window-class = {
-              type = "substring";
-              value = app;
-            };
-            # TODO: modal = false;
-          };
-          apply = {
-            maximizehoriz = true;
-            maximizevert = true;
-          };
-        };
-      in
-      [
-        # Find class name via:
-        # System Settings > Window Management > Window rules > Edit > Detect Window Properties
-        (maximize "konsole")
-        (maximize "dolphin")
-        (maximize "neovide")
-        (maximize "firefox")
-        (maximize "kwrite")
-        (maximize "kate")
-        (maximize "libreoffice")
-        (maximize "gimp")
-        (maximize "krita")
-        (maximize "inkscape")
-        (maximize "beekeeper-studio")
-      ];
-
     # Find device info in /proc/bus/input/devices
     input.touchpads = [
       {
