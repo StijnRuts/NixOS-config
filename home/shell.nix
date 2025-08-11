@@ -12,6 +12,30 @@
     killall
   ];
 
+  programs.wezterm = {
+    enable = true;
+    extraConfig = ''
+      return {
+        font = wezterm.font("UbuntuMono Nerd Font"),
+        font_size = 11.0,
+        color_scheme = "Catppuccin Mocha",
+        hide_tab_bar_if_only_one_tab = true,
+        default_prog = {
+          "zsh",
+          "--login",
+          "-c",
+          "tmux attach -t default || tmux new -s default;" -- launch tmux
+          -- "eval \"$(direnv hook zsh)\";" -- TODO: enable direnv
+        },
+      }
+    '';
+  };
+
+  # Set WezTerm as the default terminal app
+  programs.plasma.configFile = {
+    "kdeglobals"."General"."TerminalService" = "org.wezfurlong.wezterm.desktop";
+  };
+
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -38,16 +62,7 @@
         };
       }
     ];
-    envExtra = ''
-      # No beeping
-      unsetopt BEEP
-
-      # Run tmux by default
-      # Do not run in an existing tmux session, in Dolphin or Kate sessions, or in nix-shell
-      if [ -z "$TMUX" ] && [ "$WINDOWID" -ne 0 ] && [ -z "$IN_NIX_SHELL" ]; then
-        tmux attach-session -t default || tmux new-session -s default
-      fi
-    '';
+    envExtra = "unsetopt BEEP";
   };
 
   programs.starship = {
@@ -81,6 +96,7 @@
     enableZshIntegration = true;
   };
 
+  # tmux source-file ~/.config/tmux/tmux.conf
   programs.tmux = {
     enable = true;
     mouse = true;
@@ -89,20 +105,32 @@
     historyLimit = 5000;
     sensibleOnTop = true;
     plugins = with pkgs.tmuxPlugins; [
-      tmux-which-key
+      # tmux-which-key
+      # tmux-menus # TODO: package
       pain-control
+      # tmux-neolazygit
       {
         plugin = resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents 'on'
+          set -g @resurrect-strategy-nvim 'session'
+        '';
+        # TODO: # https://github.com/tpope/vim-obsession
       }
       {
         plugin = continuum;
-        extraConfig = "set -g @continuum-restore 'on'";
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '10'
+        '';
       }
     ];
     extraConfig = ''
       # Turn off hostname and clock
-      set -g status-right ""
+      set -g status-right " 󱄅 "
+
+      # Renumber when deleting a window
+      set-option -g renumber-windows on
 
       # Make colors work in nvim
       set -g default-terminal "xterm-256color"
@@ -112,8 +140,8 @@
 
   programs.direnv = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
+    enableBashIntegration = false;
+    enableZshIntegration = false; # Only enabled in WezTerm
   };
 
   home.persistence."/persist/home/${me.username}" = {

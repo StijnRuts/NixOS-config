@@ -6,6 +6,7 @@
   ...
 }:
 {
+  # nix run github:nix-community/plasma-manager > rc.nix
   programs.plasma = {
     enable = true;
 
@@ -39,11 +40,13 @@
           {
             name = "org.kde.plasma.icontasks";
             config = {
+              # ls /run/current-system/sw/share/applications/
               launchers = [
                 "applications:org.kde.konsole.desktop"
+                "applications:org.wezfurlong.wezterm.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:neovide.desktop"
-                "preferred://browser"
+                "applications:firefox.desktop"
               ];
             };
           }

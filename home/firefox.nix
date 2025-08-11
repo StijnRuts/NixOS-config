@@ -5,18 +5,6 @@
   ...
 }:
 {
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = [ "firefox.desktop" ];
-      "x-scheme-handler/http" = [ "firefox.desktop" ];
-      "x-scheme-handler/https" = [ "firefox.desktop" ];
-      "x-scheme-handler/about" = [ "firefox.desktop" ];
-      "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-    };
-  };
-  home.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-
   programs.firefox = {
     enable = true;
     nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
@@ -151,6 +139,11 @@
   };
 
   programs.chromium.enable = true;
+
+  # Set Firefox as the default browser
+  programs.plasma.configFile = {
+    "kdeglobals"."General"."BrowserApplication" = "firefox.desktop";
+  };
 
   home.persistence."/persist/home/${me.username}" = {
     allowOther = false;

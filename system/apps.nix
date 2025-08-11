@@ -6,6 +6,7 @@
 }:
 {
   environment.systemPackages = with pkgs; [
+    wezterm # To make the .desktop file show up, configured in shell.nix
     libreoffice-qt
     gimp
     krita
