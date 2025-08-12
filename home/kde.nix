@@ -89,46 +89,6 @@
     #   };
     # };
 
-    window-rules =
-      let
-        maximize = app: {
-          description = "Mazimize ${app}";
-          match = {
-            window-types = [ "normal" ];
-            window-class = {
-              type = "substring";
-              value = app;
-            };
-          };
-          apply = {
-            maximizehoriz = {
-              apply = "initially";
-              value = true;
-            };
-            maximizevert = {
-              apply = "initially";
-              value = true;
-            };
-          };
-        };
-      in
-      [
-        # Find class name via:
-        # System Settings > Window Management > Window rules > Edit > Detect Window Properties
-        (maximize "konsole")
-        (maximize "wezterm")
-        # (maximize "dolphin")
-        (maximize "neovide")
-        (maximize "firefox")
-        # (maximize "kwrite")
-        # (maximize "kate")
-        (maximize "libreoffice")
-        (maximize "gimp")
-        (maximize "krita")
-        (maximize "inkscape")
-        (maximize "beekeeper-studio")
-      ];
-
     # Find device info in /proc/bus/input/devices
     input.touchpads = [
       {
@@ -171,6 +131,14 @@
   home.activation.setDolphinXattrs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p ~/.local/share/dolphin/view_properties/global
     ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
+  '';
+
+  # Load Auto Maximize KWin script
+  # https://develop.kde.org/docs/plasma/kwin/
+  home.activation.loadAutoMaximize = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.kdePackages.kpackage}/bin/kpackagetool6 --type=KWin/Script -i ~/NixOS/home/automaximize || true
+    ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file kwinrc --group Plugins --key automaximizeEnabled true
+    ${pkgs.kdePackages.qttools}/bin/qdbus org.kde.KWin /KWin reconfigure
   '';
 
   home.persistence."/persist/home/${me.username}" = {

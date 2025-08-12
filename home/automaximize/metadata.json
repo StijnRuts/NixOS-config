@@ -1,0 +1,20 @@
+{
+  "KPlugin": {
+      "Name": "Auto Maximize",
+      "Description": "Will automatically maximize certain windows",
+      "Icon": "preferences-system-windows",
+      "Authors": [
+        {
+          "Email": "stijnruts.be",
+          "Name": "Stijn Ruts"
+        }
+      ],
+      "Id": "automaximize",
+      "Version": "1.0",
+      "License": "GPLv3",
+      "Website": "https://github.com/StijnRuts/NixOS-config"
+  },
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js",
+  "KPackageStructure": "KWin/Script"
+}
