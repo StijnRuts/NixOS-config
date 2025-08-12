@@ -91,8 +91,8 @@
 
     window-rules =
       let
-        maximizeByClass = app: {
-          description = app;
+        maximize = app: {
+          description = "Mazimize ${app}";
           match = {
             window-types = [ "normal" ];
             window-class = {
@@ -100,44 +100,33 @@
               value = app;
             };
           };
-          apply = maximize;
-        };
-        maximizeByTitle = app: title: {
-          description = app;
-          match = {
-            window-types = [ "normal" ];
-            title = {
-              type = "exact";
-              value = title;
+          apply = {
+            maximizehoriz = {
+              apply = "initially";
+              value = true;
             };
-          };
-          apply = maximize;
-        };
-        maximize = {
-          maximizehoriz = {
-            apply = "initially";
-            value = true;
-          };
-          maximizevert = {
-            apply = "initially";
-            value = true;
+            maximizevert = {
+              apply = "initially";
+              value = true;
+            };
           };
         };
       in
       [
         # Find class name via:
         # System Settings > Window Management > Window rules > Edit > Detect Window Properties
-        (maximizeByClass "konsole")
-        (maximizeByTitle "dolphin" "Home — Dolphin")
-        (maximizeByClass "neovide")
-        (maximizeByClass "firefox")
-        (maximizeByClass "kwrite")
-        (maximizeByTitle "kate" "Welcome — Kate") # TODO: Fix
-        (maximizeByClass "libreoffice")
-        (maximizeByClass "gimp")
-        (maximizeByClass "krita")
-        (maximizeByClass "inkscape")
-        (maximizeByClass "beekeeper-studio")
+        (maximize "konsole")
+        (maximize "wezterm")
+        # (maximize "dolphin")
+        (maximize "neovide")
+        (maximize "firefox")
+        # (maximize "kwrite")
+        # (maximize "kate")
+        (maximize "libreoffice")
+        (maximize "gimp")
+        (maximize "krita")
+        (maximize "inkscape")
+        (maximize "beekeeper-studio")
       ];
 
     # Find device info in /proc/bus/input/devices
