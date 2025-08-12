@@ -12,30 +12,6 @@
     killall
   ];
 
-  programs.wezterm = {
-    enable = true;
-    extraConfig = ''
-      return {
-        font = wezterm.font("UbuntuMono Nerd Font"),
-        font_size = 11.0,
-        color_scheme = "Catppuccin Mocha",
-        hide_tab_bar_if_only_one_tab = true,
-        default_prog = {
-          "zsh",
-          "--login",
-          "-c",
-          "tmux attach -t default || tmux new -s default;" -- launch tmux
-          -- "eval \"$(direnv hook zsh)\";" -- TODO: enable direnv
-        },
-      }
-    '';
-  };
-
-  # Set WezTerm as the default terminal app
-  programs.plasma.configFile = {
-    "kdeglobals"."General"."TerminalService" = "org.wezfurlong.wezterm.desktop";
-  };
-
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -50,6 +26,7 @@
     completionInit = "autoload -Uz compinit && compinit && zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'"; # Case insensitive autocomplete
     history.ignoreDups = true;
     syntaxHighlighting.enable = true;
+    envExtra = "unsetopt BEEP";
     plugins = [
       {
         name = "zsh-nix-shell";
@@ -62,7 +39,6 @@
         };
       }
     ];
-    envExtra = "unsetopt BEEP";
   };
 
   programs.starship = {

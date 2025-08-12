@@ -64,6 +64,7 @@
             impermanence.homeManagerModules.impermanence
             ./home/home-manager.nix
             ./home/shell.nix
+            ./home/wezterm.nix
             ./home/git.nix
             ./home/vim.nix
             ./home/theme.nix
