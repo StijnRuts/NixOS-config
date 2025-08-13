@@ -81,10 +81,26 @@
     historyLimit = 5000;
     sensibleOnTop = true;
     plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavor "mocha"
+          set -g @catppuccin_window_status_style "rounded"
+
+          set -g status-left ""
+          set -g status-right " #{E:@catppuccin_status_session}"
+
+          set -g @catppuccin_window_text " #{window_name}"
+          set -g @catppuccin_window_current_text " #{window_name}"
+          set -g @catppuccin_window_current_number_color "#{@thm_green}"
+        '';
+        # set -g @catppuccin_status_fill ""
+        # set -g @catppuccin_status_icon "icon"
+      }
       # tmux-which-key
       # tmux-menus # TODO: package
       pain-control
-      # tmux-neolazygit
+      # tmux-neolazygit or vim-tmux-navigator
       {
         plugin = resurrect;
         extraConfig = ''
@@ -102,9 +118,6 @@
       }
     ];
     extraConfig = ''
-      # Turn off hostname and clock
-      set -g status-right " 󱄅 "
-
       # Renumber when deleting a window
       set-option -g renumber-windows on
 
