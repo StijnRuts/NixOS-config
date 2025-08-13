@@ -75,6 +75,12 @@
             icon = "https://home-manager-options.extranix.com/images/favicon.png";
             definedAliases = [ "@pm" ];
           };
+          "n" = {
+            name = "Noogle";
+            urls = [ { template = "https://noogle.dev/q?term={searchTerms}"; } ];
+            icon = "https://noogle.dev/favicon.png";
+            definedAliases = [ "n" ];
+          };
           "mdn" = {
             name = "MDN";
             urls = [ { template = "https://developer.mozilla.org/en-US/search?q={searchTerms}"; } ];
