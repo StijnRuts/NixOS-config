@@ -8,6 +8,7 @@
         font_size = 11.0,
         color_scheme = "Catppuccin Mocha",
         hide_tab_bar_if_only_one_tab = true,
+        use_fancy_tab_bar = false,
       }
     '';
   };
