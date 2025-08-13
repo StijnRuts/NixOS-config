@@ -128,16 +128,20 @@
 
   # Set Dolphin view mode to Details
   home.activation.setDolphinXattrs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p ~/.local/share/dolphin/view_properties/global
-    ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
+    if [ -n "\$\{DRY_RUN:-\}" ]; then
+      mkdir -p ~/.local/share/dolphin/view_properties/global
+      ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
+    fi
   '';
 
   # Load Auto Maximize KWin script
   # https://develop.kde.org/docs/plasma/kwin/
   home.activation.loadAutoMaximize = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${pkgs.kdePackages.kpackage}/bin/kpackagetool6 --type=KWin/Script -i ~/NixOS/home/automaximize || true
-    ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file kwinrc --group Plugins --key automaximizeEnabled true
-    ${pkgs.kdePackages.qttools}/bin/qdbus org.kde.KWin /KWin reconfigure
+    if [ -n "\$\{DRY_RUN:-\}" ]; then
+      ${pkgs.kdePackages.kpackage}/bin/kpackagetool6 --type=KWin/Script -i ~/NixOS/home/automaximize || true
+      ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file kwinrc --group Plugins --key automaximizeEnabled true
+      ${pkgs.kdePackages.qttools}/bin/qdbus org.kde.KWin /KWin reconfigure
+    fi
   '';
 
   home.persistence."/persist/home/${me.username}" = {

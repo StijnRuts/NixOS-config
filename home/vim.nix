@@ -52,7 +52,9 @@
   };
 
   home.activation.nvimSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] (''
-    ln -sf $HOME/NixOS/home/nvim $HOME/.config
+    if [ -n "\$\{DRY_RUN:-\}" ]; then
+      ln -sf ~/NixOS/home/nvim ~/.config
+    fi
   '');
 
   home.persistence."/persist/home/${me.username}" = {
