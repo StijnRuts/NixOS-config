@@ -118,7 +118,6 @@
       dolphinrc.PreviewSettings.Plugins = "appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs"; # No preview for directories
       kwinrc.ElectricBorders.TopLeft = ""; # Disable hot corner
       kwinrc.Effect-overview.BorderActivate = 9; # Disable hot corner
-      konsolerc."Notification Messages".CloseAllTabs = true; # Don't ask when closing window (because of tmux)
     };
   };
 

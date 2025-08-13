@@ -11,6 +11,8 @@
     profiles.default = {
       settings = {
         # about:config
+        "browser.urlbar.trimURLs" = false;
+        "browser.urlbar.trimHttps" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1; # native file picker
         "browser.toolbars.bookmarks.visibility" = "never"; # no bookmark bar
         "browser.startup.page" = 3; # open previous windows and tabs on startup
