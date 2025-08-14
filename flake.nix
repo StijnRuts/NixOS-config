@@ -46,6 +46,7 @@
             ./system/bluetooth.nix
             ./system/printing.nix
             ./system/apps.nix
+            ./system/ollama.nix
           ];
           laptopModules = [
             ./system/energy.nix

@@ -98,39 +98,39 @@
         # set -g @catppuccin_status_icon "icon"
       }
       /*
-      {
-        plugin = (
-          mkTmuxPlugin {
-            pluginName = "tmux-menus";
-            version = "v2.2.18";
-            rtpFilePath = "menus.tmux";
-            #name = "tmux-menus";
-            #pluginName = "menus";
-            src = pkgs.fetchFromGitHub {
-              owner = "jaclu";
-              repo = "tmux-menus";
-              tag = "v2.2.18";
-              hash = "sha256-yJuG24VoM8kykObBC1sV1u3MjsOCHcoI/bftXwokxK0=";
-            };
-          }
-        );
-        extraConfig = ''
-          set -g @menus_trigger 'Space'
-        '';
-      }
-      (mkTmuxPlugin {
-        pluginName = "tmux-which-key";
-        version = "main-2024-07-09";
-        rtpFilePath = "plugin.sh.tmux";
-        #name = "tmux-menus";
-        #pluginName = "menus";
-        src = pkgs.fetchFromGitHub {
-          owner = "alexwforsythe";
-          repo = "tmux-which-key";
-          rev = "1f419775caf136a60aac8e3a269b51ad10b51eb6";
-          hash = "sha256-X7FunHrAexDgAlZfN+JOUJvXFZeyVj9yu6WRnxMEA8E=";
-        };
-      })
+        {
+          plugin = (
+            mkTmuxPlugin {
+              pluginName = "tmux-menus";
+              version = "v2.2.18";
+              rtpFilePath = "menus.tmux";
+              #name = "tmux-menus";
+              #pluginName = "menus";
+              src = pkgs.fetchFromGitHub {
+                owner = "jaclu";
+                repo = "tmux-menus";
+                tag = "v2.2.18";
+                hash = "sha256-yJuG24VoM8kykObBC1sV1u3MjsOCHcoI/bftXwokxK0=";
+              };
+            }
+          );
+          extraConfig = ''
+            set -g @menus_trigger 'Space'
+          '';
+        }
+        (mkTmuxPlugin {
+          pluginName = "tmux-which-key";
+          version = "main-2024-07-09";
+          rtpFilePath = "plugin.sh.tmux";
+          #name = "tmux-menus";
+          #pluginName = "menus";
+          src = pkgs.fetchFromGitHub {
+            owner = "alexwforsythe";
+            repo = "tmux-which-key";
+            rev = "1f419775caf136a60aac8e3a269b51ad10b51eb6";
+            hash = "sha256-X7FunHrAexDgAlZfN+JOUJvXFZeyVj9yu6WRnxMEA8E=";
+          };
+        })
       */
       {
         plugin = pain-control;
@@ -156,6 +156,9 @@
     extraConfig = ''
       # Renumber when deleting a window
       set-option -g renumber-windows on
+
+      # Fix for copy mode
+      bind -T copy-mode Enter send -X copy-selection-and-cancel
 
       # Make colors work in nvim
       set -g default-terminal "xterm-256color"

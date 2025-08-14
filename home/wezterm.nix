@@ -13,9 +13,9 @@
     '';
   };
 
-  # Set WezTerm as the default terminal app
+  # Don't make WezTerm the default terminal app
   programs.plasma.configFile = {
-    "kdeglobals"."General"."TerminalService" = "org.wezfurlong.wezterm.desktop";
+    "kdeglobals"."General"."TerminalService" = "org.kde.konsole.desktop";
   };
 
   programs.zsh = {

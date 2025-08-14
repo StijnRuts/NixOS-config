@@ -20,6 +20,7 @@ const targetClasses = [
   "krita",
   "inkscape",
   "beekeeper-studio"
+  "alpaca"
 ];
 
 // List of titles to match
