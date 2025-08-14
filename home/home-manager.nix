@@ -11,7 +11,7 @@
   home.homeDirectory = "/home/${me.username}";
 
   # Get rid of any home manager backups, because they will prevent new backups from being generated
-  home.activation.clearBackups = lib.hm.dag.entryAfter [ /* pre-activate */ ] ''
+  home.activation.clearBackups = lib.hm.dag.entryAfter [ ] ''
     if [ -n "\$\{DRY_RUN:-\}" ]; then
       echo "Running before Home Manager activates..."
       find ~ -name '*.hmbackup' -delete
