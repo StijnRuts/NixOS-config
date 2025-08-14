@@ -97,6 +97,15 @@
             ++ commonModules
             ++ laptopModules;
           };
+          P520 = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = specialArgs;
+            modules = [
+              ./disko/P520.nix
+              ./hardware/P520.nix
+            ]
+            ++ commonModules;
+          };
         };
     };
 }
