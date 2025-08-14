@@ -46,6 +46,8 @@
             ./system/bluetooth.nix
             ./system/printing.nix
             ./system/apps.nix
+            ./system/devenv.nix
+            ./system/distrobox.nix
             ./system/ollama.nix
           ];
           laptopModules = [

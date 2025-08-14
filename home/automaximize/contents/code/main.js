@@ -19,7 +19,7 @@ const targetClasses = [
   "gimp",
   "krita",
   "inkscape",
-  "beekeeper-studio"
+  "beekeeper-studio",
   "alpaca"
 ];
 
