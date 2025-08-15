@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.url = "github:nix-community/impermanence";
@@ -14,6 +15,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       disko,
       impermanence,
       home-manager,
@@ -28,6 +30,8 @@
             username = "stijn";
             gitEmail = "git@stijnruts.be";
           };
+          systemtype = "x86_64-linux";
+          pkgs-unstable = nixpkgs-unstable.legacyPackages.${systemtype};
           commonModules = [
             disko.nixosModules.disko
             impermanence.nixosModules.impermanence
@@ -76,11 +80,12 @@
             let
               myArgs = args // {
                 inherit me;
+                inherit pkgs-unstable;
                 isLaptop = true;
               };
             in
             nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
+              system = systemtype;
               specialArgs = myArgs;
               modules = [
                 { home-manager.extraSpecialArgs = myArgs; }
@@ -93,11 +98,12 @@
             let
               myArgs = args // {
                 inherit me;
+                inherit pkgs-unstable;
                 isLaptop = true;
               };
             in
             nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
+              system = systemtype;
               specialArgs = myArgs;
               modules = [
                 { home-manager.extraSpecialArgs = myArgs; }
@@ -110,11 +116,12 @@
             let
               myArgs = args // {
                 inherit me;
+                inherit pkgs-unstable;
                 isLaptop = false;
               };
             in
             nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
+              system = systemtype;
               specialArgs = myArgs;
               modules = [
                 { home-manager.extraSpecialArgs = myArgs; }
