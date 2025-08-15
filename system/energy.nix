@@ -1,5 +1,11 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  isLaptop,
+  ...
+}:
+(lib.optionalAttrs isLaptop {
   services.power-profiles-daemon.enable = false; # in favor of tlp
 
   services.tlp = {
@@ -37,4 +43,4 @@
       balance_power: Slightly favors power saving while maintaining reasonable performance levels
       power: Maximizes power saving at the cost of processing speed. Best for extending battery life during low-intensity tasks
   */
-}
+})

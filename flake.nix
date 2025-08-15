@@ -28,9 +28,6 @@
             username = "stijn";
             gitEmail = "git@stijnruts.be";
           };
-          specialArgs = args // {
-            inherit me;
-          };
           commonModules = [
             disko.nixosModules.disko
             impermanence.nixosModules.impermanence
@@ -45,13 +42,11 @@
             ./system/audio.nix
             ./system/bluetooth.nix
             ./system/printing.nix
+            ./system/energy.nix
             ./system/apps.nix
             ./system/devenv.nix
             ./system/distrobox.nix
             ./system/ollama.nix
-          ];
-          laptopModules = [
-            ./system/energy.nix
           ];
           homeManagerConfig = {
             home-manager = {
@@ -59,13 +54,13 @@
               useUserPackages = true;
               backupFileExtension = "hmbackup";
               sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-              extraSpecialArgs = specialArgs;
               users.${me.username}.imports = homeModules;
             };
           };
           homeModules = [
             impermanence.homeManagerModules.impermanence
             ./home/home-manager.nix
+            ./home/P520-display.nix
             ./home/shell.nix
             ./home/wezterm.nix
             ./home/git.nix
@@ -77,35 +72,57 @@
           ];
         in
         {
-          X201 = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = specialArgs;
-            modules = [
-              ./disko/X201.nix
-              ./hardware/X201.nix
-            ]
-            ++ commonModules
-            ++ laptopModules;
-          };
-          T420 = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = specialArgs;
-            modules = [
-              ./disko/T420.nix
-              ./hardware/T420.nix
-            ]
-            ++ commonModules
-            ++ laptopModules;
-          };
-          P520 = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = specialArgs;
-            modules = [
-              ./disko/P520.nix
-              ./hardware/P520.nix
-            ]
-            ++ commonModules;
-          };
+          X201 =
+            let
+              myArgs = args // {
+                inherit me;
+                isLaptop = true;
+              };
+            in
+            nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = myArgs;
+              modules = [
+                { home-manager.extraSpecialArgs = myArgs; }
+                ./disko/X201.nix
+                ./hardware/X201.nix
+              ]
+              ++ commonModules;
+            };
+          T420 =
+            let
+              myArgs = args // {
+                inherit me;
+                isLaptop = true;
+              };
+            in
+            nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = myArgs;
+              modules = [
+                { home-manager.extraSpecialArgs = myArgs; }
+                ./disko/T420.nix
+                ./hardware/T420.nix
+              ]
+              ++ commonModules;
+            };
+          P520 =
+            let
+              myArgs = args // {
+                inherit me;
+                isLaptop = false;
+              };
+            in
+            nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = myArgs;
+              modules = [
+                { home-manager.extraSpecialArgs = myArgs; }
+                ./disko/P520.nix
+                ./hardware/P520.nix
+              ]
+              ++ commonModules;
+            };
         };
     };
 }

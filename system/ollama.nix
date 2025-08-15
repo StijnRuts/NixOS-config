@@ -2,6 +2,7 @@
   config,
   pkgs,
   me,
+  isLaptop,
   ...
 }:
 {
@@ -14,14 +15,19 @@
 
   services.ollama = {
     enable = true;
-    loadModels = [
-      "qwen2.5:0.5b"
-      "qwen2.5-coder:0.5b"
-      # "llama3.2:3b"
-      # "codellama:13b"
-      # "deepseek-llm:7b"
-      # "deepseek-coder-v2:16b"
-    ];
+    loadModels =
+      if isLaptop then
+        [
+          "qwen2.5:0.5b"
+          "qwen2.5-coder:0.5b"
+        ]
+      else
+        [
+          "llama3.2:3b"
+          "codellama:13b"
+          "deepseek-llm:7b"
+          "deepseek-coder-v2:16b"
+        ];
   };
 
   environment.persistence."/persist" = {

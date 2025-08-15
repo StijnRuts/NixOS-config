@@ -3,6 +3,7 @@
   pkgs,
   lib,
   me,
+  isLaptop,
   ...
 }:
 {
@@ -54,19 +55,27 @@
             name = "org.kde.plasma.marginsseparator";
           }
           {
-            systemTray.items = {
-              shown = [
-                "org.kde.plasma.volume"
-                "org.kde.plasma.brightness"
-                "org.kde.plasma.networkmanagement"
-                "org.kde.plasma.battery"
-              ];
-              hidden = [
-                "org.kde.plasma.notifications"
-                "org.kde.plasma.bluetooth"
-                "org.kde.plasma.clipboard"
-              ];
-            };
+            systemTray.items =
+              let
+                laptopItems = [
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.battery"
+                ];
+                optionalArray = cond: arr: if cond then arr else [ ];
+              in
+              {
+                shown = [
+                  "org.kde.plasma.volume"
+                  "org.kde.plasma.brightness"
+                ]
+                ++ optionalArray isLaptop laptopItems;
+                hidden = [
+                  "org.kde.plasma.notifications"
+                  "org.kde.plasma.bluetooth"
+                  "org.kde.plasma.clipboard"
+                ]
+                ++ optionalArray (!isLaptop) laptopItems;
+              };
           }
           {
             name = "org.kde.plasma.digitalclock";
