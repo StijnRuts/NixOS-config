@@ -109,6 +109,8 @@
       }
     ];
 
+    input.keyboard.numlockOnStartup = "on";
+
     kwin.nightLight = {
       enable = true;
       mode = "times";
