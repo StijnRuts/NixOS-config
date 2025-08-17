@@ -64,7 +64,6 @@
           homeModules = [
             impermanence.homeManagerModules.impermanence
             ./home/home-manager.nix
-            ./home/P520-display.nix
             ./home/shell.nix
             ./home/wezterm.nix
             ./home/git.nix

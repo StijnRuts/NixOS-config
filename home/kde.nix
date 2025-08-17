@@ -155,6 +155,9 @@
 
   home.persistence."/persist/home/${me.username}" = {
     allowOther = false;
+    files = [
+      ".config/kwinoutputconfig.json" # Display configuration
+    ];
     directories = [
       ".config/session" # For restoreOpenApplicationsOnLogin
     ];
