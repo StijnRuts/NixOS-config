@@ -48,7 +48,6 @@
             ./system/printing.nix
             ./system/energy.nix
             ./system/apps.nix
-            ./system/devenv.nix
             ./system/distrobox.nix
             ./system/ollama.nix
           ];
