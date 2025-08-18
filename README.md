@@ -20,4 +20,5 @@ vim /mnt/etc/nixos/hardware-configuration.nix
 
 ```bash
 git clone git@github.com:StijnRuts/NixOS-config.git ~/NixOS
+git clone git@github.com:StijnRuts/Templates.git ~/Templates
 ```
