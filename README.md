@@ -1,7 +1,7 @@
 # Installing
 
 ```bash
-git clone https://github.com/StijnRuts/NixOS-config.git
+git clone git@github.com:StijnRuts/NixOS-config.git
 cd NixOS-config
 
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode disko ./disko/???.nix
@@ -19,7 +19,5 @@ vim /mnt/etc/nixos/hardware-configuration.nix
 ## After install
 
 ```bash
-git clone https://github.com/StijnRuts/NixOS-config.git ~/NixOS
-cd ~/NixOS
-git remote set-url origin git@github.com:StijnRuts/NixOS-config.git
+git clone git@github.com:StijnRuts/NixOS-config.git ~/NixOS
 ```
