@@ -15,8 +15,21 @@
       pull.rebase = true;
     };
   };
+
   programs.git.delta.enable = true;
+
   programs.lazygit.enable = true;
+  home.file.".config/lazygit/config.yml".text = pkgs.lib.generators.toYAML { } {
+    gui = {
+      tabWidth = 2;
+      nerdFontsVersion = 3;
+      showRandomTip = false;
+      showCommandLog = false;
+    };
+    git = {
+      paging.pager = "delta --paging=never";
+    };
+  };
 
   home.shellAliases = {
     "gs" = "git status";
