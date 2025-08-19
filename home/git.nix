@@ -17,9 +17,11 @@
   };
 
   programs.git.delta.enable = true;
+  catppuccin.delta.enable = true;
 
   programs.lazygit.enable = true;
-  home.file.".config/lazygit/config.yml".text = pkgs.lib.generators.toYAML { } {
+  catppuccin.lazygit.enable = true;
+  programs.lazygit.settings = {
     gui = {
       tabWidth = 2;
       nerdFontsVersion = 3;

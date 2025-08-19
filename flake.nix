@@ -10,6 +10,8 @@
     plasma-manager.url = "github:nix-community/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     {
@@ -20,6 +22,7 @@
       impermanence,
       home-manager,
       plasma-manager,
+      catppuccin,
       ...
     }@args:
     {
@@ -37,6 +40,7 @@
             impermanence.nixosModules.impermanence
             home-manager.nixosModules.home-manager
             homeManagerConfig
+            catppuccin.nixosModules.catppuccin
             ./system/impermanence.nix
             ./system/nix.nix
             ./system/user.nix
@@ -56,12 +60,13 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "hmbackup";
-              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
               users.${me.username}.imports = homeModules;
             };
           };
           homeModules = [
             impermanence.homeManagerModules.impermanence
+            plasma-manager.homeManagerModules.plasma-manager
+            catppuccin.homeModules.catppuccin
             ./home/home-manager.nix
             ./home/shell.nix
             ./home/wezterm.nix

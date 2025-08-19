@@ -9,6 +9,11 @@
     })
   ];
 
+  catppuccin = {
+    flavor = "mocha";
+    accent = "yellow";
+  };
+
   gtk = {
     enable = true;
     theme = {
