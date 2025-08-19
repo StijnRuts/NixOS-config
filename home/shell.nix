@@ -76,21 +76,13 @@
     enableZshIntegration = true;
   };
 
-  programs.ranger.enable = true;
-  programs.zsh.shellAliases."r" = "ranger_cd";
-  programs.zsh.initContent = ''
-    ranger_cd() {
-      temp_file=$(mktemp -t "ranger_cd.XXXXXXXXXX")
-      ranger --choosedir=$temp_file
-      cd "$(cat $temp_file)"
-    }
-  '';
-
-  programs.zoxide = {
+  programs.yazi = {
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+    shellWrapperName = "y";
   };
+  catppuccin.yazi.enable = true;
 
   # tmux source-file ~/.config/tmux/tmux.conf
   programs.tmux = {
