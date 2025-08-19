@@ -56,6 +56,26 @@
     git = true;
   };
 
+  programs.bat = {
+    enable = true;
+    extraPackages = [ pkgs.bat-extras.core ];
+  };
+  catppuccin.bat.enable = true;
+  home.shellAliases = {
+    "cat" = "bat";
+    "less" = "bat";
+    "man" = "batman";
+  };
+  programs.zsh.shellGlobalAliases = {
+    "--help" = "--help 2>&1 | bat --language=help --style=plain";
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
+
   programs.ranger.enable = true;
   programs.zsh.shellAliases."r" = "ranger_cd";
   programs.zsh.initContent = ''
