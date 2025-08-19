@@ -88,7 +88,7 @@
     enable = true;
     enableBashIntegration = false;
     enableZshIntegration = false; # Only enabled in WezTerm
-    attachExistingSession = true;
+    attachExistingSession = false; # Set in WezTerm config
     settings = {
       pane_frames = false;
       show_startup_tips = false;

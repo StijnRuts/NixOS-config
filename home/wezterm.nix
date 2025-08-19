@@ -26,6 +26,7 @@
         # Enable direnv
         eval "$(direnv hook zsh)"
         # Launch zellij
+        ZELLIJ_AUTO_ATTACH=true
         eval "$(zellij setup --generate-auto-start zsh)"
       fi
     '';
