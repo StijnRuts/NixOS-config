@@ -9,6 +9,7 @@
         color_scheme = "Catppuccin Mocha",
         hide_tab_bar_if_only_one_tab = true,
         use_fancy_tab_bar = false,
+        window_close_confirmation = 'NeverPrompt',
       }
     '';
   };
@@ -26,8 +27,9 @@
         # Enable direnv
         eval "$(direnv hook zsh)"
         # Launch zellij
-        ZELLIJ_AUTO_ATTACH=true
-        eval "$(zellij setup --generate-auto-start zsh)"
+        if [[ -z "$ZELLIJ" ]]; then
+          zellij attach -c default
+        fi
       fi
     '';
   };

@@ -83,6 +83,7 @@
     shellWrapperName = "y";
   };
   catppuccin.yazi.enable = true;
+  catppuccin.yazi.accent = "blue";
 
   programs.zellij = {
     enable = true;
