@@ -16,8 +16,8 @@ case $(hostname) in
     conky --config=$CONFIGDIR/cpu.lua     -x 120 -y  70 &
     conky --config=$CONFIGDIR/memory.lua  -x 490 -y  70 &
     conky --config=$CONFIGDIR/disks.lua   -x 860 -y  70 &
-    conky --config=$CONFIGDIR/system.lua  -x 120 -y 390 &
-    conky --config=$CONFIGDIR/network.lua -x 490 -y 390
+    conky --config=$CONFIGDIR/system.lua  -x 120 -y 410 &
+    conky --config=$CONFIGDIR/network.lua -x 490 -y 410
     ;;
 
   T420 | *) # 1600 x 900
