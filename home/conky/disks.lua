@@ -26,7 +26,9 @@ Used: ${alignc}${fs_used /persist} / ${fs_size /persist} ${alignr}${fs_used_perc
 ${fs_bar /persist}
 Read: ${diskio_read /dev/sda1}${alignr}Write: ${diskio_write /dev/sda1}
 ${diskiograph_read /dev/sda1 25,145}${offset 10}${diskiograph_write /dev/sda1 25,145}
-
+${if_match "${nodename}" == "P520"}
+RAID status: ${alignr}${execi 3600 cat /proc/mdstat | grep -o '\[....\]'}
+${endif}
 ${font3}Name ${alignr}IO${font}
 ${top_io name 1} ${alignr}${top_io io_perc 1}%
 ${top_io name 2} ${alignr}${top_io io_perc 2}%
