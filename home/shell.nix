@@ -84,99 +84,20 @@
   };
   catppuccin.yazi.enable = true;
 
-  # tmux source-file ~/.config/tmux/tmux.conf
-  programs.tmux = {
+  programs.zellij = {
     enable = true;
-    mouse = true;
-    baseIndex = 1;
-    disableConfirmationPrompt = true;
-    historyLimit = 5000;
-    sensibleOnTop = true;
-    plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_flavor "mocha"
-          set -g @catppuccin_window_status_style "rounded"
-
-          set -g status-left ""
-          set -g status-right " #{E:@catppuccin_status_session}"
-
-          set -g @catppuccin_window_text " #{window_name}"
-          set -g @catppuccin_window_current_text " #{window_name}"
-          set -g @catppuccin_window_current_number_color "#{@thm_green}"
-        '';
-        # set -g @catppuccin_status_fill ""
-        # set -g @catppuccin_status_icon "icon"
-      }
-      /*
-        {
-          plugin = (
-            mkTmuxPlugin {
-              pluginName = "tmux-menus";
-              version = "v2.2.18";
-              rtpFilePath = "menus.tmux";
-              #name = "tmux-menus";
-              #pluginName = "menus";
-              src = pkgs.fetchFromGitHub {
-                owner = "jaclu";
-                repo = "tmux-menus";
-                tag = "v2.2.18";
-                hash = "sha256-yJuG24VoM8kykObBC1sV1u3MjsOCHcoI/bftXwokxK0=";
-              };
-            }
-          );
-          extraConfig = ''
-            set -g @menus_trigger 'Space'
-          '';
-        }
-        (mkTmuxPlugin {
-          pluginName = "tmux-which-key";
-          version = "main-2024-07-09";
-          rtpFilePath = "plugin.sh.tmux";
-          #name = "tmux-menus";
-          #pluginName = "menus";
-          src = pkgs.fetchFromGitHub {
-            owner = "alexwforsythe";
-            repo = "tmux-which-key";
-            rev = "1f419775caf136a60aac8e3a269b51ad10b51eb6";
-            hash = "sha256-X7FunHrAexDgAlZfN+JOUJvXFZeyVj9yu6WRnxMEA8E=";
-          };
-        })
-      */
-      {
-        plugin = pain-control;
-        extraConfig = "";
-      }
-      # tmux-neolazygit or vim-tmux-navigator
-      {
-        plugin = resurrect;
-        extraConfig = ''
-          set -g @resurrect-capture-pane-contents 'on'
-          set -g @resurrect-strategy-nvim 'session'
-        '';
-        # TODO: # https://github.com/tpope/vim-obsession
-      }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '10'
-        '';
-      }
-    ];
-    extraConfig = ''
-      # Renumber when deleting a window
-      set-option -g renumber-windows on
-
-      # Fix for copy mode
-      bind -T copy-mode Enter send -X copy-selection-and-cancel
-
-      # Make colors work in nvim
-      set -g default-terminal "xterm-256color"
-      set-option -ga terminal-overrides ",xterm-256color:Tc"
-    '';
+    enableBashIntegration = false;
+    enableZshIntegration = false; # Only enabled in WezTerm
+    attachExistingSession = true;
+    settings = {
+      pane_frames = false;
+      show_startup_tips = false;
+      session_serialization = true;
+      pane_viewport_serialization = true;
+      scrollback_lines_to_serialize = 500;
+    };
   };
+  catppuccin.zellij.enable = true;
 
   programs.direnv = {
     enable = true;
@@ -194,7 +115,7 @@
     directories = [
       ".ssh"
       ".local/share/zoxide"
-      ".tmux/resurrect"
+      ".cache/zellij"
       ".local/share/direnv"
     ];
   };

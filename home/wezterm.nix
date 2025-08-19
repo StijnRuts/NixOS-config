@@ -25,12 +25,8 @@
       if [ -n "$WEZTERM_EXECUTABLE" ]; then
         # Enable direnv
         eval "$(direnv hook zsh)"
-
-        # Launch tmux
-        # Do not run in an existing tmux session, in nix-shell, or in devenv shell
-        if [ -z "$TMUX" ] && [ -z "$IN_NIX_SHELL" ] && [ -z "$DEVENV_DOTFILE" ]; then
-          tmux attach-session -t default || tmux new -s default
-        fi
+        # Launch zellij
+        eval "$(zellij setup --generate-auto-start zsh)"
       fi
     '';
   };
