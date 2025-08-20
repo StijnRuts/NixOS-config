@@ -44,6 +44,7 @@
 
   home.shellAliases = {
     "lazyvim" = "NVIM_APPNAME=lazyvim nvim";
+    "lv" = "lazyvim";
   };
 
   home.persistence."/persist/home/${me.username}" = {

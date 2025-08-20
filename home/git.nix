@@ -34,6 +34,7 @@
   };
 
   home.shellAliases = {
+    "lg" = "lazygit";
     "gs" = "git status";
     "ga" = "git add";
     "gaa" = "git add --all";
