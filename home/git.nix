@@ -10,7 +10,7 @@
     userEmail = "${me.gitEmail}";
     userName = "${me.name}";
     extraConfig = {
-      core.editor = "nvim --clean";
+      core.editor = "nvim";
       init.defaultBranch = "main";
       pull.rebase = true;
     };
