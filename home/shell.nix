@@ -62,8 +62,8 @@
   };
   catppuccin.bat.enable = true;
   home.shellAliases = {
-    "cat" = "bat";
-    "less" = "bat";
+    "cat" = "bat --paging=never";
+    "less" = "bat --paging=always";
     "man" = "batman";
   };
   programs.zsh.shellGlobalAliases = {
