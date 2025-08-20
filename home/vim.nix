@@ -31,26 +31,6 @@
     ];
   };
 
-  programs.neovide = {
-    enable = true;
-    settings = {
-      font = {
-        normal = "UbuntuMono Nerd Font";
-        size = 11;
-        width = 1;
-      };
-    };
-  };
-
-  home.packages = with pkgs; [
-    nvimpager
-    vifm
-  ];
-
-  home.sessionVariables = {
-    PAGER = "nvimpager";
-  };
-
   # systemctl --user status nvim-config.service
   # journalctl --user -u nvim-config.service
   systemd.user.services.nvim-config = {

@@ -46,7 +46,6 @@
                 "applications:org.kde.konsole.desktop"
                 "applications:org.wezfurlong.wezterm.desktop"
                 "applications:org.kde.dolphin.desktop"
-                "applications:neovide.desktop"
                 "applications:firefox.desktop"
               ];
             };

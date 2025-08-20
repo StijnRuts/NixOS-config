@@ -11,7 +11,6 @@ const targetClasses = [
   "konsole",
   "wezterm",
   "dolphin",
-  "neovide",
   "firefox",
   "kwrite",
   "kate",
