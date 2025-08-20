@@ -51,11 +51,14 @@
     PAGER = "nvimpager";
   };
 
-  home.activation.nvimSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] (''
-    if [ -n "\$\{DRY_RUN:-\}" ]; then
-      ln -sf ~/NixOS/home/nvim ~/.config
-    fi
-  '');
+  # systemctl --user status nvim-config.service
+  # journalctl --user -u nvim-config.service
+  systemd.user.services.nvim-config = {
+    Service.ExecStart = "${pkgs.coreutils}/bin/ln -sf /home/${me.username}/NixOS/home/nvim /home/${me.username}/.config";
+    Install.WantedBy = [ "default.target" ];
+    Unit.After = [ "default.target" ];
+    Service.Type = "oneshot";
+  };
 
   home.persistence."/persist/home/${me.username}" = {
     allowOther = false;

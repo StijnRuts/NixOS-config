@@ -137,23 +137,32 @@
     ".local/state/konsolestaterc".source = ./konsolestaterc; # hide toolbars
   };
 
-  # Set Dolphin view mode to Details
-  home.activation.setDolphinXattrs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ -n "\$\{DRY_RUN:-\}" ]; then
-      mkdir -p ~/.local/share/dolphin/view_properties/global
-      ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' ~/.local/share/dolphin/view_properties/global
-    fi
-  '';
+  # systemctl --user status dolphin-xattrs.service
+  # journalctl --user -u dolphin-xattrs.service
+  systemd.user.services.dolphin-xattrs = {
+    Service.ExecStart = pkgs.writeScript "dolphin-xattrs" ''
+      #!/usr/bin/env bash
+      ${pkgs.coreutils}/bin/mkdir -p /home/${me.username}/.local/share/dolphin/view_properties/global
+      ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' /home/${me.username}/.local/share/dolphin/view_properties/global
+    '';
+    Install.WantedBy = [ "graphical-session.target" ];
+    Unit.After = [ "graphical-session.target" ];
+    Service.Type = "oneshot";
+  };
 
-  # Load Auto Maximize KWin script
-  # https://develop.kde.org/docs/plasma/kwin/
-  home.activation.loadAutoMaximize = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ -n "\$\{DRY_RUN:-\}" ]; then
-      ${pkgs.kdePackages.kpackage}/bin/kpackagetool6 --type=KWin/Script -i ~/NixOS/home/automaximize || true
+  # systemctl --user status auto-maximize.service
+  # journalctl --user -u auto-maximize.service
+  systemd.user.services.auto-maximize = {
+    Service.ExecStart = pkgs.writeScript "auto-maximize" ''
+      #!/usr/bin/env bash
+      ${pkgs.kdePackages.kpackage}/bin/kpackagetool6 --type=KWin/Script -i /home/${me.username}/NixOS/home/automaximize >/dev/null 2>&1
       ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file kwinrc --group Plugins --key automaximizeEnabled true
       ${pkgs.kdePackages.qttools}/bin/qdbus org.kde.KWin /KWin reconfigure
-    fi
-  '';
+    '';
+    Install.WantedBy = [ "graphical-session.target" ];
+    Unit.After = [ "graphical-session.target" ];
+    Service.Type = "oneshot";
+  };
 
   home.persistence."/persist/home/${me.username}" = {
     allowOther = false;
