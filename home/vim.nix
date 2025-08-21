@@ -33,14 +33,7 @@
 
   catppuccin.nvim.enable = true;
 
-  # systemctl --user status nvim-config.service
-  # journalctl --user -u nvim-config.service
-  systemd.user.services.nvim-config = {
-    Service.ExecStart = "${pkgs.coreutils}/bin/ln -sf /home/${me.username}/NixOS/home/nvim /home/${me.username}/.config/lazyvim";
-    Install.WantedBy = [ "default.target" ];
-    Unit.After = [ "default.target" ];
-    Service.Type = "oneshot";
-  };
+  home.file.".config/lazyvim".source = ./nvim;
 
   home.shellAliases = {
     "lazyvim" = "NVIM_APPNAME=lazyvim nvim";
