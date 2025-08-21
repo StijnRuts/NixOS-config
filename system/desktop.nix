@@ -44,5 +44,8 @@
         }
       ];
     };
+    directories = [
+      "/var/lib/sddm"
+    ];
   };
 }

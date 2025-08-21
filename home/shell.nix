@@ -108,6 +108,7 @@
     settings = {
       show_help = false;
       show_tabs = false;
+      enter_accept = true;
       style = "auto";
       inline_height = 10;
       filter_mode = "global";
