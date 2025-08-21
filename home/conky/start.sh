@@ -21,10 +21,10 @@ case $(hostname) in
     ;;
 
   T420 | *) # 1600 x 900
-    conky --config=$CONFIGDIR/cpu.lua     -x   95 -y  70 &
-    conky --config=$CONFIGDIR/memory.lua  -x  465 -y  70 &
-    conky --config=$CONFIGDIR/disks.lua   -x  835 -y  70 &
-    conky --config=$CONFIGDIR/system.lua  -x 1205 -y  70 &
-    conky --config=$CONFIGDIR/network.lua -x 1205 -y 250
+    conky --config=$CONFIGDIR/cpu.lua     -x   95 -y 100 &
+    conky --config=$CONFIGDIR/memory.lua  -x  465 -y 100 &
+    conky --config=$CONFIGDIR/disks.lua   -x  835 -y 100 &
+    conky --config=$CONFIGDIR/system.lua  -x 1205 -y 100 &
+    conky --config=$CONFIGDIR/network.lua -x 1205 -y 280
     ;;
 esac
