@@ -108,19 +108,13 @@
     settings = {
       show_help = false;
       show_tabs = false;
+      show_preview = false;
       enter_accept = true;
       style = "auto";
-      inline_height = 10;
+      inline_height = 11;
       filter_mode = "global";
       filter_mode_shell_up_key_binding = "workspace";
       workspaces = true;
-      history_filter = [
-        "^ls$"
-        "^ls "
-        "^cd$"
-        "^cd "
-        "^z "
-      ];
     };
   };
   catppuccin.atuin.enable = true;
