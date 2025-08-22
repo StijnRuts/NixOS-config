@@ -1,14 +1,13 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   me,
   ...
 }:
 {
   programs.firefox = {
     enable = true;
-    package = pkgs-unstable.firefox;
+    package = pkgs.firefox-bin;
     nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
     profiles.default = {
       settings = {
@@ -17,6 +16,7 @@
         "browser.urlbar.trimHttps" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1; # native file picker
         "browser.toolbars.bookmarks.visibility" = "never"; # no bookmark bar
+        "browser.newtabpage.activity-stream.topSitesRows" = 3;
         "browser.startup.page" = 3; # open previous windows and tabs on startup
         "devtools.selfxss.count" = 99; # allow pasting in console
         "browser.gesture.swipe.left" = "cmd_scrollLeft"; # disable scrolling trough history
@@ -148,9 +148,6 @@
     };
   };
 
-  # Also install Chromium
-  programs.chromium.enable = true;
-
   # Set Firefox as the default browser
   programs.plasma.configFile = {
     "kdeglobals"."General"."BrowserApplication" = "firefox.desktop";
@@ -165,15 +162,5 @@
       "x-scheme-handler/unknown" = [ "firefox.desktop" ];
     };
   };
-  home.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
-    directories = [
-      ".mozilla"
-      ".cache/mozilla"
-      ".config/chromium"
-      ".cache/chromium"
-    ];
-  };
+  home.sessionVariables.DEFAULT_BROWSER = "${config.programs.firefox.package}/bin/firefox";
 }

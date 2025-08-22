@@ -8,6 +8,9 @@
 {
   environment.systemPackages = with pkgs; [
     wezterm # To make the .desktop file show up, configured in home/wezterm.nix
+    # firefox-bin # Configured in home/firefix.nix
+    firefox-devedition
+    ungoogled-chromium
     libreoffice-qt
     gimp
     krita
@@ -23,6 +26,10 @@
   environment.persistence."/persist" = {
     users.${me.username} = {
       directories = [
+        ".mozilla"
+        ".cache/mozilla"
+        ".config/chromium"
+        ".cache/chromium"
         ".config/beekeeper-studio"
       ];
     };

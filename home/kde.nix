@@ -47,6 +47,7 @@
                 "applications:org.wezfurlong.wezterm.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:firefox.desktop"
+                "applications:firefox-devedition.desktop"
               ];
             };
           }
