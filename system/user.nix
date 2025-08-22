@@ -12,7 +12,7 @@
       "networkmanager"
       "wheel"
     ];
-    hashedPassword = "$y$j9T$bpwA64h33y5qzHF9DWHMA1$5EzaKxODfsxX1HjWRtPOA5Hap5.Zb2JS4pA5UCDCPjA";
+    hashedPasswordFile = config.age.secrets.hashed_password.path;
   };
 
   programs.zsh.enable = true;

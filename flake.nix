@@ -5,6 +5,10 @@
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.url = "github:nix-community/impermanence";
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.home-manager.follows = "home-manager";
+    agenix.inputs.darwin.follows = "";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.url = "github:nix-community/plasma-manager";
@@ -20,6 +24,7 @@
       nixpkgs-unstable,
       disko,
       impermanence,
+      agenix,
       home-manager,
       plasma-manager,
       catppuccin,
@@ -38,10 +43,13 @@
           commonModules = [
             disko.nixosModules.disko
             impermanence.nixosModules.impermanence
+            ./system/impermanence.nix
+            agenix.nixosModules.default
+            { environment.systemPackages = [ agenix.packages.${systemtype}.default ]; }
+            ./secrets/list.nix
             home-manager.nixosModules.home-manager
             homeManagerConfig
             catppuccin.nixosModules.catppuccin
-            ./system/impermanence.nix
             ./system/nix.nix
             ./system/user.nix
             ./system/locale.nix
@@ -65,6 +73,8 @@
           };
           homeModules = [
             impermanence.homeManagerModules.impermanence
+            agenix.homeManagerModules.default
+            ./secrets/list.nix
             plasma-manager.homeManagerModules.plasma-manager
             catppuccin.homeModules.catppuccin
             ./home/home-manager.nix
