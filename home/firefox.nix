@@ -56,6 +56,12 @@
             icon = "https://nixos.wiki/favicon.png";
             definedAliases = [ "@nwu" ];
           };
+          "aw" = {
+            name = "Arch Wiki";
+            urls = [ { template = "https://wiki.archlinux.org/index.php?search={searchTerms}"; } ];
+            icon = "https://wiki.archlinux.org/favicon.ico";
+            definedAliases = [ "@aw" ];
+          };
           "np" = {
             name = "Nix Packages";
             urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}"; } ];
