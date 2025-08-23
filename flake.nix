@@ -108,6 +108,7 @@
             ./home/home-manager.nix
             ./home/theme.nix
             ./home/kde.nix
+            ./home/energy.nix
             ./home/shell.nix
             ./home/wezterm.nix
             ./home/git.nix
@@ -127,6 +128,7 @@
                 inherit theme;
                 inherit pkgs-unstable;
                 isLaptop = true;
+                isServer = false;
               };
             in
             nixpkgs.lib.nixosSystem {
@@ -146,6 +148,7 @@
                 inherit theme;
                 inherit pkgs-unstable;
                 isLaptop = true;
+                isServer = false;
               };
             in
             nixpkgs.lib.nixosSystem {
@@ -165,6 +168,7 @@
                 inherit theme;
                 inherit pkgs-unstable;
                 isLaptop = false;
+                isServer = true;
               };
             in
             nixpkgs.lib.nixosSystem {
