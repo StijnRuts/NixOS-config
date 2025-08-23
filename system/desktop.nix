@@ -9,6 +9,16 @@
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
+  system.activationScripts.sddmCopyDisplayConfig.text = ''
+    source_file="/home/${me.username}/.config/kwinoutputconfig.json"
+    dest_file="/var/lib/sddm/.config/kwinoutputconfig.json"
+
+    if [ -f "$source_file" ]; then
+      cp "$source_file" "$dest_file"
+      chown sddm:sddm "$dest_file"
+    fi
+  '';
+
   environment.persistence."/persist" = {
     users.${me.username} = {
       directories = [
