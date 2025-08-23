@@ -59,7 +59,7 @@
   # systemctl --user status nvim-config.service
   # journalctl --user -u nvim-config.service
   systemd.user.services.nvim-config = {
-    Service.ExecStart = "${pkgs.coreutils}/bin/ln -sf /home/${me.username}/NixOS/home/nvim /home/${me.username}/.config/lazyvim";
+    Service.ExecStart = "${pkgs.coreutils}/bin/ln -sf /home/${me.username}/NixOS/home/lazyvim /home/${me.username}/.config";
     Install.WantedBy = [ "default.target" ];
     Unit.After = [ "default.target" ];
     Service.Type = "oneshot";
