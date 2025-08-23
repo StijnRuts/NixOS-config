@@ -51,6 +51,12 @@
             icon = "https://wiki.nixos.org/favicon.ico";
             definedAliases = [ "@nw" ];
           };
+          "nwu" = {
+            name = "Unofficial NixOS Wiki";
+            urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
+            icon = "https://nixos.wiki/favicon.png";
+            definedAliases = [ "@nwu" ];
+          };
           "np" = {
             name = "Nix Packages";
             urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}"; } ];
