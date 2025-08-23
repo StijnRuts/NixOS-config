@@ -19,4 +19,10 @@
     80
     443
   ];
+
+  environment.persistence."/persist" = {
+    directories = [
+      "/run/postgresql"
+    ];
+  };
 }
