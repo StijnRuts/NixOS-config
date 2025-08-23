@@ -7,7 +7,6 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-bin;
     nativeMessagingHosts = [ pkgs.kdePackages.plasma-browser-integration ];
     profiles.default = {
       settings = {

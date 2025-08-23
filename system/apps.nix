@@ -8,8 +8,7 @@
 {
   environment.systemPackages = with pkgs; [
     wezterm # To make the .desktop file show up, configured in home/wezterm.nix
-    # firefox-bin # Configured in home/firefix.nix
-    firefox-devedition
+    # firefox # Configured in home/firefox.nix
     ungoogled-chromium
     libreoffice-qt
     gimp
