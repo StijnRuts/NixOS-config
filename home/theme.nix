@@ -1,26 +1,31 @@
-{ config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    ubuntu_font_family
-    nerd-fonts.ubuntu-mono
-    (catppuccin-kde.override {
-      flavour = [ "mocha" ];
-      accents = [ "yellow" ];
+  config,
+  pkgs,
+  theme,
+  ...
+}:
+{
+  home.packages = [
+    theme.fontPkg
+    theme.monofontPkg
+    (pkgs.catppuccin-kde.override {
+      flavour = [ theme.flavor ];
+      accents = [ theme.accent ];
     })
   ];
 
   catppuccin = {
-    flavor = "mocha";
-    accent = "yellow";
+    flavor = theme.flavor;
+    accent = theme.accent;
   };
 
   gtk = {
     enable = true;
     theme = {
-      name = "catppuccin-mocha-yellow-standard";
+      name = "catppuccin-${theme.flavor}-${theme.accent}-standard";
       package = pkgs.catppuccin-gtk.override {
-        variant = "mocha";
-        accents = [ "yellow" ];
+        variant = theme.flavor;
+        accents = [ theme.accent ];
         # size = "compact";
         # tweaks = [ "black" "rimless" "normal" "float" ];
       };
@@ -28,8 +33,8 @@
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "yellow";
+        flavor = theme.flavor;
+        accent = theme.accent;
       };
     };
     cursorTheme = {
@@ -37,8 +42,8 @@
       package = pkgs.simp1e-cursors;
     };
     font = {
-      name = "Ubuntu";
-      package = pkgs.ubuntu_font_family;
+      name = theme.font;
+      package = theme.fontPkg;
       size = 11;
     };
   };
@@ -47,41 +52,41 @@
     enable = true;
 
     workspace = {
-      colorScheme = "CatppuccinMochaYellow";
+      colorScheme = "Catppuccin${theme.Flavor}${theme.Accent}";
       windowDecorations = {
         library = "org.kde.breeze";
         theme = "Breeze";
       };
       cursor.theme = "Simp1e-Catppuccin-Latte";
       iconTheme = "Papirus-Dark";
-      wallpaperPlainColor = "30,30,40";
+      wallpaperPlainColor = theme.backgroundColor;
     };
 
-    kscreenlocker.appearance.wallpaperPlainColor = "30,30,40";
+    kscreenlocker.appearance.wallpaperPlainColor = theme.backgroundColor;
 
     fonts = {
       general = {
-        family = "Ubuntu";
+        family = theme.font;
         pointSize = 11;
       };
       fixedWidth = {
-        family = "UbuntuMono Nerd Font";
+        family = theme.monofont;
         pointSize = 11;
       };
       small = {
-        family = "Ubuntu";
+        family = theme.font;
         pointSize = 8;
       };
       toolbar = {
-        family = "Ubuntu";
+        family = theme.font;
         pointSize = 11;
       };
       menu = {
-        family = "Ubuntu";
+        family = theme.font;
         pointSize = 11;
       };
       windowTitle = {
-        family = "Ubuntu";
+        family = theme.font;
         pointSize = 11;
       };
     };
@@ -90,14 +95,14 @@
   programs.konsole = {
     enable = true;
     customColorSchemes = {
-      CatppuccinMocha = ./catppuccin-mocha.colorscheme;
+      "Catppuccin${theme.Flavor}" = ./catppuccin-${theme.flavor}.colorscheme;
     };
     defaultProfile = "Default";
     profiles.default = {
       name = "Default";
-      colorScheme = "CatppuccinMocha";
+      colorScheme = "Catppuccin${theme.Flavor}";
       font = {
-        name = "UbuntuMono Nerd Font";
+        name = theme.monofont;
         size = 11;
       };
     };
@@ -105,6 +110,6 @@
 
   home.file.".config/process-compose/settings.yaml" = {
     enable = true;
-    text = "theme: Catppuccin Mocha";
+    text = "theme: Catppuccin ${theme.Flavor}";
   };
 }

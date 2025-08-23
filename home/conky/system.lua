@@ -1,8 +1,8 @@
 conky.config = {
   alignment = 'top_left',
   default_color = 'white',
-  font = 'UbuntuMono Nerd Font:size=12',
-  font2 = 'UbuntuMono Nerd Font:size=16',
+  font = os.getenv("CONKY_FONT")..':size=12',
+  font2 = os.getenv("CONKY_FONT")..':size=16',
   max_text_width = 0,
   minimum_width = 300,
   maximum_width = 300,

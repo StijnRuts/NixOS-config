@@ -2,13 +2,16 @@
   config,
   pkgs,
   me,
+  theme,
   ...
 }:
 {
   home.packages = with pkgs; [
     conky
-    nerd-fonts.ubuntu-mono
+    theme.monofontPkg
   ];
+
+  home.sessionVariables.CONKY_FONT = theme.monofont;
 
   # systemctl --user restart conky.service
   systemd.user.services.conky = {

@@ -38,6 +38,17 @@
             username = "stijn";
             gitEmail = "git@stijnruts.be";
           };
+          theme = {
+            flavor = "mocha";
+            Flavor = "Mocha";
+            accent = "yellow";
+            Accent = "Yellow";
+            font = "Ubuntu";
+            monofont = "UbuntuMono Nerd Font";
+            fontPkg = nixpkgs.legacyPackages.${systemtype}.ubuntu_font_family;
+            monofontPkg = nixpkgs.legacyPackages.${systemtype}.nerd-fonts.ubuntu-mono;
+            backgroundColor = "30,30,40";
+          };
           systemtype = "x86_64-linux";
           pkgs-unstable = nixpkgs-unstable.legacyPackages.${systemtype};
           commonModules = [
@@ -54,6 +65,7 @@
             ./system/user.nix
             ./system/locale.nix
             ./system/desktop.nix
+            ./system/theme.nix
             ./system/networking.nix
             ./system/audio.nix
             ./system/bluetooth.nix
@@ -78,12 +90,12 @@
             plasma-manager.homeManagerModules.plasma-manager
             catppuccin.homeModules.catppuccin
             ./home/home-manager.nix
+            ./home/theme.nix
+            ./home/kde.nix
             ./home/shell.nix
             ./home/wezterm.nix
             ./home/git.nix
             ./home/vim.nix
-            ./home/theme.nix
-            ./home/kde.nix
             ./home/firefox.nix
             ./home/conky.nix
           ];
@@ -93,6 +105,7 @@
             let
               myArgs = args // {
                 inherit me;
+                inherit theme;
                 inherit pkgs-unstable;
                 isLaptop = true;
               };
@@ -111,6 +124,7 @@
             let
               myArgs = args // {
                 inherit me;
+                inherit theme;
                 inherit pkgs-unstable;
                 isLaptop = true;
               };
@@ -129,6 +143,7 @@
             let
               myArgs = args // {
                 inherit me;
+                inherit theme;
                 inherit pkgs-unstable;
                 isLaptop = false;
               };
