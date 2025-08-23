@@ -22,7 +22,7 @@
 
   environment.persistence."/persist" = {
     directories = [
-      "/run/postgresql"
+      "/var/lib/postgresql"
     ];
   };
 }
