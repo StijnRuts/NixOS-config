@@ -31,6 +31,29 @@
     ];
   };
 
+  programs.neovim.extraConfig = ''
+    " Use "hybrid" (both absolute and relative) line numbers
+    set number relativenumber
+
+    " Use the system clipboard
+    set clipboard=unnamed
+
+    " Use space as the leader key
+    let mapleader=" "
+
+    " Use <leader><leader> to switch between buffers
+    nnoremap <leader><leader> :b#<CR>
+
+    " Press <tab>, get two spaces
+    set expandtab shiftwidth=2
+
+    " Show `▸▸` for tabs, `·` for tailing whitespace:
+    set list listchars=tab:▸▸,trail:·
+
+    " Enable mouse mode
+    set mouse=a
+  '';
+
   catppuccin.nvim.enable = true;
 
   home.file.".config/lazyvim".source = ./nvim;
