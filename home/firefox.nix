@@ -15,7 +15,7 @@
         "browser.urlbar.trimHttps" = false;
         "widget.use-xdg-desktop-portal.file-picker" = 1; # native file picker
         "browser.toolbars.bookmarks.visibility" = "never"; # no bookmark bar
-        "browser.newtabpage.activity-stream.topSitesRows" = 3;
+        "browser.newtabpage.activity-stream.topSitesRows" = 2;
         "browser.startup.page" = 3; # open previous windows and tabs on startup
         "devtools.selfxss.count" = 99; # allow pasting in console
         "browser.gesture.swipe.left" = "cmd_scrollLeft"; # disable scrolling trough history
