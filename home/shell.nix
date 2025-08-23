@@ -107,8 +107,8 @@
     daemon.enable = true;
     settings = {
       sync_address = "https://atuin.P520.local";
-      # session_path = config.age.secrets.atuin_session.path;
-      # key_path = config.age.secrets.atuin_key.path;
+      session_path = config.age.secrets.atuin_session.path;
+      key_path = config.age.secrets.atuin_key.path;
       show_help = false;
       show_tabs = false;
       show_preview = false;
