@@ -73,7 +73,7 @@
             ./system/impermanence.nix
             agenix.nixosModules.default
             { environment.systemPackages = [ agenix.packages.${systemtype}.default ]; }
-            ./secrets/list.nix
+            ./secrets/list_system.nix
             home-manager.nixosModules.home-manager
             homeManagerConfig
             catppuccin.nixosModules.catppuccin
@@ -102,7 +102,7 @@
           homeModules = [
             impermanence.homeManagerModules.impermanence
             agenix.homeManagerModules.default
-            ./secrets/list.nix
+            ./secrets/list_home.nix
             plasma-manager.homeManagerModules.plasma-manager
             catppuccin.homeModules.catppuccin
             ./home/home-manager.nix
@@ -114,6 +114,9 @@
             ./home/vim.nix
             ./home/firefox.nix
             ./home/conky.nix
+          ];
+          serverModules = [
+            ./server/atuin.nix
           ];
         in
         {
@@ -172,7 +175,8 @@
                 ./disko/P520.nix
                 ./hardware/P520.nix
               ]
-              ++ commonModules;
+              ++ commonModules
+              ++ serverModules;
             };
         };
     };
