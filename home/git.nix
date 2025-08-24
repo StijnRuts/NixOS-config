@@ -13,6 +13,7 @@
       core.editor = "nvim";
       init.defaultBranch = "main";
       pull.rebase = true;
+      rebase.autoStash = true;
     };
   };
 
