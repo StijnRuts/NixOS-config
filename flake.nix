@@ -73,7 +73,7 @@
             ./system/impermanence.nix
             agenix.nixosModules.default
             { environment.systemPackages = [ agenix.packages.${systemtype}.default ]; }
-            ./secrets/list_system.nix
+            ./secrets/age_identity.nix
             home-manager.nixosModules.home-manager
             homeManagerConfig
             catppuccin.nixosModules.catppuccin
@@ -102,7 +102,7 @@
           homeModules = [
             impermanence.homeManagerModules.impermanence
             agenix.homeManagerModules.default
-            ./secrets/list_home.nix
+            ./secrets/age_identity.nix
             plasma-manager.homeManagerModules.plasma-manager
             catppuccin.homeModules.catppuccin
             ./home/home-manager.nix

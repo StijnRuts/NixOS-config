@@ -4,7 +4,7 @@
     enable = true;
     host = "127.0.0.1";
     port = 1888;
-    openRegistration = true;
+    openRegistration = false;
   };
 
   services.caddy = {
@@ -13,6 +13,17 @@
       tls ${config.age.secrets.atuin_cert.path} ${config.age.secrets.atuin_cert_key.path}
       reverse_proxy http://127.0.0.1:1888
     '';
+  };
+
+  age.secrets.atuin_cert = {
+    file = ../secrets/atuin_cert.age;
+    owner = "caddy";
+    group = "caddy";
+  };
+  age.secrets.atuin_cert_key = {
+    file = ../secrets/atuin_cert_key.age;
+    owner = "caddy";
+    group = "caddy";
   };
 
   networking.firewall.allowedTCPPorts = [

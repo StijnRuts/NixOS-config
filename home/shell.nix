@@ -127,6 +127,11 @@
   };
   catppuccin.atuin.enable = true;
 
+  age.secrets = {
+    atuin_session.file = ../secrets/atuin_session.age;
+    atuin_key.file = ../secrets/atuin_key.age;
+  };
+
   programs.direnv = {
     enable = true;
     enableBashIntegration = false;
