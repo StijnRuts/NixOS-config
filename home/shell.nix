@@ -26,7 +26,12 @@
     completionInit = "autoload -Uz compinit && compinit && zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'"; # Case insensitive autocomplete
     history.ignoreDups = true;
     syntaxHighlighting.enable = true;
-    envExtra = "unsetopt BEEP";
+    initContent = ''
+      unsetopt BEEP # no beeping
+      bindkey "^[[3~" delete-char # fix delete key
+      bindkey "^[OH" beginning-of-line # fix home key
+      bindkey "^[OF" end-of-line # fix end key
+    '';
     plugins = [
       {
         name = "zsh-nix-shell";
