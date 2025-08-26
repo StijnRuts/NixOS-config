@@ -94,6 +94,18 @@
             icon = "https://noogle.dev/favicon.png";
             definedAliases = [ "n" ];
           };
+          "mn" = {
+            name = "MyNixOS";
+            urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
+            icon = "https://mynixos.com/favicon-32x32.png";
+            definedAliases = [ "mn" ];
+          };
+          "npv" = {
+            name = "Nix package versions";
+            urls = [ { template = "https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package={searchTerms}"; } ];
+            icon = "https://search.nixos.org/favicon.png";
+            definedAliases = [ "npv" ];
+          };
           "mdn" = {
             name = "MDN";
             urls = [ { template = "https://developer.mozilla.org/en-US/search?q={searchTerms}"; } ];
