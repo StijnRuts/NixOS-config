@@ -1,11 +1,11 @@
 default: run
 
 build:
-	nixos-rebuild build --show-trace --flake .
+	nixos-rebuild build --show-trace --log-format internal-json -v --flake . |& nom --json
 test:
-	sudo nixos-rebuild test --show-trace --flake .
+	sudo sh -c 'nixos-rebuild test --show-trace --log-format internal-json -v --flake . |& nom --json'
 run:
-	sudo nixos-rebuild switch --show-trace --flake .
+	sudo sh -c 'nixos-rebuild switch --show-trace --log-format internal-json -v --flake . |& nom --json'
 update:
 	sudo nix flake update
 format:

@@ -9,6 +9,7 @@
     gnumake
     nixfmt-rfc-style
     nixfmt-tree
+    nix-output-monitor
     killall
   ];
 
