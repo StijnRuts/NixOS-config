@@ -111,9 +111,6 @@
     enableZshIntegration = true;
     daemon.enable = true;
     settings = {
-      sync_address = "https://atuin.P520.local";
-      session_path = config.age.secrets.atuin_session.path;
-      key_path = config.age.secrets.atuin_key.path;
       show_help = false;
       show_tabs = false;
       show_preview = false;
@@ -126,11 +123,6 @@
     };
   };
   catppuccin.atuin.enable = true;
-
-  age.secrets = {
-    atuin_session.file = ../secrets/atuin_session.age;
-    atuin_key.file = ../secrets/atuin_key.age;
-  };
 
   programs.direnv = {
     enable = true;

@@ -117,7 +117,6 @@
             ./home/conky.nix
           ];
           serverModules = [
-            ./server/atuin.nix
           ];
         in
         {
