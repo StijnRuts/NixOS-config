@@ -81,7 +81,7 @@
             ./system/user.nix
             ./system/locale.nix
             ./system/desktop.nix
-            ./system/theme.nix
+            ./system/desktop-theme.nix
             ./system/networking.nix
             ./system/audio.nix
             ./system/bluetooth.nix
@@ -106,11 +106,13 @@
             plasma-manager.homeManagerModules.plasma-manager
             catppuccin.homeModules.catppuccin
             ./home/home-manager.nix
-            ./home/theme.nix
-            ./home/kde.nix
+            ./home/desktop-theme.nix
             ./home/energy.nix
-            ./home/shell.nix
+            ./home/kde.nix
+            ./home/dolphin.nix
+            ./home/konsole.nix
             ./home/wezterm.nix
+            ./home/shell.nix
             ./home/git.nix
             ./home/vim.nix
             ./home/firefox.nix

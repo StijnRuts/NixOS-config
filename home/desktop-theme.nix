@@ -91,20 +91,4 @@
       };
     };
   };
-
-  programs.konsole = {
-    enable = true;
-    customColorSchemes = {
-      "Catppuccin${theme.Flavor}" = ./catppuccin-${theme.flavor}.colorscheme;
-    };
-    defaultProfile = "Default";
-    profiles.default = {
-      name = "Default";
-      colorScheme = "Catppuccin${theme.Flavor}";
-      font = {
-        name = theme.monofont;
-        size = 11;
-      };
-    };
-  };
 }
