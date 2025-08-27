@@ -1,7 +1,9 @@
 {
   config,
   pkgs,
+  lib,
   me,
+  theme,
   ...
 }:
 {
@@ -130,6 +132,17 @@
     enableBashIntegration = false;
     enableZshIntegration = false; # Only enabled in WezTerm
     nix-direnv.enable = true;
+  };
+
+  # process-compose, used by devenv
+  home.file = {
+    ".config/process-compose/shortcuts.yaml".text = lib.generators.toYAML { } {
+      shortcuts.quit.shortcut = "q";
+    };
+    ".config/process-compose/settings.yaml".text = lib.generators.toYAML { } {
+      disable_exit_confirmation = true;
+      theme = "Catppuccin ${theme.Flavor}";
+    };
   };
 
   home.persistence."/persist/home/${me.username}" = {

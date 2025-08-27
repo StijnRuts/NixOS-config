@@ -107,9 +107,4 @@
       };
     };
   };
-
-  home.file.".config/process-compose/settings.yaml" = {
-    enable = true;
-    text = "theme: Catppuccin ${theme.Flavor}";
-  };
 }
