@@ -34,6 +34,10 @@
       bindkey "^[[3~" delete-char # fix delete key
       bindkey "^[OH" beginning-of-line # fix home key
       bindkey "^[OF" end-of-line # fix end key
+      bindkey "^[OA" up-line-or-history # fix up key
+      bindkey "^[OB" down-line-or-history # fix down key
+      bindkey "^[OC" forward-char # fix right key
+      bindkey "^[OD" backward-char # fix left key
     '';
     plugins = [
       {
