@@ -1,13 +1,13 @@
 default: run
 
 build:
-	nixos-rebuild build --show-trace --log-format internal-json -v --flake . |& nom --json
+	nh os build . # nixos-rebuild build --show-trace --flake .
 test:
-	sudo sh -c 'nixos-rebuild test --show-trace --log-format internal-json -v --flake . |& nom --json'
+	nh os test . # sudo nixos-rebuild test --show-trace --flake .
 run:
-	sudo sh -c 'nixos-rebuild switch --show-trace --log-format internal-json -v --flake . |& nom --json'
+	nh os switch . # sudo nixos-rebuild switch --show-trace --flake .
 update:
-	sudo nix flake update
+	nix flake update
 format:
 	treefmt .
 clean:
