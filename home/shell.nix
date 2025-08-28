@@ -99,8 +99,10 @@
     enableZshIntegration = false; # Only enabled in WezTerm
     attachExistingSession = false; # Set in WezTerm config
     settings = {
+      default_mode = "locked";
       pane_frames = false;
       show_startup_tips = false;
+      simplified_ui = true;
       session_serialization = true;
       pane_viewport_serialization = true;
       scrollback_lines_to_serialize = 500;

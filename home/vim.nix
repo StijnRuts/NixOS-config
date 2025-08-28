@@ -1,8 +1,10 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
   me,
+  theme,
   ...
 }:
 {
@@ -23,38 +25,120 @@
     ];
   };
 
+  ########### NVF ###########
 
-  ########### Basic nvim ###########
+  programs.nvf = {
+    enable = true;
+    settings.vim = {
+      viAlias = true;
+      vimAlias = true;
 
-  programs.neovim.extraLuaConfig = ''
-    -- Use "hybrid" (both absolute and relative) line numbers
-    vim.wo.number = true
-    vim.wo.relativenumber = true
+      globals = {
+        mapleader = " ";
+        maplocalleader = " ";
+      };
 
-    -- Use the system clipboard
-    vim.o.clipboard = "unnamed"
+      options = {
+        mouse = "a";
+        shiftwidth = 2;
+        tabstop = 4;
+        list = true;
+        listchars = "tab:» ,trail:·,nbsp:␣";
+      };
 
-    -- Use space as the leader key
-    vim.g.mapleader = " "
-    vim.g.maplocalleader = " "
+      binds.whichKey.enable = true;
 
-    -- Use <leader><leader> to switch between buffers
-    vim.keymap.set('n', '<leader><leader>', ':b#<CR>', { noremap = true })
+      statusline.lualine.enable = true;
 
-    -- Press <tab>, get two spaces
-    vim.o.expandtab = true
-    vim.o.shiftwidth = 2
+      tabline.nvimBufferline = {
+        enable = true;
+        setupOpts.options.numbers = "none";
+      };
 
-    -- Show `» ` for tabs, `·` for tailing whitespace
-    vim.o.list = true
-    vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+      visuals = {
+        nvim-scrollbar.enable = true;
+        nvim-web-devicons.enable = true;
+      };
 
-    -- Enable mouse mode
-    vim.o.mouse = 'a'
-  '';
+      ui = {
+        borders.enable = true;
+        noice.enable = true;
+      };
 
-  catppuccin.nvim.enable = true;
+      projects.project-nvim.enable = true;
+      session.nvim-session-manager.enable = false;
 
+      utility.motion.flash-nvim.enable = true;
+
+      telescope = {
+        enable = true;
+        mappings.findFiles = "<leader><leader>";
+      };
+
+      utility.yazi-nvim.enable = true;
+
+      git.enable = true;
+
+      terminal.toggleterm = {
+        enable = true;
+        setupOpts.direction = "float";
+        lazygit.enable = true;
+      };
+
+      lsp = {
+        enable = true;
+        # inlayHints.enable = true;
+        # lightbulb.enable = true;
+        # lspSignature.enable = true;
+        # lspconfig.enable = true;
+        # lspkind.enable = true;
+        # lspsaga.enable = true;
+        # nvim-docs-view.enable = true;
+        # otter-nvim.enable = true;
+        # trouble.enable = true;
+      };
+
+      debugger = {
+        nvim-dap = {
+          enable = true;
+          ui.enable = true;
+        };
+      };
+
+      languages = {
+        enableFormat = true;
+        enableTreesitter = true;
+        enableExtraDiagnostics = true;
+        enableDAP = true;
+
+        markdown.enable = true;
+        nix.enable = true;
+        lua.enable = true;
+        html.enable = true;
+        css.enable = true;
+        ts.enable = true;
+        php.enable = true;
+        sql.enable = true;
+        bash.enable = true;
+        haskell.enable = true;
+
+        # Temporary, prettier is not in nixpkgs 25.05
+        css.format.package = pkgs-unstable.prettier;
+        ts.format.package = pkgs-unstable.prettier;
+      };
+
+      autocomplete.blink-cmp.enable = true;
+
+      spellcheck.enable = true;
+
+      theme = {
+        enable = true;
+        name = "catppuccin";
+        style = theme.flavor;
+      };
+      statusline.lualine.theme = "catppuccin";
+    };
+  };
 
   ########### Lazyvim ###########
 

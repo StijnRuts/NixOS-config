@@ -82,9 +82,7 @@
           };
           "pm" = {
             name = "Plasma Manager Options";
-            urls = [
-              { template = "https://nix-community.github.io/plasma-manager/options.xhtml?query={searchTerms}"; }
-            ];
+            urls = [ { template = "https://nix-community.github.io/plasma-manager/options.xhtml"; } ];
             icon = "https://home-manager-options.extranix.com/images/favicon.png";
             definedAliases = [ "@pm" ];
           };
@@ -102,9 +100,17 @@
           };
           "npv" = {
             name = "Nix package versions";
-            urls = [ { template = "https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package={searchTerms}"; } ];
+            urls = [
+              { template = "https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package={searchTerms}"; }
+            ];
             icon = "https://search.nixos.org/favicon.png";
             definedAliases = [ "npv" ];
+          };
+          "nvf" = {
+            name = "NVF Options";
+            urls = [ { template = "https://notashelf.github.io/nvf/options.html"; } ];
+            icon = "https://neovim.io/favicon.ico";
+            definedAliases = [ "nvf" ];
           };
           "mdn" = {
             name = "MDN";

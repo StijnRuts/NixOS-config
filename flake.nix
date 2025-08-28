@@ -32,6 +32,10 @@
       url = "github:catppuccin/nix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -44,6 +48,7 @@
       home-manager,
       plasma-manager,
       catppuccin,
+      nvf,
       ...
     }@args:
     {
@@ -114,6 +119,7 @@
             ./home/wezterm.nix
             ./home/shell.nix
             ./home/git.nix
+            nvf.homeManagerModules.default
             ./home/vim.nix
             ./home/firefox.nix
             ./home/conky.nix
