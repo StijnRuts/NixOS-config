@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  me,
-  ...
-}:
+{ me, ... }:
 {
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;

@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  me,
-  ...
-}:
+{ lib, me, ... }:
 {
   programs.home-manager.enable = true;
   home.username = "${me.username}";

@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  theme,
-  ...
-}:
+{ theme, ... }:
 {
   programs.wezterm = {
     enable = true;

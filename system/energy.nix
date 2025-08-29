@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  isLaptop,
-  ...
-}:
+{ lib, isLaptop, ... }:
 (lib.optionalAttrs isLaptop {
   services.power-profiles-daemon.enable = false; # in favor of tlp
 

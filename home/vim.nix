@@ -1,8 +1,5 @@
 {
-  config,
-  pkgs,
   pkgs-unstable,
-  lib,
   me,
   theme,
   ...
@@ -75,7 +72,7 @@
       };
       keymaps = [
         {
-          mode = ["t"];
+          mode = [ "t" ];
           key = "<C-t>";
           action = "<C-\\><C-n>";
         }

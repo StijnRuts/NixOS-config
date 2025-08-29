@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
 {
   time.timeZone = "Europe/Brussels";
 

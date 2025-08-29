@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   me,
@@ -154,16 +153,16 @@
 
   # TODO: Wait for PR: https://github.com/nix-community/home-manager/pull/7736
   /*
-  programs.process-compose = {
-    enable = true;
-    settings = {
-      disable_exit_confirmation = true;
-      theme = "Catppuccin ${theme.Flavor}";
+    programs.process-compose = {
+      enable = true;
+      settings = {
+        disable_exit_confirmation = true;
+        theme = "Catppuccin ${theme.Flavor}";
+      };
+      shortcuts = {
+        quit.shortcut = "q";
+      };
     };
-    shortcuts = {
-      quit.shortcut = "q";
-    };
-  };
   */
 
   home.persistence."/persist/home/${me.username}" = {

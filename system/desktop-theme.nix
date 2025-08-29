@@ -1,11 +1,6 @@
+{ theme, ... }:
 {
-  config,
-  pkgs,
-  theme,
-  ...
-}:
-{
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     theme.fontPkg
   ];
 

@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  me,
-  ...
-}:
+{ pkgs, me, ... }:
 {
   environment.systemPackages = with pkgs; [
     distrobox
