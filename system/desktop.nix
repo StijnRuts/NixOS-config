@@ -9,6 +9,7 @@
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
+  # Copy KDE display config to SDDM
   system.activationScripts.sddmCopyDisplayConfig.text = ''
     source_file="/home/${me.username}/.config/kwinoutputconfig.json"
     dest_file="/var/lib/sddm/.config/kwinoutputconfig.json"
