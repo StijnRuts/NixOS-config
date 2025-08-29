@@ -94,6 +94,7 @@
             ./system/energy.nix
             ./system/apps.nix
             ./system/distrobox.nix
+            ./system/virt-manager.nix
             ./system/ollama.nix
           ];
           homeManagerConfig = {
