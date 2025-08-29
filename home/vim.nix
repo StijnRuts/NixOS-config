@@ -16,17 +16,6 @@
     defaultEditor = true;
   };
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
-    directories = [
-      ".cache/nvim"
-      ".local/share/nvim"
-      ".local/state/nvim"
-    ];
-  };
-
-  ########### NVF ###########
-
   programs.nvf = {
     enable = true;
     settings.vim = {
@@ -140,40 +129,12 @@
     };
   };
 
-  ########### Lazyvim ###########
-
-  programs.neovim = {
-    withPython3 = true;
-    withNodeJs = true;
-    extraPackages = with pkgs; [
-      lua51Packages.lua
-      lua51Packages.luarocks
-      lua51Packages.jsregexp
-      fd
-      fzf
-      gcc
-      git
-      lazygit
-      ripgrep
-      tree-sitter
-      unzip
-      wget
-      xclip
+  home.persistence."/persist/home/${me.username}" = {
+    allowOther = false;
+    directories = [
+      ".cache/nvim"
+      ".local/share/nvim"
+      ".local/state/nvim"
     ];
   };
-
-  # systemctl --user status nvim-config.service
-  # journalctl --user -u nvim-config.service
-  systemd.user.services.nvim-config = {
-    Service.ExecStart = "${pkgs.coreutils}/bin/ln -sf /home/${me.username}/NixOS/home/lazyvim /home/${me.username}/.config";
-    Install.WantedBy = [ "default.target" ];
-    Unit.After = [ "default.target" ];
-    Service.Type = "oneshot";
-  };
-
-  home.shellAliases = {
-    "lazyvim" = "NVIM_APPNAME=lazyvim nvim";
-    "lv" = "lazyvim";
-  };
-
 }
