@@ -73,18 +73,19 @@
         setupOpts.direction = "float";
         lazygit.enable = true;
       };
+      keymaps = [
+        {
+          mode = ["t"];
+          key = "<C-t>";
+          action = "<C-\\><C-n>";
+        }
+      ];
 
       lsp = {
         enable = true;
-        # inlayHints.enable = true;
-        # lightbulb.enable = true;
-        # lspSignature.enable = true;
-        # lspconfig.enable = true;
-        # lspkind.enable = true;
-        # lspsaga.enable = true;
-        # nvim-docs-view.enable = true;
-        # otter-nvim.enable = true;
-        # trouble.enable = true;
+        nvim-docs-view.enable = true;
+        otter-nvim.enable = true;
+        trouble.enable = true;
       };
 
       debugger = {
