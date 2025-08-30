@@ -36,6 +36,9 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
   };
   outputs =
     {
@@ -49,6 +52,7 @@
       plasma-manager,
       catppuccin,
       nvf,
+      nix-flatpak,
       ...
     }@args:
     {
@@ -81,11 +85,11 @@
             ./secrets/age_identity.nix
             home-manager.nixosModules.home-manager
             homeManagerConfig
-            catppuccin.nixosModules.catppuccin
             ./system/nix.nix
             ./system/user.nix
             ./system/locale.nix
             ./system/desktop.nix
+            catppuccin.nixosModules.catppuccin
             ./system/desktop-theme.nix
             ./system/networking.nix
             ./system/audio.nix
@@ -93,6 +97,8 @@
             ./system/printing.nix
             ./system/energy.nix
             ./system/apps.nix
+            nix-flatpak.nixosModules.nix-flatpak
+            ./system/flatpak.nix
             ./system/distrobox.nix
             ./system/virt-manager.nix
             ./system/ollama.nix
@@ -109,11 +115,11 @@
             impermanence.homeManagerModules.impermanence
             agenix.homeManagerModules.default
             ./secrets/age_identity.nix
-            plasma-manager.homeManagerModules.plasma-manager
-            catppuccin.homeModules.catppuccin
             ./home/home-manager.nix
+            catppuccin.homeModules.catppuccin
             ./home/desktop-theme.nix
             ./home/energy.nix
+            plasma-manager.homeManagerModules.plasma-manager
             ./home/kde.nix
             ./home/dolphin.nix
             ./home/konsole.nix

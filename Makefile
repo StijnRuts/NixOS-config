@@ -10,6 +10,8 @@ update:
 	nix flake update
 format:
 	treefmt .
+lint:
+	statix check .
 clean:
 	sudo nix-collect-garbage --delete-older-than 30d
 
