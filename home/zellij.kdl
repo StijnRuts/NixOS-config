@@ -1,0 +1,66 @@
+keybinds {
+  shared_except "locked" {
+    unbind "Ctrl g"
+    bind "Alt g" { SwitchToMode "Locked"; }
+    unbind "Ctrl q"
+    bind "Alt q" { Quit; }
+  }
+  shared_except "tab" "locked" {
+    unbind "Ctrl t"
+    bind "Alt t" { SwitchToMode "Tab"; }
+  }
+  shared_except "pane" "locked" {
+    unbind "Ctrl p"
+    bind "Alt p" { SwitchToMode "Pane"; }
+  }
+  shared_except "session" "locked" {
+    unbind "Ctrl o"
+    bind "Alt o" { SwitchToMode "Session"; }
+  }
+  shared_except "resize" "locked" {
+    unbind "Ctrl n"
+    bind "Alt n" { SwitchToMode "Resize"; }
+  }
+  shared_except "move" "locked" {
+    unbind "Ctrl h"
+    bind "Alt h" { SwitchToMode "Move"; }
+  }
+  shared_except "scroll" "locked" {
+    unbind "Ctrl s"
+    bind "Alt s" { SwitchToMode "Scroll"; }
+  }
+  locked {
+    unbind "Ctrl g"
+    bind "Alt g" { SwitchToMode "Normal"; }
+  }
+  tab {
+    unbind "Ctrl t"
+    bind "Alt t" { SwitchToMode "Normal"; }
+  }
+  pane {
+    unbind "Ctrl p"
+    bind "Alt p" { SwitchToMode "Normal"; }
+  }
+  session {
+    unbind "Ctrl o"
+    bind "Alt o" { SwitchToMode "Normal"; }
+    unbind "Ctrl s"
+    bind "Alt s" { SwitchToMode "Scroll"; }
+  }
+  resize {
+    unbind "Ctrl n"
+    bind "Alt n" { SwitchToMode "Normal"; }
+  }
+  move {
+    unbind "Ctrl h"
+    bind "Alt h" { SwitchToMode "Normal"; }
+  }
+  scroll {
+    unbind "Ctrl s"
+    bind "Alt s" { SwitchToMode "Normal"; }
+  }
+  search {
+    unbind "Ctrl s"
+    bind "Alt s" { SwitchToMode "Normal"; }
+  }
+}

@@ -44,6 +44,10 @@
       visuals = {
         nvim-scrollbar.enable = true;
         nvim-web-devicons.enable = true;
+        indent-blankline = {
+          enable = true;
+          setupOpts.scope.enabled = true;
+        };
       };
 
       ui = {

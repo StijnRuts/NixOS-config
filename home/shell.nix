@@ -103,7 +103,6 @@
     enableZshIntegration = false; # Only enabled in WezTerm
     attachExistingSession = false; # Set in WezTerm config
     settings = {
-      default_mode = "locked";
       pane_frames = false;
       show_startup_tips = false;
       simplified_ui = true;
@@ -113,6 +112,11 @@
     };
   };
   catppuccin.zellij.enable = true;
+
+  # Change ctrl keybinds to alt
+  xdg.configFile."zellij/config.kdl" = {
+    text = builtins.readFile ./zellij.kdl;
+  };
 
   programs.atuin = {
     enable = true;
