@@ -28,16 +28,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    catppuccin = {
-      url = "github:catppuccin/nix/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nvf = {
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
+    theme = {
+      url = "path:theme";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
@@ -47,18 +47,6 @@
         name = "Stijn Ruts";
         username = "stijn";
         gitEmail = "git@stijnruts.be";
-      };
-
-      theme = {
-        flavor = "mocha";
-        Flavor = "Mocha";
-        accent = "yellow";
-        Accent = "Yellow";
-        font = "Ubuntu";
-        monofont = "UbuntuMono Nerd Font";
-        fontPkg = inputs.nixpkgs.legacyPackages.x86_64-linux.ubuntu_font_family;
-        monofontPkg = inputs.nixpkgs.legacyPackages.x86_64-linux.nerd-fonts.ubuntu-mono;
-        backgroundColor = "30,30,40";
       };
 
       nixosModules = [
@@ -74,8 +62,6 @@
         ./system/user.nix
         ./system/locale.nix
         ./system/desktop.nix
-        inputs.catppuccin.nixosModules.catppuccin
-        ./system/desktop-theme.nix
         ./system/networking.nix
         ./system/audio.nix
         ./system/bluetooth.nix
@@ -87,7 +73,7 @@
         ./system/distrobox.nix
         ./system/virt-manager.nix
         ./system/ollama.nix
-      ];
+      ] ++ inputs.theme.nixosModules;
 
       homeManagerConfig = {
         home-manager = {
@@ -103,8 +89,6 @@
         inputs.agenix.homeManagerModules.default
         ./secrets/age_identity.nix
         ./home/home-manager.nix
-        inputs.catppuccin.homeModules.catppuccin
-        ./home/desktop-theme.nix
         ./home/energy.nix
         inputs.plasma-manager.homeManagerModules.plasma-manager
         ./home/kde.nix
@@ -117,7 +101,7 @@
         ./home/vim.nix
         ./home/firefox.nix
         ./home/conky.nix
-      ];
+      ] ++ inputs.theme.homeModules;
 
       pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
 
@@ -125,7 +109,8 @@
         X201 =
           let
             myArgs = {
-              inherit (self) me theme pkgs-unstable;
+              inherit (self) me pkgs-unstable;
+              theme = inputs.theme.config;
               isLaptop = true;
               isServer = false;
             };
@@ -143,7 +128,8 @@
         T420 =
           let
             myArgs = {
-              inherit (self) me theme pkgs-unstable;
+              inherit (self) me pkgs-unstable;
+              theme = inputs.theme.config;
               isLaptop = true;
               isServer = false;
             };
@@ -161,7 +147,8 @@
         P520 =
           let
             myArgs = {
-              inherit (self) me theme pkgs-unstable;
+              inherit (self) me pkgs-unstable;
+              theme = inputs.theme.config;
               isLaptop = false;
               isServer = true;
             };

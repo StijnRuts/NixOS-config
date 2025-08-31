@@ -28,6 +28,7 @@
     "catppuccin": {
       "inputs": {
         "nixpkgs": [
+          "theme",
           "nixpkgs"
         ]
       },
@@ -253,7 +254,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "catppuccin": "catppuccin",
         "disko": "disko",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
@@ -261,7 +261,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvf": "nvf",
-        "plasma-manager": "plasma-manager"
+        "plasma-manager": "plasma-manager",
+        "theme": "theme"
       }
     },
     "systems": {
@@ -293,6 +294,23 @@
         "repo": "default",
         "type": "github"
       }
+    },
+    "theme": {
+      "inputs": {
+        "catppuccin": "catppuccin",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "theme",
+        "type": "path"
+      },
+      "original": {
+        "path": "theme",
+        "type": "path"
+      },
+      "parent": []
     }
   },
   "root": "root",
