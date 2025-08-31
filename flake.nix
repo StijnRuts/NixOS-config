@@ -41,161 +41,141 @@
     };
   };
   outputs =
+    inputs@{ self, ... }:
     {
-      self,
-      nixpkgs,
-      nixpkgs-unstable,
-      disko,
-      impermanence,
-      agenix,
-      home-manager,
-      plasma-manager,
-      catppuccin,
-      nvf,
-      nix-flatpak,
-      ...
-    }@args:
-    {
-      nixosConfigurations =
-        let
-          systemtype = "x86_64-linux";
-          me = {
-            name = "Stijn Ruts";
-            username = "stijn";
-            gitEmail = "git@stijnruts.be";
-          };
-          theme = {
-            flavor = "mocha";
-            Flavor = "Mocha";
-            accent = "yellow";
-            Accent = "Yellow";
-            font = "Ubuntu";
-            monofont = "UbuntuMono Nerd Font";
-            fontPkg = nixpkgs.legacyPackages.${systemtype}.ubuntu_font_family;
-            monofontPkg = nixpkgs.legacyPackages.${systemtype}.nerd-fonts.ubuntu-mono;
-            backgroundColor = "30,30,40";
-          };
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.${systemtype};
-          commonModules = [
-            disko.nixosModules.disko
-            impermanence.nixosModules.impermanence
-            ./system/impermanence.nix
-            agenix.nixosModules.default
-            { environment.systemPackages = [ agenix.packages.${systemtype}.default ]; }
-            ./secrets/age_identity.nix
-            home-manager.nixosModules.home-manager
-            homeManagerConfig
-            ./system/nix.nix
-            ./system/user.nix
-            ./system/locale.nix
-            ./system/desktop.nix
-            catppuccin.nixosModules.catppuccin
-            ./system/desktop-theme.nix
-            ./system/networking.nix
-            ./system/audio.nix
-            ./system/bluetooth.nix
-            ./system/printing.nix
-            ./system/energy.nix
-            ./system/apps.nix
-            nix-flatpak.nixosModules.nix-flatpak
-            ./system/flatpak.nix
-            ./system/distrobox.nix
-            ./system/virt-manager.nix
-            ./system/ollama.nix
-          ];
-          homeManagerConfig = {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "hmbackup";
-              users.${me.username}.imports = homeModules;
-            };
-          };
-          homeModules = [
-            impermanence.homeManagerModules.impermanence
-            agenix.homeManagerModules.default
-            ./secrets/age_identity.nix
-            ./home/home-manager.nix
-            catppuccin.homeModules.catppuccin
-            ./home/desktop-theme.nix
-            ./home/energy.nix
-            plasma-manager.homeManagerModules.plasma-manager
-            ./home/kde.nix
-            ./home/dolphin.nix
-            ./home/konsole.nix
-            ./home/wezterm.nix
-            ./home/shell.nix
-            ./home/git.nix
-            nvf.homeManagerModules.default
-            ./home/vim.nix
-            ./home/firefox.nix
-            ./home/conky.nix
-          ];
-          serverModules = [
-          ];
-        in
-        {
-          X201 =
-            let
-              myArgs = args // {
-                inherit me;
-                inherit theme;
-                inherit pkgs-unstable;
-                isLaptop = true;
-                isServer = false;
-              };
-            in
-            nixpkgs.lib.nixosSystem {
-              system = systemtype;
-              specialArgs = myArgs;
-              modules = [
-                { home-manager.extraSpecialArgs = myArgs; }
-                ./disko/X201.nix
-                ./hardware/X201.nix
-              ]
-              ++ commonModules;
-            };
-          T420 =
-            let
-              myArgs = args // {
-                inherit me;
-                inherit theme;
-                inherit pkgs-unstable;
-                isLaptop = true;
-                isServer = false;
-              };
-            in
-            nixpkgs.lib.nixosSystem {
-              system = systemtype;
-              specialArgs = myArgs;
-              modules = [
-                { home-manager.extraSpecialArgs = myArgs; }
-                ./disko/T420.nix
-                ./hardware/T420.nix
-              ]
-              ++ commonModules;
-            };
-          P520 =
-            let
-              myArgs = args // {
-                inherit me;
-                inherit theme;
-                inherit pkgs-unstable;
-                isLaptop = false;
-                isServer = true;
-              };
-            in
-            nixpkgs.lib.nixosSystem {
-              system = systemtype;
-              specialArgs = myArgs;
-              modules = [
-                { home-manager.extraSpecialArgs = myArgs; }
-                ./disko/P520.nix
-                ./hardware/P520.nix
-              ]
-              ++ commonModules
-              ++ serverModules;
-            };
+      me = {
+        name = "Stijn Ruts";
+        username = "stijn";
+        gitEmail = "git@stijnruts.be";
+      };
+
+      theme = {
+        flavor = "mocha";
+        Flavor = "Mocha";
+        accent = "yellow";
+        Accent = "Yellow";
+        font = "Ubuntu";
+        monofont = "UbuntuMono Nerd Font";
+        fontPkg = inputs.nixpkgs.legacyPackages.x86_64-linux.ubuntu_font_family;
+        monofontPkg = inputs.nixpkgs.legacyPackages.x86_64-linux.nerd-fonts.ubuntu-mono;
+        backgroundColor = "30,30,40";
+      };
+
+      nixosModules = [
+        inputs.disko.nixosModules.disko
+        inputs.impermanence.nixosModules.impermanence
+        ./system/impermanence.nix
+        inputs.agenix.nixosModules.default
+        { environment.systemPackages = [ inputs.agenix.packages.x86_64-linux.default ]; }
+        ./secrets/age_identity.nix
+        inputs.home-manager.nixosModules.home-manager
+        self.homeManagerConfig
+        ./system/nix.nix
+        ./system/user.nix
+        ./system/locale.nix
+        ./system/desktop.nix
+        inputs.catppuccin.nixosModules.catppuccin
+        ./system/desktop-theme.nix
+        ./system/networking.nix
+        ./system/audio.nix
+        ./system/bluetooth.nix
+        ./system/printing.nix
+        ./system/energy.nix
+        ./system/apps.nix
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+        ./system/flatpak.nix
+        ./system/distrobox.nix
+        ./system/virt-manager.nix
+        ./system/ollama.nix
+      ];
+
+      homeManagerConfig = {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          backupFileExtension = "hmbackup";
+          users.${self.me.username}.imports = self.homeModules;
         };
+      };
+
+      homeModules = [
+        inputs.impermanence.homeManagerModules.impermanence
+        inputs.agenix.homeManagerModules.default
+        ./secrets/age_identity.nix
+        ./home/home-manager.nix
+        inputs.catppuccin.homeModules.catppuccin
+        ./home/desktop-theme.nix
+        ./home/energy.nix
+        inputs.plasma-manager.homeManagerModules.plasma-manager
+        ./home/kde.nix
+        ./home/dolphin.nix
+        ./home/konsole.nix
+        ./home/wezterm.nix
+        ./home/shell.nix
+        ./home/git.nix
+        inputs.nvf.homeManagerModules.default
+        ./home/vim.nix
+        ./home/firefox.nix
+        ./home/conky.nix
+      ];
+
+      pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+
+      nixosConfigurations = {
+        X201 =
+          let
+            myArgs = {
+              inherit (self) me theme pkgs-unstable;
+              isLaptop = true;
+              isServer = false;
+            };
+          in
+          inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = myArgs;
+            modules = [
+              { home-manager.extraSpecialArgs = myArgs; }
+              ./disko/X201.nix
+              ./hardware/X201.nix
+            ]
+            ++ self.nixosModules;
+          };
+        T420 =
+          let
+            myArgs = {
+              inherit (self) me theme pkgs-unstable;
+              isLaptop = true;
+              isServer = false;
+            };
+          in
+          inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = myArgs;
+            modules = [
+              { home-manager.extraSpecialArgs = myArgs; }
+              ./disko/T420.nix
+              ./hardware/T420.nix
+            ]
+            ++ self.nixosModules;
+          };
+        P520 =
+          let
+            myArgs = {
+              inherit (self) me theme pkgs-unstable;
+              isLaptop = false;
+              isServer = true;
+            };
+          in
+          inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = myArgs;
+            modules = [
+              { home-manager.extraSpecialArgs = myArgs; }
+              ./disko/P520.nix
+              ./hardware/P520.nix
+            ]
+            ++ self.nixosModules;
+          };
+      };
     };
 }
