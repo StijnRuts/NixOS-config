@@ -41,11 +41,13 @@
             name = "org.kde.plasma.icontasks";
             config = {
               # ls /run/current-system/sw/share/applications/
+              # ls /var/lib/flatpak/app/???/current/active/files/share/applications
               launchers = [
                 "applications:org.kde.konsole.desktop"
                 "applications:org.wezfurlong.wezterm.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:firefox.desktop"
+                "applications:app.zen_browser.zen.desktop"
               ];
             };
           }
