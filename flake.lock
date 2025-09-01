@@ -111,6 +111,17 @@
         "type": "github"
       }
     },
+    "energy": {
+      "locked": {
+        "path": "energy",
+        "type": "path"
+      },
+      "original": {
+        "path": "energy",
+        "type": "path"
+      },
+      "parent": []
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -188,20 +199,6 @@
       "parent": []
     },
     "impermanence": {
-      "inputs": {
-        "impermanence": "impermanence_2"
-      },
-      "locked": {
-        "path": "impermanence",
-        "type": "path"
-      },
-      "original": {
-        "path": "impermanence",
-        "type": "path"
-      },
-      "parent": []
-    },
-    "impermanence_2": {
       "locked": {
         "lastModified": 1737831083,
         "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",
@@ -333,12 +330,13 @@
       "inputs": {
         "KDE": "KDE",
         "apps": "apps",
+        "energy": "energy",
         "home-manager": "home-manager",
         "hosts": "hosts",
-        "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "secrets": "secrets",
+        "system": "system",
         "theme": "theme",
         "user": "user"
       }
@@ -359,6 +357,26 @@
       },
       "original": {
         "path": "secrets",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "system": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "impermanence": "impermanence",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "system",
+        "type": "path"
+      },
+      "original": {
+        "path": "system",
         "type": "path"
       },
       "parent": []
