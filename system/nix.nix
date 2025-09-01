@@ -7,11 +7,7 @@
     "flakes"
   ];
 
-  # For devenv
-  nix.settings.trusted-users = [
-    "root"
-    "${me.username}"
-  ];
+  nix.settings.trusted-users = [ "root" ];
 
   environment.persistence."/persist" = {
     directories = [

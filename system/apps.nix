@@ -17,6 +17,11 @@
     pkgs-unstable.devenv
   ];
 
+  # For devenv
+  nix.settings.trusted-users = [
+    "${me.username}"
+  ];
+
   nixpkgs.config.permittedInsecurePackages = [
     "beekeeper-studio-5.1.5"
   ];

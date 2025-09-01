@@ -302,7 +302,8 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvf": "nvf",
         "secrets": "secrets",
-        "theme": "theme"
+        "theme": "theme",
+        "user": "user"
       }
     },
     "secrets": {
@@ -368,6 +369,17 @@
       },
       "original": {
         "path": "theme",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "user": {
+      "locked": {
+        "path": "user",
+        "type": "path"
+      },
+      "original": {
+        "path": "user",
         "type": "path"
       },
       "parent": []

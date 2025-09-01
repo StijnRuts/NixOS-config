@@ -24,6 +24,9 @@
     impermanence = {
       url = "path:impermanence";
     };
+    user = {
+      url = "path:user";
+    };
     secrets = {
       url = "path:secrets";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,23 +48,17 @@
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
       impermanenceModules = inputs.impermanence.modules;
+      userModules = inputs.user.modules;
       secretsModules = inputs.secrets.modules;
       KDEModules = inputs.KDE.modules;
       themeModules = inputs.theme.modules;
     in
     {
-      me = {
-        name = "Stijn Ruts";
-        username = "stijn";
-        gitEmail = "git@stijnruts.be";
-      };
-
       nixosModules = [
         inputs.disko.nixosModules.disko
         inputs.home-manager.nixosModules.home-manager
         self.homeManagerConfig
         ./system/nix.nix
-        ./system/user.nix
         ./system/locale.nix
         ./system/networking.nix
         ./system/audio.nix
@@ -76,6 +73,7 @@
         ./system/ollama.nix
       ]
       ++ impermanenceModules.nixos
+      ++ userModules.nixos
       ++ secretsModules.nixos
       ++ KDEModules.nixos
       ++ themeModules.nixos;
@@ -85,7 +83,7 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           backupFileExtension = "hmbackup";
-          users.${self.me.username}.imports = self.homeModules;
+          users.${userModules.settings.username}.imports = self.homeModules;
         };
       };
 
@@ -101,6 +99,7 @@
         ./home/conky.nix
       ]
       ++ impermanenceModules.home
+      ++ userModules.home
       ++ secretsModules.home
       ++ KDEModules.home
       ++ themeModules.home;
@@ -109,8 +108,8 @@
         X201 =
           let
             myArgs = {
-              inherit (self) me;
               inherit pkgs-unstable;
+              me = userModules.settings;
               theme = themeModules.settings;
               isLaptop = true;
               isServer = false;
@@ -129,8 +128,8 @@
         T420 =
           let
             myArgs = {
-              inherit (self) me;
               inherit pkgs-unstable;
+              me = userModules.settings;
               theme = themeModules.settings;
               isLaptop = true;
               isServer = false;
@@ -149,8 +148,8 @@
         P520 =
           let
             myArgs = {
-              inherit (self) me;
               inherit pkgs-unstable;
+              me = userModules.settings;
               theme = themeModules.settings;
               isLaptop = false;
               isServer = true;
