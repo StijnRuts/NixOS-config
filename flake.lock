@@ -22,14 +22,18 @@
     },
     "agenix": {
       "inputs": {
-        "darwin": [],
+        "darwin": [
+          "secrets"
+        ],
         "home-manager": [
+          "secrets",
           "home-manager"
         ],
         "nixpkgs": [
+          "secrets",
           "nixpkgs"
         ],
-        "systems": "systems"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1754433428,
@@ -246,7 +250,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_2"
+        "systems": "systems"
       },
       "locked": {
         "lastModified": 1755463179,
@@ -290,7 +294,6 @@
     "root": {
       "inputs": {
         "KDE": "KDE",
-        "agenix": "agenix",
         "disko": "disko",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
@@ -298,8 +301,29 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvf": "nvf",
+        "secrets": "secrets",
         "theme": "theme"
       }
+    },
+    "secrets": {
+      "inputs": {
+        "agenix": "agenix",
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "secrets",
+        "type": "path"
+      },
+      "original": {
+        "path": "secrets",
+        "type": "path"
+      },
+      "parent": []
     },
     "systems": {
       "locked": {

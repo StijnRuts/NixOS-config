@@ -10,12 +10,6 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.darwin.follows = "";
-    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +23,11 @@
     };
     impermanence = {
       url = "path:impermanence";
+    };
+    secrets = {
+      url = "path:secrets";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
     KDE = {
       url = "path:KDE";
@@ -46,6 +45,7 @@
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
       impermanenceModules = inputs.impermanence.modules;
+      secretsModules = inputs.secrets.modules;
       KDEModules = inputs.KDE.modules;
       themeModules = inputs.theme.modules;
     in
@@ -58,9 +58,6 @@
 
       nixosModules = [
         inputs.disko.nixosModules.disko
-        inputs.agenix.nixosModules.default
-        { environment.systemPackages = [ inputs.agenix.packages.x86_64-linux.default ]; }
-        ./secrets/age_identity.nix
         inputs.home-manager.nixosModules.home-manager
         self.homeManagerConfig
         ./system/nix.nix
@@ -79,6 +76,7 @@
         ./system/ollama.nix
       ]
       ++ impermanenceModules.nixos
+      ++ secretsModules.nixos
       ++ KDEModules.nixos
       ++ themeModules.nixos;
 
@@ -92,8 +90,6 @@
       };
 
       homeModules = [
-        inputs.agenix.homeManagerModules.default
-        ./secrets/age_identity.nix
         ./home/home-manager.nix
         ./home/energy.nix
         ./home/wezterm.nix
@@ -105,6 +101,7 @@
         ./home/conky.nix
       ]
       ++ impermanenceModules.home
+      ++ secretsModules.home
       ++ KDEModules.home
       ++ themeModules.home;
 
