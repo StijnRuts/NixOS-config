@@ -20,7 +20,7 @@
         ./sddm.nix
       ];
       home = [
-        inputs.plasma-manager.homeManagerModules.plasma-manager
+        inputs.plasma-manager.homeModules.plasma-manager
         ./plasma.nix
         ./dolphin.nix
         ./konsole.nix

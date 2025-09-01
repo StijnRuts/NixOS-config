@@ -147,6 +147,20 @@
       }
     },
     "impermanence": {
+      "inputs": {
+        "impermanence": "impermanence_2"
+      },
+      "locked": {
+        "path": "impermanence",
+        "type": "path"
+      },
+      "original": {
+        "path": "impermanence",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "impermanence_2": {
       "locked": {
         "lastModified": 1737831083,
         "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",

@@ -10,9 +10,6 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence = {
-      url = "github:nix-community/impermanence";
-    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +27,9 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
+    impermanence = {
+      url = "path:impermanence";
+    };
     KDE = {
       url = "path:KDE";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +45,7 @@
     let
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+      impermanenceModules = inputs.impermanence.modules;
       KDEModules = inputs.KDE.modules;
       themeModules = inputs.theme.modules;
     in
@@ -57,8 +58,6 @@
 
       nixosModules = [
         inputs.disko.nixosModules.disko
-        inputs.impermanence.nixosModules.impermanence
-        ./system/impermanence.nix
         inputs.agenix.nixosModules.default
         { environment.systemPackages = [ inputs.agenix.packages.x86_64-linux.default ]; }
         ./secrets/age_identity.nix
@@ -79,6 +78,7 @@
         ./system/virt-manager.nix
         ./system/ollama.nix
       ]
+      ++ impermanenceModules.nixos
       ++ KDEModules.nixos
       ++ themeModules.nixos;
 
@@ -92,7 +92,6 @@
       };
 
       homeModules = [
-        inputs.impermanence.homeManagerModules.impermanence
         inputs.agenix.homeManagerModules.default
         ./secrets/age_identity.nix
         ./home/home-manager.nix
@@ -105,6 +104,7 @@
         ./home/firefox.nix
         ./home/conky.nix
       ]
+      ++ impermanenceModules.home
       ++ KDEModules.home
       ++ themeModules.home;
 
