@@ -49,6 +49,24 @@
         "type": "github"
       }
     },
+    "apps": {
+      "inputs": {
+        "nix-flatpak": "nix-flatpak",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nvf": "nvf"
+      },
+      "locked": {
+        "path": "apps",
+        "type": "path"
+      },
+      "original": {
+        "path": "apps",
+        "type": "path"
+      },
+      "parent": []
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": [
@@ -112,6 +130,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
+          "apps",
           "nvf",
           "nixpkgs"
         ]
@@ -199,11 +218,11 @@
     },
     "mnw": {
       "locked": {
-        "lastModified": 1748710831,
-        "narHash": "sha256-eZu2yH3Y2eA9DD3naKWy/sTxYS5rPK2hO7vj8tvUCSU=",
+        "lastModified": 1756580127,
+        "narHash": "sha256-XK+ZQWjnd96Uko73jY1dc23ksnuWnF/Myc4rT/LQOmc=",
         "owner": "Gerg-L",
         "repo": "mnw",
-        "rev": "cff958a4e050f8d917a6ff3a5624bc4681c6187d",
+        "rev": "ecdb5ba1b08ac198d9e9bfbf9de3b234fb1eb252",
         "type": "github"
       },
       "original": {
@@ -266,16 +285,17 @@
         "flake-parts": "flake-parts",
         "mnw": "mnw",
         "nixpkgs": [
+          "apps",
           "nixpkgs"
         ],
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1755463179,
-        "narHash": "sha256-5Ggb1Mhf7ZlRgGi2puCa2PvWs6KbMnWBlW6KW7Vf79Y=",
+        "lastModified": 1756668885,
+        "narHash": "sha256-K2B+szngrw1tfzkrAs49HGkK5hlUGIKV0+2Z9ndnAuA=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "03833118267ad32226b014b360692bdce9d6e082",
+        "rev": "bf485ab9b6db5610ee93b90c94f1fd2afb4eb582",
         "type": "github"
       },
       "original": {
@@ -312,13 +332,12 @@
     "root": {
       "inputs": {
         "KDE": "KDE",
+        "apps": "apps",
         "home-manager": "home-manager",
         "hosts": "hosts",
         "impermanence": "impermanence",
-        "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nvf": "nvf",
         "secrets": "secrets",
         "theme": "theme",
         "user": "user"

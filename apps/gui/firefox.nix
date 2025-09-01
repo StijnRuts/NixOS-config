@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  me,
+  ...
+}:
 {
   programs.firefox = {
     enable = true;
@@ -187,4 +192,12 @@
     };
   };
   home.sessionVariables.DEFAULT_BROWSER = "${config.programs.firefox.package}/bin/firefox";
+
+  home.persistence."/persist/home/${me.username}" = {
+    allowOther = false;
+    directories = [
+      ".mozilla"
+      ".cache/mozilla"
+    ];
+  };
 }

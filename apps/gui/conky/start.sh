@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CONFIGDIR=~/NixOS/home/conky
+CONFIGDIR=~/NixOS/apps/gui/conky
 
 case $(hostname) in
 

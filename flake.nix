@@ -10,13 +10,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf = {
-      url = "github:NotAShelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak/?ref=latest";
-    };
     impermanence = {
       url = "path:impermanence";
     };
@@ -39,6 +32,10 @@
     };
     theme = {
       url = "path:theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    apps = {
+      url = "path:apps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -64,6 +61,18 @@
                   backupFileExtension = "hmbackup";
                 };
               }
+              (
+                { pkgs, ... }:
+                {
+                  environment.systemPackages = with pkgs; [
+                    gnumake
+                    nh
+                    nixfmt-rfc-style
+                    nixfmt-tree
+                    statix
+                  ];
+                }
+              )
               ./system/nix.nix
               ./system/locale.nix
               ./system/networking.nix
@@ -71,36 +80,25 @@
               ./system/bluetooth.nix
               ./system/printing.nix
               ./system/energy.nix
-              ./system/apps.nix
-              inputs.nix-flatpak.nixosModules.nix-flatpak
-              ./system/flatpak.nix
-              ./system/distrobox.nix
-              ./system/virt-manager.nix
-              ./system/ollama.nix
             ]
             ++ inputs.impermanence.modules.nixos
             ++ inputs.hosts.modules.nixos
             ++ inputs.user.modules.nixos
             ++ inputs.secrets.modules.nixos
             ++ inputs.KDE.modules.nixos
-            ++ inputs.theme.modules.nixos;
+            ++ inputs.theme.modules.nixos
+            ++ inputs.apps.modules.nixos;
 
             homeModules = [
               ./home/home-manager.nix
               ./home/energy.nix
-              ./home/wezterm.nix
-              ./home/shell.nix
-              ./home/git.nix
-              inputs.nvf.homeManagerModules.default
-              ./home/vim.nix
-              ./home/firefox.nix
-              ./home/conky.nix
             ]
             ++ inputs.impermanence.modules.home
             ++ inputs.user.modules.home
             ++ inputs.secrets.modules.home
             ++ inputs.KDE.modules.home
-            ++ inputs.theme.modules.home;
+            ++ inputs.theme.modules.home
+            ++ inputs.apps.modules.home;
           };
         in
         {
