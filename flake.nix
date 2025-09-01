@@ -42,6 +42,11 @@
   };
   outputs =
     inputs@{ self, ... }:
+    let
+      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+      pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+      themeModules = inputs.theme.modules;
+    in
     {
       me = {
         name = "Stijn Ruts";
@@ -73,7 +78,8 @@
         ./system/distrobox.nix
         ./system/virt-manager.nix
         ./system/ollama.nix
-      ] ++ inputs.theme.nixosModules;
+      ]
+      ++ themeModules.nixos;
 
       homeManagerConfig = {
         home-manager = {
@@ -101,16 +107,16 @@
         ./home/vim.nix
         ./home/firefox.nix
         ./home/conky.nix
-      ] ++ inputs.theme.homeModules;
-
-      pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+      ]
+      ++ themeModules.home;
 
       nixosConfigurations = {
         X201 =
           let
             myArgs = {
-              inherit (self) me pkgs-unstable;
-              theme = inputs.theme.config;
+              inherit (self) me;
+              inherit pkgs-unstable;
+              theme = themeModules.settings;
               isLaptop = true;
               isServer = false;
             };
@@ -128,8 +134,9 @@
         T420 =
           let
             myArgs = {
-              inherit (self) me pkgs-unstable;
-              theme = inputs.theme.config;
+              inherit (self) me;
+              inherit pkgs-unstable;
+              theme = themeModules.settings;
               isLaptop = true;
               isServer = false;
             };
@@ -147,8 +154,9 @@
         P520 =
           let
             myArgs = {
-              inherit (self) me pkgs-unstable;
-              theme = inputs.theme.config;
+              inherit (self) me;
+              inherit pkgs-unstable;
+              theme = themeModules.settings;
               isLaptop = false;
               isServer = true;
             };
