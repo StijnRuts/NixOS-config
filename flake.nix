@@ -23,17 +23,17 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     nvf = {
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
+    KDE = {
+      url = "path:KDE";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
     theme = {
       url = "path:theme";
@@ -45,6 +45,7 @@
     let
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+      KDEModules = inputs.KDE.modules;
       themeModules = inputs.theme.modules;
     in
     {
@@ -66,7 +67,6 @@
         ./system/nix.nix
         ./system/user.nix
         ./system/locale.nix
-        ./system/desktop.nix
         ./system/networking.nix
         ./system/audio.nix
         ./system/bluetooth.nix
@@ -79,6 +79,7 @@
         ./system/virt-manager.nix
         ./system/ollama.nix
       ]
+      ++ KDEModules.nixos
       ++ themeModules.nixos;
 
       homeManagerConfig = {
@@ -96,10 +97,6 @@
         ./secrets/age_identity.nix
         ./home/home-manager.nix
         ./home/energy.nix
-        inputs.plasma-manager.homeManagerModules.plasma-manager
-        ./home/kde.nix
-        ./home/dolphin.nix
-        ./home/konsole.nix
         ./home/wezterm.nix
         ./home/shell.nix
         ./home/git.nix
@@ -108,6 +105,7 @@
         ./home/firefox.nix
         ./home/conky.nix
       ]
+      ++ KDEModules.home
       ++ themeModules.home;
 
       nixosConfigurations = {

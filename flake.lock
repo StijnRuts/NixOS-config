@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "KDE": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "plasma-manager": "plasma-manager"
+      },
+      "locked": {
+        "path": "KDE",
+        "type": "path"
+      },
+      "original": {
+        "path": "KDE",
+        "type": "path"
+      },
+      "parent": []
+    },
     "agenix": {
       "inputs": {
         "darwin": [],
@@ -231,18 +251,20 @@
     "plasma-manager": {
       "inputs": {
         "home-manager": [
+          "KDE",
           "home-manager"
         ],
         "nixpkgs": [
+          "KDE",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1754501628,
-        "narHash": "sha256-FExJ54tVB5iu7Dh2tLcyCSWpaV+lmUzzWKZUkemwXvo=",
+        "lastModified": 1756632588,
+        "narHash": "sha256-ydam6eggXf3ZwRutyCABwSbMAlX+5lW6w1SVZQ+kfSo=",
         "owner": "nix-community",
         "repo": "plasma-manager",
-        "rev": "cca090f8115c4172b9aef6c5299ae784bdd5e133",
+        "rev": "d47428e5390d6a5a8f764808a4db15929347cd77",
         "type": "github"
       },
       "original": {
@@ -253,6 +275,7 @@
     },
     "root": {
       "inputs": {
+        "KDE": "KDE",
         "agenix": "agenix",
         "disko": "disko",
         "home-manager": "home-manager",
@@ -261,7 +284,6 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvf": "nvf",
-        "plasma-manager": "plasma-manager",
         "theme": "theme"
       }
     },
