@@ -22,7 +22,7 @@
     Service = {
       Restart = "always";
       RestartSec = "3";
-      ExecStart = "/home/${me.username}/NixOS/home/conky/start.sh";
+      ExecStart = "/home/${me.username}/NixOS/apps/gui/conky/start.sh";
     };
 
     Install.WantedBy = [ "graphical-session.target" ];
