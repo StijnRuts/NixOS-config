@@ -8,24 +8,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs: {
-    modules =
-      let
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-      in
-      rec {
-        settings = {
-          flavor = "mocha";
-          Flavor = "Mocha";
-          accent = "yellow";
-          Accent = "Yellow";
-          font = "Ubuntu";
-          monofont = "UbuntuMono Nerd Font";
-          fontPkg = pkgs.ubuntu_font_family;
-          monofontPkg = pkgs.nerd-fonts.ubuntu-mono;
-          backgroundColor = "30,30,40";
-        };
+  outputs =
+    inputs:
+    let
+      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+    in
+    rec {
+      settings = {
+        flavor = "mocha";
+        Flavor = "Mocha";
+        accent = "yellow";
+        Accent = "Yellow";
+        font = "Ubuntu";
+        monofont = "UbuntuMono Nerd Font";
+        fontPkg = pkgs.ubuntu_font_family;
+        monofontPkg = pkgs.nerd-fonts.ubuntu-mono;
+        backgroundColor = "30,30,40";
+      };
 
+      modules = {
         nixos = [
           inputs.catppuccin.nixosModules.catppuccin
           {
@@ -142,5 +143,5 @@
           }
         ];
       };
-  };
+    };
 }

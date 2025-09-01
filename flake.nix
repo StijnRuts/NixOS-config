@@ -6,10 +6,6 @@
     nixpkgs-unstable = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +19,10 @@
     };
     impermanence = {
       url = "path:impermanence";
+    };
+    hosts = {
+      url = "path:hosts";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     user = {
       url = "path:user";
@@ -44,127 +44,69 @@
   };
   outputs =
     inputs@{ self, ... }:
-    let
-      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-      pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
-      impermanenceModules = inputs.impermanence.modules;
-      userModules = inputs.user.modules;
-      secretsModules = inputs.secrets.modules;
-      KDEModules = inputs.KDE.modules;
-      themeModules = inputs.theme.modules;
-    in
     {
-      nixosModules = [
-        inputs.disko.nixosModules.disko
-        inputs.home-manager.nixosModules.home-manager
-        self.homeManagerConfig
-        ./system/nix.nix
-        ./system/locale.nix
-        ./system/networking.nix
-        ./system/audio.nix
-        ./system/bluetooth.nix
-        ./system/printing.nix
-        ./system/energy.nix
-        ./system/apps.nix
-        inputs.nix-flatpak.nixosModules.nix-flatpak
-        ./system/flatpak.nix
-        ./system/distrobox.nix
-        ./system/virt-manager.nix
-        ./system/ollama.nix
-      ]
-      ++ impermanenceModules.nixos
-      ++ userModules.nixos
-      ++ secretsModules.nixos
-      ++ KDEModules.nixos
-      ++ themeModules.nixos;
+      nixosConfigurations =
+        let
+          hostargs = {
+            args = {
+              # pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; # implicit
+              pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+              me = inputs.user.settings;
+              theme = inputs.theme.settings;
+            };
 
-      homeManagerConfig = {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          backupFileExtension = "hmbackup";
-          users.${userModules.settings.username}.imports = self.homeModules;
+            nixosModules = [
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  backupFileExtension = "hmbackup";
+                };
+              }
+              ./system/nix.nix
+              ./system/locale.nix
+              ./system/networking.nix
+              ./system/audio.nix
+              ./system/bluetooth.nix
+              ./system/printing.nix
+              ./system/energy.nix
+              ./system/apps.nix
+              inputs.nix-flatpak.nixosModules.nix-flatpak
+              ./system/flatpak.nix
+              ./system/distrobox.nix
+              ./system/virt-manager.nix
+              ./system/ollama.nix
+            ]
+            ++ inputs.impermanence.modules.nixos
+            ++ inputs.hosts.modules.nixos
+            ++ inputs.user.modules.nixos
+            ++ inputs.secrets.modules.nixos
+            ++ inputs.KDE.modules.nixos
+            ++ inputs.theme.modules.nixos;
+
+            homeModules = [
+              ./home/home-manager.nix
+              ./home/energy.nix
+              ./home/wezterm.nix
+              ./home/shell.nix
+              ./home/git.nix
+              inputs.nvf.homeManagerModules.default
+              ./home/vim.nix
+              ./home/firefox.nix
+              ./home/conky.nix
+            ]
+            ++ inputs.impermanence.modules.home
+            ++ inputs.user.modules.home
+            ++ inputs.secrets.modules.home
+            ++ inputs.KDE.modules.home
+            ++ inputs.theme.modules.home;
+          };
+        in
+        {
+          X201 = inputs.nixpkgs.lib.nixosSystem (inputs.hosts.X201 hostargs);
+          T420 = inputs.nixpkgs.lib.nixosSystem (inputs.hosts.T420 hostargs);
+          P520 = inputs.nixpkgs.lib.nixosSystem (inputs.hosts.P520 hostargs);
         };
-      };
-
-      homeModules = [
-        ./home/home-manager.nix
-        ./home/energy.nix
-        ./home/wezterm.nix
-        ./home/shell.nix
-        ./home/git.nix
-        inputs.nvf.homeManagerModules.default
-        ./home/vim.nix
-        ./home/firefox.nix
-        ./home/conky.nix
-      ]
-      ++ impermanenceModules.home
-      ++ userModules.home
-      ++ secretsModules.home
-      ++ KDEModules.home
-      ++ themeModules.home;
-
-      nixosConfigurations = {
-        X201 =
-          let
-            myArgs = {
-              inherit pkgs-unstable;
-              me = userModules.settings;
-              theme = themeModules.settings;
-              isLaptop = true;
-              isServer = false;
-            };
-          in
-          inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = myArgs;
-            modules = [
-              { home-manager.extraSpecialArgs = myArgs; }
-              ./disko/X201.nix
-              ./hardware/X201.nix
-            ]
-            ++ self.nixosModules;
-          };
-        T420 =
-          let
-            myArgs = {
-              inherit pkgs-unstable;
-              me = userModules.settings;
-              theme = themeModules.settings;
-              isLaptop = true;
-              isServer = false;
-            };
-          in
-          inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = myArgs;
-            modules = [
-              { home-manager.extraSpecialArgs = myArgs; }
-              ./disko/T420.nix
-              ./hardware/T420.nix
-            ]
-            ++ self.nixosModules;
-          };
-        P520 =
-          let
-            myArgs = {
-              inherit pkgs-unstable;
-              me = userModules.settings;
-              theme = themeModules.settings;
-              isLaptop = false;
-              isServer = true;
-            };
-          in
-          inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = myArgs;
-            modules = [
-              { home-manager.extraSpecialArgs = myArgs; }
-              ./disko/P520.nix
-              ./hardware/P520.nix
-            ]
-            ++ self.nixosModules;
-          };
-      };
     };
 }

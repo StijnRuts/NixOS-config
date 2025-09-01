@@ -74,6 +74,7 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
+          "hosts",
           "nixpkgs"
         ]
       },
@@ -149,6 +150,23 @@
         "repo": "home-manager",
         "type": "github"
       }
+    },
+    "hosts": {
+      "inputs": {
+        "disko": "disko",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "hosts",
+        "type": "path"
+      },
+      "original": {
+        "path": "hosts",
+        "type": "path"
+      },
+      "parent": []
     },
     "impermanence": {
       "inputs": {
@@ -294,8 +312,8 @@
     "root": {
       "inputs": {
         "KDE": "KDE",
-        "disko": "disko",
         "home-manager": "home-manager",
+        "hosts": "hosts",
         "impermanence": "impermanence",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",

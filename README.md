@@ -4,7 +4,7 @@
 git clone https://github.com/StijnRuts/NixOS-config.git
 cd NixOS-config
 
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode disko ./disko/???.nix
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode disko ./hosts/???/disko.nix
 
 sudo nixos-install --no-root-password --flake .#???
 ```

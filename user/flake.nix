@@ -1,16 +1,16 @@
 {
   inputs = {
   };
-  outputs = inputs: {
-    modules = rec {
-      settings = {
-        name = "Stijn Ruts";
-        username = "stijn";
-        email = {
-          git = "git@stijnruts.be";
-        };
+  outputs = inputs: rec {
+    settings = {
+      name = "Stijn Ruts";
+      username = "stijn";
+      email = {
+        git = "git@stijnruts.be";
       };
+    };
 
+    modules = {
       nixos = [
         (
           {
