@@ -11,25 +11,26 @@
       pull.rebase = true;
       rebase.autoStash = true;
     };
+    delta.enable = true;
   };
-
-  programs.git.delta.enable = true;
   catppuccin.delta.enable = true;
 
-  programs.lazygit.enable = true;
-  catppuccin.lazygit.enable = true;
-  programs.lazygit.settings = {
-    gui = {
-      tabWidth = 2;
-      nerdFontsVersion = 3;
-      showRandomTip = false;
-      showCommandLog = false;
-    };
-    git = {
-      paging.pager = "delta --paging=never";
-      disableForcePushing = true;
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui = {
+        tabWidth = 2;
+        nerdFontsVersion = 3;
+        showRandomTip = false;
+        showCommandLog = false;
+      };
+      git = {
+        paging.pager = "delta --paging=never";
+        disableForcePushing = true;
+      };
     };
   };
+  catppuccin.lazygit.enable = true;
 
   home.shellAliases = {
     "gs" = "git status";

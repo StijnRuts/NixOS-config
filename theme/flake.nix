@@ -35,8 +35,8 @@
             ];
 
             catppuccin = {
-              flavor = settings.flavor;
-              accent = settings.accent;
+              inherit (settings) flavor;
+              inherit (settings) accent;
             };
 
             catppuccin.sddm = {
@@ -45,7 +45,7 @@
               loginBackground = true;
               clockEnabled = false;
               userIcon = false;
-              font = settings.font;
+              inherit (settings) font;
               fontSize = "16";
             };
           }
@@ -64,8 +64,8 @@
             ];
 
             catppuccin = {
-              flavor = settings.flavor;
-              accent = settings.accent;
+              inherit (settings) flavor;
+              inherit (settings) accent;
             };
 
             gtk = {
@@ -82,8 +82,8 @@
               iconTheme = {
                 name = "Papirus-Dark";
                 package = pkgs.catppuccin-papirus-folders.override {
-                  flavor = settings.flavor;
-                  accent = settings.accent;
+                  inherit (settings) flavor;
+                  inherit (settings) accent;
                 };
               };
               cursorTheme = {
