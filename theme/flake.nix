@@ -38,16 +38,6 @@
               inherit (settings) flavor;
               inherit (settings) accent;
             };
-
-            catppuccin.sddm = {
-              enable = true;
-              background = ./sddm-background.png;
-              loginBackground = true;
-              clockEnabled = false;
-              userIcon = false;
-              inherit (settings) font;
-              fontSize = "16";
-            };
           }
         ];
 

@@ -1,4 +1,4 @@
-{ me, ... }:
+{ me, theme, ... }:
 {
   services.displayManager.sddm.enable = true;
 
@@ -12,6 +12,16 @@
       chown sddm:sddm "$dest_file"
     fi
   '';
+
+  catppuccin.sddm = {
+    enable = true;
+    background = ./sddm-background.png;
+    loginBackground = true;
+    clockEnabled = false;
+    userIcon = false;
+    inherit (theme) font;
+    fontSize = "16";
+  };
 
   environment.persistence."/persist" = {
     directories = [
