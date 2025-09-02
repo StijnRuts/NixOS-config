@@ -1,5 +1,8 @@
 { me, ... }:
 {
+  # TODO: check https://github.com/NixOS/nixpkgs/pull/347222
+  # TODO: https://github.com/0xc000022070/zen-browser-flake
+
   services.flatpak.enable = true;
 
   services.flatpak.packages = [

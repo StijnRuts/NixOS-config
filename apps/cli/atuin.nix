@@ -1,7 +1,12 @@
-{ me, ... }:
+{ pkgs-unstable, me, ... }:
 {
   programs.atuin = {
     enable = true;
+    package = pkgs-unstable.atuin.overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++ [
+        ./atuin-color.patch
+      ];
+    });
     enableBashIntegration = true;
     enableZshIntegration = true;
     daemon.enable = true;
