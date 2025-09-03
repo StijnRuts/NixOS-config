@@ -1,19 +1,17 @@
-{ me, ... }:
+{ config, me, ... }:
 {
   programs.git = {
     enable = true;
     userEmail = "${me.email.git}";
     userName = "${me.name}";
     extraConfig = {
-      core.editor = "nvim";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
       rebase.autoStash = true;
     };
-    delta.enable = true;
+    diff-highlight.enable = true;
   };
-  catppuccin.delta.enable = true;
 
   programs.lazygit = {
     enable = true;
@@ -25,7 +23,7 @@
         showCommandLog = false;
       };
       git = {
-        paging.pager = "delta --paging=never";
+        paging.pager = "${config.programs.git.package}/share/git/contrib/diff-highlight/diff-highlight";
         disableForcePushing = true;
       };
     };
