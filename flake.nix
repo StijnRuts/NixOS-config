@@ -1,87 +1,43 @@
+# Do not modify! This file is generated.
+
 {
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-25.05";
+    agenix = {
+      inputs = {
+        darwin.follows = "";
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:ryantm/agenix";
     };
-    nixpkgs-unstable = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+    catppuccin = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:catppuccin/nix/release-25.05";
     };
+    disko = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko/latest";
+    };
+    flakegen.url = "github:jorsn/flakegen";
     home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.05";
+    };
+    impermanence.url = "github:nix-community/impermanence";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nvf = {
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:NotAShelf/nvf";
     };
-
-    hosts = {
-      url = "path:hosts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    user = {
-      url = "path:user";
-    };
-    secrets = {
-      url = "path:secrets";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-    system = {
-      url = "path:system";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-    KDE = {
-      url = "path:KDE";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-    theme = {
-      url = "path:theme";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    apps = {
-      url = "path:apps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    energy = {
-      url = "path:energy";
+    plasma-manager = {
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:nix-community/plasma-manager";
     };
   };
-  outputs =
-    inputs@{ self, ... }:
-    {
-      nixosConfigurations =
-        let
-          hostargs = {
-            args = {
-              # pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; # implicit
-              pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
-              me = inputs.user.settings;
-              theme = inputs.theme.settings;
-            };
-
-            nixosModules =
-              inputs.hosts.modules.nixos
-              ++ inputs.user.modules.nixos
-              ++ inputs.secrets.modules.nixos
-              ++ inputs.system.modules.nixos
-              ++ inputs.KDE.modules.nixos
-              ++ inputs.theme.modules.nixos
-              ++ inputs.apps.modules.nixos
-              ++ inputs.energy.modules.nixos;
-
-            homeModules =
-              inputs.user.modules.home
-              ++ inputs.secrets.modules.home
-              ++ inputs.system.modules.home
-              ++ inputs.KDE.modules.home
-              ++ inputs.theme.modules.home
-              ++ inputs.apps.modules.home
-              ++ inputs.energy.modules.home;
-          };
-        in
-        {
-          X201 = inputs.nixpkgs.lib.nixosSystem (inputs.hosts.X201 hostargs);
-          T420 = inputs.nixpkgs.lib.nixosSystem (inputs.hosts.T420 hostargs);
-          P520 = inputs.nixpkgs.lib.nixosSystem (inputs.hosts.P520 hostargs);
-        };
-    };
+  outputs = inputs: inputs.flakegen ./flake.template.nix inputs;
 }

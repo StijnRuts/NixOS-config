@@ -1,3 +1,4 @@
+self:
 let
   extraArgs = {
     isLaptop = false;
@@ -5,23 +6,18 @@ let
   };
 in
 {
-  args,
-  nixosModules,
-  homeModules,
-}:
-{
   system = "x86_64-linux";
-  specialArgs = args // extraArgs;
+  specialArgs = self.args // extraArgs;
   modules = [
     ./disko.nix
     ./hardware.nix
   ]
-  ++ nixosModules
+  ++ self.nixosModules
   ++ [
     {
       home-manager = {
-        extraSpecialArgs = args // extraArgs;
-        users.${args.me.username}.imports = homeModules;
+        extraSpecialArgs = self.args // extraArgs;
+        users.${self.args.me.username}.imports = self.homeModules;
       };
     }
   ];

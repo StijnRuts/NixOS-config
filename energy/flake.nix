@@ -1,12 +1,10 @@
 {
   outputs = _: {
-    modules = {
-      nixos = [
-        ./laptop.nix
-      ];
-      home = [
-        ./server.nix
-      ];
-    };
+    nixosModules = [
+      ./laptop.nix
+    ];
+    homeModules = [
+      ./server.nix
+    ];
   };
 }

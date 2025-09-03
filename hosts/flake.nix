@@ -1,22 +1,21 @@
 {
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-25.05";
-    };
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs: {
-    modules = {
-      nixos = [
+  outputs =
+    inputs@{ self, ... }:
+    {
+      nixosModules = [
         inputs.disko.nixosModules.disko
       ];
-    };
 
-    X201 = import ./X201;
-    T420 = import ./T420;
-    P520 = import ./P520;
-  };
+      nixosConfigurations = {
+        X201 = inputs.nixpkgs.lib.nixosSystem (import ./X201 self);
+        T420 = inputs.nixpkgs.lib.nixosSystem (import ./T420 self);
+        P520 = inputs.nixpkgs.lib.nixosSystem (import ./P520 self);
+      };
+    };
 }

@@ -1,5 +1,7 @@
 default: run
 
+generate:
+	nix run .\#genflake flake.nix
 build:
 	nh os build . # nixos-rebuild build --show-trace --flake .
 test:
@@ -14,4 +16,3 @@ lint:
 	statix check .
 clean:
 	sudo nix-collect-garbage --delete-older-than 30d
-

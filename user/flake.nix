@@ -1,8 +1,6 @@
 {
-  inputs = {
-  };
-  outputs = inputs: rec {
-    settings = {
+  outputs = inputs: {
+    args.me = {
       name = "Stijn Ruts";
       username = "stijn";
       email = {
@@ -10,36 +8,38 @@
       };
     };
 
-    modules = {
-      nixos = [
-        (
-          {
-            config,
-            pkgs,
-            ...
-          }:
-          {
-            users.users.${settings.username} = {
-              isNormalUser = true;
-              description = "${settings.name}";
-              extraGroups = [
-                "networkmanager"
-                "wheel"
-              ];
-              hashedPasswordFile = config.age.secrets.hashed_password.path;
-            };
-
-            age.secrets.hashed_password.file = ../secrets/hashed_password.age;
-          }
-        )
-      ];
-
-      home = [
+    nixosModules = [
+      (
         {
-          home.username = "${settings.username}";
-          home.homeDirectory = "/home/${settings.username}";
+          config,
+          pkgs,
+          me,
+          ...
+        }:
+        {
+          users.users.${me.username} = {
+            isNormalUser = true;
+            description = "${me.name}";
+            extraGroups = [
+              "networkmanager"
+              "wheel"
+            ];
+            hashedPasswordFile = config.age.secrets.hashed_password.path;
+          };
+
+          age.secrets.hashed_password.file = ../secrets/hashed_password.age;
         }
-      ];
-    };
+      )
+    ];
+
+    homeModules = [
+      (
+        { me, ... }:
+        {
+          home.username = "${me.username}";
+          home.homeDirectory = "/home/${me.username}";
+        }
+      )
+    ];
   };
 }

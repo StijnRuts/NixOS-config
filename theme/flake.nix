@@ -1,70 +1,72 @@
 {
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-25.05";
-    };
     catppuccin = {
       url = "github:catppuccin/nix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
-    inputs:
-    let
-      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-    in
-    rec {
-      settings = {
-        flavor = "mocha";
-        Flavor = "Mocha";
-        accent = "yellow";
-        Accent = "Yellow";
-        font = "Ubuntu";
-        monofont = "UbuntuMono Nerd Font";
-        fontPkg = pkgs.ubuntu_font_family;
-        monofontPkg = pkgs.nerd-fonts.ubuntu-mono;
-        backgroundColor = "30,30,40";
-      };
+    inputs@{ self, ... }:
+    {
+      args.theme =
+        let
+          pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        in
+        {
+          flavor = "mocha";
+          Flavor = "Mocha";
+          accent = "yellow";
+          Accent = "Yellow";
+          font = "Ubuntu";
+          monofont = "UbuntuMono Nerd Font";
+          fontPkg = pkgs.ubuntu_font_family;
+          monofontPkg = pkgs.nerd-fonts.ubuntu-mono;
+          backgroundColor = "30,30,40";
+        };
 
-      modules = {
-        nixos = [
-          inputs.catppuccin.nixosModules.catppuccin
+      nixosModules = [
+        inputs.catppuccin.nixosModules.catppuccin
+        (
+          { theme, ... }:
           {
             environment.systemPackages = [
-              settings.fontPkg
+              theme.fontPkg
             ];
 
             catppuccin = {
-              inherit (settings) flavor;
-              inherit (settings) accent;
+              inherit (theme) flavor;
+              inherit (theme) accent;
             };
           }
-        ];
+        )
+      ];
 
-        home = [
-          inputs.catppuccin.homeModules.catppuccin
+      homeModules = [
+        inputs.catppuccin.homeModules.catppuccin
+        (
+          { pkgs, theme, ... }:
           {
             home.packages = [
-              settings.fontPkg
-              settings.monofontPkg
+              theme.fontPkg
+              theme.monofontPkg
               (pkgs.catppuccin-kde.override {
-                flavour = [ settings.flavor ];
-                accents = [ settings.accent ];
+                flavour = [ theme.flavor ];
+                accents = [ theme.accent ];
               })
             ];
 
             catppuccin = {
-              inherit (settings) flavor;
-              inherit (settings) accent;
+              inherit (theme) flavor;
+              inherit (theme) accent;
             };
 
             gtk = {
               enable = true;
               theme = {
-                name = "catppuccin-${settings.flavor}-${settings.accent}-standard";
+                name = "catppuccin-${theme.flavor}-${theme.accent}-standard";
                 package = pkgs.catppuccin-gtk.override {
-                  variant = settings.flavor;
-                  accents = [ settings.accent ];
+                  variant = theme.flavor;
+                  accents = [ theme.accent ];
                   # size = "compact";
                   # tweaks = [ "black" "rimless" "normal" "float" ];
                 };
@@ -72,8 +74,8 @@
               iconTheme = {
                 name = "Papirus-Dark";
                 package = pkgs.catppuccin-papirus-folders.override {
-                  inherit (settings) flavor;
-                  inherit (settings) accent;
+                  inherit (theme) flavor;
+                  inherit (theme) accent;
                 };
               };
               cursorTheme = {
@@ -81,8 +83,8 @@
                 package = pkgs.simp1e-cursors;
               };
               font = {
-                name = settings.font;
-                package = settings.fontPkg;
+                name = theme.font;
+                package = theme.fontPkg;
                 size = 11;
               };
             };
@@ -91,47 +93,47 @@
               enable = true;
 
               workspace = {
-                colorScheme = "Catppuccin${settings.Flavor}${settings.Accent}";
+                colorScheme = "Catppuccin${theme.Flavor}${theme.Accent}";
                 windowDecorations = {
                   library = "org.kde.breeze";
                   theme = "Breeze";
                 };
                 cursor.theme = "Simp1e-Catppuccin-Latte";
                 iconTheme = "Papirus-Dark";
-                wallpaperPlainColor = settings.backgroundColor;
+                wallpaperPlainColor = theme.backgroundColor;
               };
 
-              kscreenlocker.appearance.wallpaperPlainColor = settings.backgroundColor;
+              kscreenlocker.appearance.wallpaperPlainColor = theme.backgroundColor;
 
               fonts = {
                 general = {
-                  family = settings.font;
+                  family = theme.font;
                   pointSize = 11;
                 };
                 fixedWidth = {
-                  family = settings.monofont;
+                  family = theme.monofont;
                   pointSize = 11;
                 };
                 small = {
-                  family = settings.font;
+                  family = theme.font;
                   pointSize = 8;
                 };
                 toolbar = {
-                  family = settings.font;
+                  family = theme.font;
                   pointSize = 11;
                 };
                 menu = {
-                  family = settings.font;
+                  family = theme.font;
                   pointSize = 11;
                 };
                 windowTitle = {
-                  family = settings.font;
+                  family = theme.font;
                   pointSize = 11;
                 };
               };
             };
           }
-        ];
-      };
+        )
+      ];
     };
 }
