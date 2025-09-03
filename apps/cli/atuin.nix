@@ -4,7 +4,7 @@
     enable = true;
     package = pkgs-unstable.atuin.overrideAttrs (old: {
       patches = (old.patches or [ ]) ++ [
-        ./atuin-color.patch
+        ./atuin-color.patch # Don't highlight the selected command as an error
       ];
     });
     enableBashIntegration = true;
