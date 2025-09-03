@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, me, ... }:
 {
   environment.persistence."/persist" = {
     enable = true;
@@ -13,4 +13,26 @@
     rm -rf /mnt/rootfs
     btrfs subvolume create /mnt/rootfs
   '';
+
+  environment.persistence."/persist" = {
+    users.${me.username} = {
+      directories = [
+        "Desktop"
+        "Documents"
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Public"
+        "Templates"
+        "Videos"
+        "NixOS"
+        ".local/share/Trash"
+      ];
+    };
+    directories = [
+      "/var/log"
+      "/var/lib/nixos"
+      "/var/lib/systemd/coredump"
+    ];
+  };
 }

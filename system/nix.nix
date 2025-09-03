@@ -9,14 +9,6 @@
 
   nix.settings.trusted-users = [ "root" ];
 
-  environment.persistence."/persist" = {
-    directories = [
-      "/var/log"
-      "/var/lib/nixos"
-      "/var/lib/systemd/coredump"
-    ];
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

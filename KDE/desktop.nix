@@ -6,16 +6,6 @@
   environment.persistence."/persist" = {
     users.${me.username} = {
       directories = [
-        "Desktop"
-        "Documents"
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Public"
-        "Templates"
-        "Videos"
-        "NixOS"
-        ".local/share/Trash"
         ".config/kdeconnect"
         {
           directory = ".local/share/kwalletd";
