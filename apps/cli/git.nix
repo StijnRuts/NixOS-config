@@ -45,11 +45,11 @@
     "amend" = "git commit --amend";
     "gco" = "git checkout";
     "gcop" = "git checkout --patch";
+    "wipe" = "git restore --source=HEAD --staged --worktree -- . && git clean -fd";
     "gb" = "git branch";
     "gp" = "git pull";
     "gpsh" = "git push";
     "gpshf" = "git push --force-with-lease";
-    "gpshu" = "git push --set-upstream origin main";
     "gl" = "git log --oneline -n 10";
     "gst" = "git stash push";
     "gstp" = "git stash pop";
