@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   me,
   ...
@@ -191,7 +192,7 @@
       "x-scheme-handler/unknown" = [ "firefox.desktop" ];
     };
   };
-  home.sessionVariables.DEFAULT_BROWSER = "${config.programs.firefox.package}/bin/firefox";
+  home.sessionVariables.DEFAULT_BROWSER = "${lib.getExe config.programs.firefox.package}";
 
   home.persistence."/persist/home/${me.username}" = {
     allowOther = false;
