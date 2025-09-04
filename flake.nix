@@ -24,7 +24,6 @@
       url = "github:nix-community/home-manager/release-25.05";
     };
     impermanence.url = "github:nix-community/impermanence";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nvf = {
@@ -37,6 +36,13 @@
         nixpkgs.follows = "nixpkgs";
       };
       url = "github:nix-community/plasma-manager";
+    };
+    zen-browser = {
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:0xc000022070/zen-browser-flake";
     };
   };
   outputs = inputs: inputs.flakegen ./flake.template.nix inputs;
