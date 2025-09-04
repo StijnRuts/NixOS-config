@@ -7,7 +7,7 @@
     pkgs.brlaser
   ];
 
-  environment.persistence."/persist" = {
+  persist.system = {
     directories = [
       "/etc/cups"
     ];

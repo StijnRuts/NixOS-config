@@ -23,7 +23,7 @@
     fontSize = "16";
   };
 
-  environment.persistence."/persist" = {
+  persist.system = {
     directories = [
       "/var/lib/sddm"
     ];

@@ -1,4 +1,4 @@
-{ lib, me, ... }:
+{ lib, ... }:
 {
   environment.persistence."/persist" = {
     enable = true;
@@ -14,21 +14,21 @@
     btrfs subvolume create /mnt/rootfs
   '';
 
-  environment.persistence."/persist" = {
-    users.${me.username} = {
-      directories = [
-        "Desktop"
-        "Documents"
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Public"
-        "Templates"
-        "Videos"
-        "NixOS"
-        ".local/share/Trash"
-      ];
-    };
+  persist.home = {
+    directories = [
+      "Desktop"
+      "Documents"
+      "Downloads"
+      "Music"
+      "Pictures"
+      "Public"
+      "Templates"
+      "Videos"
+      "NixOS"
+      ".local/share/Trash"
+    ];
+  };
+  persist.system = {
     directories = [
       "/var/log"
       "/var/lib/nixos"

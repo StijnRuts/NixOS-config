@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  me,
   ...
 }:
 {
@@ -21,8 +20,7 @@
 
   defaultBrowser.package = config.programs.zen-browser.package;
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     directories = [
       ".zen"
       ".var/app/app.zen_browser.zen"

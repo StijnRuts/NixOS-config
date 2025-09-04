@@ -17,7 +17,7 @@ in
     };
   };
 
-  config = {
+  config = lib.mkIf (cfg.package != null) {
     programs.plasma.configFile = {
       "kdeglobals"."General"."BrowserApplication" = cfg.package.meta.desktopFileName;
     };

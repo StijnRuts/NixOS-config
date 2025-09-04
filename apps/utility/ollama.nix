@@ -1,9 +1,4 @@
-{
-  pkgs,
-  me,
-  isLaptop,
-  ...
-}:
+{ pkgs, isLaptop, ... }:
 {
   environment.systemPackages = with pkgs; [
     alpaca
@@ -29,18 +24,18 @@
         ];
   };
 
-  environment.persistence."/persist" = {
+  persist.system = {
     directories = [
       {
         directory = "/var/lib/private/ollama";
         mode = "0700";
       }
     ];
-    users.${me.username} = {
-      directories = [
-        ".ollama"
-        ".local/share/com.jeffser.Alpaca"
-      ];
-    };
+  };
+  persist.home = {
+    directories = [
+      ".ollama"
+      ".local/share/com.jeffser.Alpaca"
+    ];
   };
 }

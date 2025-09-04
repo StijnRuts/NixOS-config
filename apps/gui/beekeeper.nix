@@ -1,4 +1,4 @@
-{ pkgs, me, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = [
     pkgs.beekeeper-studio
@@ -8,11 +8,9 @@
     "beekeeper-studio-5.1.5"
   ];
 
-  environment.persistence."/persist" = {
-    users.${me.username} = {
-      directories = [
-        ".config/beekeeper-studio"
-      ];
-    };
+  persist.home = {
+    directories = [
+      ".config/beekeeper-studio"
+    ];
   };
 }

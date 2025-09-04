@@ -9,7 +9,7 @@
     package = pkgs.pulseaudioFull;
   };
 
-  environment.persistence."/persist" = {
+  persist.system = {
     directories = [
       "/var/lib/bluetooth"
     ];

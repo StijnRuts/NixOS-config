@@ -1,4 +1,3 @@
-{ me, ... }:
 {
   programs.zellij = {
     enable = true;
@@ -22,8 +21,7 @@
     text = builtins.readFile ./zellij.kdl;
   };
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     directories = [
       ".cache/zellij"
     ];

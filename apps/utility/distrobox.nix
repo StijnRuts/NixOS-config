@@ -1,4 +1,4 @@
-{ pkgs, me, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     distrobox
@@ -9,12 +9,10 @@
     dockerCompat = true;
   };
 
-  environment.persistence."/persist" = {
-    users.${me.username} = {
-      directories = [
-        ".cache/distrobox"
-        ".local/share/containers"
-      ];
-    };
+  persist.home = {
+    directories = [
+      ".cache/distrobox"
+      ".local/share/containers"
+    ];
   };
 }

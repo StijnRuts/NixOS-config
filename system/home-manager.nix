@@ -1,4 +1,4 @@
-{ lib, me, ... }:
+{ lib, ... }:
 {
   programs.home-manager.enable = true;
 

@@ -1,9 +1,4 @@
-{
-  pkgs-unstable,
-  me,
-  theme,
-  ...
-}:
+{ pkgs-unstable, theme, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -131,8 +126,7 @@
     };
   };
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     directories = [
       ".cache/nvim"
       ".local/share/nvim"

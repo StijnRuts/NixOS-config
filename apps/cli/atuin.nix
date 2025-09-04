@@ -1,4 +1,4 @@
-{ pkgs-unstable, me, ... }:
+{ pkgs-unstable, ... }:
 {
   programs.atuin = {
     enable = true;
@@ -25,8 +25,7 @@
 
   catppuccin.atuin.enable = true;
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     directories = [
       ".local/share/atuin"
     ];

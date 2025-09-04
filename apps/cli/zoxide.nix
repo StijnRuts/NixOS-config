@@ -1,4 +1,3 @@
-{ me, ... }:
 {
   programs.zoxide = {
     enable = true;
@@ -6,8 +5,7 @@
     enableZshIntegration = true;
   };
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     directories = [
       ".local/share/zoxide"
     ];

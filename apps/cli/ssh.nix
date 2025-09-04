@@ -1,7 +1,5 @@
-{ me, ... }:
 {
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     directories = [
       ".ssh"
     ];

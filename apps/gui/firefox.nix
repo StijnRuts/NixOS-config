@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  me,
-  ...
-}:
+{ lib, pkgs, ... }:
 {
   programs.firefox = lib.recursiveUpdate {
     enable = true;
@@ -18,8 +13,7 @@
     };
   } (import ./firefox-settings.nix pkgs);
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     directories = [
       ".mozilla"
       ".cache/mozilla"

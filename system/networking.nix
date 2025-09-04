@@ -30,7 +30,7 @@
     };
   };
 
-  environment.persistence."/persist" = {
+  persist.system = {
     directories = [
       "/etc/NetworkManager/system-connections"
     ];

@@ -2,7 +2,7 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  environment.persistence."/persist" = {
+  persist.system = {
     directories = [
       "/var/lib/libvirt"
     ];

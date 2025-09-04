@@ -35,6 +35,7 @@
       )
       inputs.impermanence.nixosModules.impermanence
       ./impermanence.nix
+      ./persist-nixos.nix
       ./nix.nix
       inputs.home-manager.nixosModules.home-manager
       {
@@ -53,6 +54,7 @@
 
     homeModules = [
       inputs.impermanence.homeManagerModules.impermanence
+      ./persist-home.nix
       ./home-manager.nix
     ];
   };

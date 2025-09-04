@@ -1,12 +1,11 @@
-{ pkgs, me, ... }:
+{ pkgs, ... }:
 {
   programs.chromium = {
     enable = true;
     package = pkgs.ungoogled-chromium;
   };
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     directories = [
       ".config/chromium"
       ".cache/chromium"

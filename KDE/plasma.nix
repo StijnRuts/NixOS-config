@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  me,
   isLaptop,
   ...
 }:
@@ -130,8 +129,7 @@
     };
   };
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     files = [
       ".config/kwinoutputconfig.json" # Display configuration
     ];

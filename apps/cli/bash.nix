@@ -1,12 +1,10 @@
-{ me, ... }:
 {
   programs.bash = {
     enable = true;
     enableCompletion = true;
   };
 
-  home.persistence."/persist/home/${me.username}" = {
-    allowOther = false;
+  persist.home = {
     files = [
       ".bash_history"
     ];
