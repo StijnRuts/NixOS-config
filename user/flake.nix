@@ -1,5 +1,5 @@
 {
-  outputs = inputs: {
+  outputs = _: {
     args.me = {
       name = "Stijn Ruts";
       username = "stijn";
@@ -10,12 +10,7 @@
 
     nixosModules = [
       (
-        {
-          config,
-          pkgs,
-          me,
-          ...
-        }:
+        { config, me, ... }:
         {
           users.users.${me.username} = {
             isNormalUser = true;

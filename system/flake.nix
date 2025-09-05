@@ -30,6 +30,7 @@
             nixfmt-rfc-style
             nixfmt-tree
             statix
+            deadnix
           ];
         }
       )

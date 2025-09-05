@@ -13,6 +13,6 @@ update:
 format:
 	treefmt .
 lint:
-	statix check .
+	statix check . && deadnix
 clean:
 	sudo nix-collect-garbage --delete-older-than 30d

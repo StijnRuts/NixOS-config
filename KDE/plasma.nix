@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  isLaptop,
-  ...
-}:
+{ isLaptop, ... }:
 {
   # nix run github:nix-community/plasma-manager > rc.nix
   programs.plasma = {

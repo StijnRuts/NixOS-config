@@ -21,7 +21,10 @@
       ];
       kernelModules = [ ];
     };
-    kernelModules = [ "kvm-intel" "tp_smapi" ];
+    kernelModules = [
+      "kvm-intel"
+      "tp_smapi"
+    ];
     extraModulePackages = with config.boot.kernelPackages; [
       tp_smapi
     ];
