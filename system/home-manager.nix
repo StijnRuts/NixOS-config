@@ -3,8 +3,14 @@
   programs.home-manager.enable = true;
 
   # Get rid of any home manager backups, because they will prevent new backups from being generated
+  # find ~              Search the home directory
+  # ! -readable         Match files or directories that are not readable by your user
+  # -prune              Don’t descend into those unreadable directories
+  # -o                  Or
+  # -name '*.hmbackup'  Match files with names ending in .hmbackup
+  # -exec rm {} +       Delete all matching files
   home.activation.clearBackups = lib.hm.dag.entryAfter [ ] ''
-    find ~ -name '*.hmbackup' -delete
+    find ~ ! -readable -prune -o -name '*.hmbackup' -exec rm {} +
   '';
 
   # It is occasionally necessary for Home Manager to change configuration defaults
