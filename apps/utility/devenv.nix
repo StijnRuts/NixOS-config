@@ -1,10 +1,6 @@
-{ pkgs-unstable, me, ... }:
+{ pkgs-unstable, ... }:
 {
   environment.systemPackages = [
     pkgs-unstable.devenv
-  ];
-
-  nix.settings.trusted-users = [
-    "${me.username}"
   ];
 }
