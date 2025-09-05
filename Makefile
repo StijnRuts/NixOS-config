@@ -3,11 +3,14 @@ default: run
 generate:
 	nix run .\#genflake flake.nix
 build:
-	nh os build . # nixos-rebuild build --show-trace --flake .
+	# nixos-rebuild build --show-trace --flake .
+	nh os build .
 test:
-	nh os test . # sudo nixos-rebuild test --show-trace --flake .
+	# sudo nixos-rebuild test --show-trace --flake .
+	nh os test .
 run:
-	nh os switch . # sudo nixos-rebuild switch --show-trace --flake .
+	# sudo nixos-rebuild switch --show-trace --flake .
+	nh os switch .
 update:
 	nix flake update
 format:
