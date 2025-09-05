@@ -23,6 +23,7 @@
       ./gui/graphics.nix
       ./gui/beekeeper.nix
       ./utility/devenv.nix
+      ./utility/docker.nix
       ./utility/distrobox.nix
       ./utility/virt-manager.nix
       ./utility/ollama.nix
