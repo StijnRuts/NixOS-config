@@ -60,7 +60,10 @@
         mappings.findFiles = "<leader><leader>";
       };
 
-      utility.yazi-nvim.enable = true;
+      utility.yazi-nvim = {
+        enable = true;
+        setupOpts.open_for_directories = true;
+      };
 
       git.enable = true;
 

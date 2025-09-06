@@ -11,6 +11,8 @@ test:
 run:
 	# sudo nixos-rebuild switch --show-trace --flake .
 	nh os switch .
+vim:
+	nix run ./partial/vim
 update:
 	nix flake update
 format:
