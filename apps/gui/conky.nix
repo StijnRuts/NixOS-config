@@ -5,8 +5,8 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    conky
+  home.packages = [
+    pkgs.conky
     theme.monofontPkg
   ];
 

@@ -1,24 +1,18 @@
-{ lib, isLaptop, ... }:
-(lib.optionalAttrs isLaptop {
-  services.power-profiles-daemon.enable = false; # in favor of tlp
+{
+  services.tlp.settings = {
+    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+    CPU_SCALING_GOVERNOR_ON_BAT = "ondemand";
 
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "ondemand";
+    CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+    CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
 
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+    CPU_MIN_PERF_ON_AC = 0;
+    CPU_MAX_PERF_ON_AC = 100;
+    CPU_MIN_PERF_ON_BAT = 0;
+    CPU_MAX_PERF_ON_BAT = 60;
 
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 60;
-
-      START_CHARGE_THRESH_BAT0 = 70;
-      STOP_CHARGE_THRESH_BAT0 = 80;
-    };
+    START_CHARGE_THRESH_BAT0 = 70;
+    STOP_CHARGE_THRESH_BAT0 = 80;
   };
 
   /*
@@ -37,4 +31,4 @@
       balance_power: Slightly favors power saving while maintaining reasonable performance levels
       power: Maximizes power saving at the cost of processing speed. Best for extending battery life during low-intensity tasks
   */
-})
+}

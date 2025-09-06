@@ -8,9 +8,9 @@
     "192.168.42.3" = [ "X201.local" ];
   };
 
-  environment.systemPackages = with pkgs; [
-    mkcert
-    nssTools
+  environment.systemPackages = [
+    pkgs.mkcert
+    pkgs.nssTools
   ];
 
   security.pki.certificateFiles = [ ../secrets/rootCA.pem ];

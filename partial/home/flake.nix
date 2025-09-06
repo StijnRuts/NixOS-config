@@ -15,17 +15,16 @@
     inputs:
     let
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-      userConfig = (import ../../user/flake.nix).outputs { };
       hostname = builtins.getEnv "HOSTNAME";
-      extraArgs = import ../../hosts/${hostname}/args.nix;
+      myOptions = import ../../hosts/${hostname}/options.nix;
     in
     {
-      homeConfigurations.${userConfig.args.me.username} =
+      homeConfigurations.${inputs.config.args.me.username} =
         inputs.home-manager.lib.homeManagerConfiguration
           {
             inherit pkgs;
-            extraSpecialArgs = inputs.config.args // extraArgs;
-            modules = inputs.config.homeModules;
+            extraSpecialArgs = inputs.config.args;
+            modules = [ myOptions.home ] ++ inputs.config.homeModules;
           };
     };
 }

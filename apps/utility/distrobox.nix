@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    distrobox
-    distrobox-tui
-    boxbuddy
+  environment.systemPackages = [
+    pkgs.distrobox
+    pkgs.distrobox-tui
+    pkgs.boxbuddy
   ];
 
   virtualisation.podman.enable = true;

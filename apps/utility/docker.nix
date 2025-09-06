@@ -8,8 +8,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    lazydocker
+  environment.systemPackages = [
+    pkgs.lazydocker
   ];
 
   persist.home = {
