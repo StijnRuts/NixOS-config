@@ -4,6 +4,7 @@ pkgs: {
   profiles.default = {
     # about:config
     settings = {
+      "browser.shell.checkDefaultBrowser" = false;
       "browser.aboutConfig.showWarning" = false;
       "browser.urlbar.trimURLs" = false;
       "browser.urlbar.trimHttps" = false;

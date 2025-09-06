@@ -5,6 +5,9 @@
       graphics.enable = true;
       utilities.enable = true;
     };
+    server = {
+      atuin.enable = true;
+    };
     energy.profile = "no-suspend";
     ollama.models = "heavy";
   };

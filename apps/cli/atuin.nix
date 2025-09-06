@@ -1,4 +1,4 @@
-{ pkgs-unstable, ... }:
+{ config, pkgs-unstable, ... }:
 {
   programs.atuin = {
     enable = true;
@@ -11,6 +11,9 @@
     enableZshIntegration = true;
     daemon.enable = true;
     settings = {
+      sync_address = "https://atuin.P520.local";
+      session_path = config.age.secrets.atuin_session.path;
+      key_path = config.age.secrets.atuin_key.path;
       show_help = false;
       show_tabs = false;
       show_preview = false;
@@ -21,6 +24,11 @@
       filter_mode_shell_up_key_binding = "workspace";
       workspaces = true;
     };
+  };
+
+  age.secrets = {
+    atuin_session.file = ../../secrets/atuin_session.age;
+    atuin_key.file = ../../secrets/atuin_key.age;
   };
 
   catppuccin.atuin.enable = true;

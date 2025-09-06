@@ -15,4 +15,5 @@ recursive.mergeImports [
   ./theme/flake.nix
   ./apps/flake.nix
   ./energy/flake.nix
+  ./server/flake.nix
 ]

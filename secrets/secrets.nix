@@ -6,4 +6,8 @@ in
   "hashed_password.age".publicKeys = [ stijn ];
   "rootCA_cert.age".publicKeys = [ stijn ];
   "rootCA_cert_key.age".publicKeys = [ stijn ];
+  "atuin_cert.age".publicKeys = [ stijn ];
+  "atuin_cert_key.age".publicKeys = [ stijn ];
+  "atuin_session.age".publicKeys = [ stijn ];
+  "atuin_key.age".publicKeys = [ stijn ];
 }
