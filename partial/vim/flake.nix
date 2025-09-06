@@ -13,22 +13,20 @@
         let
           pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
           pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
-          themeModule = import ../../theme/flake.nix;
-          themeConfig = themeModule.outputs {
+          themeConfig = (import ../../theme/flake.nix).outputs {
             inherit (inputs) nixpkgs;
             catppuccin = null;
           };
-          vimModule = import ../../apps/cli/vim.nix;
-          vimconfig = vimModule {
+          vimConfig = (import ../../apps/cli/vim.nix) {
             inherit pkgs-unstable;
-            theme = themeConfig.args.theme;
+            inherit (themeConfig.args) theme;
           };
         in
         (inputs.nvf.lib.neovimConfiguration {
           inherit pkgs;
           modules = [
             {
-              config.vim = vimconfig.programs.nvf.settings.vim;
+              config.vim = vimConfig.programs.nvf.settings.vim;
             }
           ];
         }).neovim;

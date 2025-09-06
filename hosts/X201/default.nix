@@ -1,9 +1,6 @@
 self:
 let
-  extraArgs = {
-    isLaptop = true;
-    isServer = false;
-  };
+  extraArgs = import ./args.nix;
 in
 {
   system = "x86_64-linux";

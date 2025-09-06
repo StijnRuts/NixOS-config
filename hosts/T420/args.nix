@@ -1,0 +1,4 @@
+{
+  isLaptop = true;
+  isServer = false;
+}
