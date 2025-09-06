@@ -1,12 +1,17 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = [
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  environment.systemPackages = lib.mkIf config.apps.utilities.enable [
     pkgs.distrobox
     pkgs.distrobox-tui
     pkgs.boxbuddy
   ];
 
-  virtualisation.podman.enable = true;
+  virtualisation.podman.enable = config.apps.utilities.enable;
 
   environment.etc."distrobox/distrobox.conf".text =
     let

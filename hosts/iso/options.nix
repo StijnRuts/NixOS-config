@@ -3,14 +3,13 @@
     apps = {
       office.enable = false;
       graphics.enable = false;
-      utilities.enable = true;
+      utilities.enable = false;
     };
-    energy.profile = "charge-limiting";
-    ollama.models = "light";
+    energy.profile = "default";
   };
   home = {
     apps = {
-      utilities.enable = true;
+      utilities.enable = false;
     };
     systray.items = "laptop";
   };

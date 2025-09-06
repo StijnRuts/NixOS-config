@@ -15,7 +15,7 @@
   };
 
   config = {
-    environment.systemPackages = [
+    environment.systemPackages = lib.mkIf config.apps.utilities.enable [
       pkgs.alpaca
       # (writeShellScriptBin "chat" "ollama run qwen2.5:0.5b")
       # (writeShellScriptBin "code" "ollama run qwen2.5-coder:0.5b")
@@ -23,7 +23,7 @@
     ];
 
     services.ollama = {
-      enable = true;
+      inherit (config.apps.utilities) enable;
       loadModels =
         {
           "light" = [

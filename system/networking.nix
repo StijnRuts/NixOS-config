@@ -1,6 +1,11 @@
-{ pkgs, me, ... }:
 {
-  networking.networkmanager.enable = true;
+  config,
+  pkgs,
+  me,
+  ...
+}:
+{
+  networking.networkmanager.enable = !config.networking.wireless.enable; # Disabled in iso
 
   networking.hosts = {
     "192.168.42.1" = [ "P520.local" ];

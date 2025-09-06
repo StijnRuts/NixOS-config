@@ -1,14 +1,19 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   virtualisation.docker = {
-    enable = true;
+    inherit (config.apps.utilities) enable;
     rootless = {
       enable = true;
       setSocketVariable = true;
     };
   };
 
-  environment.systemPackages = [
+  environment.systemPackages = lib.mkIf config.apps.utilities.enable [
     pkgs.lazydocker
   ];
 

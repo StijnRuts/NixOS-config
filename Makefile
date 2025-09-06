@@ -28,6 +28,11 @@ home:
 vim:
 	nix run ./partial/vim
 
+# Build an iso with custom configuration
+iso:
+	nix build .\#nixosConfigurations.iso.config.system.build.isoImage
+	xdg-open ./result/iso
+
 # Update the flake.lock file
 update:
 	nix flake update
