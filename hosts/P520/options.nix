@@ -12,9 +12,6 @@
     ollama.models = "heavy";
   };
   home = {
-    apps = {
-      utilities.enable = true;
-    };
     systray.items = "desktop";
   };
 }

@@ -9,9 +9,6 @@
     ollama.models = "light";
   };
   home = {
-    apps = {
-      utilities.enable = true;
-    };
     systray.items = "laptop";
   };
 }
