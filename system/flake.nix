@@ -31,6 +31,7 @@
             nixfmt-tree
             statix
             deadnix
+            systemctl-tui
           ];
         }
       )
