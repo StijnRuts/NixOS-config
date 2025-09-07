@@ -7,19 +7,21 @@
   };
 
   config = {
-    services.atuin = {
-      inherit (config.server.atuin) enable;
-      host = "127.0.0.1";
-      port = 1888;
-      openRegistration = false;
-    };
+    services = lib.mkIf config.server.atuin.enable {
+      atuin = {
+        enable = true;
+        host = "127.0.0.1";
+        port = 1888;
+        openRegistration = false;
+      };
 
-    services.caddy = {
-      inherit (config.server.atuin) enable;
-      virtualHosts."atuin.P520.local".extraConfig = ''
-        tls ${config.age.secrets.atuin_cert.path} ${config.age.secrets.atuin_cert_key.path}
-        reverse_proxy http://127.0.0.1:1888
-      '';
+      caddy = {
+        enable = true;
+        virtualHosts."atuin.P520.local".extraConfig = ''
+          tls ${config.age.secrets.atuin_cert.path} ${config.age.secrets.atuin_cert_key.path}
+          reverse_proxy http://127.0.0.1:1888
+        '';
+      };
     };
 
     age.secrets = lib.mkIf config.server.atuin.enable {

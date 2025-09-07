@@ -12,9 +12,9 @@
   };
 
   config = {
-    services = {
+    services = lib.mkIf config.server.nextcloud.enable {
       nextcloud = {
-        inherit (config.server.nextcloud) enable;
+        enable = true;
         package = pkgs.nextcloud31;
         hostName = "nextcloud.localhost";
         settings = {
@@ -38,7 +38,7 @@
         }
       ];
 
-      caddy = lib.mkIf config.server.nextcloud.enable {
+      caddy = {
         enable = true;
         virtualHosts."nextcloud.P520.local".extraConfig = ''
           tls ${config.age.secrets.nextcloud_cert.path} ${config.age.secrets.nextcloud_cert_key.path}
@@ -47,7 +47,7 @@
       };
     };
 
-    age.secrets = {
+    age.secrets = lib.mkIf config.server.nextcloud.enable {
       nextcloud_admin_pass.file = ../secrets/nextcloud_admin_pass.age;
       nextcloud_cert = {
         file = ../secrets/nextcloud_cert.age;
