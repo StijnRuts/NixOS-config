@@ -1,4 +1,4 @@
-{ pkgs, me, ... }:
+{ pkgs, lib, me, ... }:
 {
   programs.plasma = {
     configFile = {
@@ -16,8 +16,8 @@
     Name=Dolphin Detail view
     Exec=${pkgs.writeScript "dolphin-xattrs" ''
       #!/usr/bin/env bash
-      ${pkgs.coreutils}/bin/mkdir -p /home/${me.username}/.local/share/dolphin/view_properties/global
-      ${pkgs.attr}/bin/setfattr -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' /home/${me.username}/.local/share/dolphin/view_properties/global
+      ${lib.getExe' pkgs.coreutils "mkdir"} -p /home/${me.username}/.local/share/dolphin/view_properties/global
+      ${lib.getExe' pkgs.attr "setfattr"} -n user.kde.fm.viewproperties#1 -v $'[Dolphin]\nViewMode=1' /home/${me.username}/.local/share/dolphin/view_properties/global
     ''}
   '';
 }
