@@ -23,10 +23,14 @@
         if command -v direnv; then
           eval "$(direnv hook zsh)"
         fi
-        # Launch zellij
-        if command -v zellij; then
-          if [[ -z "$ZELLIJ" ]]; then
-            zellij attach -c default
+        # If not in nix-shell or devenv
+        if [ -z "$IN_NIX_SHELL" ] && [ -z "$DEVENV_DOTFILE" ]; then
+          # Launch zellij
+          if command -v zellij; then
+            # If not already in Zellij
+            if [[ -z "$ZELLIJ" ]]; then
+              zellij attach -c default
+            fi
           fi
         fi
       fi
