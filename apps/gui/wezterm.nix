@@ -20,10 +20,14 @@
       # Setup fancy environment, only on WezTerm
       if [ -n "$WEZTERM_EXECUTABLE" ]; then
         # Enable direnv
-        eval "$(direnv hook zsh)"
+        if command -v direnv; then
+          eval "$(direnv hook zsh)"
+        fi
         # Launch zellij
-        if [[ -z "$ZELLIJ" ]]; then
-          zellij attach -c default
+        if command -v zellij; then
+          if [[ -z "$ZELLIJ" ]]; then
+            zellij attach -c default
+          fi
         fi
       fi
     '';
