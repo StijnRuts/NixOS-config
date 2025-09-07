@@ -1,4 +1,9 @@
-{ pkgs, lib, me, ... }:
+{
+  pkgs,
+  lib,
+  me,
+  ...
+}:
 {
   programs.plasma = {
     configFile = {
