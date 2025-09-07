@@ -4,13 +4,23 @@
     enable = true;
     userEmail = "${me.email.git}";
     userName = "${me.name}";
+    delta.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
       rebase.autoStash = true;
+      delta = {
+        syntax-theme = "none";
+        hunk-header-style = "normal";
+        minus-style = "red";
+        minus-non-emph-style = "red";
+        minus-emph-style = "reverse red";
+        plus-style = "green";
+        plus-non-emph-style = "green";
+        plus-emph-style = "reverse green";
+      };
     };
-    diff-highlight.enable = true;
   };
 
   programs.lazygit = {
@@ -23,8 +33,8 @@
         showCommandLog = false;
       };
       git = {
-        paging.pager = "${config.programs.git.package}/share/git/contrib/diff-highlight/diff-highlight";
         disableForcePushing = true;
+        paging.pager = "delta --paging=never";
       };
     };
   };
