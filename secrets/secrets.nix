@@ -10,4 +10,7 @@ in
   "atuin_cert_key.age".publicKeys = [ stijn ];
   "atuin_session.age".publicKeys = [ stijn ];
   "atuin_key.age".publicKeys = [ stijn ];
+  "nextcloud_admin_pass.age".publicKeys = [ stijn ];
+  "nextcloud_cert.age".publicKeys = [ stijn ];
+  "nextcloud_cert_key.age".publicKeys = [ stijn ];
 }

@@ -11,6 +11,7 @@
     "192.168.42.1" = [
       "P520.local"
       "atuin.P520.local"
+      "nextcloud.P520.local"
     ];
     "192.168.42.2" = [ "T420.local" ];
     "192.168.42.3" = [ "X201.local" ];

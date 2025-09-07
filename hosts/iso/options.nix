@@ -9,7 +9,7 @@
   };
   home = {
     apps = {
-      utilities.enable = false;
+      nextcloud.enable = false;
     };
     systray.items = "laptop";
   };

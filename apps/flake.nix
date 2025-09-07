@@ -60,6 +60,7 @@
       ./gui/chromium.nix
       inputs.zen-browser.homeModules.beta
       ./gui/zen.nix
+      ./gui/nextcloud.nix
       ./gui/conky.nix
     ];
   };

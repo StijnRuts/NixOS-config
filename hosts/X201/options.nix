@@ -9,6 +9,9 @@
     ollama.models = "light";
   };
   home = {
+    apps = {
+      nextcloud.enable = true;
+    };
     systray.items = "laptop";
   };
 }
