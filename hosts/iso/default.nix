@@ -1,15 +1,24 @@
 self:
 let
   myOptions = import ./options.nix;
+  customArgs = self.args // {
+    me = {
+      name = "NixOS";
+      username = "nixos";
+      email = {
+        git = "invalid@example.com";
+      };
+    };
+  };
 in
 {
   system = "x86_64-linux";
-  specialArgs = self.args;
+  specialArgs = customArgs;
   modules = [
     (
       { modulesPath, ... }:
       {
-        imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
+        imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix") ];
       }
     )
     myOptions.system
@@ -18,8 +27,8 @@ in
   ++ [
     {
       home-manager = {
-        extraSpecialArgs = self.args;
-        users.${self.args.me.username}.imports = [ myOptions.home ] ++ self.homeModules;
+        extraSpecialArgs = customArgs;
+        users.${customArgs.me.username}.imports = [ myOptions.home ] ++ self.homeModules;
       };
     }
   ];

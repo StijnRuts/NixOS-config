@@ -10,7 +10,12 @@
 
     nixosModules = [
       (
-        { config, me, ... }:
+        {
+          config,
+          lib,
+          me,
+          ...
+        }:
         {
           users.users.${me.username} = {
             isNormalUser = true;
@@ -19,7 +24,7 @@
               "networkmanager"
               "wheel"
             ];
-            hashedPasswordFile = config.age.secrets.hashed_password.path;
+            hashedPasswordFile = lib.mkIf (me.username != "nixos") config.age.secrets.hashed_password.path;
           };
 
           age.secrets.hashed_password.file = ../secrets/hashed_password.age;
