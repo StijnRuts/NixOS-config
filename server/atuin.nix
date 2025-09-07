@@ -22,7 +22,7 @@
       '';
     };
 
-    age.secrets = {
+    age.secrets = lib.mkIf config.server.atuin.enable {
       atuin_cert = {
         file = ../secrets/atuin_cert.age;
         owner = "caddy";

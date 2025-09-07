@@ -1,4 +1,9 @@
-{ pkgs-unstable, theme, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  theme,
+  ...
+}:
 {
   programs.neovim = {
     enable = true;
@@ -23,13 +28,18 @@
         mouse = "a";
         shiftwidth = 2;
         tabstop = 4;
+        softtabstop = 2;
+        expandtab = true;
         list = true;
         listchars = "tab:» ,trail:·,nbsp:␣";
       };
 
       binds.whichKey.enable = true;
 
-      statusline.lualine.enable = true;
+      statusline.lualine = {
+        enable = true;
+        activeSection = import ./vim-lualine.nix;
+      };
 
       tabline.nvimBufferline = {
         enable = true;
@@ -57,20 +67,31 @@
 
       telescope = {
         enable = true;
-        mappings.findFiles = "<leader><leader>";
+        mappings.buffers = "<leader><leader>";
       };
 
       utility.yazi-nvim = {
         enable = true;
         setupOpts.open_for_directories = true;
+        mappings = {
+          yaziToggle = "<leader>yy";
+          openYazi = "<leader>Y";
+          openYaziDir = "<leader>yw";
+        };
       };
 
-      git.enable = true;
+      git = {
+        gitsigns.enable = true;
+        vim-fugitive.enable = true;
+      };
 
       terminal.toggleterm = {
         enable = true;
         setupOpts.direction = "float";
-        lazygit.enable = true;
+        lazygit = {
+          enable = true;
+          mappings.open = "<leader>gg";
+        };
       };
       keymaps = [
         {
@@ -79,6 +100,12 @@
           action = "<C-\\><C-n>";
         }
       ];
+
+      treesitter = {
+        enable = true;
+        addDefaultGrammars = true;
+        fold = true;
+      };
 
       lsp = {
         enable = true;
@@ -127,6 +154,10 @@
       };
       statusline.lualine.theme = "catppuccin";
     };
+  };
+
+  home.shellAliases = {
+    "nvim-config" = "nvf-print-config | bat --language=lua";
   };
 
   persist.home = {
