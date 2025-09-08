@@ -75,6 +75,18 @@
    </metadata>
   </info>
  </bookmark>
+ <bookmark href="file:///home/stijn/NixOS">
+  <title>NixOS</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="nix-snowflake-white"/>
+   </metadata>
+   <metadata owner="http://www.kde.org">
+    <ID>1729160181/0</ID>
+    <OnlyInApp>dolphin</OnlyInApp>
+   </metadata>
+  </info>
+ </bookmark>
  <bookmark href="file:///home/stijn/Pictures">
   <title>Pictures</title>
   <info>
@@ -87,15 +99,14 @@
    </metadata>
   </info>
  </bookmark>
- <bookmark href="file:///home/stijn/Videos">
-  <title>Videos</title>
+ <bookmark href="file:///home/stijn/Projects">
+  <title>Projects</title>
   <info>
    <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="folder-videos"/>
+    <bookmark:icon name="folder-code"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1729158742/6</ID>
-    <isSystemItem>true</isSystemItem>
+    <ID>1757355084/2</ID>
    </metadata>
   </info>
  </bookmark>
@@ -123,15 +134,15 @@
    </metadata>
   </info>
  </bookmark>
- <bookmark href="file:///home/stijn/NixOS">
-  <title>NixOS</title>
+ <bookmark href="file:///home/stijn/Videos">
+  <title>Videos</title>
   <info>
    <metadata owner="http://freedesktop.org">
-    <bookmark:icon name="nix-snowflake-white"/>
+    <bookmark:icon name="folder-videos"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1729160181/0</ID>
-    <OnlyInApp>dolphin</OnlyInApp>
+    <ID>1729158742/6</ID>
+    <isSystemItem>true</isSystemItem>
    </metadata>
   </info>
  </bookmark>

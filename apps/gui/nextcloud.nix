@@ -11,5 +11,38 @@
       inherit (config.apps.nextcloud) enable;
       startInBackground = true;
     };
+
+    home.file =
+      let
+        syncExclude = ''
+          .git
+          .devenv
+          vendor
+          node_modules
+          bower_components
+          .pulp-cache
+          output
+          output-es
+          .psc-package
+          .spago
+        '';
+      in
+      {
+        "Documents/.sync-exclude.lst".text = syncExclude;
+        "Downloads/.sync-exclude.lst".text = syncExclude;
+        "Music/.sync-exclude.lst".text = syncExclude;
+        "NixOS/.sync-exclude.lst".text = syncExclude;
+        "Pictures/.sync-exclude.lst".text = syncExclude;
+        "Projects/.sync-exclude.lst".text = syncExclude;
+        "Public/.sync-exclude.lst".text = syncExclude;
+        "Templates/.sync-exclude.lst".text = syncExclude;
+        "Videos/.sync-exclude.lst".text = syncExclude;
+      };
+
+    persist.home = {
+      directories = [
+        ".config/Nextcloud"
+      ];
+    };
   };
 }

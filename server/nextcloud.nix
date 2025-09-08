@@ -20,6 +20,8 @@
         settings = {
           trusted_domains = [ "nextcloud.P520.local" ];
           overwriteprotocol = "https";
+          blacklisted_files = [ ]; # Don't forbid .htaccess
+          forbidden_filenames = [ ]; # Don't forbid .htaccess
         };
         https = true;
         database.createLocally = true;

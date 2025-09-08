@@ -20,11 +20,12 @@
       "Documents"
       "Downloads"
       "Music"
+      "NixOS"
       "Pictures"
+      "Projects"
       "Public"
       "Templates"
       "Videos"
-      "NixOS"
       ".local/share/Trash"
     ];
   };
