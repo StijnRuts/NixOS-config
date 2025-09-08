@@ -157,8 +157,10 @@
   };
 
   home.shellAliases = {
-    "nvim-config" = "nvf-print-config | bat --language=lua";
+    "nvim-config" = "nvf-print-config | stylua - | bat --language=lua";
   };
+
+  home.packages = [ pkgs.stylua ];
 
   persist.home = {
     directories = [
