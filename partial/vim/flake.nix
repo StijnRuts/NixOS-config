@@ -13,6 +13,7 @@
           pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
           vimConfig = (import ../../apps/cli/vim.nix) {
             inherit pkgs;
+            inherit (pkgs) lib;
             inherit (inputs.config.args) pkgs-unstable theme;
           };
         in

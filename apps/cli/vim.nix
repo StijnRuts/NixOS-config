@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  lib,
   theme,
   ...
 }:
@@ -26,6 +27,7 @@
 
       options = {
         mouse = "a";
+        cursorline = true;
         shiftwidth = 2;
         tabstop = 4;
         softtabstop = 2;
@@ -109,6 +111,7 @@
 
       lsp = {
         enable = true;
+        formatOnSave = true;
         nvim-docs-view.enable = true;
         otter-nvim.enable = true;
         trouble.enable = true;
@@ -141,6 +144,29 @@
         # Temporary, prettier is not in nixpkgs 25.05
         css.format.package = pkgs-unstable.prettier;
         ts.format.package = pkgs-unstable.prettier;
+      };
+
+      startPlugins = with pkgs.vimPlugins; [
+        nvim-treesitter-parsers.purescript
+        nvim-treesitter-parsers.dhall
+      ];
+
+      lsp.lspconfig = {
+        enable = true;
+        sources.purescript-lsp = ''
+          lspconfig.purescriptls.setup {
+            capabilities = capabilities,
+            on_attach = default_on_attach,
+            cmd = { "${lib.getExe pkgs.nodePackages.purescript-language-server}", "--stdio" },
+          }
+        '';
+        sources.dhall-lsp = ''
+          lspconfig.dhall_lsp_server.setup {
+            capabilities = capabilities,
+            on_attach = default_on_attach,
+            cmd = { "${lib.getExe pkgs.dhall-lsp-server}" },
+          }
+        '';
       };
 
       autocomplete.blink-cmp.enable = true;
