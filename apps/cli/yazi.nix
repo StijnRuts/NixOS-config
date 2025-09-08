@@ -19,6 +19,14 @@
     plugins = with pkgs.yaziPlugins; {
       inherit piper;
     };
+    keymap = {
+      manager.prepend_keymap = [
+        {
+          on = [ "<Space>" ];
+          run = "toggle"; # Don't move down after selecting
+        }
+      ];
+    };
   };
 
   catppuccin.yazi.enable = true;
