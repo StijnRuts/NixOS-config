@@ -19,6 +19,7 @@
         hostName = "nextcloud.localhost";
         settings = {
           trusted_domains = [ "nextcloud.P520.local" ];
+          trusted_proxies = [ "127.0.0.1" ];
           overwriteprotocol = "https";
           blacklisted_files = [ ]; # Don't forbid .htaccess
           forbidden_filenames = [ ]; # Don't forbid .htaccess
@@ -30,6 +31,9 @@
         config = {
           dbtype = "pgsql";
           adminpassFile = config.age.secrets.nextcloud_admin_pass.path;
+        };
+        phpOptions = {
+          "opcache.interned_strings_buffer" = "16";
         };
       };
 
@@ -47,6 +51,16 @@
           reverse_proxy nextcloud.localhost:8882
         '';
       };
+    };
+
+    systemd.services.nextcloud-custom-config = lib.mkIf config.server.nextcloud.enable {
+      path = [ config.services.nextcloud.occ ];
+      script = ''
+        nextcloud-occ maintenance:repair --include-expensive
+        nextcloud-occ config:system:set maintenance_window_start --type=integer --value=1
+      '';
+      after = [ "nextcloud-setup.service" ];
+      wantedBy = [ "multi-user.target" ];
     };
 
     age.secrets = lib.mkIf config.server.nextcloud.enable {
