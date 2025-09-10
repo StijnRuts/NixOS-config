@@ -68,7 +68,7 @@
       443
     ];
 
-    persist.system = {
+    persist.system = lib.mkIf config.server.nextcloud.enable {
       directories = [
         {
           directory = "/var/lib/nextcloud";

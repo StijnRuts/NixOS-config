@@ -42,7 +42,7 @@
       443
     ];
 
-    persist.system = {
+    persist.system = lib.mkIf config.server.atuin.enable {
       directories = [
         "/var/lib/postgresql"
       ];
