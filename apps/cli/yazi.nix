@@ -20,7 +20,7 @@
       inherit piper;
     };
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           on = [ "<Space>" ];
           run = "toggle"; # Don't move down after selecting
