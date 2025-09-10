@@ -51,6 +51,7 @@
       ./cli/yazi.nix
       ./cli/zellij.nix
       ./cli/atuin.nix
+      ./cli/carapace.nix
       ./cli/git.nix
       inputs.nvf.homeManagerModules.default
       ./cli/vim.nix
