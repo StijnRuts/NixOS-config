@@ -39,7 +39,7 @@ update:
 
 # Format all .nix files
 format:
-	treefmt .
+	treefmt --config-file treefmt.toml .
 
 # Lint all .nix files
 lint:

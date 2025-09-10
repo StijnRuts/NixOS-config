@@ -173,6 +173,52 @@
 
       autocomplete.blink-cmp.enable = true;
 
+      snippets.luasnip =
+        let
+          snippetsDir = ./vim-snippets;
+          languages = builtins.attrNames (builtins.readDir snippetsDir);
+          filesForLanguage = language: builtins.attrNames (builtins.readDir "${snippetsDir}/${language}");
+          removeAnySuffix = file: lib.removeSuffix (lib.last (lib.splitString "." file)) file;
+          snippetsForLanguage =
+            language:
+            map (file: {
+              trigger = removeAnySuffix file;
+              body = builtins.readFile "${snippetsDir}/${language}/${file}";
+            }) (filesForLanguage language);
+          allSnippets = lib.listToAttrs (
+            map (language: {
+              name = language;
+              value = snippetsForLanguage language;
+            }) languages
+          );
+        in
+        {
+          enable = true;
+          customSnippets.snipmate = allSnippets;
+        };
+      lazy.plugins.luasnip.keys = [
+        {
+          mode = [
+            "i"
+            "s"
+          ];
+          key = "<C-n>";
+          action = ''function() require("luasnip").jump(1) end'';
+          lua = true;
+          desc = "Jump to next tabstop";
+        }
+        {
+          mode = [
+            "i"
+            "s"
+          ];
+          key = "<C-p>";
+          action = ''function() require("luasnip").jump(-1) end'';
+          lua = true;
+          desc = "Jump to previous tabstop";
+        }
+      ];
+
       spellcheck.enable = true;
 
       keymaps = import ./vim-keymap.nix { inherit lib; };
