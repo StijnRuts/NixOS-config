@@ -11,10 +11,6 @@ const targetClasses = [
   "zen",
   "kwrite",
   "kate",
-  "libreoffice",
-  "gimp",
-  "krita",
-  "inkscape",
   "beekeeper-studio",
   "alpaca"
 ];
