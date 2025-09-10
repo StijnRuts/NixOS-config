@@ -67,6 +67,8 @@
 
       utility.motion.flash-nvim.enable = true;
 
+      comments.comment-nvim.enable = true;
+
       telescope = {
         enable = true;
         mappings.buffers = "<leader><leader>";
@@ -95,7 +97,7 @@
           mappings.open = "<leader>gg";
         };
       };
-      keymaps = [
+      lazy.plugins.toggleterm-nvim.keys = [
         {
           mode = [ "t" ];
           key = "<C-t>";
@@ -172,6 +174,8 @@
       autocomplete.blink-cmp.enable = true;
 
       spellcheck.enable = true;
+
+      keymaps = import ./vim-keymap.nix { inherit lib; };
 
       theme = {
         enable = true;
