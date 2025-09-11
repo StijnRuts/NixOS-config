@@ -6,9 +6,9 @@
     description = "Enable Nextcloud client";
   };
 
-  config = {
+  config = lib.mkIf config.apps.nextcloud.enable {
     services.nextcloud-client = {
-      inherit (config.apps.nextcloud) enable;
+      enable = true;
       startInBackground = true;
     };
 

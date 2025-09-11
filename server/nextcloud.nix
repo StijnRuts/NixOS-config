@@ -11,8 +11,8 @@
     description = "Enable Nextcloud server";
   };
 
-  config = {
-    services = lib.mkIf config.server.nextcloud.enable {
+  config = lib.mkIf config.server.nextcloud.enable {
+    services = {
       nextcloud = {
         enable = true;
         package = pkgs.nextcloud31;
@@ -53,7 +53,7 @@
       };
     };
 
-    systemd.services.nextcloud-custom-config = lib.mkIf config.server.nextcloud.enable {
+    systemd.services.nextcloud-custom-config = {
       path = [ config.services.nextcloud.occ ];
       script = ''
         nextcloud-occ maintenance:repair --include-expensive
@@ -63,7 +63,7 @@
       wantedBy = [ "multi-user.target" ];
     };
 
-    age.secrets = lib.mkIf config.server.nextcloud.enable {
+    age.secrets = {
       nextcloud_admin_pass.file = ../secrets/nextcloud_admin_pass.age;
       nextcloud_cert = {
         file = ../secrets/nextcloud_cert.age;
@@ -77,12 +77,12 @@
       };
     };
 
-    networking.firewall.allowedTCPPorts = lib.mkIf config.server.nextcloud.enable [
+    networking.firewall.allowedTCPPorts = [
       80
       443
     ];
 
-    persist.system = lib.mkIf config.server.nextcloud.enable {
+    persist.system = {
       directories = [
         {
           directory = "/var/lib/nextcloud";

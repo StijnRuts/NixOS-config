@@ -6,8 +6,8 @@
     description = "Enable Nextcloud server";
   };
 
-  config = {
-    services = lib.mkIf config.server.atuin.enable {
+  config = lib.mkIf config.server.atuin.enable {
+    services = {
       atuin = {
         enable = true;
         host = "127.0.0.1";
@@ -24,7 +24,7 @@
       };
     };
 
-    age.secrets = lib.mkIf config.server.atuin.enable {
+    age.secrets = {
       atuin_cert = {
         file = ../secrets/atuin_cert.age;
         owner = "caddy";
@@ -37,12 +37,12 @@
       };
     };
 
-    networking.firewall.allowedTCPPorts = lib.mkIf config.server.atuin.enable [
+    networking.firewall.allowedTCPPorts = [
       80
       443
     ];
 
-    persist.system = lib.mkIf config.server.atuin.enable {
+    persist.system = {
       directories = [
         "/var/lib/postgresql"
       ];
