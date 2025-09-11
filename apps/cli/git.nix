@@ -1,4 +1,4 @@
-{ me, ... }:
+{ pkgs, me, ... }:
 {
   programs.git = {
     enable = true;
@@ -53,7 +53,6 @@
     "amend" = "git commit --amend";
     "gco" = "git checkout";
     "gcop" = "git checkout --patch";
-    "wipe" = "git restore --source=HEAD --staged --worktree -- . && git clean -fd";
     "gb" = "git branch";
     "gp" = "git pull";
     "gpsh" = "git push";
@@ -62,6 +61,13 @@
     "gst" = "git stash push";
     "gstp" = "git stash pop";
   };
+
+  home.packages = [
+    (pkgs.writers.writeBashBin "wipe" ''
+      git restore --source=HEAD --staged --worktree -- .
+      git clean -fd
+    '')
+  ];
 
   persist.home = {
     directories = [

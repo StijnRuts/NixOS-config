@@ -9,6 +9,7 @@
     });
     enableBashIntegration = true;
     enableZshIntegration = true;
+    enableNushellIntegration = true;
     daemon.enable = true;
     settings = {
       sync_address = "https://atuin.P520.local";

@@ -7,6 +7,7 @@
           enable = true;
           enableBashIntegration = false;
           enableZshIntegration = false; # Only enabled in WezTerm
+          enableNushellIntegration = false;
           nix-direnv.enable = true;
         };
 

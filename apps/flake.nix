@@ -43,6 +43,7 @@
     homeModules = [
       ./cli/bash.nix
       ./cli/zsh.nix
+      ./cli/nushell.nix
       ./cli/ssh.nix
       ./cli/starship.nix
       ./cli/eza.nix

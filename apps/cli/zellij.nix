@@ -3,6 +3,7 @@
     enable = true;
     enableBashIntegration = false;
     enableZshIntegration = false; # Only enabled in WezTerm
+    # enableNushellIntegration = false;
     attachExistingSession = false; # Set in WezTerm config
     settings = {
       pane_frames = false;

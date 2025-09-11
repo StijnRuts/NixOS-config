@@ -3,6 +3,7 @@
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+    enableNushellIntegration = true;
   };
 
   persist.home = {
