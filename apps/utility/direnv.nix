@@ -1,19 +1,21 @@
-{ config, me, ... }:
+{ config, lib, me, ... }:
 {
-  home-manager.users.${me.username}.imports = [
-    {
-      programs.direnv = {
-        inherit (config.apps.utilities) enable;
-        enableBashIntegration = false;
-        enableZshIntegration = false; # Only enabled in WezTerm
-        nix-direnv.enable = true;
-      };
+  config = lib.mkIf config.apps.utilities.enable {
+    home-manager.users.${me.username}.imports = [
+      {
+        programs.direnv = {
+          enable = true;
+          enableBashIntegration = false;
+          enableZshIntegration = false; # Only enabled in WezTerm
+          nix-direnv.enable = true;
+        };
 
-      persist.home = {
-        directories = [
-          ".local/share/direnv"
-        ];
-      };
-    }
-  ];
+        persist.home = {
+          directories = [
+            ".local/share/direnv"
+          ];
+        };
+      }
+    ];
+  };
 }

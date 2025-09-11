@@ -14,8 +14,8 @@
     description = "Sets which Ollama models should be loaded by default";
   };
 
-  config = {
-    environment.systemPackages = lib.mkIf config.apps.utilities.enable [
+  config = lib.mkIf config.apps.utilities.enable {
+    environment.systemPackages = [
       pkgs.alpaca
       # (writeShellScriptBin "chat" "ollama run qwen2.5:0.5b")
       # (writeShellScriptBin "code" "ollama run qwen2.5-coder:0.5b")
@@ -23,7 +23,7 @@
     ];
 
     services.ollama = {
-      inherit (config.apps.utilities) enable;
+      enable = true;
       loadModels =
         {
           "light" = [

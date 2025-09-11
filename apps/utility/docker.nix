@@ -5,26 +5,28 @@
   ...
 }:
 {
-  virtualisation.docker = {
-    inherit (config.apps.utilities) enable;
-    rootless = {
+  config = lib.mkIf config.apps.utilities.enable {
+    virtualisation.docker = {
       enable = true;
-      setSocketVariable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
     };
-  };
 
-  environment.systemPackages = lib.mkIf config.apps.utilities.enable [
-    pkgs.lazydocker
-  ];
+    environment.systemPackages = [
+      pkgs.lazydocker
+    ];
 
-  persist.home = {
-    directories = [
-      ".local/share/docker"
-    ];
-  };
-  persist.system = {
-    directories = [
-      "/var/lib/docker"
-    ];
+    persist.home = {
+      directories = [
+        ".local/share/docker"
+      ];
+    };
+    persist.system = {
+      directories = [
+        "/var/lib/docker"
+      ];
+    };
   };
 }

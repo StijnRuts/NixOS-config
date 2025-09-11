@@ -1,11 +1,13 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
-  programs.virt-manager.enable = config.apps.utilities.enable;
-  virtualisation.libvirtd.enable = config.apps.utilities.enable;
+  config = lib.mkIf config.apps.utilities.enable {
+    programs.virt-manager.enable = true;
+    virtualisation.libvirtd.enable = true;
 
-  persist.system = {
-    directories = [
-      "/var/lib/libvirt"
-    ];
+    persist.system = {
+      directories = [
+        "/var/lib/libvirt"
+      ];
+    };
   };
 }

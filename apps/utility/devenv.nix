@@ -5,13 +5,15 @@
   ...
 }:
 {
-  environment.systemPackages = lib.mkIf config.apps.utilities.enable [
-    pkgs-unstable.devenv
-  ];
-
-  persist.home = {
-    directories = [
-      ".local/share/devenv"
+  config = lib.mkIf config.apps.utilities.enable {
+    environment.systemPackages = [
+      pkgs-unstable.devenv
     ];
+
+    persist.home = {
+      directories = [
+        ".local/share/devenv"
+      ];
+    };
   };
 }
