@@ -31,6 +31,7 @@
         "Documents/.sync-exclude.lst".text = syncExclude;
         "Downloads/.sync-exclude.lst".text = syncExclude;
         "Music/.sync-exclude.lst".text = syncExclude;
+        "NixOS/.sync-exclude.lst".text = syncExclude;
         "Pictures/.sync-exclude.lst".text = syncExclude;
         "Projects/.sync-exclude.lst".text = syncExclude;
         "Public/.sync-exclude.lst".text = syncExclude;
