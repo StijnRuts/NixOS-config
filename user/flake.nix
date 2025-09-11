@@ -27,7 +27,7 @@
             hashedPasswordFile = lib.mkIf (me.username != "nixos") config.age.secrets.hashed_password.path;
           };
 
-          age.secrets.hashed_password.file = ../secrets/hashed_password.age;
+          age.secrets.hashed_password.file = ../secrets/user/hashed_password.age;
         }
       )
     ];

@@ -28,8 +28,8 @@
   };
 
   age.secrets = {
-    atuin_session.file = ../../secrets/atuin_session.age;
-    atuin_key.file = ../../secrets/atuin_key.age;
+    atuin_session.file = ../../secrets/atuin/session.age;
+    atuin_key.file = ../../secrets/atuin/key.age;
   };
 
   catppuccin.atuin.enable = true;

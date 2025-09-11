@@ -64,14 +64,14 @@
     };
 
     age.secrets = {
-      nextcloud_admin_pass.file = ../secrets/nextcloud_admin_pass.age;
+      nextcloud_admin_pass.file = ../secrets/nextcloud/admin_pass.age;
       nextcloud_cert = {
-        file = ../secrets/nextcloud_cert.age;
+        file = ../secrets/nextcloud/cert.age;
         owner = "caddy";
         group = "caddy";
       };
       nextcloud_cert_key = {
-        file = ../secrets/nextcloud_cert_key.age;
+        file = ../secrets/nextcloud/cert_key.age;
         owner = "caddy";
         group = "caddy";
       };

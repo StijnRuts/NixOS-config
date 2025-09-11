@@ -26,12 +26,12 @@
 
     age.secrets = {
       atuin_cert = {
-        file = ../secrets/atuin_cert.age;
+        file = ../secrets/atuin/cert.age;
         owner = "caddy";
         group = "caddy";
       };
       atuin_cert_key = {
-        file = ../secrets/atuin_cert_key.age;
+        file = ../secrets/atuin/cert_key.age;
         owner = "caddy";
         group = "caddy";
       };
