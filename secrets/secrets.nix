@@ -13,4 +13,5 @@ in
   "nextcloud/admin_pass.age".publicKeys = [ stijn ];
   "nextcloud/cert.age".publicKeys = [ stijn ];
   "nextcloud/cert_key.age".publicKeys = [ stijn ];
+  "tarsnap/nextcloud.age".publicKeys = [ stijn ];
 }
