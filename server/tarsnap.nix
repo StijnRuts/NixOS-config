@@ -8,7 +8,7 @@
         # tarsnap-keymgmt --outkeyfile tarsnap-nextcloud.key -w tarsnap.key
         period = "daily";
         checkpointBytes = null;
-        directories = lib.map (dir: "/var/lib/nextcloud/data/${me.name}/files/${dir}") [
+        directories = lib.map (dir: "/var/lib/nextcloud/data/${lib.escapeShellArg me.name}/files/${dir}") [
           "Documents"
           # "Downloads" # Don't backup Downloads
           "Music"
