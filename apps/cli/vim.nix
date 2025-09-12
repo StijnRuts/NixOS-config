@@ -66,7 +66,10 @@
       projects.project-nvim.enable = true;
       session.nvim-session-manager.enable = false;
 
-      utility.motion.flash-nvim.enable = true;
+      utility = {
+        motion.flash-nvim.enable = true;
+        undotree.enable = true;
+      };
 
       comments.comment-nvim.enable = true;
 

@@ -1,7 +1,5 @@
 { theme, ... }:
 {
-  home.file.".local/state/konsolestaterc".source = ./konsolestaterc; # hide toolbars
-
   programs.konsole = {
     enable = true;
     customColorSchemes = {
@@ -17,6 +15,8 @@
       };
     };
   };
+
+  home.file.".local/state/konsolestaterc".source = ./konsolestaterc; # hide toolbars
 
   # Make Konsole the default terminal app
   programs.plasma.configFile = {
