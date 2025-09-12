@@ -27,6 +27,7 @@
 
       options = {
         mouse = "a";
+        autoread = true;
         cursorline = true;
         shiftwidth = 2;
         tabstop = 4;
