@@ -31,7 +31,7 @@
     persist.home = {
       directories = [
         ".cache/distrobox"
-        ".local/share/containers"
+        # ".local/share/containers" # already defined in podman.nix
       ];
     };
   };
