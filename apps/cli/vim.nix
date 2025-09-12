@@ -70,6 +70,15 @@
         motion.flash-nvim.enable = true;
         undotree.enable = true;
       };
+      lazy.plugins.undotree.keys = [
+        {
+          mode = [ "n" ];
+          key = "<C-z>";
+          action = "vim.cmd.UndotreeToggle";
+          lua = true;
+          desc = "Undotree";
+        }
+      ];
 
       comments.comment-nvim.enable = true;
 
