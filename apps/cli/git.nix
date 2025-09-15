@@ -67,6 +67,33 @@
       git restore --source=HEAD --staged --worktree -- .
       git clean -fd
     '')
+    (pkgs.writers.writeBashBin "gitupdate" ''
+      set -euo pipefail
+      git add --all
+      git stash push --quiet -m "Auto-stash before pull"
+      git pull
+      git stash pop --quiet || {
+        echo "Warning: stash pop failed. You may need to resolve conflicts manually."
+        exit 1
+      }
+      git reset --quiet
+    '')
+    (pkgs.writers.writeBashBin "gitattach" ''
+      set -euo pipefail
+      if [ $# -lt 1 ]; then
+        echo "You need to provide a remote-url"
+        exit 1
+      fi
+      git init
+      git remote add origin $1
+      git fetch origin main || {
+        echo "Error: Could not fetch main from origin. Does the branch exist?"
+        exit 1
+      }
+      git reset --soft origin/main
+      git branch --set-upstream-to=origin/main main
+      git reset
+    '')
   ];
 
   persist.home = {
