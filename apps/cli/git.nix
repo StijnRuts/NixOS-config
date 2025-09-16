@@ -36,6 +36,7 @@
         disableForcePushing = true;
         paging.pager = "delta --paging=never";
       };
+      notARepository = "quit";
     };
   };
   catppuccin.lazygit.enable = true;
