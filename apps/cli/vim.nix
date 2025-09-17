@@ -246,6 +246,7 @@
   };
 
   home.shellAliases = {
+    "v" = "nvim";
     "nvim-config" = "nvf-print-config | stylua - | bat --language=lua";
   };
 

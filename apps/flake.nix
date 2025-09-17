@@ -57,6 +57,7 @@
       ./cli/git.nix
       inputs.nvf.homeManagerModules.default
       ./cli/vim.nix
+      ./cli/exercism.nix
       ./gui/wezterm.nix
       ./gui/default-browser.nix
       ./gui/firefox.nix
