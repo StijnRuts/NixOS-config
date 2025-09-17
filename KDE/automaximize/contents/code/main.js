@@ -46,7 +46,7 @@ workspace.windowAdded.connect(function(window) {
 
   // Check if class contains any target substring
   let classMatch = targetClasses.some(substring => {
-    window.resourceClass.toLowerCase().includes(substring.toLowerCase())
+    return window.resourceClass.toLowerCase().includes(substring.toLowerCase());
   });
 
   if (classMatch) {
