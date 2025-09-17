@@ -8,9 +8,6 @@
     energy.profile = "default";
   };
   home = {
-    apps = {
-      nextcloud.enable = false;
-    };
     systray.items = "laptop";
   };
 }

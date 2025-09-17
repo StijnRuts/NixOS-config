@@ -3,15 +3,23 @@ let
 in
 {
   # \cat somefile | agenix -e somefile.age
+
   "user/hashed_password.age".publicKeys = [ stijn ];
+
   "rootCA/cert.age".publicKeys = [ stijn ];
   "rootCA/cert_key.age".publicKeys = [ stijn ];
+
   "atuin/cert.age".publicKeys = [ stijn ];
   "atuin/cert_key.age".publicKeys = [ stijn ];
   "atuin/session.age".publicKeys = [ stijn ];
   "atuin/key.age".publicKeys = [ stijn ];
-  "nextcloud/admin_pass.age".publicKeys = [ stijn ];
-  "nextcloud/cert.age".publicKeys = [ stijn ];
-  "nextcloud/cert_key.age".publicKeys = [ stijn ];
-  "tarsnap/nextcloud.age".publicKeys = [ stijn ];
+
+  "syncthing/P520_cert.age".publicKeys = [ stijn ];
+  "syncthing/P520_key.age".publicKeys = [ stijn ];
+  "syncthing/T420_cert.age".publicKeys = [ stijn ];
+  "syncthing/T420_key.age".publicKeys = [ stijn ];
+  "syncthing/X201_cert.age".publicKeys = [ stijn ];
+  "syncthing/X201_key.age".publicKeys = [ stijn ];
+
+  "tarsnap/homedirs.age".publicKeys = [ stijn ];
 }

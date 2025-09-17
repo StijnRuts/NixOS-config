@@ -3,7 +3,7 @@
   options.server.atuin.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
-    description = "Enable Nextcloud server";
+    description = "Enable Atuin server";
   };
 
   config = lib.mkIf config.server.atuin.enable {

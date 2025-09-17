@@ -2,7 +2,7 @@
   outputs = _: {
     nixosModules = [
       ./atuin.nix
-      ./nextcloud.nix
+      ./syncthing.nix
       ./tarsnap.nix
     ];
   };
