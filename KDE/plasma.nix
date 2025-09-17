@@ -144,11 +144,6 @@
       };
     };
 
-    services.syncthing.tray = {
-      enable = true;
-      package = pkgs.syncthingtray; # With Plasma support
-    };
-
     persist.home = {
       files = [
         ".config/kwinoutputconfig.json" # Display configuration

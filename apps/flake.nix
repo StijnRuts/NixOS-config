@@ -64,6 +64,7 @@
       inputs.zen-browser.homeModules.beta
       ./gui/zen.nix
       ./gui/conky.nix
+      ./misc/syncthing.nix
       ./misc/exercism.nix
     ];
   };

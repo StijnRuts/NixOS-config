@@ -5,13 +5,13 @@
       graphics.enable = true;
       utilities.enable = true;
     };
-    server = {
-      syncthing.enable = true;
-    };
     energy.profile = "charge-limiting";
     ollama.models = "light";
   };
   home = {
+    apps = {
+      syncthing.enable = true;
+    };
     systray.items = "laptop";
   };
 }

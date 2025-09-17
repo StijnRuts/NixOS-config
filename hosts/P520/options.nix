@@ -7,13 +7,15 @@
     };
     server = {
       atuin.enable = true;
-      syncthing.enable = true;
       tarsnap.enable = true;
     };
     energy.profile = "no-suspend";
     ollama.models = "heavy";
   };
   home = {
+    apps = {
+      syncthing.enable = true;
+    };
     systray.items = "desktop";
   };
 }
