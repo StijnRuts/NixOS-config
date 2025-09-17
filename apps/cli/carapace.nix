@@ -8,7 +8,7 @@
 
   persist.home = {
     directories = [
-      "/home/stijn/.cache/carapace"
+      ".cache/carapace"
     ];
   };
 }

@@ -56,8 +56,7 @@
       ./cli/carapace.nix
       ./cli/git.nix
       inputs.nvf.homeManagerModules.default
-      ./cli/vim.nix
-      ./cli/exercism.nix
+      ./vim
       ./gui/wezterm.nix
       ./gui/default-browser.nix
       ./gui/firefox.nix
@@ -66,6 +65,7 @@
       ./gui/zen.nix
       ./gui/nextcloud.nix
       ./gui/conky.nix
+      ./misc/exercism.nix
     ];
   };
 }
