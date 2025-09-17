@@ -44,10 +44,6 @@
       };
     };
 
-    environment.systemPackages = [
-      pkgs.syncthingtray
-    ];
-
     age.secrets = {
       P520_cert.file = ../secrets/syncthing/P520_cert.age;
       P520_key.file  = ../secrets/syncthing/P520_key.age;
@@ -60,6 +56,11 @@
     persist.system = {
       directories = [
         "/var/lib/syncthing"
+      ];
+    };
+    persist.home = {
+      directories = [
+        ".local/state/syncthing"
       ];
     };
   };

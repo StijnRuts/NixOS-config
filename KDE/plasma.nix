@@ -139,6 +139,8 @@
       };
     };
 
+    services.syncthing.tray.enable = true;
+
     persist.home = {
       files = [
         ".config/kwinoutputconfig.json" # Display configuration
