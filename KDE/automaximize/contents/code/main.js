@@ -41,8 +41,8 @@ workspace.windowAdded.connect(function(window) {
 
   let targetClasses = targetClassesLarge;
   if (window.output.geometry.width < largeWidth && window.output.geometry.height < largeHeight) {
-    targetClasses.concat(targetClassesSmall);
-  };
+    targetClasses = targetClasses.concat(targetClassesSmall);
+  }
 
   // Check if class contains any target substring
   let classMatch = targetClasses.some(substring => {
