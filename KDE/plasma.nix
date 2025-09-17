@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   options.systray.items = lib.mkOption {
     type = lib.types.enum [
@@ -139,7 +144,10 @@
       };
     };
 
-    services.syncthing.tray.enable = true;
+    services.syncthing.tray = {
+      enable = true;
+      package = pkgs.syncthingtray; # With Plasma support
+    };
 
     persist.home = {
       files = [

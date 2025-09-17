@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   options.server.syncthing.enable = lib.mkOption {
     type = lib.types.bool;
@@ -12,21 +17,27 @@
       cert = config.age.secrets.${config.networking.hostName + "_cert"}.path;
       key = config.age.secrets.${config.networking.hostName + "_key"}.path;
       overrideFolders = true;
-      folders = let
-        allDevices = {
-          devices = [ "P520" "T420" "X201" ];
+      folders =
+        let
+          allDevices = {
+            devices = [
+              "P520"
+              "T420"
+              "X201"
+            ];
+          };
+        in
+        {
+          # "~/Documents" = allDevices;
+          "~/Downloads" = allDevices;
+          # "~/Music" = allDevices;
+          # "~/NixOS" = allDevices;
+          # "~/Pictures" = allDevices;
+          # "~/Projects" = allDevices;
+          # "~/Public" = allDevices;
+          # "~/Templates" = allDevices;
+          # "~/Videos" = allDevices;
         };
-      in {
-#         "~/Documents" = allDevices;
-         "~/Downloads" = allDevices;
-#         "~/Music" = allDevices;
-#         "~/NixOS" = allDevices;
-#         "~/Pictures" = allDevices;
-#         "~/Projects" = allDevices;
-#         "~/Public" = allDevices;
-#         "~/Templates" = allDevices;
-#         "~/Videos" = allDevices;
-      };
       overrideDevices = true;
       devices = {
         P520 = {
@@ -46,11 +57,11 @@
 
     age.secrets = {
       P520_cert.file = ../secrets/syncthing/P520_cert.age;
-      P520_key.file  = ../secrets/syncthing/P520_key.age;
+      P520_key.file = ../secrets/syncthing/P520_key.age;
       T420_cert.file = ../secrets/syncthing/T420_cert.age;
-      T420_key.file  = ../secrets/syncthing/T420_key.age;
+      T420_key.file = ../secrets/syncthing/T420_key.age;
       X201_cert.file = ../secrets/syncthing/X201_cert.age;
-      X201_key.file  = ../secrets/syncthing/X201_key.age;
+      X201_key.file = ../secrets/syncthing/X201_key.age;
     };
 
     persist.system = {

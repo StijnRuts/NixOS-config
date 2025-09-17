@@ -1,4 +1,9 @@
-{ config, lib, me, ... }:
+{
+  config,
+  lib,
+  me,
+  ...
+}:
 {
   options.server.tarsnap.enable = lib.mkOption {
     type = lib.types.bool;

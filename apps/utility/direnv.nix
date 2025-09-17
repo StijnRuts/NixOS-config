@@ -1,4 +1,9 @@
-{ config, lib, me, ... }:
+{
+  config,
+  lib,
+  me,
+  ...
+}:
 {
   config = lib.mkIf config.apps.utilities.enable {
     home-manager.users.${me.username}.imports = [
