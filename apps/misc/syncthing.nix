@@ -31,27 +31,27 @@
             };
           in
           {
-            # "~/Documents" = folderOptions;
+            "~/Documents" = folderOptions;
             "~/Downloads" = folderOptions;
             "~/Music" = folderOptions;
-            # "~/NixOS" = folderOptions;
+            "~/NixOS" = folderOptions;
             "~/Pictures" = folderOptions;
-            # "~/Projects" = folderOptions;
+            "~/Projects" = folderOptions;
             "~/Public" = folderOptions;
             "~/Templates" = folderOptions;
             "~/Videos" = folderOptions;
           };
         devices = {
           P520 = {
-            addresses = [ "tcp://P520.local:51820" ];
+            addresses = [ "tcp://P520.local:22000" ];
             id = "Q3EHP3V-U7I2HUY-YIRHE7C-DLH7TR6-FN66TGE-AUHEKZQ-E72QIEH-I3WTHAS";
           };
           T420 = {
-            addresses = [ "tcp://T420.local:51820" ];
+            addresses = [ "tcp://T420.local:22000" ];
             id = "VQ4BE2H-62EOMGB-U4BT7A6-XMFVBX3-YBSY3KP-6ZUTALI-BE3B2E3-KBBOKAE";
           };
           X201 = {
-            addresses = [ "tcp://X201.local:51820" ];
+            addresses = [ "tcp://X201.local:22000" ];
             id = "BHILPE5-EPQUJJY-ESHAXTV-TUUNJEW-XEXNVQC-LDTUOXR-CWVEQ64-IZBWZAX";
           };
         };
