@@ -2,10 +2,10 @@
 
 // List of application resource classes to match
 // Find class name via: System Settings > Window Management > Window rules > Edit > Detect Window Properties
-const targetClasses = [
-  "konsole",
+
+// Large windows are always maximized
+const targetClassesLarge = [
   "wezterm",
-  "dolphin",
   "firefox",
   "chromium",
   "zen",
@@ -14,6 +14,15 @@ const targetClasses = [
   "beekeeper-studio",
   "alpaca"
 ];
+
+// Small windows are only maximized on small screens
+const targetClassesSmall = [
+  "konsole",
+  "dolphin",
+];
+
+const largeWidth = 1601;
+const largeHeight = 901;
 
 print("Auto Maximize loaded");
 
@@ -30,12 +39,17 @@ workspace.windowAdded.connect(function(window) {
     return;
   }
 
-  // Check if class contains any target substring
-  let classMatch = targetClasses.some(substring =>
-    window.resourceClass.toLowerCase().includes(substring.toLowerCase())
-  );
+  let targetClasses = targetClassesLarge;
+  if (window.output.geometry.width < largeWidth && window.output.geometry.height < largeHeight) {
+    targetClasses.concat(targetClassesSmall);
+  };
 
-  if (classMatch || titleMatch) {
+  // Check if class contains any target substring
+  let classMatch = targetClasses.some(substring => {
+    window.resourceClass.toLowerCase().includes(substring.toLowerCase())
+  });
+
+  if (classMatch) {
     print("→ Match found, maximizing window");
     window.setMaximize(true, true);
   } else {
