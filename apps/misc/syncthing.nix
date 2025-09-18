@@ -72,6 +72,29 @@
       X201_key.file = ../../secrets/syncthing/X201_key.age;
     };
 
+    home.file =
+      let
+        ignores = ''
+          .git
+        '';
+      in
+      {
+        "Desktop/.stignore".text = ignores;
+        "Documents/.stignore".text = ignores;
+        "Downloads/.stignore".text = ignores;
+        "Music/.stignore".text = ignores;
+        "NixOS/.stignore".text = ignores;
+        "Pictures/.stignore".text = ignores;
+        "Projects/.stignore".text = ignores;
+        "Public/.stignore".text = ignores;
+        "Templates/.stignore".text = ignores;
+        "Videos/.stignore".text = ignores;
+      };
+
+    home.shellAliases = {
+      "conflicts" = "find ~ -name '*sync-conflict*' 2>/dev/null";
+    };
+
     persist.home = {
       directories = [
         ".local/state/syncthing"

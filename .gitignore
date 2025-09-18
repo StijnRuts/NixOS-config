@@ -2,3 +2,4 @@ result
 .nextcloudsync.log
 .sync*
 .stfolder
+.stignore
