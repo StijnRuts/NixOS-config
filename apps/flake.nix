@@ -40,6 +40,7 @@
       ./utility/distrobox.nix
       ./utility/virt-manager.nix
       ./utility/ollama.nix
+      ./misc/kmonad.nix
     ];
     homeModules = [
       ./cli/bash.nix
