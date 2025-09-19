@@ -70,15 +70,6 @@
         motion.flash-nvim.enable = true;
         undotree.enable = true;
       };
-      lazy.plugins.undotree.keys = [
-        {
-          mode = [ "n" ];
-          key = "<C-z>";
-          action = "vim.cmd.UndotreeToggle";
-          lua = true;
-          desc = "Undotree";
-        }
-      ];
 
       comments.comment-nvim.enable = true;
 
@@ -110,13 +101,6 @@
           mappings.open = "<leader>gg";
         };
       };
-      lazy.plugins.toggleterm-nvim.keys = [
-        {
-          mode = [ "t" ];
-          key = "<C-t>";
-          action = "<C-\\><C-n>";
-        }
-      ];
 
       treesitter = {
         enable = true;
@@ -209,32 +193,51 @@
           enable = true;
           customSnippets.snipmate = allSnippets;
         };
-      lazy.plugins.luasnip.keys = [
-        {
-          mode = [
-            "i"
-            "s"
-          ];
-          key = "<C-n>";
-          action = ''function() require("luasnip").jump(1) end'';
-          lua = true;
-          desc = "Jump to next tabstop";
-        }
-        {
-          mode = [
-            "i"
-            "s"
-          ];
-          key = "<C-p>";
-          action = ''function() require("luasnip").jump(-1) end'';
-          lua = true;
-          desc = "Jump to previous tabstop";
-        }
-      ];
 
       spellcheck.enable = true;
 
       keymaps = import ./keymap.nix { inherit lib; };
+
+      lazy.plugins = {
+        undotree.keys = [
+          {
+            mode = [ "n" ];
+            key = "<C-z>";
+            action = "vim.cmd.UndotreeToggle";
+            lua = true;
+            desc = "Undotree";
+          }
+        ];
+        toggleterm-nvim.keys = [
+          {
+            mode = [ "t" ];
+            key = "<C-t>";
+            action = "<C-\\><C-n>";
+          }
+        ];
+        luasnip.keys = [
+          {
+            mode = [
+              "i"
+              "s"
+            ];
+            key = "<C-n>";
+            action = ''function() require("luasnip").jump(1) end'';
+            lua = true;
+            desc = "Jump to next tabstop";
+          }
+          {
+            mode = [
+              "i"
+              "s"
+            ];
+            key = "<C-p>";
+            action = ''function() require("luasnip").jump(-1) end'';
+            lua = true;
+            desc = "Jump to previous tabstop";
+          }
+        ];
+      };
 
       theme = {
         enable = true;
