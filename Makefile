@@ -39,11 +39,10 @@ update:
 
 # Format all .nix files
 format:
-	treefmt --config-file treefmt.toml .
-
+	treefmt . --excludes apps/vim/snippets/**/*.nix
 # Lint all .nix files
 lint:
-	statix check . && deadnix
+	statix check --ignore apps/vim/snippets/**/*.nix -- . ; deadnix
 
 # Clean the nix store
 clean:

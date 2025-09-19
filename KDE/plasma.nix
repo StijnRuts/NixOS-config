@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 {
   options.systray.items = lib.mkOption {
     type = lib.types.enum [

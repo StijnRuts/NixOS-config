@@ -91,13 +91,12 @@
         "Videos/.stignore".text = ignores;
       };
 
-    home.shellAliases = {
-      "conflicts" = "find ~ -name '*sync-conflict*' 2>/dev/null";
-    };
-
     persist.home = {
       directories = [
         ".local/state/syncthing"
+      ];
+      files = [
+        ".config/syncthingtray.ini"
       ];
     };
   };
