@@ -17,7 +17,7 @@
       archives = {
         homedirs = {
           keyfile = config.age.secrets.tarsnap_homedirs_key.path;
-          # tarsnap-keymgmt --outkeyfile tarsnap-homedirs.key -w tarsnap.key
+          # tarsnap-keymgmt --outkeyfile homedirs.key -w tarsnap.key
           period = "daily";
           checkpointBytes = null;
           directories = [
