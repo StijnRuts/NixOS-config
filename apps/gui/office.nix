@@ -14,6 +14,7 @@
   config = lib.mkIf config.apps.office.enable {
     environment.systemPackages = [
       pkgs.libreoffice-qt
+      pkgs.jre_minimal # JRE for LibreOffice Base
     ];
   };
 }
