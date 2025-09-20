@@ -29,9 +29,17 @@
                 "X201"
               ];
             };
+            folderOptionsInclPhone = {
+              devices = [
+                "P520"
+                "T420"
+                "X201"
+                "S21"
+              ];
+            };
           in
           {
-            "~/Documents" = folderOptions;
+            "~/Documents" = folderOptionsInclPhone;
             "~/Downloads" = folderOptions;
             "~/Music" = folderOptions;
             "~/NixOS" = folderOptions;
@@ -53,6 +61,10 @@
           X201 = {
             addresses = [ "tcp://X201.local:22000" ];
             id = "BHILPE5-EPQUJJY-ESHAXTV-TUUNJEW-XEXNVQC-LDTUOXR-CWVEQ64-IZBWZAX";
+          };
+          S21 = {
+            addresses = [ "dynamic" ];
+            id = "GZSR6CN-E7MNANK-OPNZAXJ-ANV2YHS-EB666AV-N6PLCHA-43WQGBN-RQX2HAX";
           };
         };
       };
