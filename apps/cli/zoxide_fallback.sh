@@ -2,7 +2,7 @@
 
 function search {
   if [ -z "$query" ]; then
-    echo "  No search string given"
+    echo "No search string given"
     exit 1
   fi
 
@@ -12,7 +12,7 @@ function search {
   find_search
   navigate
 
-  echo "  No matching directories found"
+  echo "No matching directories found"
   exit 1
 }
 
@@ -21,7 +21,6 @@ function zoxide_search {
 }
 
 function find_search {
-  echo "󰍉 Searching filesystem"
   if command -v fd &>/dev/null; then
     matches=$(fd --type d "$query" ~ 2>/dev/null)
   else
@@ -34,13 +33,10 @@ function navigate {
   if [ ${#list[@]} -eq 0 ] || [ -z "${list[0]}" ]; then
     return
   elif [ ${#list[@]} -eq 1 ]; then
-    echo "  Found:"
     echo "${list[0]}"
     exit 0
   else
-    echo "  Multiple matches found"
     select_from_list
-    echo "  Selected:"
     echo "$selected"
     exit 0
   fi
@@ -57,14 +53,14 @@ function select_from_list {
 function select_fzf {
   selected=$(
     echo "$matches" | fzf \
-      --prompt="  Select directory > " \
+      --prompt="Select directory > " \
       --height=6 --style=minimal \
       --layout=reverse --info=hidden
   )
 }
 
 function select_builtin {
-  PS3="  Select a directory: "
+  PS3="Select a directory: "
   select selected in "${list[@]}"; do
     if [ -n "$selected" ]; then
       return
