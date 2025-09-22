@@ -1,8 +1,5 @@
 (in-package #:nyxt-user)
 
-;; https://github.com/atlas-engineer/nyxt/blob/b6ab389817edfbaecfad1b0e62da204acbd5d641/libraries/theme/README.org
-;; https://nyxt.atlas.engineer/article/how-to-theme.org
-
 (defconstant +Rosewater+ "#f5e0dc")
 (defconstant +Flamingo+ "#f2cdcd")
 (defconstant +Pink+ "#f5c2e7")
@@ -83,3 +80,17 @@
 
 (define-configuration browser
   ((theme +catppuccin-mocha-yellow-theme+)))
+
+
+(define-configuration nyxt/mode/style:dark-mode
+  ((style
+    (theme:themed-css (theme *browser*)
+      `(* :background-color ,theme:background "!important"
+          :background-image none "!important"
+          :color ,theme:text "!important")
+      `(a :color ,+Blue+ "!important")))))
+
+(define-configuration web-buffer
+  ((default-modes
+    (pushnew 'nyxt/mode/style:dark-mode %slot-value%))))
+
