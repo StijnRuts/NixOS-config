@@ -8,8 +8,8 @@
       };
       config = builtins.readFile (
         builtins.fetchurl {
-          url = "https://raw.githubusercontent.com/StijnRuts/keyboard-config/00bf69d040066da08027498c12321d11b10dcdfd/KMonad/corne-alike.kbd";
-          sha256 = "sha256:1p36dmxgapvjvf3xx0k1i6mb02x2xbzwygb5l24i4lax351piy4g";
+          url = "https://raw.githubusercontent.com/StijnRuts/keyboard-config/9eb6b5ba71b3a037a03832d613c8df3542eb170c/KMonad/corne-alike.kbd";
+          sha256 = "sha256:03bk02w8sdbb63lcnq5q5i19pw30r9crj0nnv7sq1rp51vglz2nx";
         }
       );
     in
