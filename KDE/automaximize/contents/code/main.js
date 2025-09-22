@@ -9,8 +9,10 @@ const targetClassesLarge = [
   "firefox",
   "chromium",
   "zen",
+  "nyxt",
   "kwrite",
   "kate",
+  "logseq"
   "beekeeper-studio",
   "alpaca"
 ];

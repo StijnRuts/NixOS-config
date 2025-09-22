@@ -64,6 +64,8 @@
       ./gui/chromium.nix
       inputs.zen-browser.homeModules.beta
       ./gui/zen.nix
+      ./gui/nyxt.nix
+      ./gui/logseq.nix
       ./gui/conky.nix
       ./misc/syncthing.nix
       ./misc/exercism.nix

@@ -1,0 +1,22 @@
+{
+  "theme": null,
+  "themes": {
+    "mode": "dark",
+    "light": {
+      "name": "Catppuccin Latte",
+      "url": "file:///home/stijn/.logseq/plugins/logseq-catppuccin/ctp-latte.css",
+      "description": "Catppuccin Latte",
+      "mode": "light",
+      "pid": "logseq-catppuccin"
+    },
+    "dark": {
+      "name": "Catppuccin Mocha",
+      "url": "file:///home/stijn/.logseq/plugins/logseq-catppuccin/ctp-mocha.css",
+      "description": "Catppuccin Mocha",
+      "mode": "dark",
+      "pid": "logseq-catppuccin",
+      "selected": false
+    }
+  },
+  "externals": []
+}
