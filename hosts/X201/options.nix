@@ -1,8 +1,8 @@
 {
   system = {
     apps = {
-      office.enable = false;
-      graphics.enable = false;
+      office.enable = true;
+      graphics.enable = true;
       utilities.enable = true;
     };
     energy.profile = "charge-limiting";
