@@ -95,9 +95,11 @@
       `(* :background-color ,theme:background "!important"
           :background-image none "!important"
           :color ,theme:text "!important")
-      `(a :color ,+Blue+ "!important")))))
+      `("h1,h2,h3,h4,h5,h6"
+          :color ,theme:primary "!important"
+          :background-color ,theme:on-primary "!important")
+      `("a, a *" :color ,+Blue+ "!important")))))
 
 (define-configuration web-buffer
   ((default-modes
     (pushnew 'nyxt/mode/style:dark-mode %slot-value%))))
-
