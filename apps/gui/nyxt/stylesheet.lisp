@@ -81,6 +81,13 @@
 (define-configuration browser
   ((theme +catppuccin-mocha-yellow-theme+)))
 
+;; Fix for https://github.com/atlas-engineer/nyxt/issues/3693
+(define-configuration :prompt-buffer
+  ((style (str:concat %slot-value%
+    (theme:themed-css (theme *browser*)
+      `(".source-content #selection td"
+        :color ,theme:on-action))))))
+
 
 (define-configuration nyxt/mode/style:dark-mode
   ((style
