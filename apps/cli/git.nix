@@ -61,6 +61,8 @@
     "gl" = "git log --oneline -n 10";
     "gst" = "git stash push";
     "gstp" = "git stash pop";
+    "gsubi" = "git sumodule init";
+    "gsubu" = "git sumodule update";
   };
 
   home.packages = [
