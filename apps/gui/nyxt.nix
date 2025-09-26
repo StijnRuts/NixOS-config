@@ -11,7 +11,7 @@
   home.packages = [ pkgs.nyxt ];
 
   home.activation.nyxtSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ln -sf ~/NixOS/apps/gui/nyxt ~/.config
+    ln -sf ~/NixOS/apps/gui/nyxt ~/.config/nyxt
   '';
 
   persist.home = {

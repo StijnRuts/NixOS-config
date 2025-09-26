@@ -1,105 +1,185 @@
 (in-package #:nyxt-user)
 
-(defconstant +Rosewater+ "#f5e0dc")
-(defconstant +Flamingo+ "#f2cdcd")
-(defconstant +Pink+ "#f5c2e7")
-(defconstant +Mauve+ "#cba6f7")
-(defconstant +Red+ "#f38ba8")
-(defconstant +Maroon+ "#eba0ac")
-(defconstant +Peach+ "#fab387")
-(defconstant +Yellow+ "#f9e2af")
-(defconstant +Green+ "#a6e3a1")
-(defconstant +Teal+ "#94e2d5")
-(defconstant +Sky+ "#89dceb")
-(defconstant +Sapphire+ "#74c7ec")
-(defconstant +Blue+ "#89b4fa")
-(defconstant +Lavender+ "#b4befe")
-(defconstant +Text+ "#cdd6f4")
-(defconstant +Subtext1+ "#bac2de")
-(defconstant +Subtext0+ "#a6adc8")
-(defconstant +Overlay2+ "#9399b2")
-(defconstant +Overlay1+ "#7f849c")
-(defconstant +Overlay0+ "#6c7086")
-(defconstant +Surface2+ "#585b70")
-(defconstant +Surface1+ "#45475a")
-(defconstant +Surface0+ "#313244")
-(defconstant +Base+ "#1e1e2e")
-(defconstant +Mantle+ "#181825")
-(defconstant +Crust+ "#11111b")
+(defun get-color (flavor color)
+  (case flavor
+    (latte
+      (case color
+        (isDark nil)
+        (rosewater "#dc8a7")
+        (flamingo "#dd7878")
+        (pink "#ea76cb")
+        (mauve "#8839ef")
+        (red "#d20f39")
+        (maroon "#e64553")
+        (peach "#fe640b")
+        (yellow "#df8e1d")
+        (green "#40a02b")
+        (teal "#179299")
+        (sky "#04a5e5")
+        (sapphire "#209fb5")
+        (blue "#1e66f5")
+        (lavender "#7287fd")
+        (text "#4c4f69")
+        (subtext1 "#5c5f77")
+        (subtext0 "#6c6f85")
+        (overlay2 "#7c7f93")
+        (overlay1 "#8c8fa1")
+        (overlay0 "#9ca0b0")
+        (surface2 "#acb0be")
+        (surface1 "#bcc0cc")
+        (surface0 "#ccd0da")
+        (base "#eff1f5")
+        (mantle "#e6e9ef")
+        (crust "#dce0e8")
+        (otherwise nil)))
+    (frappe
+      (case color
+        (isDark t)
+        (rosewater "#f2d5cf")
+        (flamingo "#eebebe")
+        (pink "#f4b8e4")
+        (mauve "#ca9ee6")
+        (red "#e78284")
+        (maroon "#ea999c")
+        (peach "#ef9f76")
+        (yellow "#e5c890")
+        (green "#a6d189")
+        (teal "#81c8be")
+        (sky "#99d1db")
+        (sapphire "#85c1dc")
+        (blue "#8caaee")
+        (lavender "#babbf1")
+        (text "#c6d0f5")
+        (subtext1 "#b5bfe2")
+        (subtext0 "#a5adce")
+        (overlay2 "#949cbb")
+        (overlay1 "#838ba7")
+        (overlay0 "#737994")
+        (surface2 "#626880")
+        (surface1 "#51576d")
+        (surface0 "#414559")
+        (base "#303446")
+        (mantle "#292c3c")
+        (crust "#232634")
+        (otherwise nil)))
+    (macchiato
+      (case color
+        (isDark t)
+        (rosewater "#f4dbd6")
+        (flamingo "#f0c6c6")
+        (pink "#f5bde6")
+        (mauve "#c6a0f6")
+        (red "#ed8796")
+        (maroon "#ee99a0")
+        (peach "#f5a97f")
+        (yellow "#eed49f")
+        (green "#a6da95")
+        (teal "#8bd5ca")
+        (sky "#91d7e3")
+        (sapphire "#7dc4e4")
+        (blue "#8aadf4")
+        (lavender "#b7bdf8")
+        (text "#cad3f5")
+        (subtext1 "#b8c0e0")
+        (subtext0 "#a5adcb")
+        (overlay2 "#939ab7")
+        (overlay1 "#8087a2")
+        (overlay0 "#6e738d")
+        (surface2 "#5b6078")
+        (surface1 "#494d64")
+        (surface0 "#363a4f")
+        (base "#24273a")
+        (mantle "#1e2030")
+        (crust "#181926")
+        (otherwise nil)))
+    (mocha
+      (case color
+        (isDark t)
+        (rosewater "#f5e0dc")
+        (flamingo "#f2cdcd")
+        (pink "#f5c2e7")
+        (mauve "#cba6f7")
+        (red "#f38ba8")
+        (maroon "#eba0ac")
+        (peach "#fab387")
+        (yellow "#f9e2af")
+        (green "#a6e3a1")
+        (teal "#94e2d5")
+        (sky "#89dceb")
+        (sapphire "#74c7ec")
+        (blue "#89b4fa")
+        (lavender "#b4befe")
+        (text "#cdd6f4")
+        (subtext1 "#bac2de")
+        (subtext0 "#a6adc8")
+        (overlay2 "#9399b2")
+        (overlay1 "#7f849c")
+        (overlay0 "#6c7086")
+        (surface2 "#585b70")
+        (surface1 "#45475a")
+        (surface0 "#313244")
+        (base "#1e1e2e")
+        (mantle "#181825")
+        (crust "#11111b")
+        (otherwise nil)))
+    (otherwise nil)))
 
-(defvar +catppuccin-mocha-yellow-theme+
+(defun catppuccin-theme (flavor accent &key (font-family nil) (monospace-font-family nil))
   (make-instance 'theme:theme
-    :dark-p t
-    :font-family "Ubuntu"
-    :monospace-font-family "UbuntuMono Nerd Font"
+    :dark-p (get-color flavor 'isDark)
 
-    :text-color- +Text+
-    :text-color  +Text+
-    :text-color+ +Text+
-    :contrast-text-color +Base+
+    :text-color (get-color flavor 'text)
+    :contrast-text-color (get-color flavor 'base)
 
-    :background-color-   +Surface0+
-    :background-color    +Base+
-    :background-color+   +Mantle+
-    :on-background-color +Text+
+    :background-color- (get-color flavor 'surface0)
+    :background-color  (get-color flavor 'base)
+    :background-color+ (get-color flavor 'mantle)
+    :on-background-color (get-color flavor 'text)
 
-    :action-color-   +Yellow+
-    :action-color    +Yellow+
-    :action-color+   +Yellow+
-    :on-action-color +Base+
+    :action-color (get-color flavor accent)
+    :on-action-color (get-color flavor 'base)
 
-    :highlight-color-   +Red+
-    :highlight-color    +Red+
-    :highlight-color+   +Red+
-    :on-highlight-color +Base+
+    :highlight-color (get-color flavor 'red)
+    :on-highlight-color (get-color flavor 'base)
 
-    :primary-color-   +Yellow+
-    :primary-color    +Yellow+
-    :primary-color+   +Yellow+
-    :on-primary-color +Base+
+    :primary-color (get-color flavor accent)
+    :on-primary-color (get-color flavor 'base)
 
-    :secondary-color-   +Surface1+
-    :secondary-color    +Surface1+
-    :secondary-color+   +Surface1+
-    :on-secondary-color +Text+
+    :secondary-color (get-color flavor 'surface1)
+    :on-secondary-color (get-color flavor 'text)
 
-    :success-color-   +Green+
-    :success-color    +Green+
-    :success-color+   +Green+
-    :on-success-color +Base+
+    :success-color (get-color flavor 'green)
+    :on-success-color (get-color flavor 'base)
 
-    :warning-color-   +Red+
-    :warning-color    +Red+
-    :warning-color+   +Red+
-    :on-warning-color +Base+
+    :warning-color (get-color flavor 'red)
+    :on-warning-color (get-color flavor 'base)
 
-    :codeblock-color-   +Surface0+
-    :codeblock-color    +Base+
-    :codeblock-color+   +Mantle+
-    :on-codeblock-color +Text+))
+    :codeblock-color- (get-color flavor 'surface0)
+    :codeblock-color  (get-color flavor 'base)
+    :codeblock-color+ (get-color flavor 'mantle)
+    :on-codeblock-color (get-color flavor 'text)
 
-(define-configuration browser
-  ((theme +catppuccin-mocha-yellow-theme+)))
+    :font-family font-family
+    :monospace-font-family monospace-font-family))
 
 ;; Fix for https://github.com/atlas-engineer/nyxt/issues/3693
 (define-configuration :prompt-buffer
   ((style (str:concat %slot-value%
     (theme:themed-css (theme *browser*)
       `(".source-content #selection td"
+        :color ,theme:on-action)
+      `(".source-content tr:hover"
+        :background-color ,theme:action)
+      `(".source-content tr:hover td"
         :color ,theme:on-action))))))
 
+(defun catppuccin-dark-mode (flavor accent)
+  (theme:themed-css (theme *browser*)
+    `(* :background-color ,(get-color flavor 'base) "!important"
+        :background-image none "!important"
+        :color ,(get-color flavor 'text) "!important")
+    `("h1,h2,h3,h4,h5,h6"
+        :color ,(get-color flavor accent) "!important"
+        :background-color ,(get-color flavor 'base) "!important")
+    `("a, a *" :color ,(get-color flavor 'blue) "!important")))
 
-(define-configuration nyxt/mode/style:dark-mode
-  ((style
-    (theme:themed-css (theme *browser*)
-      `(* :background-color ,theme:background "!important"
-          :background-image none "!important"
-          :color ,theme:text "!important")
-      `("h1,h2,h3,h4,h5,h6"
-          :color ,theme:primary "!important"
-          :background-color ,theme:on-primary "!important")
-      `("a, a *" :color ,+Blue+ "!important")))))
-
-(define-configuration web-buffer
-  ((default-modes
-    (pushnew 'nyxt/mode/style:dark-mode %slot-value%))))
