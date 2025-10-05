@@ -14,16 +14,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:catppuccin/nix/release-25.05";
     };
+    dankMaterialShell = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:AvengeMedia/DankMaterialShell";
+    };
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko/latest";
     };
     flakegen.url = "github:jorsn/flakegen";
+    hm-unstable = {
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/home-manager";
+    };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.05";
     };
     impermanence.url = "github:nix-community/impermanence";
+    niri = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:sodiboo/niri-flake";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nvf = {

@@ -87,6 +87,11 @@
             };
           };
 
+          qt = {
+            enable = true;
+            platformTheme.name = "kde6";
+          };
+
           programs.plasma = {
             enable = true;
 

@@ -12,6 +12,7 @@ recursive.mergeImports [
   ./secrets/flake.nix
   ./system/flake.nix
   ./KDE/flake.nix
+  ./niri/flake.nix
   ./theme/flake.nix
   ./apps/flake.nix
   ./energy/flake.nix
