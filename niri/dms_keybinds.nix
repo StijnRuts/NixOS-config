@@ -1,12 +1,12 @@
 { config, ... }:
 {
   programs.niri = {
-    settings = {
-      binds =
-        let
-          dms-ipc = config.lib.niri.actions.spawn "dms" "ipc";
-        in
-        {
+    settings =
+      let
+        dms-ipc = config.lib.niri.actions.spawn "dms" "ipc";
+      in
+      {
+        binds = {
           "Mod+Space" = {
             action = dms-ipc "spotlight" "toggle";
             hotkey-overlay.title = "Toggle Application Launcher";
@@ -48,6 +48,10 @@
             action = dms-ipc "brightness" "decrement" "5";
           };
         };
-    };
+
+        switch-events = {
+          "lid-close".action = dms-ipc "call" "lock" "lock";
+        };
+      };
   };
 }

@@ -23,6 +23,29 @@
       )
     ];
     homeModules = [
+      {
+        home.sessionVariables = {
+          ELECTRON_OZONE_PLATFORM_HINT = "auto"; # For Electron apps
+        };
+
+        programs.niri.settings = {
+          spawn-at-startup = [
+            {
+              command = [
+                "dms"
+                "run"
+              ];
+            }
+            {
+              command = [
+                "bash"
+                "-c"
+                "wl-paste --watch cliphist store &"
+              ];
+            } # For DMS
+          ];
+        };
+      }
       ./niri.nix
       ./keybinds.nix
       "${inputs.hm-unstable}/modules/programs/quickshell.nix" # Temporary

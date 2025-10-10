@@ -1,5 +1,5 @@
-{ theme, ... }:
-let
+{theme, ...}: let
+  # TODO Move to theme/catppuccin.nix
   #rosewater = "\#f5e0dc";
   #flamingo = "\#f2cdcd";
   #pink = "\#f5c2e7";
@@ -27,11 +27,9 @@ let
   mantle = "\#181825";
   crust = "\#11111b";
   accent = yellow;
-in
-{
+in {
   programs.niri = {
     settings = {
-
       layout = {
         focus-ring = {
           enable = false;
@@ -52,6 +50,8 @@ in
           length.total-proportion = 1.0;
           place-within-column = true;
         };
+        insert-hint.color = accent;
+        background-color = mantle;
       };
 
       overview = {
@@ -60,13 +60,15 @@ in
 
       prefer-no-csd = true;
 
+      cursor.theme = theme.cursor;
+
       window-rules = [
         {
           clip-to-geometry = true;
         }
         {
           # Indicate screencasted windows
-          matches = [ { is-window-cast-target = true; } ];
+          matches = [{is-window-cast-target = true;}];
           focus-ring = {
             active.color = red;
             inactive.color = red;
@@ -82,6 +84,7 @@ in
   programs.dankMaterialShell = {
     settings = {
       "currentThemeName" = "cat-${theme.accent}";
+      "cornerRadius" = 4;
     };
     session = {
       isLightMode = false;

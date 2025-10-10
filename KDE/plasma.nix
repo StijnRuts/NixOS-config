@@ -177,12 +177,14 @@
           ];
         };
       };
-      configFile.kcminputrc."ButtonRebinds/Mouse" = {
-        ExtraButton1 = "Key,Meta+Shift+Left";
-        ExtraButton2 = "Key,Meta+Shift+Right";
+      configFile = {
+        kcminputrc."ButtonRebinds/Mouse" = {
+          ExtraButton1 = "Key,Meta+Shift+Left";
+          ExtraButton2 = "Key,Meta+Shift+Right";
+        };
+        # https://docs.kde.org/stable5/en/kwin/kcontrol/windowbehaviour/index.html
+        kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
       };
-      # https://docs.kde.org/stable5/en/kwin/kcontrol/windowbehaviour/index.html
-      configFile.kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
 
       # Find device info in /proc/bus/input/devices
       input.touchpads = [

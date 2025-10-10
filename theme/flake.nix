@@ -10,7 +10,7 @@
       let
         pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       in
-      {
+      rec {
         flavor = "mocha";
         Flavor = "Mocha";
         accent = "yellow";
@@ -19,11 +19,22 @@
         monofont = "UbuntuMono Nerd Font";
         fontPkg = pkgs.ubuntu_font_family;
         monofontPkg = pkgs.nerd-fonts.ubuntu-mono;
-        backgroundColor = "30,30,40";
+        cursor = "Simp1e-Catppuccin-Latte";
+        cursorPkg = pkgs.simp1e-cursors;
+        icons = "Papirus-Dark";
+        iconsPkg = pkgs.catppuccin-papirus-folders.override {
+          inherit flavor;
+          inherit accent;
+        };
+        background = {
+          rgb = "30,30,40";
+          hex = "1E1E28";
+        };
       };
 
     nixosModules = [
       inputs.catppuccin.nixosModules.catppuccin
+      ./catppuccin.nix
       (
         { theme, ... }:
         {
@@ -41,6 +52,7 @@
 
     homeModules = [
       inputs.catppuccin.homeModules.catppuccin
+      ./catppuccin.nix
       (
         { pkgs, theme, ... }:
         {
@@ -70,15 +82,12 @@
               };
             };
             iconTheme = {
-              name = "Papirus-Dark";
-              package = pkgs.catppuccin-papirus-folders.override {
-                inherit (theme) flavor;
-                inherit (theme) accent;
-              };
+              name = theme.icons;
+              package = theme.iconsPkg;
             };
             cursorTheme = {
-              name = "Simp1e-Catppuccin-Latte";
-              package = pkgs.simp1e-cursors;
+              name = theme.cursor;
+              package = theme.cursorPkg;
             };
             font = {
               name = theme.font;
@@ -101,12 +110,12 @@
                 library = "org.kde.breeze";
                 theme = "Breeze";
               };
-              cursor.theme = "Simp1e-Catppuccin-Latte";
-              iconTheme = "Papirus-Dark";
-              wallpaperPlainColor = theme.backgroundColor;
+              cursor.theme = theme.cursor;
+              iconTheme = theme.icons;
+              wallpaperPlainColor = theme.background.rgb;
             };
 
-            kscreenlocker.appearance.wallpaperPlainColor = theme.backgroundColor;
+            kscreenlocker.appearance.wallpaperPlainColor = theme.background.rgb;
 
             fonts = {
               general = {

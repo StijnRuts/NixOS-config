@@ -17,6 +17,7 @@
           action = close-window;
           repeat = false;
         };
+        "Mod+Shift+Q".action = quit;
 
         "Mod+Left".action = focus-column-left;
         "Mod+Down".action = focus-window-or-workspace-down;
@@ -75,6 +76,9 @@
 
         # Alternative
         # "Mod+Shift+Ctrl+Left".action = move-workspace-to-monitor-left;
+
+        "MouseForward".action = focus-workspace-up;
+        "MouseBack".action = focus-workspace-down;
 
         "Mod+WheelScrollLeft" = {
           action = focus-column-left;
@@ -142,23 +146,6 @@
           cooldown-ms = 150;
         };
 
-        # "TrackpointScrollLeft" = {
-        #   action = focus-column-left;
-        #   cooldown-ms = 150;
-        # };
-        # "TrackpointScrollRight" = {
-        #   action = focus-column-right;
-        #   cooldown-ms = 150;
-        # };
-        # "Ctrl+TrackpointScrollLeft" = {
-        #   action = move-column-left;
-        #   cooldown-ms = 150;
-        # };
-        # "Ctrl+TrackpointScrollRight" = {
-        #   action = move-column-right;
-        #   cooldown-ms = 150;
-        # };
-
         "Mod+BracketLeft".action = consume-or-expel-window-left;
         "Mod+BracketRight".action = consume-or-expel-window-right;
         "Mod+Less".action = consume-or-expel-window-left;
@@ -180,18 +167,8 @@
         "Mod+A".action = toggle-window-floating;
         "Mod+Shift+A".action = switch-focus-between-floating-and-tiling;
 
-        "Print".action = spawn [
-          "spectacle"
-          "--launchonly"
-        ];
-        "Ctrl+Print".action = spawn [
-          "spectacle"
-          "--region"
-        ];
-        "Alt+Print".action = spawn [
-          "spectacle"
-          "--activewindow"
-        ];
+        "Print".action = screenshot;
+        "Ctrl+Print".action = screenshot-window;
 
         "Mod+Shift+Escape" = {
           allow-inhibiting = false;

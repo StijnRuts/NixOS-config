@@ -4,26 +4,26 @@
   pkgs,
   pkgs-unstable,
   ...
-}: let
+}:
+let
   inherit (lib) mkOption;
-  jsonFormat = pkgs.formats.json {};
-in {
+  jsonFormat = pkgs.formats.json { };
+in
+{
   options.programs.dankMaterialShell = {
     settings = mkOption {
       inherit (jsonFormat) type;
-      default = {};
+      default = { };
     };
     session = mkOption {
       inherit (jsonFormat) type;
-      default = {};
+      default = { };
     };
   };
 
   config = {
     programs.dankMaterialShell = {
       enable = true;
-      enableSystemd = true;
-
       enableSystemMonitoring = false;
       enableClipboard = true;
       enableVPN = false;
@@ -102,9 +102,11 @@ in {
           "controlCenterButton"
         ];
         clockDateFormat = "ddd d MMM";
+        weatherLocation = "Hasselt, Limburg";
+        weatherCoordinates = "50.9303735,5.3378043";
         fontFamily = "Ubuntu";
         monoFontFamily = "UbuntuMono Nerd Font";
-        dankBarAutoHide = true;
+        dankBarAutoHide = false;
         dankBarVisible = true;
         dankBarSpacing = 0;
         dankBarBottomGap = 0;
