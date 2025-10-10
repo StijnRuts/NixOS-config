@@ -98,14 +98,91 @@
         }
       ];
 
-      # shortcuts = {
-      #   kwin = {
-      #     "Switch Window Left" = [ "Meta+Left" "Meta+H" ];
-      #     "Switch Window Down" = [ "Meta+Down" "Meta+J" ];
-      #     "Switch Window Up" = [ "Meta+Up" "Meta+K" ];
-      #     "Switch Window Right" = [ "Meta+Right" "Meta+L" ];
-      #   };
-      # };
+      shortcuts = {
+        "services/org.kde.krunner.desktop"."_launch" = "Meta+Space";
+        "services/org.kde.dolphin.desktop"."_launch" = "Meta+D";
+        "services/org.kde.konsole.desktop"."_launch" = "Meta+T";
+        "services/org.wezfurlong.wezterm.desktop"."_launch" = "Meta+Shift+T";
+        kwin = {
+          "Grid View" = "Meta+O";
+          "Window Close" = "Meta+Q";
+
+          "Switch Window Left" = [
+            "Meta+Left"
+            "Meta+H"
+          ];
+          "Switch Window Down" = [
+            "Meta+Down"
+            "Meta+J"
+          ];
+          "Switch Window Up" = [
+            "Meta+Up"
+            "Meta+K"
+          ];
+          "Switch Window Right" = [
+            "Meta+Right"
+            "Meta+L"
+          ];
+
+          "Window Quick Tile Left" = [
+            "Meta+Ctrl+Left"
+            "Meta+Ctrl+H"
+          ];
+          "Window Quick Tile Bottom" = [
+            "Meta+Ctrl+Down"
+            "Meta+Ctrl+J"
+          ];
+          "Window Quick Tile Top" = [
+            "Meta+Ctrl+Up"
+            "Meta+Ctrl+K"
+          ];
+          "Window Quick Tile Right" = [
+            "Meta+Ctrl+Right"
+            "Meta+Ctrl+L"
+          ];
+          "Window Maximize" = "Meta+F";
+
+          "Switch One Desktop to the Left" = [
+            "Meta+Shift+Left"
+            "Meta+Shift+H"
+          ];
+          "Switch One Desktop Down" = [
+            "Meta+Shift+Down"
+            "Meta+Shift+J"
+          ];
+          "Switch One Desktop Up" = [
+            "Meta+Shift+Up"
+            "Meta+Shift+K"
+          ];
+          "Switch One Desktop to the Right" = [
+            "Meta+Shift+Right"
+            "Meta+Shift+L"
+          ];
+
+          "Window One Desktop to the Left" = [
+            "Meta+Ctrl+Shift+Left"
+            "Meta+Ctrl+Shift+H"
+          ];
+          "Window One Desktop Down" = [
+            "Meta+Ctrl+Shift+Down"
+            "Meta+Ctrl+Shift+J"
+          ];
+          "Window One Desktop Up" = [
+            "Meta+Ctrl+Shift+Up"
+            "Meta+Ctrl+Shift+K"
+          ];
+          "Window One Desktop to the Right" = [
+            "Meta+Ctrl+Shift+Right"
+            "Meta+Ctrl+Shift+L"
+          ];
+        };
+      };
+      configFile.kcminputrc."ButtonRebinds/Mouse" = {
+        ExtraButton1 = "Key,Meta+Shift+Left";
+        ExtraButton2 = "Key,Meta+Shift+Right";
+      };
+      # https://docs.kde.org/stable5/en/kwin/kcontrol/windowbehaviour/index.html
+      configFile.kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
 
       # Find device info in /proc/bus/input/devices
       input.touchpads = [
