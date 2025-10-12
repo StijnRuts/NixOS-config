@@ -34,10 +34,6 @@
     # };
 
     layout = {
-      gaps = 0;
-      struts.left = 12;
-      struts.right = 12;
-
       default-column-width = { };
 
       preset-column-widths = [
