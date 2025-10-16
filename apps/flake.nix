@@ -1,5 +1,8 @@
 {
   inputs = {
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
     nvf = {
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +35,8 @@
           };
         }
       )
+      inputs.nix-flatpak.nixosModules.nix-flatpak
+      ./utility/flatpak.nix
       ./utility/devenv.nix
       ./utility/direnv.nix
       ./utility/process-compose.nix
