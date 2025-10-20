@@ -125,42 +125,43 @@
     (otherwise nil)))
 
 (defun catppuccin-theme (flavor accent &key (font-family nil) (monospace-font-family nil))
-  (make-instance 'theme:theme
-    :dark-p (get-color flavor 'isDark)
+  (define-configuration browser
+    ((theme (make-instance 'theme:theme
+      :dark-p (get-color flavor 'isDark)
 
-    :text-color (get-color flavor 'text)
-    :contrast-text-color (get-color flavor 'base)
+      :text-color (get-color flavor 'text)
+      :contrast-text-color (get-color flavor 'base)
 
-    :background-color- (get-color flavor 'surface0)
-    :background-color  (get-color flavor 'base)
-    :background-color+ (get-color flavor 'mantle)
-    :on-background-color (get-color flavor 'text)
+      :background-color- (get-color flavor 'surface0)
+      :background-color  (get-color flavor 'base)
+      :background-color+ (get-color flavor 'mantle)
+      :on-background-color (get-color flavor 'text)
 
-    :action-color (get-color flavor accent)
-    :on-action-color (get-color flavor 'base)
+      :action-color (get-color flavor accent)
+      :on-action-color (get-color flavor 'base)
 
-    :highlight-color (get-color flavor 'red)
-    :on-highlight-color (get-color flavor 'base)
+      :highlight-color (get-color flavor 'red)
+      :on-highlight-color (get-color flavor 'base)
 
-    :primary-color (get-color flavor accent)
-    :on-primary-color (get-color flavor 'base)
+      :primary-color (get-color flavor accent)
+      :on-primary-color (get-color flavor 'base)
 
-    :secondary-color (get-color flavor 'surface1)
-    :on-secondary-color (get-color flavor 'text)
+      :secondary-color (get-color flavor 'surface1)
+      :on-secondary-color (get-color flavor 'text)
 
-    :success-color (get-color flavor 'green)
-    :on-success-color (get-color flavor 'base)
+      :success-color (get-color flavor 'green)
+      :on-success-color (get-color flavor 'base)
 
-    :warning-color (get-color flavor 'red)
-    :on-warning-color (get-color flavor 'base)
+      :warning-color (get-color flavor 'red)
+      :on-warning-color (get-color flavor 'base)
 
-    :codeblock-color- (get-color flavor 'surface0)
-    :codeblock-color  (get-color flavor 'base)
-    :codeblock-color+ (get-color flavor 'mantle)
-    :on-codeblock-color (get-color flavor 'text)
+      :codeblock-color- (get-color flavor 'surface0)
+      :codeblock-color  (get-color flavor 'base)
+      :codeblock-color+ (get-color flavor 'mantle)
+      :on-codeblock-color (get-color flavor 'text)
 
-    :font-family font-family
-    :monospace-font-family monospace-font-family))
+      :font-family font-family
+      :monospace-font-family monospace-font-family)))))
 
 ;; Fix for https://github.com/atlas-engineer/nyxt/issues/3693
 (define-configuration :prompt-buffer
@@ -174,12 +175,23 @@
         :color ,theme:on-action))))))
 
 (defun catppuccin-dark-mode (flavor accent)
-  (theme:themed-css (theme *browser*)
-    `(* :background-color ,(get-color flavor 'base) "!important"
-        :background-image none "!important"
-        :color ,(get-color flavor 'text) "!important")
-    `("h1,h2,h3,h4,h5,h6"
-        :color ,(get-color flavor accent) "!important"
-        :background-color ,(get-color flavor 'base) "!important")
-    `("a, a *" :color ,(get-color flavor 'blue) "!important")))
+  (define-configuration nyxt/mode/style:dark-mode
+    ((style (theme:themed-css (theme *browser*)
+      `(* :background-color ,(get-color flavor 'base) "!important"
+          :background-image none "!important"
+          :color ,(get-color flavor 'text) "!important")
+      `("h1,h2,h3,h4,h5,h6"
+          :color ,(get-color flavor accent) "!important"
+          :background-color ,(get-color flavor 'base) "!important")
+      `("a, a *" :color ,(get-color flavor 'blue) "!important"))))))
 
+(defun catppuccin-dark-reader (flavor accent)
+  (define-configuration nx-dark-reader:dark-reader-mode
+    ((nxdr:brightness 100)
+    (nxdr:contrast 100)
+    (nxdr:grayscale 0)
+    (nxdr:sepia 0)
+    (nxdr:background-color (get-color flavor 'base))
+    (nxdr:text-color (get-color flavor 'text))
+    (nxdr:selection-color (get-color flavor accent))
+    (nxdr:stylesheet nil))))
