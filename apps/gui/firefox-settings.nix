@@ -15,6 +15,7 @@ pkgs: {
       "browser.gesture.swipe.left" = "cmd_scrollLeft"; # disable scrolling trough history
       "browser.gesture.swipe.right" = "cmd_scrollRight"; # disable scrolling trough history
       "browser.translations.neverTranslateLanguages" = "nl";
+      "middlemouse.paste" = false;
     };
     search = {
       force = true;

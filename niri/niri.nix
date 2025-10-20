@@ -20,6 +20,8 @@
       warp-mouse-to-focus.enable = true;
     };
 
+    clipboard.disable-primary = true;
+
     # niri msg outputs
     # outputs."SomeCompany UltrawideMonitor 1234" = {
     #   layout = {
