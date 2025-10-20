@@ -36,6 +36,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:sodiboo/niri-flake";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nvf = {
