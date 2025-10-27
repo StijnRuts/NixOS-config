@@ -119,6 +119,18 @@ pkgs: {
           icon = "https://pursuit.purescript.org/static/res/favicon/favicon.ico";
           definedAliases = [ "@p" ];
         };
+        "h" = {
+          name = "Hoogle";
+          urls = [ { template = "https://hoogle.haskell.org/?hoogle={searchTerms}"; } ];
+          icon = "https://hoogle.haskell.org/favicon.png";
+          definedAliases = [ "@h" ];
+        };
+        "ha" = {
+          name = "Hackage";
+          urls = [ { template = "https://hackage.haskell.org/packages/search?terms={searchTerms}"; } ];
+          icon = "https://hackage.haskell.org/static/favicon.png";
+          definedAliases = [ "@ha" ];
+        };
       };
     };
   };
