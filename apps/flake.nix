@@ -46,6 +46,7 @@
       ./utility/virt-manager.nix
       ./utility/ollama.nix
       ./misc/kmonad.nix
+      ./misc/input-weaver.nix
     ];
     homeModules = [
       ./cli/bash.nix
