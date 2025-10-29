@@ -21,7 +21,7 @@
         monofontPkg = pkgs.nerd-fonts.ubuntu-mono;
         cursor = "Simp1e-Catppuccin-Latte";
         cursorPkg = pkgs.simp1e-cursors;
-        icons = "Papirus-Dark";
+        icons = "Papirus-Dark"; # /etc/profiles/per-user/stijn/share/icons/Papirus-Dark
         iconsPkg = pkgs.catppuccin-papirus-folders.override {
           inherit flavor;
           inherit accent;

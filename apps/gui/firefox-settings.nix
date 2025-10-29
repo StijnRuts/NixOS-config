@@ -101,6 +101,12 @@ pkgs: {
           icon = "https://search.nixos.org/favicon.png";
           definedAliases = [ "npv" ];
         };
+        "ng" = {
+          name = "Nix Github";
+          urls = [ { template = "https://github.com/search?q={searchTerms}+language%3Anix&type=code"; } ];
+          icon = "https://github.githubassets.com/favicons/favicon.svg";
+          definedAliases = [ "ng" ];
+        };
         "nvf" = {
           name = "NVF Options";
           urls = [ { template = "https://notashelf.github.io/nvf/options.html"; } ];
