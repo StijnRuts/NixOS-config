@@ -15,7 +15,7 @@ keybinds {
   }
   shared_except "session" "locked" {
     unbind "Ctrl o"
-    bind "Alt o" { SwitchToMode "Session"; }
+    bind "Alt z" { SwitchToMode "Session"; }
   }
   shared_except "resize" "locked" {
     unbind "Ctrl n"
@@ -43,7 +43,7 @@ keybinds {
   }
   session {
     unbind "Ctrl o"
-    bind "Alt o" { SwitchToMode "Normal"; }
+    bind "Alt z" { SwitchToMode "Normal"; }
     unbind "Ctrl s"
     bind "Alt s" { SwitchToMode "Scroll"; }
   }
