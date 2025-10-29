@@ -1,4 +1,7 @@
 keybinds {
+  shared_among "normal" "scroll" {
+    bind "Alt c" { Copy; }
+  }
   shared_except "locked" {
     unbind "Ctrl g"
     bind "Alt g" { SwitchToMode "Locked"; }
