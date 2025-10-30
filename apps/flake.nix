@@ -25,6 +25,7 @@
       ./gui/office.nix
       ./gui/graphics.nix
       ./gui/beekeeper.nix
+      ./gui/qalculate.nix
       (
         { lib, ... }:
         {
