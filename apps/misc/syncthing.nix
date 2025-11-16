@@ -88,6 +88,7 @@
       let
         ignores = ''
           .git
+          .devenv
         '';
       in
       {
