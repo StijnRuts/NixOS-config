@@ -6,14 +6,14 @@
         focus-ring = {
           enable = false;
           width = 1;
-          active.color = config.lib.catppuccin.accent;
+          active.color = config.lib.catppuccin.overlay1;
           inactive.color = config.lib.catppuccin.surface1;
           urgent.color = config.lib.catppuccin.maroon;
         };
         border = {
           enable = true;
           width = 1;
-          active.color = config.lib.catppuccin.accent;
+          active.color = config.lib.catppuccin.overlay1;
           inactive.color = config.lib.catppuccin.surface1;
           urgent.color = config.lib.catppuccin.maroon;
         };
@@ -24,12 +24,12 @@
           length.total-proportion = 0.95;
           place-within-column = true;
         };
-        insert-hint.display.color = config.lib.catppuccin.accent;
+        insert-hint.display.color = config.lib.catppuccin.overlay0;
         background-color = config.lib.catppuccin.mantle;
 
-        gaps = 4;
-        struts.top = -2;
-        struts.bottom = -4;
+        gaps = 0;
+        struts.top = 0;
+        struts.bottom = 0;
         struts.left = 10;
         struts.right = 10;
       };
@@ -45,10 +45,10 @@
       window-rules = [
         {
           geometry-corner-radius = {
-            bottom-left = 6.0;
-            bottom-right = 6.0;
-            top-left = 6.0;
-            top-right = 6.0;
+            bottom-left = 0.0;
+            bottom-right = 0.0;
+            top-left = 0.0;
+            top-right = 0.0;
           };
           clip-to-geometry = true;
         }
@@ -70,7 +70,7 @@
   programs.dankMaterialShell = {
     settings = {
       "currentThemeName" = "cat-${theme.accent}";
-      "cornerRadius" = 6;
+      "cornerRadius" = 0;
     };
     session = {
       isLightMode = false;
