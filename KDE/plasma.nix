@@ -145,6 +145,8 @@
           "Switch One Desktop to the Left" = [
             "Meta+Shift+Left"
             "Meta+Shift+H"
+            "Back"
+            "Meta+Back"
           ];
           "Switch One Desktop Down" = [
             "Meta+Shift+Down"
@@ -157,11 +159,15 @@
           "Switch One Desktop to the Right" = [
             "Meta+Shift+Right"
             "Meta+Shift+L"
+            "Forward"
+            "Meta+Forward"
           ];
 
           "Window One Desktop to the Left" = [
             "Meta+Ctrl+Shift+Left"
             "Meta+Ctrl+Shift+H"
+            "Ctrl+Back"
+            "Meta+Ctrl+Back"
           ];
           "Window One Desktop Down" = [
             "Meta+Ctrl+Shift+Down"
@@ -174,6 +180,8 @@
           "Window One Desktop to the Right" = [
             "Meta+Ctrl+Shift+Right"
             "Meta+Ctrl+Shift+L"
+            "Ctrl+Forward"
+            "Meta+Ctrl+Forward"
           ];
         };
       };

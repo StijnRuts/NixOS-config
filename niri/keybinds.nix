@@ -27,6 +27,10 @@
         "Mod+J".action = focus-window-or-workspace-down;
         "Mod+K".action = focus-window-or-workspace-up;
         "Mod+L".action = focus-column-right;
+        "XF86Back".action = focus-column-left;
+        "XF86Forward".action = focus-column-right;
+        "Mod+XF86Back".action = focus-column-left;
+        "Mod+XF86Forward".action = focus-column-right;
 
         "Mod+Ctrl+Left".action = move-column-left;
         "Mod+Ctrl+Down".action = move-window-down-or-to-workspace-down;
@@ -36,6 +40,10 @@
         "Mod+Ctrl+J".action = move-window-down-or-to-workspace-down;
         "Mod+Ctrl+K".action = move-window-up-or-to-workspace-up;
         "Mod+Ctrl+L".action = move-column-right;
+        "Ctrl+XF86Back".action = move-column-left;
+        "Ctrl+XF86Forward".action = move-column-right;
+        "Mod+Ctrl+XF86Back".action = move-column-left;
+        "Mod+Ctrl+XF86Forward".action = move-column-right;
 
         "Mod+Home".action = focus-column-first;
         "Mod+End".action = focus-column-last;
