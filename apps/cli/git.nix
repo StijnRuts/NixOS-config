@@ -47,6 +47,7 @@
     "gaa" = "git add --all";
     "gap" = "git add --patch";
     "gd" = "git diff";
+    "gdw" = "git diff --ignore-all-space";
     "gdc" = "git diff --cached";
     "gc" = "git commit";
     "gcm" = "git commit --message";
