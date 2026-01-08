@@ -25,9 +25,6 @@ in
   };
 
   config = {
-    home.persistence."/persist/home/${me.username}" = {
-      allowOther = false;
-    }
-    // cfg.home;
+    home.persistence."/persistent" = cfg.home;
   };
 }

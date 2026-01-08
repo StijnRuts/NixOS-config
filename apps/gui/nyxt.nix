@@ -1,14 +1,11 @@
 { lib, pkgs, ... }:
 {
-  # Temporary. This is in Home Manager unstable.
-  # programs.nyxt = {
-  #   enable = true;
-  #   config = ''
-  #     TODO
-  #   '';
-  # };
-
-  home.packages = [ pkgs.nyxt ];
+  programs.nyxt = {
+    enable = true;
+    # config = ''
+    #   TODO
+    # '';
+  };
 
   home.activation.nyxtSymlink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ln -sf ~/NixOS/apps/gui/nyxt ~/.config

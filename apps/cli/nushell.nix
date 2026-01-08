@@ -7,7 +7,6 @@
     };
     plugins = with pkgs.nushellPlugins; [
       formats
-      units
       query
     ];
   };

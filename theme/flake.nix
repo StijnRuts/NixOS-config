@@ -1,7 +1,7 @@
 {
   inputs = {
     catppuccin = {
-      url = "github:catppuccin/nix/release-25.05";
+      url = "github:catppuccin/nix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -17,7 +17,7 @@
         Accent = "Yellow";
         font = "Ubuntu";
         monofont = "UbuntuMono Nerd Font";
-        fontPkg = pkgs.ubuntu_font_family;
+        fontPkg = pkgs.ubuntu-classic;
         monofontPkg = pkgs.nerd-fonts.ubuntu-mono;
         cursor = "Simp1e-Catppuccin-Latte";
         cursorPkg = pkgs.simp1e-cursors;
@@ -98,7 +98,7 @@
 
           qt = {
             enable = true;
-            platformTheme.name = "kde6";
+            platformTheme.name = "kde";
           };
 
           programs.plasma = {

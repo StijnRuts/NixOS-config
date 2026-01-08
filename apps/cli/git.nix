@@ -1,43 +1,51 @@
 { pkgs, me, ... }:
 {
-  programs.git = {
-    enable = true;
-    userEmail = "${me.email.git}";
-    userName = "${me.name}";
-    delta.enable = true;
-    extraConfig = {
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-      pull.rebase = true;
-      rebase.autoStash = true;
-      delta = {
-        syntax-theme = "none";
-        hunk-header-style = "normal";
-        minus-style = "red";
-        minus-non-emph-style = "red";
-        minus-emph-style = "reverse red";
-        plus-style = "green";
-        plus-non-emph-style = "green";
-        plus-emph-style = "reverse green";
+  programs = {
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "${me.name}";
+          email = "${me.email.git}";
+        };
+        init.defaultBranch = "main";
+        push.autoSetupRemote = true;
+        pull.rebase = true;
+        rebase.autoStash = true;
+        delta = {
+          syntax-theme = "none";
+          hunk-header-style = "normal";
+          minus-style = "red";
+          minus-non-emph-style = "red";
+          minus-emph-style = "reverse red";
+          plus-style = "green";
+          plus-non-emph-style = "green";
+          plus-emph-style = "reverse green";
+        };
       };
     };
-  };
 
-  programs.lazygit = {
-    enable = true;
-    settings = {
-      gui = {
-        tabWidth = 2;
-        nerdFontsVersion = 3;
-        showRandomTip = false;
-        showCommandLog = false;
-        skipDiscardChangeWarning = true;
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
+
+    lazygit = {
+      enable = true;
+      settings = {
+        gui = {
+          tabWidth = 2;
+          nerdFontsVersion = 3;
+          showRandomTip = false;
+          showCommandLog = false;
+          skipDiscardChangeWarning = true;
+        };
+        git = {
+          disableForcePushing = true;
+          paging.pager = "delta --paging=never";
+        };
+        notARepository = "quit";
       };
-      git = {
-        disableForcePushing = true;
-        paging.pager = "delta --paging=never";
-      };
-      notARepository = "quit";
     };
   };
   catppuccin.lazygit.enable = true;

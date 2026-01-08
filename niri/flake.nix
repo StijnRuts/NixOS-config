@@ -4,7 +4,7 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dankMaterialShell = {
+    dms = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -48,8 +48,7 @@
       }
       ./niri.nix
       ./keybinds.nix
-      "${inputs.hm-unstable}/modules/programs/quickshell.nix" # Temporary
-      inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+      inputs.dms.homeModules.dank-material-shell
       ./dms.nix
       ./dms_keybinds.nix
       ./theme.nix

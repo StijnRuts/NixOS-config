@@ -67,7 +67,7 @@
       ];
     };
   };
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     settings = {
       "currentThemeName" = "cat-${theme.accent}";
       "cornerRadius" = 0;

@@ -1,8 +1,8 @@
-{ config, pkgs-unstable, ... }:
+{ config, pkgs, ... }:
 {
   programs.atuin = {
     enable = true;
-    package = pkgs-unstable.atuin.overrideAttrs (old: {
+    package = pkgs.atuin.overrideAttrs (old: {
       patches = (old.patches or [ ]) ++ [
         ./atuin-color.patch # Don't highlight the selected command as an error
       ];

@@ -1,4 +1,6 @@
 # Do not modify! This file is generated.
+# One exception: If you use a different template than "flake.in.nix" set
+#                its relative path through the first argument to inputs.flakegen.
 
 {
   inputs = {
@@ -12,15 +14,15 @@
     };
     catppuccin = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:catppuccin/nix/release-25.05";
-    };
-    dankMaterialShell = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:AvengeMedia/DankMaterialShell";
+      url = "github:catppuccin/nix/release-25.11";
     };
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko/latest";
+    };
+    dms = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:AvengeMedia/DankMaterialShell";
     };
     flakegen.url = "github:jorsn/flakegen";
     hm-unstable = {
@@ -29,7 +31,7 @@
     };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
     };
     impermanence.url = "github:nix-community/impermanence";
     niri = {
@@ -37,7 +39,7 @@
       url = "github:sodiboo/niri-flake";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nvf = {
       inputs.nixpkgs.follows = "nixpkgs";

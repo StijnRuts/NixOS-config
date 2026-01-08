@@ -175,8 +175,8 @@
         "Mod+A".action = toggle-window-floating;
         "Mod+Shift+A".action = switch-focus-between-floating-and-tiling;
 
-        "Print".action = screenshot;
-        "Ctrl+Print".action = screenshot-window;
+        # "Print".action = screenshot; # TODO broken
+        # "Ctrl+Print".action = screenshot-window; # TODO broken
 
         "Mod+Shift+Escape" = {
           allow-inhibiting = false;

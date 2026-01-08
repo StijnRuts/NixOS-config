@@ -103,9 +103,9 @@
       };
 
       treesitter = {
-        enable = true;
-        addDefaultGrammars = true;
-        fold = true;
+        # enable = true; # TODO broken
+        # addDefaultGrammars = true;
+        # fold = true;
       };
 
       lsp = {
@@ -125,7 +125,7 @@
 
       languages = {
         enableFormat = true;
-        enableTreesitter = true;
+        # enableTreesitter = true; # TODO broken
         enableExtraDiagnostics = true;
         enableDAP = true;
 
@@ -139,10 +139,6 @@
         sql.enable = true;
         bash.enable = true;
         haskell.enable = true;
-
-        # Temporary, prettier is not in nixpkgs 25.05
-        css.format.package = pkgs-unstable.prettier;
-        ts.format.package = pkgs-unstable.prettier;
       };
 
       startPlugins = with pkgs.vimPlugins; [
