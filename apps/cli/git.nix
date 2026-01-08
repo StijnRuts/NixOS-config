@@ -31,6 +31,7 @@
         nerdFontsVersion = 3;
         showRandomTip = false;
         showCommandLog = false;
+        skipDiscardChangeWarning = true;
       };
       git = {
         disableForcePushing = true;
