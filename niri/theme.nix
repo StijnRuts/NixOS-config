@@ -1,4 +1,9 @@
-{ config, theme, ... }:
+{
+  config,
+  theme,
+  me,
+  ...
+}:
 {
   programs.niri = {
     settings = {
@@ -28,10 +33,12 @@
         background-color = config.lib.catppuccin.mantle;
 
         gaps = 0;
-        struts.top = 0;
-        struts.bottom = 0;
-        struts.left = 10;
-        struts.right = 10;
+        struts = {
+          top = 0;
+          bottom = 0;
+          left = 10;
+          right = 10;
+        };
       };
 
       overview = {
@@ -67,9 +74,19 @@
       ];
     };
   };
+
   programs.dank-material-shell = {
     settings = {
-      "currentThemeName" = "cat-${theme.accent}";
+      "currentThemeName" = "custom";
+      "currentThemeCategory" = "registry";
+      "customThemeFile" = "/home/${me.username}/.config/DankMaterialShell/themes/catppuccin/theme.json";
+      "registryThemeVariants" = {
+        "catppuccin" = {
+          "flavor" = theme.flavor;
+          "accent" = theme.accent;
+        };
+      };
+
       "cornerRadius" = 0;
     };
     session = {
@@ -77,4 +94,6 @@
       wallpaperPath = config.lib.catppuccin.mantle;
     };
   };
+
+  home.file.".config/DankMaterialShell/themes/catppuccin/theme.json".source = ./catppuccin.json;
 }

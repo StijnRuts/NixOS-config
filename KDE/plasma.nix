@@ -221,9 +221,11 @@
       };
 
       configFile = {
-        kwinrc.ElectricBorders.TopLeft = ""; # Disable hot corner
-        kwinrc.Effect-overview.BorderActivate = 9; # Disable hot corner
-        kwinrc.Wayland.EnablePrimarySelection = false; # Disable middle click paste
+        kwinrc = {
+          ElectricBorders.TopLeft = ""; # Disable hot corner
+          Effect-overview.BorderActivate = 9; # Disable hot corner
+          Wayland.EnablePrimarySelection = false; # Disable middle click paste
+        };
       };
     };
 

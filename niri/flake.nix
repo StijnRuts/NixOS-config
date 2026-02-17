@@ -19,6 +19,30 @@
             enable = true;
             package = pkgs.niri;
           };
+          environment.systemPackages = with pkgs; [
+            # https://wiki.archlinux.org/title/XDG_Desktop_Portal
+            xdg-desktop-portal
+            kdePackages.xdg-desktop-portal-kde
+            polkit
+            kdePackages.polkit-kde-agent-1
+            kdePackages.kwallet
+            kdePackages.kwallet-pam
+            kdePackages.kwalletmanager
+            # xdg-desktop-portal
+            # xdg-desktop-portal-wlr
+            # xdg-desktop-portal-gtk
+            # kdePackages.polkit-qt-1
+            # xdg-desktop-portal-shana
+            # systemctl --user show-environment
+            # $XDG_CURRENT_DESKTOP = KDE
+            # $WAYLAND_DISPLAY = wayland-0
+            # $GTK_THEME Adwaita:dark (unset?!)
+            # https://mynixos.com/search?q=portal
+            # https://mynixos.com/search?q=polkit
+            xwayland-satellite
+            wl-clipboard
+            cliphist
+          ];
         }
       )
     ];

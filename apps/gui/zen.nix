@@ -24,6 +24,7 @@
     directories = [
       ".zen"
       ".var/app/app.zen_browser.zen"
+      ".cache/zen"
     ];
   };
 }

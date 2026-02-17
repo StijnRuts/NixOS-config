@@ -7,9 +7,9 @@
     pkgs.brlaser
   ];
 
-  persist.system = {
-    directories = [
-      "/etc/cups"
-    ];
-  };
+#   persist.system = {
+#     files = [
+#       "/etc/cups/printers.conf"
+#     ];
+#   };
 }

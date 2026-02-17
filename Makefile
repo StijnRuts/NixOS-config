@@ -42,7 +42,8 @@ format:
 	treefmt . --excludes apps/vim/snippets/**/*.nix
 # Lint all .nix files
 lint:
-	statix check --ignore apps/vim/snippets/**/*.nix -- . ; deadnix
+	statix check --ignore apps/vim/snippets/**/*.nix -- .
+	deadnix --exclude apps/vim/snippets/**/*.nix
 
 # Clean the nix store
 clean:

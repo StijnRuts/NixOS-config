@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  me,
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.persist;
   inherit (lib) mkOption types;

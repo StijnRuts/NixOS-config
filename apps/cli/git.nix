@@ -42,7 +42,7 @@
         };
         git = {
           disableForcePushing = true;
-          paging.pager = "delta --paging=never";
+          pagers = [ { pager = "delta --paging=never"; } ];
         };
         notARepository = "quit";
       };
