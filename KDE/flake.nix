@@ -16,7 +16,6 @@
       ./plasma.nix
       ./dolphin.nix
       ./konsole.nix
-      ./automaximize.nix
     ];
   };
 }

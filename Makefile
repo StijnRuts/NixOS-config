@@ -21,8 +21,8 @@ run:
 
 # Build only the Home Manager configuration, and switch to it
 home:
-	# HOSTNAME=$$(hostname) home-manager switch --show-trace -b hmbackup --flake ./partial/home --impure
-	HOSTNAME=$$(hostname) nh home switch -b hmbackup ./partial/home -- --impure
+	# HOSTNAME=$$(hostname) home-manager switch --show-trace --flake ./partial/home --impure
+	HOSTNAME=$$(hostname) nh home switch ./partial/home -- --impure
 
 # Build only the vim configuration, and run it
 vim:

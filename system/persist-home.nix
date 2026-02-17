@@ -20,6 +20,6 @@ in
   };
 
   config = {
-    home.persistence."/persistent" = cfg.home;
+    home.persistence."/persist" = cfg.home;
   };
 }
