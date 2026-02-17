@@ -35,6 +35,8 @@
       };
     };
 
+    allowUnfree = [ "tarsnap" ];
+
     age.secrets.tarsnap_homedirs_key.file = ../secrets/tarsnap/homedirs.age;
 
     persist.system = {

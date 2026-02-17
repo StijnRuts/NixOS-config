@@ -48,7 +48,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          backupFileExtension = "hmbackup";
+          backupCommand = "rm";
         };
       }
       ./locale.nix

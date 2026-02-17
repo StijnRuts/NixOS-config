@@ -2,6 +2,7 @@
   system = {
     apps = {
       office.enable = true;
+      games.enable = false;
       graphics.enable = true;
       utilities.enable = true;
     };

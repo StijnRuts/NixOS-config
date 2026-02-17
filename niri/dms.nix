@@ -3,16 +3,6 @@
   programs.dank-material-shell = {
     enable = true;
 
-    systemd = {
-      enable = true;
-      restartIfChanged = true;
-    };
-
-#     niri = {
-#       enableKeybinds = true;
-#       enableSpawn = true;
-#     };
-
     dgop.package = pkgs-unstable.dgop;
 
     settings = {

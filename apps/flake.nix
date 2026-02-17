@@ -23,6 +23,7 @@
         }
       )
       ./gui/office.nix
+      ./gui/games.nix
       ./gui/graphics.nix
       ./gui/beekeeper.nix
       ./gui/qalculate.nix
