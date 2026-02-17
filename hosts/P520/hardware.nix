@@ -29,7 +29,8 @@
     };
     kernelModules = [ "kvm-intel" ];
     kernelParams = [
-      "systemd.mask=dev-tpmrm0.device" # Don't wait 1m30 for tpm on boot
+      "systemd.mask=dev-tpm0.device" # Don't wait 1m30 for tpm on boot
+      "systemd.mask=dev-tpmrm0.device"
     ];
     extraModulePackages = [ ];
     swraid = {
