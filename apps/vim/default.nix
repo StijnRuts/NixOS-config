@@ -102,6 +102,15 @@
         };
       };
 
+      treesitter = {
+        enable = true;
+        highlight.enable = true;
+        indent.enable = true;
+        fold = true;
+        autotagHtml = true;
+        addDefaultGrammars = false; # Disabled because of bug
+        grammars = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+      };
 
       lsp = {
         enable = true;
@@ -119,6 +128,7 @@
       };
 
       languages = {
+        enableTreesitter = true;
         enableFormat = false;
         enableExtraDiagnostics = true;
         enableDAP = true;
@@ -129,33 +139,13 @@
         html.enable = true;
         css.enable = true;
         ts.enable = true;
+        json.enable = true;
+        yaml.enable = true;
         php.enable = true;
         sql.enable = true;
         bash.enable = true;
+        nu.enable = true;
         haskell.enable = true;
-      };
-
-      startPlugins = with pkgs.vimPlugins; [
-        nvim-treesitter-parsers.purescript
-        nvim-treesitter-parsers.dhall
-      ];
-
-      lsp.lspconfig = {
-        enable = true;
-        sources.purescript-lsp = ''
-          lspconfig.purescriptls.setup {
-            capabilities = capabilities,
-            on_attach = default_on_attach,
-            cmd = { "${lib.getExe pkgs.nodePackages.purescript-language-server}", "--stdio" },
-          }
-        '';
-        sources.dhall-lsp = ''
-          lspconfig.dhall_lsp_server.setup {
-            capabilities = capabilities,
-            on_attach = default_on_attach,
-            cmd = { "${lib.getExe pkgs.dhall-lsp-server}" },
-          }
-        '';
       };
 
       autocomplete.blink-cmp.enable = true;
