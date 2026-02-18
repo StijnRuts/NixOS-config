@@ -1,4 +1,4 @@
-{ theme, ... }:
+{ lib, theme, ... }:
 {
   programs.wezterm = {
     enable = true;
@@ -16,7 +16,7 @@
 
   programs.zsh = {
     enable = true;
-    initContent = ''
+    initContent = lib.mkOrder 1500 ''
       # Setup fancy environment, only on WezTerm
       if [ -n "$WEZTERM_EXECUTABLE" ]; then
         # Enable direnv
@@ -29,7 +29,9 @@
           if command -v zellij >/dev/null 2>&1; then
             # If not already in Zellij
             if [[ -z "$ZELLIJ" ]]; then
-              zellij attach -c default
+              z # prompt for a directory to jump to
+              sessionname=$(basename $(pwd))
+              zellij attach $sessionname || zellij -s $sessionname
             fi
           fi
         fi

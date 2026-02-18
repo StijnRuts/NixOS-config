@@ -2,8 +2,7 @@
 
 function search {
   if [ -z "$query" ]; then
-    echo "No search string given"
-    exit 1
+    read -p 'Jump to: ' -e query
   fi
 
   zoxide_search

@@ -16,8 +16,7 @@
       "@wheel"
     ];
 
-    nixpkgs.config.allowUnfreePredicate =
-      pkg: builtins.elem (lib.getName pkg) config.allowUnfree;
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.allowUnfree;
 
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions

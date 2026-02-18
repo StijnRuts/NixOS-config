@@ -123,7 +123,7 @@
       };
 
       languages = {
-        enableFormat = true;
+        enableFormat = false;
         # enableTreesitter = true; # TODO broken
         enableExtraDiagnostics = true;
         enableDAP = true;
