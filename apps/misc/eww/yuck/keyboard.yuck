@@ -1,0 +1,13 @@
+(defwindow keyboard
+  :monitor '["<primary>", 0]'
+  :geometry (geometry :anchor "center right")
+  :stacking "fg"
+  (eventbox
+    :onclick "${EWW_CMD} update keyboard_size=${ keyboard_size == 700 ? 100 : 700}"
+    (image :path "/home/stijn/Projects/keyboard-config/keymap.svg"
+           :image-width keyboard_size :image-height keyboard_size
+    )
+  )
+)
+
+(defvar keyboard_size 100)

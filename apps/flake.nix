@@ -76,6 +76,7 @@
       ./gui/conky.nix
       ./misc/syncthing.nix
       ./misc/exercism.nix
+      ./misc/eww.nix
     ];
   };
 }
