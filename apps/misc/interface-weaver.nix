@@ -1,5 +1,8 @@
 { me, ... }:
 {
+  # https://github.com/NixOS/nixpkgs/blob/nixos-25.05/nixos/modules/services/hardware/kmonad.nix#L158
+  # https://github.com/NixOS/nixpkgs/blob/nixos-25.05/nixos/modules/services/hardware/kmonad.nix#L239
+
   services.udev.extraRules = ''
     KERNEL=="uinput", GROUP="input", MODE:="0660"
     KERNEL=="event*", GROUP="input", NAME="input/%k", MODE="660"

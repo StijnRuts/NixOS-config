@@ -19,20 +19,6 @@ run:
 	# sudo nixos-rebuild switch --show-trace --flake .
 	nh os switch .
 
-# Build only the Home Manager configuration, and switch to it
-home:
-	# HOSTNAME=$$(hostname) home-manager switch --show-trace --flake ./partial/home --impure
-	HOSTNAME=$$(hostname) nh home switch ./partial/home -- --impure
-
-# Build only the vim configuration, and run it
-vim:
-	nix run ./partial/vim
-
-# Build an iso with custom configuration
-iso:
-	nix build .\#nixosConfigurations.iso.config.system.build.isoImage
-	xdg-open ./result/iso
-
 # Update the flake.lock file
 update:
 	nix flake update
@@ -40,6 +26,7 @@ update:
 # Format all .nix files
 format:
 	treefmt . --excludes apps/vim/snippets/**/*.nix
+
 # Lint all .nix files
 lint:
 	statix check --ignore apps/vim/snippets/**/*.nix -- .
