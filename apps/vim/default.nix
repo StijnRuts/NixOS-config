@@ -28,6 +28,7 @@
         mouse = "a";
         autoread = true;
         cursorline = true;
+        whichwrap = "<,>,h,l";
         shiftwidth = 2;
         tabstop = 4;
         softtabstop = 2;
@@ -101,11 +102,6 @@
         };
       };
 
-      treesitter = {
-        # enable = true; # TODO broken
-        # addDefaultGrammars = true;
-        # fold = true;
-      };
 
       lsp = {
         enable = true;
@@ -124,7 +120,6 @@
 
       languages = {
         enableFormat = false;
-        # enableTreesitter = true; # TODO broken
         enableExtraDiagnostics = true;
         enableDAP = true;
 

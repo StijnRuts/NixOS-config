@@ -62,3 +62,44 @@ in
   };
   desc = "Deindent line";
 })
+++ (customBinding {
+  keys = [
+    "<C-S-Right>"
+    "<leader>bl"
+  ];
+  actions = {
+    "n" = ":bnext<CR>";
+    "i" = "<Esc>:bnext<CR>gi";
+  };
+  desc = "Next buffer";
+})
+++ (customBinding {
+  keys = [
+    "<C-S-Left>"
+    "<leader>bh"
+  ];
+  actions = {
+    "n" = ":bprevious<CR>";
+    "i" = "<Esc>:bprevious<CR>gi";
+  };
+  desc = "Previous buffer";
+})
+++ (customBinding {
+  keys = [
+    "<leader>bd"
+  ];
+  actions = {
+    "n" = ":bdelete<CR>";
+    "i" = "<Esc>:bdelete<CR>gi";
+  };
+  desc = "Close buffer";
+})
+++ (customBinding {
+  keys = [
+    "y"
+  ];
+  actions = {
+    "x" = "mzy`z";
+  };
+  desc = "Keep cursor position when yanking from visual mode";
+})
