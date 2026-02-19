@@ -22,19 +22,6 @@
 
     clipboard.disable-primary = true;
 
-    # niri msg outputs
-    # outputs."SomeCompany UltrawideMonitor 1234" = {
-    #   layout = {
-    #     preset-column-widths = [
-    #       { proportion = 0.25; }
-    #       { proportion = 0.333; }
-    #       { proportion = 0.5; }
-    #       { proportion = 0.666; }
-    #       { proportion = 0.75; }
-    #     ];
-    #   };
-    # };
-
     layout = {
       default-column-width = { };
 

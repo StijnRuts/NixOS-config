@@ -60,11 +60,13 @@
       ];
       dankBarLeftWidgets = [
         "launcherButton"
+        "runningApps"
       ];
       dankBarCenterWidgets = [
         "clock"
       ];
       dankBarRightWidgets = [
+        "privacyIndicator"
         "systemTray"
         "clipboard"
         "notificationButton"
