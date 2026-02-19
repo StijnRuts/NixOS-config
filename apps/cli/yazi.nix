@@ -5,7 +5,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableNushellIntegration = true;
-    shellWrapperName = "y";
+    shellWrapperName = "yy"; # Cd on quit
     settings = {
       mgr = {
         show_hidden = true;
@@ -35,6 +35,10 @@
         }
       ];
     };
+  };
+
+  home.shellAliases = {
+    "y" = "yazi";
   };
 
   catppuccin.yazi.enable = true;
