@@ -41,6 +41,7 @@
       ./utility/flatpak.nix
       ./utility/devenv.nix
       ./utility/direnv.nix
+      ./utility/process-compose.nix
       ./utility/podman.nix
       ./utility/docker.nix
       ./utility/distrobox.nix
