@@ -22,6 +22,7 @@
           users.defaultUserShell = pkgs.zsh;
         }
       )
+      ./cli/httpie.nix
       ./gui/office.nix
       ./gui/games.nix
       ./gui/graphics.nix
