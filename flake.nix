@@ -16,6 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:catppuccin/nix/release-25.11";
     };
+    devenv.url = "github:cachix/devenv-nixpkgs/rolling";
     disko = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko/latest";

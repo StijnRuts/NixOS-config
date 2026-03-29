@@ -12,8 +12,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    devenv = {
+      url = "github:cachix/devenv-nixpkgs/rolling";
+    };
   };
   outputs = inputs: {
+    args = {
+      devenv-pkgs = inputs.devenv.legacyPackages.x86_64-linux;
+    };
+
     nixosModules = [
       (
         { pkgs, ... }:

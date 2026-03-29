@@ -1,13 +1,13 @@
 {
   config,
   lib,
-  pkgs-unstable,
+  devenv-pkgs,
   ...
 }:
 {
   config = lib.mkIf config.apps.utilities.enable {
     environment.systemPackages = [
-      pkgs-unstable.devenv
+      devenv-pkgs.devenv
     ];
 
     persist.home = {
