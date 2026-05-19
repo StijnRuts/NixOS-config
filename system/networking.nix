@@ -7,6 +7,7 @@
 {
   networking.networkmanager.enable = !config.networking.wireless.enable; # Disabled in iso
 
+  # TODO: move to Avahi
   networking.hosts = {
     "192.168.42.1" = [
       "P520.local"
@@ -16,6 +17,24 @@
     "192.168.42.3" = [ "X201.local" ];
   };
 
+  # For containers
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
+  # DNS
+  services.dnsmasq = {
+    enable = true;
+    resolveLocalQueries = true;
+    settings = {
+      conf-dir = "/etc/dnsmasq.d/containers/,*.conf";
+      domain-needed = true;
+      bogus-priv = true;
+    };
+  };
+
+  # Certificates
   environment.systemPackages = [
     pkgs.mkcert
     pkgs.nssTools
