@@ -36,6 +36,8 @@
             statix
             deadnix
             systemctl-tui
+            pik
+            tree
           ];
         }
       )
