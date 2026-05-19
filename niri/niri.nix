@@ -29,6 +29,7 @@
         { proportion = 0.333; }
         { proportion = 0.5; }
         { proportion = 0.666; }
+        { proportion = 0.85; }
       ];
       preset-window-heights = [
         { proportion = 0.333; }
