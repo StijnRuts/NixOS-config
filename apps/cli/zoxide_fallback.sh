@@ -2,7 +2,8 @@
 
 function search {
   if [ -z "$query" ]; then
-    read -p 'Jump to: ' -e query
+    zoxide query --interactive
+    exit
   fi
 
   zoxide_search
