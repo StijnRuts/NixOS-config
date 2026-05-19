@@ -1,26 +1,26 @@
 default: run
 
 # Generate the flake imputs based on flake.template.nix
-generate:
+genflake:
 	nix run .\#genflake flake.nix
 
 # Only build the configuration, but do not switch to it
-build:
+build: genflake
 	# nixos-rebuild build --show-trace --flake .
 	nh os build .
 
 # Build the configuration and switch to it, but do not add it to the boot manager
-test:
+test: genflake
 	# sudo nixos-rebuild test --show-trace --flake .
 	nh os test .
 
 # Build the configuration, switch to it, and add it to the boot manager
-run:
+run: genflake
 	# sudo nixos-rebuild switch --show-trace --flake .
 	nh os switch .
 
 # Update the flake.lock file
-update:
+update: genflake
 	nix flake update
 
 # Format all .nix files
