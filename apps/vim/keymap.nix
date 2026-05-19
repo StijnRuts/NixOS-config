@@ -64,23 +64,45 @@ in
 })
 ++ (customBinding {
   keys = [
-    "<C-S-Right>"
+    "<S-Right>"
     "<leader>bl"
   ];
   actions = {
-    "n" = ":bnext<CR>";
-    "i" = "<Esc>:bnext<CR>gi";
+    "n" = ":BufferLineCycleNext<CR>";
+    "i" = "<Esc>:BufferLineCycleNext<CR>gi";
   };
   desc = "Next buffer";
 })
 ++ (customBinding {
   keys = [
-    "<C-S-Left>"
+    "<S-Left>"
     "<leader>bh"
   ];
   actions = {
-    "n" = ":bprevious<CR>";
-    "i" = "<Esc>:bprevious<CR>gi";
+    "n" = ":BufferLineCyclePrev<CR>";
+    "i" = "<Esc>:BufferLinePrev<CR>gi";
+  };
+  desc = "Previous buffer";
+})
+++ (customBinding {
+  keys = [
+    "<S-Down>"
+    "<leader>bj"
+  ];
+  actions = {
+    "n" = ":BufferLineMoveNext<CR>";
+    "i" = "<Esc>:BufferLineMoveNext<CR>gi";
+  };
+  desc = "Next buffer";
+})
+++ (customBinding {
+  keys = [
+    "<S-Up>"
+    "<leader>bk"
+  ];
+  actions = {
+    "n" = ":BufferLineMovePrev<CR>";
+    "i" = "<Esc>:BufferLineMovePrev<CR>gi";
   };
   desc = "Previous buffer";
 })

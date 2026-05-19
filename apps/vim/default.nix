@@ -75,8 +75,27 @@
 
       telescope = {
         enable = true;
-        mappings.buffers = "<leader><leader>";
+        mappings.findFiles = "<leader><leader>";
       };
+
+      luaConfigRC.telescope = ''
+        local actions = require("telescope.actions")
+
+        require("telescope").setup({
+          pickers = {
+            buffers = {
+              mappings = {
+                i = {
+                  ["<c-d>"] = actions.delete_buffer,
+                },
+                n = {
+                  ["dd"] = actions.delete_buffer,
+                },
+              },
+            },
+          },
+        })
+      '';
 
       utility.yazi-nvim = {
         enable = true;
@@ -114,7 +133,7 @@
 
       lsp = {
         enable = true;
-        formatOnSave = true;
+        formatOnSave = false;
         nvim-docs-view.enable = true;
         otter-nvim.enable = true;
         trouble.enable = true;
@@ -138,10 +157,14 @@
         lua.enable = true;
         html.enable = true;
         css.enable = true;
+        # scss.enable = true;
         ts.enable = true;
+        # typescript.enable = true;
         json.enable = true;
         yaml.enable = true;
+        # xml.enable = true;
         php.enable = true;
+        python.enable = true;
         sql.enable = true;
         bash.enable = true;
         nu.enable = true;
