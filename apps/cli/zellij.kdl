@@ -6,7 +6,8 @@ keybinds {
     unbind "Ctrl g"
     bind "Alt g" { SwitchToMode "Locked"; }
     unbind "Ctrl q"
-    bind "Alt q" { Quit; }
+    bind "Alt q" { Detach; }
+    bind "Alt Shift q" { Quit; }
   }
   shared_except "tab" "locked" {
     unbind "Ctrl t"
@@ -18,7 +19,7 @@ keybinds {
   }
   shared_except "session" "locked" {
     unbind "Ctrl o"
-    bind "Alt z" { SwitchToMode "Session"; }
+    bind "Alt s" { SwitchToMode "Session"; }
   }
   shared_except "resize" "locked" {
     unbind "Ctrl n"
@@ -30,7 +31,7 @@ keybinds {
   }
   shared_except "scroll" "locked" {
     unbind "Ctrl s"
-    bind "Alt s" { SwitchToMode "Scroll"; }
+    bind "Alt z" { SwitchToMode "Scroll"; }
   }
   locked {
     unbind "Ctrl g"
@@ -46,9 +47,9 @@ keybinds {
   }
   session {
     unbind "Ctrl o"
-    bind "Alt z" { SwitchToMode "Normal"; }
+    bind "Alt s" { SwitchToMode "Normal"; }
     unbind "Ctrl s"
-    bind "Alt s" { SwitchToMode "Scroll"; }
+    bind "Alt z" { SwitchToMode "Scroll"; }
   }
   resize {
     unbind "Ctrl n"
@@ -60,10 +61,10 @@ keybinds {
   }
   scroll {
     unbind "Ctrl s"
-    bind "Alt s" { SwitchToMode "Normal"; }
+    bind "Alt z" { SwitchToMode "Normal"; }
   }
   search {
     unbind "Ctrl s"
-    bind "Alt s" { SwitchToMode "Normal"; }
+    bind "Alt f" { SwitchToMode "Normal"; }
   }
 }
