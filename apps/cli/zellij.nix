@@ -2,10 +2,10 @@
   programs.zellij = {
     enable = true;
     enableBashIntegration = false;
-    enableZshIntegration = false; # Only enabled in WezTerm
+    enableZshIntegration = false;
     # enableNushellIntegration = false;
-    attachExistingSession = false; # Set in WezTerm config
     settings = {
+      default_shell = "zsh";
       simplified_ui = true;
       pane_frames = false;
       status_bar = true;
@@ -45,46 +45,7 @@
                 ];
               };
             }
-          ]
-          ++
-            builtins.map
-              (
-                { name, command }:
-                {
-                  tab = {
-                    _props = { inherit name; };
-                    _children = [
-                      {
-                        pane = {
-                          command = "zsh";
-                          args = [
-                            "-c"
-                            "${command} ; exec zsh -i"
-                          ];
-                        };
-                      }
-                    ];
-                  };
-                }
-              )
-              [
-                {
-                  name = "Git";
-                  command = "lazygit";
-                }
-                {
-                  name = "CLI";
-                  command = "devenv shell";
-                }
-                {
-                  name = "Vim";
-                  command = "nvim .";
-                }
-                {
-                  name = "Server";
-                  command = "devenv up";
-                }
-              ];
+          ];
         };
       };
     };

@@ -11,7 +11,7 @@
         programs.direnv = {
           enable = true;
           enableBashIntegration = false;
-          enableZshIntegration = false; # Only enabled in WezTerm
+          enableZshIntegration = false;
           enableNushellIntegration = false;
           nix-direnv.enable = true;
         };
