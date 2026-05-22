@@ -187,8 +187,8 @@
       };
       configFile = {
         kcminputrc."ButtonRebinds/Mouse" = {
-          ExtraButton1 = "Key,Meta+Shift+Left";
-          ExtraButton2 = "Key,Meta+Shift+Right";
+          ExtraButton1 = "Key,Meta+Shift+Right";
+          ExtraButton2 = "Key,Meta+Shift+Left";
         };
         # https://docs.kde.org/stable5/en/kwin/kcontrol/windowbehaviour/index.html
         kwinrc.Windows.FocusPolicy = "FocusFollowsMouse";
