@@ -27,6 +27,7 @@
         {
           programs.zsh.enable = true;
           users.defaultUserShell = pkgs.zsh;
+
         }
       )
       ./cli/httpie.nix
@@ -55,6 +56,8 @@
       ./utility/distrobox.nix
       ./utility/virt-manager.nix
       ./utility/ollama.nix
+      ./utility/containers.nix
+      ./utility/incus.nix
       ./utility/haskell.nix
       ./misc/kmonad.nix
       ./misc/interface-weaver.nix

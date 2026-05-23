@@ -34,6 +34,8 @@
     };
   };
 
+  environment.etc."dnsmasq.d/containers/.keep".text = "";
+
   # Certificates
   environment.systemPackages = [
     pkgs.mkcert
