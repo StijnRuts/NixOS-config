@@ -15,9 +15,9 @@ let
     dir = ./base;
     subdirs = builtins.attrNames (builtins.readDir dir);
     paths = map (subdir: "${dir}/${subdir}/base.nix") subdirs;
-    config = fix (recursive.mergeImports paths);
+    value = fix (recursive.mergeImports paths);
   };
 in
 {
-  inherit (base.config) inputs outputs;
+  inherit (base.value) inputs outputs;
 }

@@ -1,13 +1,9 @@
-_: {
-  inputs = {
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+{
+  inputs.disko = {
+    url = "github:nix-community/disko/latest";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs: {
-    nixosModules = [
-      inputs.disko.nixosModules.disko
-    ];
-  };
+  nixosModules = inputs: [
+    inputs.disko.nixosModules.disko
+  ];
 }
