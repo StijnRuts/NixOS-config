@@ -8,7 +8,7 @@
   options.apps.office.enable = lib.mkOption {
     type = lib.types.bool;
     default = false;
-    description = "Enable graphics apps";
+    description = "Enable office apps";
   };
 
   config = lib.mkIf config.apps.office.enable {
