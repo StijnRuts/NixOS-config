@@ -5,13 +5,17 @@ let
       sha256 = "sha256:1pmp8vz2qsxnm4dbd34kahpgrdmfp1r2v03r77p0gw1k1764nppz";
     }
   );
-  base = rec {
-    dir = ./base;
-    subdirs = builtins.attrNames (builtins.readDir dir);
-    paths = map (subdir: "${dir}/${subdir}/default.nix") subdirs;
-    config = recursive.mergeImports paths;
-  };
 in
-{
-  inherit (base.config) inputs outputs;
-}
+# TODO convert this to the new format
+recursive.mergeImports [
+  ./hosts/flake.nix
+  ./user/flake.nix
+  ./secrets/flake.nix
+  ./system/flake.nix
+  ./KDE/flake.nix
+  ./niri/flake.nix
+  ./theme/flake.nix
+  ./apps/flake.nix
+  ./energy/flake.nix
+  ./server/flake.nix
+]
