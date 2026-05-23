@@ -2,6 +2,6 @@ base: {
   args = _: _: {};
   outputs = inputs: {
     # TODO refactor
-    args = base.args "x86_64_linux" inputs;
+    args = base.args "x86_64-linux" inputs;
   };
 }

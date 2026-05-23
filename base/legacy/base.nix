@@ -8,13 +8,13 @@ let
 in
 # TODO convert this to the new format
 recursive.mergeImports [
-  ./user/flake.nix
-  ./secrets/flake.nix
-  ./system/flake.nix
-  ./KDE/flake.nix
-  ./niri/flake.nix
-  ./theme/flake.nix
-  ./apps/flake.nix
-  ./energy/flake.nix
-  ./server/flake.nix
+  ./user/base.nix
+  ./secrets/base.nix
+  ./system/base.nix
+  ./KDE/base.nix
+  ./niri/base.nix
+  ./theme/base.nix
+  ./apps/base.nix
+  ./energy/base.nix
+  ./server/base.nix
 ]

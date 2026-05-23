@@ -18,13 +18,12 @@
       url = "github:nix-community/impermanence";
     };
   };
-  outputs = inputs: {
-    args = {
-      # pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux; # implicit
-      pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+    args = system: inputs: {
+      # pkgs = inputs.nixpkgs.legacyPackages.${system}; # implicit
+      pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
     };
 
-    nixosModules = [
+    nixosModules = inputs: [
       (
         { pkgs, ... }:
         {
@@ -60,9 +59,8 @@
       ./printing.nix
     ];
 
-    homeModules = [
+    homeModules = _: [
       ./persist-home.nix
       ./home-manager.nix
     ];
-  };
 }
