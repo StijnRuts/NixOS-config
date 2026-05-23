@@ -8,7 +8,6 @@ let
 in
 # TODO convert this to the new format
 recursive.mergeImports [
-  ./hosts/flake.nix
   ./user/flake.nix
   ./secrets/flake.nix
   ./system/flake.nix
