@@ -5,13 +5,12 @@ base: {
       _: config:
       inputs.nixpkgs.lib.nixosSystem (
         let
-          args = base.args "x86_64-linux" inputs;
+          args = base.args config.system inputs;
         in
         {
           system = config.system;
           specialArgs = args;
           modules = [
-            config.disko
             config.hardware
             config.options.system
           ]

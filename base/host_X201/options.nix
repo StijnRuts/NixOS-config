@@ -1,5 +1,6 @@
 {
   system = {
+    base.disko.profile = "X201";
     apps = {
       office.enable = true;
       games.enable = false;

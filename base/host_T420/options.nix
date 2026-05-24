@@ -1,5 +1,6 @@
 {
   system = {
+    base.disko.profile = "T420";
     apps = {
       office.enable = true;
       games.enable = true;
