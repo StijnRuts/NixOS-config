@@ -5,7 +5,7 @@
       enable = true;
       settings = {
         user = {
-          name = "${me.name}";
+          name = "${me.fullname}";
           email = "${me.email.git}";
         };
         init.defaultBranch = "main";

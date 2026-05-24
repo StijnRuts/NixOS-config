@@ -8,7 +8,6 @@ let
 in
 # TODO convert this to the new format
 recursive.mergeImports [
-  ./user/base.nix
   ./secrets/base.nix
   ./system/base.nix
   ./KDE/base.nix

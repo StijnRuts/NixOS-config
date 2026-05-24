@@ -12,21 +12,13 @@ base: {
           args = base.args config.system inputs;
         in
         {
-          system = config.system;
+          inherit (config) system;
           specialArgs = args;
           modules = [
             config.hardware
-            config.options.system
+            config.options
           ]
-          ++ (base.nixosModules inputs)
-          ++ [
-            {
-              home-manager = {
-                extraSpecialArgs = args;
-                users.${args.me.username}.imports = [ config.options.home ] ++ (base.homeModules inputs);
-              };
-            }
-          ];
+          ++ (base.nixosModules inputs);
         }
       )
     ) {
