@@ -87,6 +87,7 @@
     home.file =
       let
         ignores = ''
+          .Trash
           .git
           result
           .devenv
