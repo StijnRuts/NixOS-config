@@ -68,9 +68,6 @@
     ];
   };
 
-  # networking.firewall.trustedInterfaces = [ "incusbr0" ];
-  # incus config set web1 raw.dnsmasq "address=/web1.example.com/10.123.45.23"
-
   persist.system = {
     directories = [
       "/var/lib/incus"

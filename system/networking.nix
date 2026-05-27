@@ -29,6 +29,8 @@
     resolveLocalQueries = true;
     settings = {
       conf-dir = "/etc/dnsmasq.d/containers/,*.conf";
+      listen-address = "127.0.0.1";
+      bind-interfaces = true;
       domain-needed = true;
       bogus-priv = true;
     };
