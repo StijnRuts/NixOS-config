@@ -38,6 +38,7 @@
             systemctl-tui
             pik
             tree
+            ncdu
           ];
         }
       )
