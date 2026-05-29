@@ -79,6 +79,7 @@
       inputs.nvf.homeManagerModules.default
       ./vim
       ./gui/wezterm.nix
+      ./gui/foot.nix
       ./gui/default-browser.nix
       ./gui/firefox.nix
       ./gui/chromium.nix
