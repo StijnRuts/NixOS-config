@@ -42,7 +42,7 @@
                     "/swap" = {
                       mountpoint = "/.swapvol";
                       swap = {
-                        swapfile.size = "8G";
+                        swapfile.size = "16G";
                       };
                     };
                     "/persist" = {
