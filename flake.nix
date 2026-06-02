@@ -1,22 +1,15 @@
+# Do not modify! This file is generated.
+# One exception: If you use a different template than "flake.in.nix" set
+#                its relative path through the first argument to inputs.flakegen.
+
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     disko = {
-      url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko/latest";
     };
+    flakegen.url = "github:jorsn/flakegen";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
   };
-  outputs = inputs: {
-    nixosConfigurations = {
-      X201 = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          inputs.disko.nixosModules.disko
-          ./disko.nix
-          ./configuration.nix
-          ./hardware-configuration.nix
-        ];
-      };
-    };
-  };
+  outputs = inputs: inputs.flakegen ./flake.in.nix inputs;
 }
