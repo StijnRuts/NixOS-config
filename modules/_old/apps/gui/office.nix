@@ -1,0 +1,20 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.apps.office.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = "Enable office apps";
+  };
+
+  config = lib.mkIf config.apps.office.enable {
+    environment.systemPackages = [
+      pkgs.libreoffice-qt
+      pkgs.jre_minimal # JRE for LibreOffice Base
+    ];
+  };
+}

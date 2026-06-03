@@ -1,0 +1,7 @@
+{
+  persist.home = {
+    directories = [
+      ".ssh"
+    ];
+  };
+}
