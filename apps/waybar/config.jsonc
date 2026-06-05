@@ -132,8 +132,9 @@
   },
   "pulseaudio#sink": {
     "states": {
-      "warning": 50,
-      "critical": 80
+      "good": 50,
+      "warning": 80,
+      "critical": 200
     },
     "format": "{volume}% {icon}",
     "format-muted": "{volume}% ",
