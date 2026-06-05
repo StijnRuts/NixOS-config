@@ -159,7 +159,7 @@
     "on-scroll-up": "pactl set-sink-volume 0 +1%",
     "on-scroll-down": "pactl set-sink-volume 0 -1%",
     "on-click": "pactl set-sink-mute 0 toggle",
-    "on-click-right": "foot zsh -c 'pulsemixer; exec zsh'"
+    "on-click-right": "foot zsh -c 'ncpamixer --tab=output; exec zsh'"
   },
   "pulseaudio#source": {
     "format": "{format_source}",
@@ -169,7 +169,7 @@
     "on-scroll-up": "pactl set-source-volume 0 +1%",
     "on-scroll-down": "pactl set-source-volume 0 -1%",
     "on-click": "pactl set-source-mute 0 toggle",
-    "on-click-right": "foot zsh -c 'pulsemixer; exec zsh'"
+    "on-click-right": "foot zsh -c 'ncpamixer --tab=input; exec zsh'"
   },
   "battery": {
     "states": {

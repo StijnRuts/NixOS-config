@@ -62,9 +62,15 @@
   background-color: @base;
 }
 
+#idle_inhibitor {
+  font-size: 24px;
+  opacity: 0.2;
+}
+
 #idle_inhibitor.activated {
   color: @base;
   background-color: @yellow;
+  opacity: 1.0;
 }
 
 #pulseaudio.sink {
@@ -110,12 +116,6 @@
   background-color: @red;
 }
 
-#battery.charging,
-#battery.plugged {
-  background-color: @base;
-  color: @text;
-}
-
 #battery {
   color: @base;
   background-color: @yellow;
@@ -129,10 +129,14 @@
 #battery.critical {
   color: @base;
   background-color: @red;
+  min-height: 128px;
 }
 
-window#waybar.battery-critical {
-  background-color: @red;
+#battery.charging,
+#battery.plugged {
+  background-color: @base;
+  color: @text;
+  min-height: 32px;
 }
 
 #clock.date {
