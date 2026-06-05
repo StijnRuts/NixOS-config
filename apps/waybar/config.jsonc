@@ -1,0 +1,203 @@
+{
+  "layer": "top",
+  "position": "left",
+  "width": 64,
+  "modules-left": [
+    "niri/workspaces",
+    "wlr/taskbar",
+    "tray"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "privacy",
+    "temperature",
+    "cpu",
+    "memory#ram",
+    "memory#swap",
+    "keyboard-state#caps",
+    "keyboard-state#num",
+    "idle_inhibitor",
+    "pulseaudio#sink",
+    "pulseaudio#source",
+    "network",
+    "battery",
+    "clock#date",
+    "clock#time"
+  ],
+  "niri/workspaces": {
+    "format": "[ {value} ]",
+    "current-only": true,
+    "disable-click": true,
+    "on-click": "niri msg action toggle-overview"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 24,
+    "tooltip-format": "{title}",
+    "on-click": "activate"
+  },
+  "tray": {
+    "icon-size": 24,
+    "spacing": 10
+  },
+  "privacy": {
+    "icon-size": 24,
+    "icon-spacing": 10,
+    "modules": [
+      {
+        "type": "screenshare"
+      },
+      {
+        "type": "audio-in"
+      }
+    ]
+  },
+  "temperature": {
+    "warning-threshold": 70,
+    "critical-threshold": 80,
+    "format": "",
+    "format-warning": "{temperatureC}°C ",
+    "format-critical": "{temperatureC}°C "
+  },
+  "cpu": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "danger": 80,
+      "critical": 90
+    },
+    "format": "{usage}% ",
+    "format-good": ""
+  },
+  "memory#ram": {
+    "states": {
+      "good": 0,
+      "warning": 80,
+      "danger": 85,
+      "critical": 90
+    },
+    "format": "{percentage}%  ",
+    "format-good": "",
+    "tooltip-format": "{used:0.1f}GiB / {total:0.1f}GiB"
+  },
+  "memory#swap": {
+    "states": {
+      "good": 0,
+      "warning": 50,
+      "danger": 70,
+      "critical": 90
+    },
+    "format": "{swapPercentage}%  ",
+    "format-good": "",
+    "tooltip-format": "{swapUsed:0.1f}GiB / {swapTotal:0.1f}GiB",
+    "tooltip": false
+  },
+  "keyboard-state#caps": {
+    "capslock": true,
+    "numlock": false,
+    "format": "{icon}",
+    "format-icons": {
+      "locked": "CAPS ",
+      "unlocked": ""
+    }
+  },
+  "keyboard-state#num": {
+    "capslock": false,
+    "numlock": true,
+    "format": "{icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": "Num "
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰒳",
+      "deactivated": "󰒲"
+    }
+  },
+  "network": {
+    "format-wifi": "{signalStrength}% {icon}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "",
+    "format-linked": "󰩠",
+    "format-disconnected": "⚠",
+    "format-disabled": "󰲛",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-wifi": "{ifname} - {essid} ({frequency}GHz)",
+    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disabled": "Disabled",
+    "on-click": "foot nmtui"
+  },
+  "pulseaudio#sink": {
+    "states": {
+      "warning": 50,
+      "critical": 80
+    },
+    "format": "{volume}% {icon}",
+    "format-muted": "{volume}% ",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": "{volume}% ",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ],
+      "headphone": "",
+      "headset": "",
+      "speaker": "󰓃",
+      "hifi": "󰓃",
+      "hdmi": "󰡁",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "hands-free": ""
+    },
+    "scroll-step": 0,
+    "on-scroll-up": "pactl set-sink-volume 0 +1%",
+    "on-scroll-down": "pactl set-sink-volume 0 -1%",
+    "on-click": "pactl set-sink-mute 0 toggle",
+    "on-click-right": "foot zsh -c 'pulsemixer; exec zsh'"
+  },
+  "pulseaudio#source": {
+    "format": "{format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "{volume}% ",
+    "scroll-step": 0,
+    "on-scroll-up": "pactl set-source-volume 0 +1%",
+    "on-scroll-down": "pactl set-source-volume 0 -1%",
+    "on-click": "pactl set-source-mute 0 toggle",
+    "on-click-right": "foot zsh -c 'pulsemixer; exec zsh'"
+  },
+  "battery": {
+    "states": {
+      "warning": 40,
+      "critical": 20
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip-format": "{timeTo}",
+    "on-click": "foot zsh -c 'sudo tlp setcharge 70 80; exec zsh'",
+    "on-click-right": "foot zsh -c 'sudo tlp fullcharge; exec zsh'"
+  },
+  "clock#date": {
+    "format": "{:%a %d}",
+    "tooltip": false,
+    "on-click": "foot zsh -c 'cal -3; exec zsh'"
+  },
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip": false,
+    "on-click": "foot zsh -c 'cal -3; exec zsh'"
+  }
+}

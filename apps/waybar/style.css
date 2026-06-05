@@ -1,0 +1,146 @@
+@import "catppuccin-mocha.css";
+
+#waybar {
+  background-color: @base;
+  color: @text;
+  font-family: "Ubuntu Nerd Font";
+  font-size: 12px;
+}
+
+.module {
+  min-height: 32px;
+}
+
+#workspaces button.active {
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#privacy-item {
+  min-height: 32px;
+  color: @base;
+  background-color: @red;
+}
+
+.warning {
+  color: @base;
+  background-color: @yellow;
+}
+
+.danger {
+  color: @base;
+  background-color: @orange;
+}
+
+.critical {
+  color: @base;
+  background-color: @red;
+}
+
+#keyboard-state label {
+  min-height: 32px;
+}
+
+#keyboard-state.caps label {
+  color: @text;
+  background-color: @base;
+}
+
+#keyboard-state.caps label.locked {
+  color: @base;
+  background-color: @yellow;
+}
+
+#keyboard-state.num label {
+  color: @base;
+  background-color: @yellow;
+}
+
+#keyboard-state.num label.locked {
+  color: @text;
+  background-color: @base;
+}
+
+#idle_inhibitor.activated {
+  color: @base;
+  background-color: @yellow;
+}
+
+#pulseaudio.sink {
+  color: @base;
+  background-color: @yellow;
+}
+
+#pulseaudio.sink.warning {
+  color: @base;
+  background-color: @orange;
+}
+
+#pulseaudio.sink.critical {
+  color: @base;
+  background-color: @red;
+}
+
+#pulseaudio.sink.muted {
+  color: @text;
+  background-color: @base;
+}
+
+#pulseaudio.source {
+  color: @base;
+  background-color: @red;
+}
+
+#pulseaudio.source.source-muted {
+  color: @text;
+  background-color: @base;
+}
+
+#network.disabled {
+  color: @base;
+  background-color: @yellow;
+}
+#network.linked {
+  color: @base;
+  background-color: @orange;
+}
+#network.disconnected {
+  color: @base;
+  background-color: @red;
+}
+
+#battery.charging,
+#battery.plugged {
+  background-color: @base;
+  color: @text;
+}
+
+#battery {
+  color: @base;
+  background-color: @yellow;
+}
+
+#battery.warning {
+  color: @base;
+  background-color: @orange;
+}
+
+#battery.critical {
+  color: @base;
+  background-color: @red;
+}
+
+window#waybar.battery-critical {
+  background-color: @red;
+}
+
+#clock.date {
+  font-weight: bold;
+}
+
+#clock.time {
+  font-size: 16px;
+  font-weight: bold;
+}
+
