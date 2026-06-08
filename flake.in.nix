@@ -1,17 +1,25 @@
 let
   pkgs = import (builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/nixos-26.05.tar.gz";
-    sha256 = "sha256:0ldd02kkfzndk0x98zsg992gqz84ip18hvrq01wws6p96ki176rb";
+    sha256 = "sha256:1syqpgmk84bqjwf6l3b34b2j1h70760k1rb5715q85chvlzxyr0f";
   }) { system = "x86_64-linux"; };
-  lib = pkgs.lib;
-  modules = lib.modules.evalModules({
-    modules = [./module.nix];
-  });
-in {
-  inputs = modules.config.inputs;
-  outputs = inputs: {
-    nixosConfigurations = {
-      X201 = inputs.nixpkgs.lib.nixosSystem (modules.config.nixosConfigurations.X201 inputs);
-    };
+  modules = pkgs.lib.modules.evalModules {
+    modules = [
+      # TODO autoload
+      #./modules/browsers
+      #./modules/disko
+      ./modules/flake
+      #./modules/homemanager
+#     ./modules/host-X201
+#      ./modules/hosts
+      ./modules/locale
+      ./modules/networking
+#      ./modules/nix
+#      ./modules/user-stijn
+#      ./modules/users
+    ];
   };
+in
+{
+  inherit (modules.config) inputs outputs;
 }
