@@ -7,19 +7,19 @@ let
     modules = [
       # TODO autoload
       #./modules/browsers
-      #./modules/disko
+      ./modules/disko
       ./modules/flake
       #./modules/homemanager
-#     ./modules/host-X201
-#      ./modules/hosts
+      ./modules/host-X201
       ./modules/locale
       ./modules/networking
-#      ./modules/nix
-#      ./modules/user-stijn
-#      ./modules/users
+      ./modules/nix
+      ./modules/nixos
+      ./modules/user-stijn
     ];
   };
 in
 {
-  inherit (modules.config) inputs outputs;
+  inherit (modules.config) inputs;
+  outputs = inputs: modules.config.outputs inputs; # Yes, we need to call it like this, to handle values that use __functor
 }

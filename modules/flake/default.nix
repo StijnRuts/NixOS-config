@@ -1,25 +1,26 @@
-{ lib, ... }:
-let
-  outputsType = lib.types.mkOptionType {
-    name = "outputs";
-#    merge =
-#      locs: defs: args:
-#      (lib.options.mergeDefaultOption locs (
-#        map (d: d // { value = if lib.isFunction d.value then d.value args else d.value; }) (lib.debug.traceVal defs)
-#
-#      ));
-      merge = locs: defs: _: lib.options.mergeDefaultOption locs defs;
-  };
-in
+{ lib, config, ... }:
 {
-  options = {
-    inputs = lib.mkOption {
-      type = lib.types.anything; # TODO
-      default = { };
+  options =
+    let
+      coercedFunctionTo = type: lib.types.coercedTo type (x: _: x) (lib.types.functionTo type);
+    in
+    {
+      inputs = lib.mkOption {
+        type = lib.types.attrs;
+        default = { };
+      };
+      outputs = lib.mkOption {
+        # type = coercedFunctionTo (lib.types.attrTag config.flakeOutputs);
+        type = lib.types.functionTo (
+          lib.types.submodule {
+            options = config.flakeOutputs;
+          }
+        );
+        default = _: { };
+      };
+      flakeOutputs = lib.mkOption {
+        type = lib.types.attrsOf lib.types.optionDeclaration;
+        default = { };
+      };
     };
-    outputs = lib.mkOption {
-      type = outputsType;
-      default = { };
-    };
-  };
 }

@@ -5,9 +5,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs:
-    {
-      nixosModules.disko = { lib, ... }: {
+  outputs = inputs: {
+    nixosModules.disko =
+      { lib, ... }:
+      {
         imports = [
           inputs.disko.nixosModules.disko
           ./X201.nix # TODO
@@ -22,5 +23,5 @@
           # TODO
         };
       };
-    };
+  };
 }
