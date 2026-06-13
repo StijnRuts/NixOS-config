@@ -1,25 +1,19 @@
 let
-  pkgs = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/nixos-26.05.tar.gz";
-    sha256 = "sha256:1syqpgmk84bqjwf6l3b34b2j1h70760k1rb5715q85chvlzxyr0f";
-  }) { system = "x86_64-linux"; };
-  modules = pkgs.lib.modules.evalModules {
-    modules = [
-      # TODO autoload
-      #./modules/browsers
-      ./modules/disko
-      ./modules/flake
-      #./modules/homemanager
-      ./modules/host-X201
-      ./modules/locale
-      ./modules/networking
-      ./modules/nix
-      ./modules/nixos
-      ./modules/user-stijn
-    ];
-  };
+  recursive = import (
+    builtins.fetchurl {
+      url = "https://raw.githubusercontent.com/StijnRuts/nix-recursive-merge/9d50a86218c6a8cf6880b490e5a76bce32af0fb1/recursive.nix";
+      sha256 = "sha256:1lnwfn9h5mwn3vdsa7as0c86929p4w45bnkcw1lszbnh3y5im9q1";
+    }
+  );
 in
-{
-  inherit (modules.config) inputs;
-  outputs = inputs: modules.config.outputs inputs; # Yes, we need to call it like this, to handle values that use __functor
-}
+recursive.mergeImports [
+  # TODO autoload
+  #./modules/browsers
+  ./modules/disko
+  #./modules/homemanager
+  ./modules/host-X201
+  ./modules/locale
+  ./modules/networking
+  ./modules/nix
+  ./modules/user-stijn
+]

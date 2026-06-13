@@ -1,11 +1,9 @@
 {
-  outputs = _: {
-    nixosModules.networking = {
-      networking.networkmanager.enable = true;
+  outputs.nixosModules.networking = {
+    networking.networkmanager.enable = true;
 
-      networking.hostName = "X201"; # TODO
+    networking.hostName = "X201"; # TODO
 
-      users.users."stijn".extraGroups = [ "networkmanager" ]; # TODO
-    };
+    users.users."stijn".extraGroups = [ "networkmanager" ]; # TODO
   };
 }
