@@ -1,0 +1,238 @@
+{
+  "layer": "top",
+  "position": "left",
+  "width": 64,
+  "modules-left": [
+    "niri/workspaces",
+    "wlr/taskbar",
+    "tray"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "privacy",
+    "temperature",
+    "cpu",
+    "memory#ram",
+    "memory#swap",
+    "disk#main",
+    "disk#data",
+    "keyboard-state#caps",
+    "keyboard-state#num",
+    "idle_inhibitor",
+    "pulseaudio#sink",
+    "pulseaudio#source",
+    "network",
+    "battery",
+    "clock#date",
+    "clock#time"
+  ],
+  "niri/workspaces": {
+    "format": "[ {value} ]",
+    "current-only": true,
+    "disable-click": true,
+    "on-click": "niri msg action toggle-overview"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 24,
+    "tooltip-format": "{title}",
+    "on-click": "activate"
+  },
+  "tray": {
+    "icon-size": 24,
+    "spacing": 10
+  },
+  "privacy": {
+    "icon-size": 24,
+    "icon-spacing": 10,
+    "modules": [
+      {
+        "type": "screenshare"
+      },
+      {
+        "type": "audio-in"
+      }
+    ]
+  },
+  "temperature": {
+    "warning-threshold": 75,
+    "critical-threshold": 85,
+    "format": "",
+    "format-warning": "{temperatureC}°C ",
+    "format-critical": "{temperatureC}°C "
+  },
+  "cpu": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "danger": 80,
+      "critical": 90
+    },
+    "format": "{usage}% ",
+    "format-good": ""
+  },
+  "memory#ram": {
+    "states": {
+      "good": 0,
+      "warning": 80,
+      "danger": 85,
+      "critical": 90
+    },
+    "format": "{percentage}%  ",
+    "format-good": "",
+    "tooltip-format": "{used:0.1f}GiB / {total:0.1f}GiB"
+  },
+  "memory#swap": {
+    "states": {
+      // ISSUE: these states apply to RAM, not SWAP
+      "good": 0,
+      "warning": 60,
+      "danger": 75,
+      "critical": 90
+    },
+    "format": "{swapPercentage}% 󰯍",
+    "format-good": "",
+    "tooltip-format": "{swapUsed:0.1f}GiB / {swapTotal:0.1f}GiB"
+  },
+  "disk#main": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "danger": 80,
+      "critical": 90
+    },
+    "path": "/",
+    "format": "{percentage_used}% ",
+    "format-good": "",
+	"format_tooltip": "{free} out of {total} available",
+    "on-click": "TODO"
+  },
+  "disk#data": {
+    "states": {
+      "good": 0,
+      "warning": 70,
+      "danger": 80,
+      "critical": 90
+    },
+    "path": "/persist",
+    "format": "{percentage_used}% ",
+    "format-good": "",
+	"format_tooltip": "{free} out of {total} available",
+    "on-click": "TODO"
+  },
+  "keyboard-state#caps": {
+    "capslock": true,
+    "numlock": false,
+    "format": "{icon}",
+    "format-icons": {
+      "locked": "Caps ",
+      "unlocked": ""
+    }
+  },
+  "keyboard-state#num": {
+    "capslock": false,
+    "numlock": true,
+    "format": "{icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": "Num "
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰒳",
+      "deactivated": "󰒲"
+    }
+  },
+  "network": {
+    "format-wifi": "{signalStrength}% {icon}",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format-ethernet": "",
+    "format-linked": "󰩠",
+    "format-disconnected": "⚠",
+    "format-disabled": "󰲛",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-wifi": "{ifname} - {essid} ({frequency}GHz)",
+    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disabled": "Disabled",
+    "on-click": "foot nmtui"
+  },
+  "pulseaudio#sink": {
+    "states": {
+      "good": 50,
+      "warning": 80,
+      "critical": 200
+    },
+    "format": "{volume}% {icon}",
+    "format-muted": "{volume}% ",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": "{volume}% ",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ],
+      "headphone": "",
+      "headset": "",
+      "speaker": "󰓃",
+      "hifi": "󰓃",
+      "hdmi": "󰡁",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "hands-free": ""
+    },
+    "scroll-step": 0,
+    "on-scroll-up": "pactl set-sink-volume 0 +1%",
+    "on-scroll-down": "pactl set-sink-volume 0 -1%",
+    "on-click": "pactl set-sink-mute 0 toggle",
+    "on-click-right": "foot zsh -c 'ncpamixer --tab=output; exec zsh'"
+  },
+  "pulseaudio#source": {
+    "format": "{format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "scroll-step": 0,
+    "on-scroll-up": "pactl set-source-volume 0 +1%",
+    "on-scroll-down": "pactl set-source-volume 0 -1%",
+    "on-click": "pactl set-source-mute 0 toggle",
+    "on-click-right": "foot zsh -c 'ncpamixer --tab=input; exec zsh'"
+  },
+  "battery": {
+    "states": {
+      "warning": 40,
+      "critical": 20
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip-format": "{timeTo}",
+    "on-click": "foot zsh -c 'echo Limit charge; sudo tlp setcharge 70 80; sleep 5'",
+    "on-click-right": "foot zsh -c 'echo Full charge; sudo tlp fullcharge; sleep 5'"
+  },
+  "clock#date": {
+    "format": "{:%a %d}",
+    "tooltip": false,
+    "on-click": "foot zsh -c 'cal -3; exec zsh'"
+  },
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip": false,
+    "on-click": "foot zsh -c 'cal -3; exec zsh'"
+  }
+}
