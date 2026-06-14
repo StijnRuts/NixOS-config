@@ -1,4 +1,6 @@
-# Installing
+# My [NixOS](https://nixos.org) configuration
+
+## Installing
 
 ```bash
 git clone https://github.com/StijnRuts/NixOS-config.git
@@ -22,7 +24,4 @@ vim /mnt/etc/nixos/hardware-configuration.nix
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/id_ed25519
 chmod 644 ~/.ssh/id_ed25519.pub
-
-git clone git@github.com:StijnRuts/NixOS-config.git ~/NixOS
-git clone git@github.com:StijnRuts/Templates.git ~/Templates
 ```
