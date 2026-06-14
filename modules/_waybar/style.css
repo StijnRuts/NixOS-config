@@ -1,0 +1,205 @@
+@import "catppuccin-mocha.css";
+
+/*
+:root {
+  --accent: #4a90e2;
+  --card-padding: 12px;
+}
+*/
+
+#waybar {
+  background-color: @base;
+  color: @text;
+  font-family: "Ubuntu Nerd Font";
+  font-size: 12px;
+}
+
+#waybar,
+.module {
+  border-right: 1px solid @surface1;
+}
+
+.module {
+  min-height: 32px;
+}
+
+/* Some comment */
+#workspaces button.active {
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#privacy-item {
+  min-height: 32px;
+  color: @base;
+  background-color: @red;
+}
+
+.warning {
+  color: @base;
+  background-color: @yellow;
+}
+
+.danger {
+  color: @base;
+  background-color: @orange;
+}
+
+.critical {
+  color: @base;
+  background-color: @red;
+}
+
+#systemd-failed-units {
+  color: @base;
+  background-color: @red;
+}
+
+#keyboard-state {
+  min-height: 0;
+}
+
+#keyboard-state.caps label {
+  color: @text;
+  background-color: @base;
+  min-height: 0;
+  font-size: 0;
+}
+
+#keyboard-state.caps label.locked {
+  color: @base;
+  background-color: @yellow;
+  min-height: 32px;
+  font-size: 12px;
+}
+
+#keyboard-state.num label {
+  color: @base;
+  background-color: @yellow;
+  min-height: 32px;
+  font-size: 12px;
+}
+
+#keyboard-state.num label.locked {
+  color: @text;
+  background-color: @base;
+  min-height: 0;
+  font-size: 0;
+}
+
+#idle_inhibitor {
+  font-size: 24px;
+}
+
+#idle_inhibitor.indicator.activated {
+  color: @base;
+  background-color: @yellow;
+  opacity: 1.0;
+}
+
+#idle_inhibitor.indicator.deactivated {
+  font-size: 0;
+  min-height: 0;
+}
+
+#pulseaudio.sink {
+  color: @base;
+  background-color: @yellow;
+}
+
+#pulseaudio.sink.warning {
+  color: @base;
+  background-color: @orange;
+}
+
+#pulseaudio.sink.critical {
+  color: @base;
+  background-color: @red;
+}
+
+#pulseaudio.sink.muted {
+  color: @text;
+  background-color: @base;
+}
+
+#pulseaudio.source {
+  color: @base;
+  background-color: @red;
+}
+
+#pulseaudio.source.source-muted {
+  color: @text;
+  background-color: @base;
+}
+
+#network.disabled {
+  color: @base;
+  background-color: @yellow;
+  font-size: 16px;
+}
+
+#network.linked {
+  color: @base;
+  background-color: @orange;
+  font-size: 16px;
+}
+
+#network.disconnected {
+  color: @base;
+  background-color: @red;
+  font-size: 16px;
+}
+
+#battery {
+  color: @base;
+  background-color: @yellow;
+  min-height: 32px;
+}
+
+#battery.warning {
+  color: @base;
+  background-color: @orange;
+  min-height: 64px;
+}
+
+#battery.critical {
+  color: @base;
+  background-color: @red;
+  min-height: 128px;
+}
+
+#battery.charging,
+#battery.plugged {
+  background-color: @base;
+  color: @text;
+  min-height: 32px;
+}
+
+#battery.charging.warning {
+  color: @orange;
+}
+
+#battery.charging.critical {
+  color: @red;
+}
+
+#clock.date {
+  font-weight: bold;
+}
+
+#clock.time {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#custom-power {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#custom-menu-icon {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: -8px;
+}
