@@ -7,13 +7,10 @@ let
   );
 in
 recursive.mergeImports [
-  # TODO autoload
-  #./modules/browsers
-  ./modules/disko
-  #./modules/homemanager
-  ./modules/host-X201
-  ./modules/locale
-  ./modules/networking
-  ./modules/nix
-  ./modules/user-stijn
+  ./modules/_disko
+  ./modules/_X201
+  ./modules/_en+nl_BE.nix
+  ./modules/_networking.nix
+  ./modules/_nix
+  ./modules/__stijn
 ]
