@@ -12,17 +12,21 @@
     "privacy",
     "temperature",
     "cpu",
-    "memory#ram",
-    "memory#swap",
+    "custom/ram",
+    "custom/swap",
+    "disk#main",
+    "disk#data",
+    "systemd-failed-units",
     "keyboard-state#caps",
     "keyboard-state#num",
-    "idle_inhibitor",
+    "idle_inhibitor#indicator",
     "pulseaudio#sink",
     "pulseaudio#source",
     "network",
     "battery",
     "clock#date",
-    "clock#time"
+    "clock#time",
+    "group/menu"
   ],
   "niri/workspaces": {
     "format": "[ {value} ]",
@@ -53,11 +57,12 @@
     ]
   },
   "temperature": {
-    "warning-threshold": 70,
-    "critical-threshold": 80,
+    "warning-threshold": 75,
+    "critical-threshold": 85,
     "format": "",
     "format-warning": "{temperatureC}°C ",
-    "format-critical": "{temperatureC}°C "
+    "format-critical": "{temperatureC}°C ",
+    "on-click": "TODO"
   },
   "cpu": {
     "states": {
@@ -67,37 +72,58 @@
       "critical": 90
     },
     "format": "{usage}% ",
-    "format-good": ""
+    "format-good": "",
+    "on-click": "TODO"
   },
-  "memory#ram": {
+  "custom/ram": {
+    "exec": "~/NixOS/apps/waybar/mem.sh ram",
+    "return-type": "json",
+    "interval": 30,
+    "on-click": "TODO"
+  },
+  "custom/swap": {
+    "exec": "~/NixOS/apps/waybar/mem.sh swap",
+    "return-type": "json",
+    "interval": 30,
+    "on-click": "TODO"
+  },
+  "disk#main": {
     "states": {
       "good": 0,
-      "warning": 80,
-      "danger": 85,
+      "warning": 70,
+      "danger": 80,
       "critical": 90
     },
-    "format": "{percentage}%  ",
+    "path": "/",
+    "format": "{percentage_used}% ",
     "format-good": "",
-    "tooltip-format": "{used:0.1f}GiB / {total:0.1f}GiB"
+    "format_tooltip": "{free} out of {total} available",
+    "on-click": "TODO"
   },
-  "memory#swap": {
+  "disk#data": {
     "states": {
       "good": 0,
-      "warning": 50,
-      "danger": 70,
+      "warning": 70,
+      "danger": 80,
       "critical": 90
     },
-    "format": "{swapPercentage}%  ",
+    "path": "/persist",
+    "format": "{percentage_used}% ",
     "format-good": "",
-    "tooltip-format": "{swapUsed:0.1f}GiB / {swapTotal:0.1f}GiB",
-    "tooltip": false
+    "format_tooltip": "{free} out of {total} available",
+    "on-click": "TODO"
+  },
+  "systemd-failed-units": {
+    "hide-on-ok": true,
+    "format": "{nr_failed} 󰋮",
+    "on-click": "TODO"
   },
   "keyboard-state#caps": {
     "capslock": true,
     "numlock": false,
     "format": "{icon}",
     "format-icons": {
-      "locked": "CAPS ",
+      "locked": "Caps ",
       "unlocked": ""
     }
   },
@@ -110,7 +136,15 @@
       "unlocked": "Num "
     }
   },
-  "idle_inhibitor": {
+  "idle_inhibitor#indicator": {
+    "format": "{icon}",
+    "format-deactivated": "",
+    "format-icons": {
+      "activated": "󰒳",
+      "deactivated": ""
+    }
+  },
+  "idle_inhibitor#toggle": {
     "format": "{icon}",
     "format-icons": {
       "activated": "󰒳",
@@ -119,10 +153,16 @@
   },
   "network": {
     "format-wifi": "{signalStrength}% {icon}",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "format-ethernet": "",
     "format-linked": "󰩠",
-    "format-disconnected": "⚠",
+    "format-disconnected": "󰅛",
     "format-disabled": "󰲛",
     "tooltip-format-ethernet": "{ifname}",
     "tooltip-format-wifi": "{ifname} - {essid} ({frequency}GHz)",
@@ -165,7 +205,7 @@
   "pulseaudio#source": {
     "format": "{format_source}",
     "format-source": "{volume}% ",
-    "format-source-muted": "{volume}% ",
+    "format-source-muted": "",
     "scroll-step": 0,
     "on-scroll-up": "pactl set-source-volume 0 +1%",
     "on-scroll-down": "pactl set-source-volume 0 -1%",
@@ -188,8 +228,8 @@
       ""
     ],
     "tooltip-format": "{timeTo}",
-    "on-click": "foot zsh -c 'sudo tlp setcharge 70 80; exec zsh'",
-    "on-click-right": "foot zsh -c 'sudo tlp fullcharge; exec zsh'"
+    "on-click": "foot zsh -c 'echo Limit charge; sudo tlp setcharge 70 80; sleep 5'",
+    "on-click-right": "foot zsh -c 'echo Full charge; sudo tlp fullcharge; sleep 5'"
   },
   "clock#date": {
     "format": "{:%a %d}",
@@ -200,5 +240,41 @@
     "format": "{:%H:%M}",
     "tooltip": false,
     "on-click": "foot zsh -c 'cal -3; exec zsh'"
+  },
+  "custom/dunst": {
+    "exec": "./dunst.sh",
+    "on-click": "dunstctl set-paused toggle",
+    "restart-interval": 1
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/NixOS/apps/waybar/power_menu.xml",
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate"
+    }
+  },
+  "custom/menu-icon": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "TODO"
+  },
+  "group/menu": {
+    "orientation": "inherit",
+    "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-power",
+        "transition-left-to-right": false,
+    },
+    "modules": [
+        "custom/menu-icon",
+        "custom/dunst",
+        "idle_inhibitor#toggle",
+        "custom/power"
+    ]
   }
 }
