@@ -6,11 +6,14 @@ let
     }
   );
 in
+# TODO auto import
 recursive.mergeImports [
   ./modules/_disko
-  ./modules/_X201
+  ./modules/X201
   ./modules/_en+nl_BE.nix
   ./modules/_networking.nix
   ./modules/_nix
-  ./modules/__stijn
+  ./modules/admins.nix
+  ./modules/users.nix
+  ./modules/stijn
 ]

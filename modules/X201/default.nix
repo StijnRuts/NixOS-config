@@ -10,15 +10,16 @@
           self.nixosModules.locale
           self.nixosModules.networking
           self.nixosModules.nix
-          self.nixosModules.user-stijn
+          self.nixosModules.stijn
+          self.nixosModules.admins
           {
             # deviceType = "laptop";
             # deviceClass = "light";
             # disks.main = "ata-CT500BX500SSD1_2508E9AAEE57";
             # nixos.version = "26.05";
             # nixos.firstInstall = "26.05";
-            user-stijn.enable = true;
-            # administrators = [ "stijn" ];
+            custom.stijn.enable = true;
+            custom.admins = [ "stijn" ];
           }
         ];
       };
