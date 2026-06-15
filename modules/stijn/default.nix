@@ -1,41 +1,33 @@
 {
   outputs =
     { self, ... }:
-    let username = "stijn"; in
-    {
-      nixosModules.${username} =
-        {
-          config,
-          lib,
-          ...
-        }:
-        {
-          imports = [
-            self.nixosModules.home-manager
-            self.nixosModules.users
-          ];
-          options.custom.${username}.enable = lib.mkEnableOption username;
-          config = lib.mkIf config.custom.${username}.enable {
-            custom.users.${username} = {
-              fullname = "Stijn Ruts";
-              password = "fake";
-              # hashedPasswordFile = config.age.secrets.hashed_password.path; # TODO
-            };
-            home-manager.users.${username} = self.homeConfigurations.${username};
-          };
+    let
+      u = {
+        username = "stijn";
+        fullname = "Stijn Ruts";
+        password = "fake";
+        nixos = {
+          config = { };
         };
-      homeConfigurations.${username} = {pkgs,...}: {
-        imports = [
-          self.homeModules.home-manager
-        ];
-        custom.home-manager.user = username;
-        # TODO move
-        home.packages = with pkgs; [
-          yazi
-          helix
-          git
-          lazygit
-        ];
+        home-manager = {
+          enable = true;
+          config =
+            { pkgs, ... }:
+            {
+              # TODO move
+              home.packages = with pkgs; [
+                yazi
+                helix
+                git
+                lazygit
+              ];
+            };
+        };
       };
+      user = self.lib.mkUser u;
+    in
+    {
+      nixosModules.${u.username} = user.nixosModule;
+      homeConfigurations.${u.username} = user.homeConfiguration;
     };
 }

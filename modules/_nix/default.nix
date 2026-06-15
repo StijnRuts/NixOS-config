@@ -23,6 +23,7 @@
         _module.args = {
           "pkgs" = lib.mkForce inputs."nixpkgs-${lib.replaceString "." "-" nixosVersion}".legacyPackages.${system};
           "pkgs-26-05" = inputs."nixpkgs-26-05".legacyPackages.${system};
+          "pkgs-current" = inputs."nixpkgs-current".legacyPackages.${system};
           "pkgs-unstable" = inputs."nixpkgs-unstable".legacyPackages.${system};
         };
 
