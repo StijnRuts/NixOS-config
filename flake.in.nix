@@ -8,11 +8,13 @@ let
 in
 # TODO auto import
 recursive.mergeImports [
-  ./modules/_disko
+  ./modules/disko.nix
+  ./modules/mkDisko.nix
   ./modules/X201
+  ./modules/mkHost.nix
   ./modules/_en+nl_BE.nix
   ./modules/_networking.nix
-  ./modules/_nix
+  ./modules/nix.nix
   ./modules/admins.nix
   ./modules/users.nix
   ./modules/mkUser.nix

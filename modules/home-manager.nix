@@ -7,38 +7,37 @@
   };
   outputs = inputs: {
     nixosModules.home-manager =
-      { config, lib, nixosVersion, ... }:
+      {
+        host,
+        lib,
+        ...
+      }:
       {
         imports = [
-          inputs."home-manager-${lib.replaceString "." "-" nixosVersion}".nixosModules.home-manager
+          inputs."home-manager-${lib.replaceString "." "-" host.nixosVersion}".nixosModules.home-manager
         ];
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           backupFileExtension = "backup";
           overwriteBackup = true;
-          extraSpecialArgs = { nixosConfig = config; };
+          extraSpecialArgs = {
+            inherit host;
+          };
         };
       };
     homeModules.home-manager =
       {
-        config,
-        lib,
         nixosConfig,
+        user,
         ...
       }:
       {
-        options.custom.home-manager.user = lib.mkOption {
-          type = lib.types.str;
-        };
         config =
-          let
-            username = config.custom.home-manager.user;
-          in
           {
             home = {
-              inherit username;
-              homeDirectory = "/home/${username}";
+              inherit (user) username;
+              homeDirectory = "/home/${user.username}";
               inherit (nixosConfig.system) stateVersion;
             };
             programs.home-manager.enable = true;

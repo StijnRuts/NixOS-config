@@ -1,72 +1,43 @@
 {
   outputs =
-    { self, nixpkgs-current, ... }:
-    {
-      nixosConfigurations.X201 = nixpkgs-current.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
+    { self, ... }:
+    let
+      h = {
+        host = {
           system = "x86_64-linux";
+          hostname = "X201";
           nixosVersion = "26.05";
           installedAt = "26.05";
         };
-        modules = [
-          ./hardware.nix
-          self.nixosModules.disko
-          self.nixosModules.locale
-          self.nixosModules.networking
-          self.nixosModules.nix
-          self.nixosModules.stijn
-          self.nixosModules.admins
-          {
-            # TODO
-            custom = {
-              # deviceType = "laptop";
-              # deviceClass = "light";
-              # disks.main = "ata-CT500BX500SSD1_2508E9AAEE57";
-              stijn.enable = true;
-              admins = [ "stijn" ];
-            };
-          }
-        ];
-      };
-
-      diskoConfigurations.X201 = {
         disko = {
-          # TODO
-          #devices = {
-          #  disk = {
-          #    my-disk = {
-          #      content = {
-          #        partitions = {
-          #          ESP = {
-          #            content = {
-          #              format = "vfat";
-          #              mountOptions = [
-          #                "umask=0077"
-          #              ];
-          #              mountpoint = "/boot";
-          #              type = "filesystem";
-          #            };
-          #            size = "500M";
-          #            type = "EF00";
-          #          };
-          #          root = {
-          #            content = {
-          #              format = "ext4";
-          #              mountpoint = "/";
-          #              type = "filesystem";
-          #            };
-          #            size = "100%";
-          #          };
-          #        };
-          #        type = "gpt";
-          #      };
-          #      device = "/dev/sda";
-          #      type = "disk";
-          #    };
-          #  };
-          #};
+          main = "/dev/disk/by-id/ata-CT500BX500SSD1_2508E9AAEE57";
+          swapSize = "16G";
+          legacyBIOS = true;
+        };
+        config = {
+          imports = [
+            ./hardware.nix
+            self.nixosModules.admins
+            self.nixosModules.locale
+            self.nixosModules.networking
+            self.nixosModules.nix
+            self.nixosModules.stijn
+          ];
+          custom = {
+            # TODO
+            #device = {
+            #  type = "laptop";
+            #  class = "light";
+            #};
+            stijn.enable = true;
+            admins = [ "stijn" ];
+          };
         };
       };
+      host = self.lib.mkHost h;
+    in
+    {
+      nixosConfigurations.${h.host.hostname} = host.nixosConfiguration;
+      diskoConfigurations.${h.host.hostname} = host.diskoConfiguration;
     };
 }

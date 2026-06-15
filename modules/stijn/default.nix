@@ -3,9 +3,11 @@
     { self, ... }:
     let
       u = {
-        username = "stijn";
-        fullname = "Stijn Ruts";
-        password = "fake";
+        user = {
+          username = "stijn";
+          fullname = "Stijn Ruts";
+          password = "fake";
+        };
         nixos = {
           config = { };
         };
@@ -27,7 +29,7 @@
       user = self.lib.mkUser u;
     in
     {
-      nixosModules.${u.username} = user.nixosModule;
-      homeConfigurations.${u.username} = user.homeConfiguration;
+      nixosModules.${u.user.username} = user.nixosModule;
+      homeConfigurations.${u.user.username} = user.homeConfiguration;
     };
 }
