@@ -46,14 +46,6 @@
       ./impermanence.nix
       ./persist-nixos.nix
       ./nix.nix
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          backupCommand = "rm";
-        };
-      }
       ./locale.nix
       ./networking.nix
       ./audio.nix

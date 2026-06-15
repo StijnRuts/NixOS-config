@@ -1,9 +1,14 @@
 {
   outputs =
-    { self, nixpkgs, ... }:
+    { self, nixpkgs-current, ... }:
     {
-      nixosConfigurations.X201 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.X201 = nixpkgs-current.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          system = "x86_64-linux";
+          nixosVersion = "26.05";
+          installedAt = "26.05";
+        };
         modules = [
           ./hardware.nix
           self.nixosModules.disko
@@ -13,13 +18,14 @@
           self.nixosModules.stijn
           self.nixosModules.admins
           {
-            # deviceType = "laptop";
-            # deviceClass = "light";
-            # disks.main = "ata-CT500BX500SSD1_2508E9AAEE57";
-            # nixos.version = "26.05";
-            # nixos.firstInstall = "26.05";
-            custom.stijn.enable = true;
-            custom.admins = [ "stijn" ];
+            # TODO
+            custom = {
+              # deviceType = "laptop";
+              # deviceClass = "light";
+              # disks.main = "ata-CT500BX500SSD1_2508E9AAEE57";
+              stijn.enable = true;
+              admins = [ "stijn" ];
+            };
           }
         ];
       };

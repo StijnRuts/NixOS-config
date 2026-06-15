@@ -3,20 +3,20 @@
     { config, lib, ... }:
     {
       options.custom.users = lib.mkOption {
-          type = lib.types.attrsOf (
-            lib.types.submodule {
-              options = {
-                fullname = lib.mkOption {
-                  type = lib.types.str;
-                };
-                password = lib.mkOption {
-                  type = lib.types.str;
-                };
+        type = lib.types.attrsOf (
+          lib.types.submodule {
+            options = {
+              fullname = lib.mkOption {
+                type = lib.types.str;
               };
-            }
-          );
-          default = { };
-        };
+              password = lib.mkOption {
+                type = lib.types.str;
+              };
+            };
+          }
+        );
+        default = { };
+      };
       config = {
         assertions = [
           {

@@ -5,11 +5,17 @@
 {
   inputs = {
     disko = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-current";
       url = "github:nix-community/disko/latest";
     };
     flakegen.url = "github:jorsn/flakegen";
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
+    home-manager-26-05 = {
+      inputs.nixpkgs.follows = "nixpkgs-26-05";
+      url = "github:nix-community/home-manager/release-26.05";
+    };
+    nixpkgs-26-05.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-current.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
   outputs = inputs: inputs.flakegen ./flake.in.nix inputs;
 }

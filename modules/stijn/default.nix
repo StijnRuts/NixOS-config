@@ -1,33 +1,41 @@
 {
   outputs =
     { self, ... }:
+    let username = "stijn"; in
     {
-      nixosModules.stijn =
+      nixosModules.${username} =
         {
           config,
           lib,
-          pkgs,
           ...
         }:
         {
           imports = [
+            self.nixosModules.home-manager
             self.nixosModules.users
           ];
-          options.custom.stijn.enable = lib.mkEnableOption "stijn";
-          config = lib.mkIf config.custom.stijn.enable {
-            custom.users.stijn = {
+          options.custom.${username}.enable = lib.mkEnableOption username;
+          config = lib.mkIf config.custom.${username}.enable {
+            custom.users.${username} = {
               fullname = "Stijn Ruts";
               password = "fake";
               # hashedPasswordFile = config.age.secrets.hashed_password.path; # TODO
             };
-            # TODO remove
-            environment.systemPackages = with pkgs; [
-              yazi
-              helix
-              git
-              lazygit
-            ];
+            home-manager.users.${username} = self.homeConfigurations.${username};
           };
         };
+      homeConfigurations.${username} = {pkgs,...}: {
+        imports = [
+          self.homeModules.home-manager
+        ];
+        custom.home-manager.user = username;
+        # TODO move
+        home.packages = with pkgs; [
+          yazi
+          helix
+          git
+          lazygit
+        ];
+      };
     };
 }

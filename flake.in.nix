@@ -16,4 +16,5 @@ recursive.mergeImports [
   ./modules/admins.nix
   ./modules/users.nix
   ./modules/stijn
+  ./modules/home-manager.nix
 ]
