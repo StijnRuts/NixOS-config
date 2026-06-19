@@ -22,6 +22,7 @@
             self.nixosModules.networking
             self.nixosModules.nix
             self.nixosModules.stijn
+            self.nixosModules.ly
           ];
           custom = {
             # TODO
@@ -29,6 +30,7 @@
             #  type = "laptop";
             #  class = "light";
             #};
+            ly.enable = true;
             stijn.enable = true;
             admins = [ "stijn" ];
           };
