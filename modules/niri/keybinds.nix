@@ -5,8 +5,7 @@
       binds = with config.lib.niri.actions; {
         "Mod+F1".action = show-hotkey-overlay;
 
-        "Mod+T".action.spawn = "konsole";
-        "Mod+Shift+T".action.spawn = "wezterm";
+        "Mod+T".action.spawn = "foot";
         "Mod+D".action.spawn = "dolphin";
 
         "Mod+O" = {

@@ -16,6 +16,7 @@ recursive.mergeImports [
   ./modules/_networking.nix
   ./modules/greetd.nix
   ./modules/niri
+  ./modules/foot.nix
   ./modules/nix.nix
   ./modules/admins.nix
   ./modules/users.nix

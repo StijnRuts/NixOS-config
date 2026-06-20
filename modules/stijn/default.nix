@@ -22,7 +22,9 @@
             {
               imports = [
                 self.homeModules.niri
+                self.homeModules.foot
               ];
+              custom.foot.enable = true;
               # TODO move
               home.packages = with pkgs; [
                 yazi
