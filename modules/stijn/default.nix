@@ -9,13 +9,20 @@
           password = "fake";
         };
         nixos = {
-          config = { };
+          config = {
+            imports = [
+              self.nixosModules.niri
+            ];
+          };
         };
         home-manager = {
           enable = true;
           config =
             { pkgs, ... }:
             {
+              imports = [
+                self.homeModules.niri
+              ];
               # TODO move
               home.packages = with pkgs; [
                 yazi

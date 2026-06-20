@@ -50,15 +50,7 @@
     # niri msg pick-window
     window-rules = [
       {
-        matches = [ { app-id = "wezterm"; } ];
-        open-maximized = true;
-      }
-      {
-        matches = [ { app-id = "kate"; } ];
-        open-maximized = true;
-      }
-      {
-        matches = [ { app-id = "zen"; } ];
+        matches = [ { app-id = "someapp"; } ];
         open-maximized = true;
       }
     ];
