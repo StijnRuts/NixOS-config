@@ -12,8 +12,8 @@ recursive.mergeImports [
   ./modules/mkDisko.nix
   ./modules/X201
   ./modules/mkHost.nix
-  ./modules/_en+nl_BE.nix
-  ./modules/_networking.nix
+  ./modules/belgium.nix
+  ./modules/networking.nix
   ./modules/greetd.nix
   ./modules/niri
   ./modules/foot.nix

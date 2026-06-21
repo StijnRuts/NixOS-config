@@ -12,7 +12,11 @@
           config = {
             imports = [
               self.nixosModules.niri
+              self.nixosModules.belgium
             ];
+            custom = {
+              belgium.enable = true;
+            };
           };
         };
         home-manager = {

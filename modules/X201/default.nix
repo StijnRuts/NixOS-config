@@ -18,7 +18,6 @@
           imports = [
             ./hardware.nix
             self.nixosModules.admins
-            self.nixosModules.locale
             self.nixosModules.networking
             self.nixosModules.nix
             self.nixosModules.stijn
