@@ -7,58 +7,75 @@
   };
   outputs = inputs: {
     nixosModules.niri =
-      { pkgs, ... }:
       {
-        # TODO mkEnableOption
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
+      {
         imports = [
           inputs.niri.nixosModules.niri
         ];
-        programs.niri = {
-          enable = true;
-          package = pkgs.niri;
-        };
 
-        environment.systemPackages = with pkgs; [
-          #xwayland-satellite
-          #wl-clipboard
-          #cliphist
-        ];
+        options.custom.niri.enable = lib.mkEnableOption "niri";
 
-        #xdg.menus.enable = true;
+        config = lib.mkIf config.custom.niri.enable {
+          programs.niri = {
+            enable = true;
+            package = pkgs.niri;
+          };
 
-        #xdg.portal = {
-        #  enable = true;
-        #  wlr.enable = true;
-        #  xdgOpenUsePortal = true;
-        #  extraPortals = [
-        #    pkgs.xdg-desktop-portal
-        #    pkgs.xdg-desktop-portal-wlr
-        #    pkgs.kdePackages.xdg-desktop-portal-kde
-        #  ];
-        #};
-      };
-    homeModules.niri = {
-      # TODO mkEnableOption
-      imports = [
-        ./settings.nix
-        ./keybinds.nix
-      ];
-      #home.sessionVariables = {
-      #  ELECTRON_OZONE_PLATFORM_HINT = "auto"; # For Electron apps
-      #  XDG_MENU_PREFIX = "plasma-"; # For Dolphin
-      #};
+          environment.systemPackages = with pkgs; [
+            #xwayland-satellite
+            #wl-clipboard
+            #cliphist
+          ];
 
-      programs.niri.settings = {
-        spawn-at-startup = [
-          #{
-          #  command = [
-          #    "bash"
-          #    "-c"
-          #    "wl-paste --watch cliphist store &"
+          #xdg.menus.enable = true;
+
+          # TODO
+          #xdg.portal = {
+          #  enable = true;
+          #  wlr.enable = true;
+          #  xdgOpenUsePortal = true;
+          #  extraPortals = [
+          #    pkgs.xdg-desktop-portal
+          #    pkgs.xdg-desktop-portal-wlr
+          #    pkgs.kdePackages.xdg-desktop-portal-kde
           #  ];
-          #}
-        ];
+          #};
+        };
       };
-    };
+    homeModules.niri =
+      { config, lib, ... }:
+      {
+        options.custom.niri.enable = lib.mkEnableOption "niri";
+
+        imports = [
+          ./settings.nix
+          ./keybinds.nix
+        ];
+
+        config = lib.mkIf config.custom.niri.enable {
+          # TODO
+          #home.sessionVariables = {
+          #  ELECTRON_OZONE_PLATFORM_HINT = "auto"; # For Electron apps
+          #  XDG_MENU_PREFIX = "plasma-"; # For Dolphin
+          #};
+
+          programs.niri.settings = {
+            spawn-at-startup = [
+              #{
+              #  command = [
+              #    "bash"
+              #    "-c"
+              #    "wl-paste --watch cliphist store &"
+              #  ];
+              #}
+            ];
+          };
+        };
+      };
   };
 }

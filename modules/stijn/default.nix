@@ -11,6 +11,8 @@
         nixos = {
           config = {
             custom = {
+              home-manager.enable = true;
+              niri.enable = true;
               belgium.enable = true;
             };
           };
@@ -20,7 +22,11 @@
           config =
             { pkgs, ... }:
             {
-              custom.foot.enable = true;
+              custom = {
+                home-manager.enable = true;
+                niri.enable = true;
+                foot.enable = true;
+              };
               # TODO move
               home.packages = with pkgs; [
                 yazi

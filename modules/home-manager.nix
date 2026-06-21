@@ -8,6 +8,7 @@
   outputs = inputs: {
     nixosModules.home-manager =
       {
+        config,
         host,
         lib,
         ...
@@ -16,32 +17,37 @@
         imports = [
           inputs."home-manager-${lib.replaceString "." "-" host.nixosVersion}".nixosModules.home-manager
         ];
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          backupFileExtension = "backup";
-          overwriteBackup = true;
-          extraSpecialArgs = {
-            inherit host;
+        options.custom.home-manager.enable = lib.mkEnableOption "home-manager";
+        config = lib.mkIf config.custom.home-manager.enable {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
+            overwriteBackup = true;
+            extraSpecialArgs = {
+              inherit host;
+            };
           };
         };
       };
     homeModules.home-manager =
       {
+        config,
+        lib,
         nixosConfig,
         user,
         ...
       }:
       {
-        config =
-          {
-            home = {
-              inherit (user) username;
-              homeDirectory = "/home/${user.username}";
-              inherit (nixosConfig.system) stateVersion;
-            };
-            programs.home-manager.enable = true;
+        options.custom.home-manager.enable = lib.mkEnableOption "home-manager";
+        config = lib.mkIf config.custom.home-manager.enable {
+          home = {
+            inherit (user) username;
+            homeDirectory = "/home/${user.username}";
+            inherit (nixosConfig.system) stateVersion;
           };
+          programs.home-manager.enable = true;
+        };
       };
   };
 }

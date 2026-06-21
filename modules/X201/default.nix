@@ -25,6 +25,7 @@
             #  class = "light";
             #};
             greetd.enable = true;
+            networking.enable = true;
             stijn.enable = true;
             admins = [ "stijn" ];
           };

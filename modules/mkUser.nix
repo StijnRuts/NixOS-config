@@ -10,7 +10,7 @@
             ...
           }:
           {
-            imports = (lib.lists.optional u.home-manager.enable self.nixosModules.home-manager) ++ [
+            imports = [
               (u.nixos.config or { })
             ];
 

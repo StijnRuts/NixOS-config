@@ -1,9 +1,21 @@
 {
   outputs.nixosModules.networking =
-    { config, host, ... }:
     {
-      networking.networkmanager.enable = true;
-      networking.hostName = host.hostname;
-      users.groups.networkmanager.members = config.custom.admins;
+      config,
+      host,
+      lib,
+      ...
+    }:
+    {
+      options.custom.networking.enable = lib.mkEnableOption "networking";
+      config = lib.mkIf config.custom.networking.enable {
+        networking = {
+          networkmanager.enable = true;
+          useDHCP = lib.mkDefault true;
+          hostName = host.hostname;
+        };
+
+        users.groups.networkmanager.members = config.custom.admins;
+      };
     };
 }
