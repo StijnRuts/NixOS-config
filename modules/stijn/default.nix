@@ -10,10 +10,6 @@
         };
         nixos = {
           config = {
-            imports = [
-              self.nixosModules.niri
-              self.nixosModules.belgium
-            ];
             custom = {
               belgium.enable = true;
             };
@@ -24,10 +20,6 @@
           config =
             { pkgs, ... }:
             {
-              imports = [
-                self.homeModules.niri
-                self.homeModules.foot
-              ];
               custom.foot.enable = true;
               # TODO move
               home.packages = with pkgs; [

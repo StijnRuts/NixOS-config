@@ -10,11 +10,9 @@
             ...
           }:
           {
-            imports = [
-              self.nixosModules.users
+            imports = (lib.lists.optional u.home-manager.enable self.nixosModules.home-manager) ++ [
               (u.nixos.config or { })
-            ]
-            ++ (lib.lists.optional u.home-manager.enable self.nixosModules.home-manager);
+            ];
 
             options.custom.${u.user.username}.enable = lib.mkEnableOption u.user.username;
 
@@ -30,8 +28,7 @@
             };
           };
         homeConfiguration = {
-          imports = [
-            self.homeModules.home-manager
+          imports = (builtins.attrValues self.homeModules) ++ [
             (u.home-manager.config or { })
           ];
           _module.args = {

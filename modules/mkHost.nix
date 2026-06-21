@@ -10,9 +10,7 @@
               specialArgs = {
                 inherit (h) host;
               };
-              modules = [
-                self.nixosModules.nix
-                self.nixosModules.disko
+              modules = (builtins.attrValues self.nixosModules) ++ [
                 self.diskoConfigurations.${h.host.hostname}
                 (h.config or { })
               ];

@@ -5,22 +5,14 @@ let
       sha256 = "sha256:1lnwfn9h5mwn3vdsa7as0c86929p4w45bnkcw1lszbnh3y5im9q1";
     }
   );
+  pipe = builtins.foldl' (x: f: f x);
+  skipUnderscores = builtins.filter (p: "_" != builtins.substring 0 1 p);
+  importModules = builtins.map (p: import (./modules + "/${p}"));
+  modules = pipe ./modules [
+    builtins.readDir
+    builtins.attrNames
+    skipUnderscores
+    importModules
+  ];
 in
-# TODO auto import
-recursive.mergeImports [
-  ./modules/disko.nix
-  ./modules/mkDisko.nix
-  ./modules/X201
-  ./modules/mkHost.nix
-  ./modules/belgium.nix
-  ./modules/networking.nix
-  ./modules/greetd.nix
-  ./modules/niri
-  ./modules/foot.nix
-  ./modules/nix.nix
-  ./modules/admins.nix
-  ./modules/users.nix
-  ./modules/mkUser.nix
-  ./modules/stijn
-  ./modules/home-manager.nix
-]
+recursive.mergeList modules

@@ -17,11 +17,6 @@
         config = {
           imports = [
             ./hardware.nix
-            self.nixosModules.admins
-            self.nixosModules.networking
-            self.nixosModules.nix
-            self.nixosModules.stijn
-            self.nixosModules.greetd
           ];
           custom = {
             # TODO
