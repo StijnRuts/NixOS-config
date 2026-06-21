@@ -5,7 +5,7 @@
       "Mod+F1".action = show-hotkey-overlay;
 
       "Mod+T".action.spawn = "foot";
-      "Mod+D".action.spawn = "dolphin";
+      "Mod+B".action.spawn = "qutebrowser";
 
       "Mod+O" = {
         action = toggle-overview;

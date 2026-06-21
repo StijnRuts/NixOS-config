@@ -33,6 +33,7 @@
                 helix
                 git
                 lazygit
+                qutebrowser
               ];
             };
         };
