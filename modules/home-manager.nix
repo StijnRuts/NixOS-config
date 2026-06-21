@@ -39,15 +39,12 @@
         ...
       }:
       {
-        options.custom.home-manager.enable = lib.mkEnableOption "home-manager";
-        config = lib.mkIf config.custom.home-manager.enable {
-          home = {
-            inherit (user) username;
-            homeDirectory = "/home/${user.username}";
-            inherit (nixosConfig.system) stateVersion;
-          };
-          programs.home-manager.enable = true;
+        home = {
+          inherit (user) username;
+          homeDirectory = "/home/${user.username}";
+          inherit (nixosConfig.system) stateVersion;
         };
+        programs.home-manager.enable = true;
       };
   };
 }

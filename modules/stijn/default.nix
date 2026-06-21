@@ -23,7 +23,6 @@
             { pkgs, ... }:
             {
               custom = {
-                home-manager.enable = true;
                 niri.enable = true;
                 foot.enable = true;
               };
