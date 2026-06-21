@@ -248,6 +248,27 @@
         style = theme.flavor;
       };
       statusline.lualine.theme = "catppuccin";
+
+      notes.neorg = {
+        enable = true;
+        treesitter.enable = true;
+        setupOpts.load."core.defaults".enable = true;
+        setupOpts = {
+          load = {
+            "core.defaults" = { };
+            "core.concealer" = { };
+            "core.summary" = { };
+            "core.dirman" = {
+              config = {
+                workspaces = {
+                  notes = "~/Documents/notes";
+                };
+                default_workspace = "notes";
+              };
+            };
+          };
+        };
+      };
     };
   };
 
