@@ -13,12 +13,24 @@
       inputs.nixpkgs.follows = "nixpkgs-26-05";
       url = "github:nix-community/home-manager/release-26.05";
     };
+    home-manager-droid = {
+      inputs.nixpkgs.follows = "nixpkgs-droid";
+      url = "github:nix-community/home-manager/release-24.05";
+    };
     niri = {
       inputs.nixpkgs.follows = "nixpkgs-current";
       url = "github:sodiboo/niri-flake";
     };
+    nix-on-droid = {
+      inputs = {
+        home-manager.follows = "home-manager-droid";
+        nixpkgs.follows = "nixpkgs-droid";
+      };
+      url = "github:nix-community/nix-on-droid/release-24.05";
+    };
     nixpkgs-26-05.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-current.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-droid.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
   outputs = inputs: inputs.flakegen ./flake.in.nix inputs;
