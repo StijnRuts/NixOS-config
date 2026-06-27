@@ -1,0 +1,46 @@
+[metadata]
+name = "grep"
+description = "A channel to find and select text from files"
+requirements = ["rg", "bat"]
+
+[source]
+command = "rg . --no-heading --line-number --colors 'match:fg:white' --colors 'path:fg:blue' --color=always"
+ansi = true
+output = "{strip_ansi|split:\\::..2}"
+
+[preview]
+command = "bat -n --color=always '{strip_ansi|split:\\::0}'"
+offset = '{strip_ansi|split:\::1}'
+
+[ui]
+preview_panel = { header = '{strip_ansi|split:\::..2}' }
+
+[keybindings]
+shortcut = "ctrl-g"
+ctrl-q = "quit"
+enter = "open"
+ctrl-right = "open"
+ctrl-left = "back"
+ctrl-down = "select_next_entry"
+ctrl-up = "select_prev_entry"
+ctrl-d = "remove"
+ctrl-j = "select_next_entry"
+ctrl-k = "select_prev_entry"
+ctrl-h = "back"
+ctrl-l = "open"
+
+[actions.open]
+description = "Open the selected item"
+command = "$EDITOR '{strip_ansi|split:\\::0}'"
+mode = "execute"
+
+[actions.back]
+description = "Go back to the directory browser"
+command = "tv fm"
+mode = "execute"
+
+[actions.remove]
+description = "Remove the selected item"
+command = "rm -rf '{strip_ansi|split:\\::0}'"
+mode = "fork"
+

@@ -91,6 +91,7 @@
       ./misc/syncthing.nix
       ./misc/exercism.nix
       ./misc/eww.nix
+      ./television
     ];
   };
 }

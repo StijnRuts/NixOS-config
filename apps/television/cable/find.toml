@@ -1,0 +1,44 @@
+[metadata]
+name = "find"
+description = "Find files and folders"
+requirements = []
+
+[source]
+command = [
+  { name = "fd", run = "fd" },
+  { name = "recent", run = "git diff --name-only HEAD~5 2>/dev/null || fd -t f --changed-within 7d" },
+]
+ansi = true
+
+[preview]
+command = "if [ -f '{}' ]; then bat -n --color=always '{}'; else eza -A -1 --sort type --icons=always --color=always '{}'; fi"
+
+[keybindings]
+shortcut = "ctrl-f"
+ctrl-q = "quit"
+enter = "open"
+ctrl-right = "open"
+ctrl-left = "back"
+ctrl-down = "select_next_entry"
+ctrl-up = "select_prev_entry"
+ctrl-d = "remove"
+ctrl-j = "select_next_entry"
+ctrl-k = "select_prev_entry"
+ctrl-h = "back"
+ctrl-l = "open"
+
+[actions.open]
+description = "Open the selected item"
+command = "if [ -f '{}' ]; then $EDITOR '{}' && tv fm; else cd '{}' && tv fm; fi"
+mode = "fork"
+
+[actions.back]
+description = "Go back to the directory browser"
+command = "tv fm"
+mode = "execute"
+
+[actions.remove]
+description = "Remove the selected item"
+command = "rm -rf '{}'"
+mode = "fork"
+

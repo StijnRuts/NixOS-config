@@ -1,0 +1,51 @@
+[metadata]
+name = "fm"
+description = "A channel to browse directories"
+requirements = []
+
+[source]
+command = "eza -A -1 --sort type --icons=always --color=always"
+no_sort = true
+frecency = false
+ansi = true
+# output = "{strip_ansi|split: :1}"
+
+[preview]
+command = "if [ -f '{strip_ansi|split: :1}' ]; then bat -n --color=always '{strip_ansi|split: :1}'; else eza -A -1 --sort type --icons=always --color=always '{strip_ansi|split: :1}'; fi"
+
+[keybindings]
+shortcut = "ctrl-y"
+esc = "shell"
+ctrl-q = "shell"
+ctrl-c = "shell"
+enter = "actions:open"
+ctrl-right = "actions:open"
+ctrl-left = "actions:parent"
+ctrl-down = "select_next_entry"
+ctrl-up = "select_prev_entry"
+ctrl-j = "select_next_entry"
+ctrl-k = "select_prev_entry"
+ctrl-h = "actions:parent"
+ctrl-l = "actions:open"
+ctrl-d = "actions:remove"
+
+[actions.shell]
+description = "Open a shell"
+command = "$SHELL"
+mode = "execute"
+
+[actions.open]
+description = "Open the selected item"
+command = "if [ -f '{strip_ansi|split: :1}' ]; then $EDITOR '{strip_ansi|split: :1}' && tv fm; else cd '{strip_ansi|split: :1}' && tv fm; fi"
+mode = "execute"
+
+[actions.parent]
+description = "Go to the parent directory"
+command = "cd .. && tv fm"
+mode = "execute"
+
+[actions.remove]
+description = "Remove the selected item"
+command = "rm -rf '{strip_ansi|split: :1}'"
+mode = "fork"
+

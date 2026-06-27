@@ -1,0 +1,28 @@
+[metadata]
+name = "zoxide"
+description = "Browse zoxide directory history"
+requirements = ["zoxide"]
+
+[source]
+command = "zoxide query -l"
+no_sort = true
+frecency = false
+
+[preview]
+command = "eza -A -1 --sort type --icons=always --color=always '{}'"
+
+[keybindings]
+shortcut = "ctrl-z"
+ctrl-q = "quit"
+enter = "actions:open"
+ctrl-d = "actions:remove"
+
+[actions.open]
+description = "Change to the selected directory"
+command = "cd '{}' && tv fm"
+mode = "execute"
+
+[actions.remove]
+description = "Remove the selected directory from zoxide"
+command = "zoxide remove '{}'"
+mode = "fork"
