@@ -61,6 +61,7 @@
       ./utility/haskell.nix
       ./misc/kmonad.nix
       ./misc/interface-weaver.nix
+      ./pim.nix
     ];
     homeModules = [
       ./cli/bash.nix
