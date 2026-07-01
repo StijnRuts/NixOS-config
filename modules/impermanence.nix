@@ -44,7 +44,7 @@
             script = ''
               mkdir -p /mnt
               mount -o subvol=/ /dev/mapper/encrypted_maindisk /mnt
-              rm -rf /mnt/rootfs
+              btrfs subvolume delete /mnt/rootfs 2>/dev/null || true
               btrfs subvolume create /mnt/rootfs
             '';
           };
