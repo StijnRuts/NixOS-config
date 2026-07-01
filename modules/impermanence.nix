@@ -42,7 +42,7 @@
             wantedBy = [ "initrd.target" ];
             serviceConfig.Type = "oneshot";
             script = ''
-              mkdir /mnt
+              mkdir -p /mnt
               mount -o subvol=/ /dev/mapper/encrypted_maindisk /mnt
               rm -rf /mnt/rootfs
               btrfs subvolume create /mnt/rootfs

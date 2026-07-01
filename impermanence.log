@@ -1,0 +1,15 @@
+││2026-07-01 21:22 X201 systemd[1]: Failed to start Restore root to empty state.                                                                                                  │
+││2026-07-01 21:22 X201 systemd[1]: impermanence.service: Failed with result 'exit-code'.                                                                                         │
+││2026-07-01 21:22 X201 systemd[1]: impermanence.service: Main process exited, code=exited, status=1/FAILURE                                                                      │
+││2026-07-01 21:22 X201 impermanence-start[338]: mkdir: cannot create directory '/mnt': File exists                                                                               │
+││2026-07-01 21:22 X201 systemd[1]: Starting Restore root to empty state...                                                                                                       │
+││2026-07-01 21:07 X201 systemd[1]: Failed to start Restore root to empty state.                                                                                                  │
+││2026-07-01 21:07 X201 systemd[1]: impermanence.service: Failed with result 'exit-code'.                                                                                         │
+││2026-07-01 21:07 X201 systemd[1]: impermanence.service: Main process exited, code=exited, status=1/FAILURE                                                                      │
+││2026-07-01 21:07 X201 impermanence-start[339]: mkdir: cannot create directory '/mnt': File exists                                                                               │
+││2026-07-01 21:07 X201 systemd[1]: Starting Restore root to empty state...                                                                                                       │
+││2026-07-01 20:02 X201 systemd[1]: Failed to start Restore root to empty state.                                                                                                  │
+││2026-07-01 20:02 X201 systemd[1]: impermanence.service: Failed with result 'exit-code'.                                                                                         │
+││2026-07-01 20:02 X201 systemd[1]: impermanence.service: Main process exited, code=exited, status=1/FAILURE                                                                      │
+││2026-07-01 20:02 X201 impermanence-start[354]: rm: cannot remove '/mnt/rootfs/var/empty': Operation not permitted                                                               │
+││2026-07-01 20:02 X201 systemd[1]: Starting Restore root to empty state...                                                                                                       │

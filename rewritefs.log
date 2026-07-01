@@ -1,0 +1,12 @@
+││2026-07-01 21:22 X201 systemd[1]: Failed to start Rewrite dotfiles to .config.                                                                                                  │
+││2026-07-01 21:22 X201 systemd[1]: rewritefs-stijn.service: Failed with result 'exit-code'.                                                                                      │
+││2026-07-01 21:22 X201 systemd[1]: rewritefs-stijn.service: Main process exited, code=exited, status=127/n/a                                                                     │
+││2026-07-01 21:22 X201 rewritefs-stijn-start[339]: /nix/store/cmfcbxd8qkfldqk4s479jmaanj02np9i-unit-script-rewritefs-stijn-start/bin/rewritefs-stijn-start: line 5:              │
+││/nix/store/id9mv74xrsjdmzb6zy1mbjg22xncgjks-rewritefs-0-unstable-2021-10-03/bin/rewritefs: No such file or directory                                                            │
+││2026-07-01 21:22 X201 systemd[1]: Starting Rewrite dotfiles to .config...                                                                                                       │
+││2026-07-01 21:07 X201 systemd[1]: Failed to start Rewrite dotfiles to .config.                                                                                                  │
+││2026-07-01 21:07 X201 systemd[1]: rewritefs-stijn.service: Failed with result 'exit-code'.                                                                                      │
+││2026-07-01 21:07 X201 systemd[1]: rewritefs-stijn.service: Main process exited, code=exited, status=127/n/a                                                                     │
+││2026-07-01 21:07 X201 rewritefs-stijn-start[340]: /nix/store/g16sc8cyjxs40vd2ix8g9ga0icph37kq-unit-script-rewritefs-stijn-start/bin/rewritefs-stijn-start: line 5: rewritefs:   │
+││command not found                                                                                                                                                               │
+││2026-07-01 21:07 X201 systemd[1]: Starting Rewrite dotfiles to .config...        
