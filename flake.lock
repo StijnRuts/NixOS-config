@@ -60,6 +60,27 @@
         "type": "github"
       }
     },
+    "home-manager-current": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-26-05"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782704057,
+        "narHash": "sha256-G1I1gd32F7mp9LAe1DaZ4ZL7NX5gyiKwdCMwro1Vrck=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "868d0a692de703c2de98fab61968e4e310b7c28e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-26.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "home-manager-droid": {
       "inputs": {
         "nixpkgs": [
@@ -78,6 +99,29 @@
         "owner": "nix-community",
         "ref": "release-24.05",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "impermanence": {
+      "inputs": {
+        "home-manager": [
+          "home-manager-current"
+        ],
+        "nixpkgs": [
+          "nixpkgs-current"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769548169,
+        "narHash": "sha256-03+JxvzmfwRu+5JafM0DLbxgHttOQZkUtDWBmeUkN8Y=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "7b1d382faf603b6d264f58627330f9faa5cba149",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
         "type": "github"
       }
     },
@@ -361,7 +405,9 @@
         "disko": "disko",
         "flakegen": "flakegen",
         "home-manager-26-05": "home-manager-26-05",
+        "home-manager-current": "home-manager-current",
         "home-manager-droid": "home-manager-droid",
+        "impermanence": "impermanence",
         "niri": "niri",
         "nix-on-droid": "nix-on-droid",
         "nixpkgs-26-05": "nixpkgs-26-05",

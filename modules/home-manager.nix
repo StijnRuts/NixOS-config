@@ -4,6 +4,10 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs-26-05";
     };
+    "home-manager-current" = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-26-05";
+    };
   };
   outputs = inputs: {
     nixosModules.home-manager =

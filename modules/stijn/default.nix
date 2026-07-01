@@ -25,13 +25,14 @@
               custom = {
                 niri.enable = true;
                 foot.enable = true;
+                ssh.enable = true;
+                git.enable = true;
+                git.email = "git@stijnruts.be";
               };
               # TODO move
               home.packages = with pkgs; [
                 yazi
                 helix
-                git
-                lazygit
                 qutebrowser
               ];
             };

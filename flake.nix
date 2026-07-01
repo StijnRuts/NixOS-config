@@ -13,9 +13,20 @@
       inputs.nixpkgs.follows = "nixpkgs-26-05";
       url = "github:nix-community/home-manager/release-26.05";
     };
+    home-manager-current = {
+      inputs.nixpkgs.follows = "nixpkgs-26-05";
+      url = "github:nix-community/home-manager/release-26.05";
+    };
     home-manager-droid = {
       inputs.nixpkgs.follows = "nixpkgs-droid";
       url = "github:nix-community/home-manager/release-24.05";
+    };
+    impermanence = {
+      inputs = {
+        home-manager.follows = "home-manager-current";
+        nixpkgs.follows = "nixpkgs-current";
+      };
+      url = "github:nix-community/impermanence";
     };
     niri = {
       inputs.nixpkgs.follows = "nixpkgs-current";

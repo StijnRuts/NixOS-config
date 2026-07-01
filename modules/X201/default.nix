@@ -24,6 +24,7 @@
             #  type = "laptop";
             #  class = "light";
             #};
+            impermanence.enable = true;
             greetd.enable = true;
             networking.enable = true;
             stijn.enable = true;
