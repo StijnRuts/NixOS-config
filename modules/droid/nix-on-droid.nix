@@ -48,6 +48,7 @@
   };
 
   user.shell = "${pkgs.zsh}/bin/zsh";
+  user.userName = "stijn";
 
   terminal.colors = {
     background = "#1e1e2e";
